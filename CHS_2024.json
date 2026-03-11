@@ -1,0 +1,330 @@
+{
+  "title": "Core Humanitarian Standard on Quality and Accountability",
+  "edition": "2024",
+  "commitments": [
+    {
+      "number": 1,
+      "title": "People and communities can exercise their rights and participate in actions and decisions that affect them.",
+      "requirements": [
+        {
+          "number": "1.1",
+          "text": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised."
+        },
+        {
+          "number": "1.2",
+          "text": "Regularly share relevant and timely information with people and communities, including about their rights in relation to the commitments and responsibilities of the organisation."
+        },
+        {
+          "number": "1.3",
+          "text": "Communicate in languages and formats that are easily accessible, understandable, respectful and contextually appropriate for people and communities."
+        },
+        {
+          "number": "1.4",
+          "text": "Ensure people's participation in decisions and actions is meaningful for them and corresponds to their preferred ways of engaging."
+        },
+        {
+          "number": "1.5",
+          "text": "Communications representing people and communities, including those used for advocacy and fundraising, have their informed consent, are accurate, respectful, ethical and preserve their dignity."
+        },
+        {
+          "number": "1.6",
+          "text": "Establish a coherent organisational approach to ensure transparent information-sharing, communication and meaningful participation of people and communities in the actions and decisions that affect them."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "People and communities access timely and effective support in accordance with their specific needs and priorities.",
+      "requirements": [
+        {
+          "number": "2.1",
+          "text": "Plan and implement programmes which respect and build upon local knowledge, capacities and existing actions."
+        },
+        {
+          "number": "2.2",
+          "text": "Use fair, impartial and transparent criteria to define programmes and the people or groups supported by the organisation."
+        },
+        {
+          "number": "2.3",
+          "text": "Regularly monitor and adjust programmes to ensure actions are timely, accessible and address the priority needs of people and communities."
+        },
+        {
+          "number": "2.4",
+          "text": "Apply relevant technical standards and recognised good practice in the organisation's work with people and communities."
+        },
+        {
+          "number": "2.5",
+          "text": "Refer any unmet priority needs to relevant stakeholders with the technical expertise and capacity to address them."
+        },
+        {
+          "number": "2.6",
+          "text": "Establish a coherent organisational approach to ensure support is based on an understanding of the context and culture and the diverse capacities, vulnerabilities, needs and risks faced by people and communities, with attention to the most marginalised."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "People and communities are better prepared and more resilient to potential crises.",
+      "requirements": [
+        {
+          "number": "3.1",
+          "text": "Support formal and informal community leadership and locally led efforts to reinforce the resilience of people and communities."
+        },
+        {
+          "number": "3.2",
+          "text": "Support local capacities to anticipate and reduce risks of potential crises or disasters."
+        },
+        {
+          "number": "3.3",
+          "text": "Plan and implement programmes that contribute to long-term positive effects on people's lives, livelihoods, the local economy and the environment."
+        },
+        {
+          "number": "3.4",
+          "text": "Support local ownership of resources and decision making from the outset of work with people and communities."
+        },
+        {
+          "number": "3.5",
+          "text": "Establish a coherent organisational approach to ensure support reinforces locally led actions and decision making."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "People and communities access support that does not cause harm to people or the environment.",
+      "requirements": [
+        {
+          "number": "4.1",
+          "text": "Identify, prevent, mitigate and address potential and actual negative impacts of programmes on people and communities."
+        },
+        {
+          "number": "4.2",
+          "text": "Identify, prevent, mitigate and address potential and actual negative impacts of programmes on the environment."
+        },
+        {
+          "number": "4.3",
+          "text": "Ensure safe, ethical and effective management of data and information to minimise risks for people and communities in line with recognised good practice for data protection."
+        },
+        {
+          "number": "4.4",
+          "text": "Establish a coherent organisational approach to ensure the organisation works in ways that protect the safety, security, rights and dignity of people and communities and prevent all forms of exploitation and abuse, including sexual exploitation, abuse and harassment, by staff and volunteers in line with recognised good practice."
+        },
+        {
+          "number": "4.5",
+          "text": "Establish a coherent organisational approach to reduce the negative environmental impacts of the organisation and its work in line with recognised good practice."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "People and communities can safely report concerns and complaints and get them addressed.",
+      "requirements": [
+        {
+          "number": "5.1",
+          "text": "Plan and implement safe, accessible and appropriate ways for all groups in a community to provide feedback and report concerns and complaints in line with recognised good practice."
+        },
+        {
+          "number": "5.2",
+          "text": "Regularly monitor that people and communities understand how staff and volunteers are expected to act to prevent harmful behaviours, including sexual exploitation and abuse, and harassment."
+        },
+        {
+          "number": "5.3",
+          "text": "Regularly monitor that people, communities and other relevant stakeholders understand how to report concerns and complaints, and how they will be addressed."
+        },
+        {
+          "number": "5.4",
+          "text": "Manage, investigate, address and/or appropriately refer complaints in line with recognised good practice."
+        },
+        {
+          "number": "5.5",
+          "text": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct, including sexual exploitation, abuse and harassment."
+        },
+        {
+          "number": "5.6",
+          "text": "Establish a coherent organisational approach to ensure any concerns and complaints are welcomed and acted upon in a timely and appropriate manner."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "People and communities access coordinated and complementary support.",
+      "requirements": [
+        {
+          "number": "6.1",
+          "text": "Ensure the work of the organisation is coordinated with and complementary to locally led and community-based actions, and those of relevant stakeholders."
+        },
+        {
+          "number": "6.2",
+          "text": "Support partners to apply commitments to quality and accountability to people and communities in all stages of work."
+        },
+        {
+          "number": "6.3",
+          "text": "Regularly assess the quality and effectiveness of the relationship between partners and take corrective action when needed."
+        },
+        {
+          "number": "6.4",
+          "text": "Establish a coherent organisational approach to ensure collaboration and partnerships are based on a commitment to equitable decision making and resource sharing and respect the characteristics, roles and responsibilities of each partner."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "People and communities access support that is continually adapted and improved based on feedback and learning.",
+      "requirements": [
+        {
+          "number": "7.1",
+          "text": "Regularly listen and respond to feedback and inputs from people and communities about the organisation and its work."
+        },
+        {
+          "number": "7.2",
+          "text": "Collect disaggregated data for decision making that reflects the diversity of people and communities and in ways that minimise demands on them."
+        },
+        {
+          "number": "7.3",
+          "text": "Use data from monitoring, feedback, complaints and learning to guide decision making, and to improve programmes and the organisation's ways of working."
+        },
+        {
+          "number": "7.4",
+          "text": "Share the analysis and learning from feedback and monitoring and any related changes with people and communities supported by the organisation and with relevant stakeholders."
+        },
+        {
+          "number": "7.5",
+          "text": "Establish a coherent organisational approach for continuous learning and improvement of actions and ways of working to better meet commitments to quality and accountability."
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "People and communities interact with staff and volunteers that are respectful, competent, and well-managed.",
+      "requirements": [
+        {
+          "number": "8.1",
+          "text": "Leadership, staff and volunteers promote and demonstrate an organisational culture of quality and accountability."
+        },
+        {
+          "number": "8.2",
+          "text": "Maintain a safe and inclusive working environment, taking measures to protect the safety, security and well-being and dignity of all staff and volunteers."
+        },
+        {
+          "number": "8.3",
+          "text": "Ensure all staff and volunteers have the necessary support, skills and competencies to fulfil their roles and responsibilities effectively and accountably."
+        },
+        {
+          "number": "8.4",
+          "text": "Ensure all staff and volunteers understand and adhere to a code of conduct, which, at a minimum, prohibits any form of exploitation, abuse, harassment, or discrimination against people or any misuse of resources."
+        },
+        {
+          "number": "8.5",
+          "text": "Ensure there are safe, confidential and accessible ways for all staff and volunteers to raise concerns and report misconduct, with appropriate protection for those reporting."
+        },
+        {
+          "number": "8.6",
+          "text": "Take timely, appropriate actions to address misconduct of all staff and volunteers, in line with recognised good practice."
+        },
+        {
+          "number": "8.7",
+          "text": "Establish a coherent organisational approach to ensure that human resources are managed effectively in a fair, non-discriminatory and transparent manner, in line with recognised good practice."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "People and communities can expect that resources are managed ethically and responsibly.",
+      "requirements": [
+        {
+          "number": "9.1",
+          "text": "Ensure adequate capacity and resources to meet the organisation's commitments."
+        },
+        {
+          "number": "9.2",
+          "text": "Manage financial resources responsibly in line with recognised good practices."
+        },
+        {
+          "number": "9.3",
+          "text": "Ensure fundraising, resource mobilisation, and fund allocations are ethical and do not compromise the organisation's commitments and values."
+        },
+        {
+          "number": "9.4",
+          "text": "Manage and use resources to achieve their intended purpose, minimising waste and the impact on the environment."
+        },
+        {
+          "number": "9.5",
+          "text": "Identify, prevent and manage risks at all levels of the organisation, including corruption, fraud, misuse of resources and conflicts of interest, and take appropriate action if these are identified."
+        },
+        {
+          "number": "9.6",
+          "text": "Establish a coherent organisational approach to ensure that resources are managed efficiently, effectively and ethically."
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Accountability",
+      "definition": "The process of using power responsibly, and taking account of and being held accountable by different stakeholders, primarily those who are affected by the exercise of such power. Accountability means putting people and communities at the centre of decisions on issues that affect them, as described in the nine commitments of the CHS."
+    },
+    {
+      "term": "Diversity",
+      "definition": "The presence of differences among people in terms of their identities, backgrounds, experiences, perspectives and characteristics. These differences can include, but are not limited to, factors such as race, ethnicity, gender, age, sexual orientation, socioeconomic status, abilities/disabilities, religious beliefs and cultural backgrounds."
+    },
+    {
+      "term": "Ensure",
+      "definition": "Implies that there is some degree of internal review, oversight and control by the organisation to make sure commitments are happening."
+    },
+    {
+      "term": "Equity",
+      "definition": "A situation where individuals or groups are treated fairly according to their specific needs."
+    },
+    {
+      "term": "Established coherent organisational approach",
+      "definition": "Structured and systematic methods adopted within an organisation to address goals, adhered to consistently throughout the organisation based on best practices and tailored to its needs."
+    },
+    {
+      "term": "Inclusion",
+      "definition": "The deliberate and proactive effort to create environments and practice that respect, value and support the full participation of individuals from diverse backgrounds and with different identities."
+    },
+    {
+      "term": "Most marginalised",
+      "definition": "Any individual in any context at risk of being subjected to or experiencing discrimination due to their identities, backgrounds, experiences, perspectives and characteristics."
+    },
+    {
+      "term": "Organisation",
+      "definition": "An entity or individual with the resources and commitment to apply the CHS. This includes, but is not limited to, any community-based structure, civil society organisation, charitable or non-profit organisation, private sector company, or public authority, international organisations, consortia or other bodies working at the local, national or international level."
+    },
+    {
+      "term": "Participation",
+      "definition": "The processes and activities that allow people and communities to play an active role in all decision-making processes that affect them. Meaningful participation involves all groups, including the most vulnerable and marginalised and is organised in accordance with people's specific needs and preferences. Participation is voluntary."
+    },
+    {
+      "term": "People and communities in situations of crisis and vulnerability",
+      "definition": "The totality of women, men, girls and boys with different needs, vulnerabilities and capacities who are affected by disasters, conflict, poverty or other crises and challenges."
+    },
+    {
+      "term": "Process",
+      "definition": "Actions, tools and resources needed to accomplish a specific task or goal in a consistent and efficient way. These can be more or less formal, depending on context and factors like the size and capacity of an organisation."
+    },
+    {
+      "term": "Quality",
+      "definition": "A set of characteristics that ensures that the support provided to people and communities meets their implied or stated needs and expectations and respects the dignity of people."
+    },
+    {
+      "term": "Resilience",
+      "definition": "The ability of an individual or community exposed to hazards to resist, absorb, accommodate and recover from the effects of a hazard in a timely and efficient manner."
+    },
+    {
+      "term": "Resources",
+      "definition": "What the organisation needs to deliver its mission, including but not limited to, natural, human, financial, capital, technological and informational."
+    },
+    {
+      "term": "Rights",
+      "definition": "People's right to life with dignity, their right to receive support and assistance and their right to protection and security, as described in the Humanitarian Charter."
+    },
+    {
+      "term": "Staff and volunteers",
+      "definition": "Any designated representative of an organisation, including governance and leadership, permanent or short-term employees and consultants."
+    },
+    {
+      "term": "Support",
+      "definition": "Any work or activity an organisation provides or shares with people and communities to achieve goals, address needs or overcome challenges."
+    }
+  ]
+}
