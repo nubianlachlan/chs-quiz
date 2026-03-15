@@ -1,0 +1,622 @@
+{
+  "game_meta": {
+    "title": "Field Ready: A Humanitarian Adventure",
+    "subtitle": "An interactive story-driven learning game based on the Core Humanitarian Standard (CHS) 2024",
+    "version": "1.0",
+    "target_audience": "Humanitarian and development sector workers",
+    "estimated_duration_minutes": 12,
+    "chs_reference": "Core Humanitarian Standard on Quality and Accountability, 2024",
+    "description": "Step into the shoes of Alex, a field coordinator freshly deployed to Verdania — a semi-arid nation hit by catastrophic flooding. Guide Alex through real-world dilemmas, make decisions that affect 200,000 displaced people, and discover the power (and pitfalls) of humanitarian action. Each chapter tests your knowledge against one of the nine CHS commitments.",
+    "how_to_play": "Read each scene narrative, then choose the best answer to the situation. You will receive instant feedback and a learning point after each choice. Your score is tracked throughout. At the end, review your impact report to see how well you upheld quality and accountability standards.",
+    "scoring": {
+      "correct_answer": 10,
+      "partial_answer": 5,
+      "incorrect_answer": 0,
+      "max_score": 100
+    }
+  },
+  "player_character": {
+    "name": "Alex",
+    "role": "Field Coordinator",
+    "organisation": "HumanityCare International",
+    "backstory": "You have just landed at Verdania International Airport after a 14-hour flight. Your organisation has been asked to co-lead the emergency response following the worst floods the country has seen in 50 years. You have three years of field experience, a fresh briefing pack, and a steaming cup of local coffee.",
+    "avatar_description": "A mid-30s professional in a field vest, holding a notebook and satellite phone, standing at an airport arrivals hall with a backpack. They look determined, slightly jet-lagged, and ready for the challenge.",
+    "image_prompt": "Illustration of a humanitarian field coordinator, gender-neutral, mid-thirties, wearing a light blue field vest with an organisation logo, carrying a large hiking backpack, holding a notebook and satellite phone, standing in a busy tropical airport arrivals hall. Warm, hopeful lighting. Diverse crowd in background. Flat-design digital art style, vibrant colors."
+  },
+  "setting": {
+    "country": "Verdania",
+    "description": "A fictional semi-arid developing country in sub-Saharan Africa. The country recently experienced record-breaking rainfall that triggered catastrophic flash floods across three regions, displacing over 200,000 people. Infrastructure is damaged, markets are disrupted, and vulnerable communities — including women, children, the elderly, and people with disabilities — face acute needs.",
+    "image_prompt": "Aerial illustration of a flooded sub-Saharan African landscape. Brown floodwaters cover fields and villages. Makeshift displacement camps with white and blue tarps visible on higher ground. A dirt road partially submerged. People moving on foot carrying belongings. Warm golden sunlight breaking through dramatic grey clouds. Detailed flat-design map-like illustration style, rich earth tones with pops of blue."
+  },
+  "chapters": [
+    {
+      "id": "prologue",
+      "type": "narrative_only",
+      "title": "Welcome to Verdania",
+      "chs_commitment": null,
+      "narrative": "The taxi from the airport weaves past flooded streets and temporary shelters. Through the window, you see families huddled under tarps, children splashing in muddy water, elderly people sitting on mounds of salvaged belongings. Your phone buzzes — it's your line manager: 'Community meeting in two hours. Be there.' You take a deep breath. This is what you trained for. Let's go.",
+      "duration_hint_seconds": 30,
+      "image_prompt": "A taxi driving through flooded streets of an African city at dusk. Through the rain-streaked car window, a field coordinator (Alex) looks out with focused determination. Outside: temporary blue tarp shelters, families with belongings, children in muddy water, resilient street vendors. Cinematic, warm yet urgent atmosphere. Digital illustration, slightly painterly style with deep blues, ambers and greens."
+    },
+    {
+      "id": "chapter_1",
+      "type": "interactive",
+      "title": "Chapter 1: Who Gets a Voice?",
+      "chs_commitment": {
+        "number": 1,
+        "title": "People and communities can exercise their rights and participate in actions and decisions that affect them.",
+        "key_requirements": ["1.1", "1.3", "1.4"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "You arrive at the displacement camp. Hundreds of tents stretch across a football field. Your colleague Mira has organised a community meeting, but looking around the circle, you notice something: it is almost entirely adult men. Women are hovering at the edges, tending to children. An older woman with a walking stick stands just outside the circle. A young man with a disability is seated 20 metres away — too far to hear clearly. Mira leans over and whispers: 'The community leader said this is how they do meetings here. We should respect that, right?'",
+      "situation": "You need to conduct a needs assessment with this community. How do you proceed?",
+      "character_emotion": "thoughtful and respectful, but sensing something is not right",
+      "image_prompt": "An outdoor community meeting in a displacement camp. A large circle of mostly adult men seated on plastic chairs and upturned buckets. At the edges of the circle, women with babies and young children look on from a distance. An elderly woman with a walking stick stands near a tent flap. A young man in a manual wheelchair is parked 20 metres away. Midday sun, dust in the air, white UNHCR tents in background. Flat digital illustration, warm ochre and sky-blue palette, sense of tension and exclusion visible in body language.",
+      "question": {
+        "id": "q1",
+        "text": "What should Alex do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Proceed with the meeting as arranged — the community leader knows best and you must respect local norms.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Respecting local context is crucial, but CHS Commitment 1 asks us to ensure meaningful participation for ALL groups, especially the most marginalised. Proceeding without addressing exclusion of women, the elderly, and people with disabilities could result in a biased needs assessment that misses critical priorities.",
+            "character_response": "Alex sits down in the circle. The meeting proceeds, but the assessment data later proves skewed — critical needs of women and children go unrecorded."
+          },
+          {
+            "id": "b",
+            "text": "Politely acknowledge the meeting format, then suggest organising separate, inclusive follow-up sessions with women, elderly and people with disabilities — framing it as standard practice for your organisation.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "Excellent! This approach respects local leadership while upholding CHS 1.1 (diversity, equity and inclusion) and 1.4 (meaningful participation). Framing separate sessions as organisational practice reduces confrontation while ensuring all voices are heard. Accessibility is a core principle — meetings must be inclusive of people with disabilities.",
+            "character_response": "Alex diplomatically suggests the approach. The community leader nods slowly. By the end of the day, Alex has spoken with five women's groups and two people with disabilities — uncovering needs that the main meeting never would have revealed."
+          },
+          {
+            "id": "c",
+            "text": "Insist loudly that the meeting cannot start until all groups are equally represented in the circle right now.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "Your instinct to be inclusive is right, but confrontational insistence can damage trust and community relations, making future engagement harder. CHS 1.3 asks us to communicate 'in ways that are respectful and contextually appropriate'. A diplomatic, phased approach is more effective.",
+            "character_response": "Tensions rise. The community leader is offended and withdraws from the meeting. It takes two days to rebuild the relationship."
+          }
+        ]
+      },
+      "learning_point": "Inclusive participation is not optional — it is a CHS commitment. Reach all groups, especially the most marginalised, through creative and context-sensitive methods. Always adapt participation formats to individual needs and cultural contexts.",
+      "chs_quote": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised. (CHS Requirement 1.1)"
+    },
+    {
+      "id": "chapter_2",
+      "type": "interactive",
+      "title": "Chapter 2: Whose Needs Count?",
+      "chs_commitment": {
+        "number": 2,
+        "title": "People and communities access timely and effective support in accordance with their specific needs and priorities.",
+        "key_requirements": ["2.1", "2.2", "2.3"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "Your assessment is complete and the data is striking. The community's top priority is clean water, but your organisation's pre-positioned stocks are full of high-energy biscuits (HEBs) — procured two months ago based on a generic flood response plan. The logistics team is eager to distribute immediately. Meanwhile, a community elder tells you: 'We have wells nearby — we just need rope and buckets to access them. And our children are not malnourished, we need water purification tablets, not biscuits.' Your donor has already approved the HEB distribution plan.",
+      "situation": "Supplies are ready to roll. What do you recommend to your team?",
+      "character_emotion": "conflicted — torn between operational pressure and community-identified needs",
+      "image_prompt": "Inside a large humanitarian warehouse in a flood-hit area. Rows of stacked boxes labelled 'High-Energy Biscuits'. A field coordinator (Alex) stands between the logistics officer pointing eagerly at a truck and a community elder gesturing towards the window where wells and buckets can be seen outside. Fluorescent warehouse lighting, tense body language. Flat digital illustration, cool blues and warehouse greys contrasting with warm natural light from the window.",
+      "question": {
+        "id": "q2",
+        "text": "What should Alex recommend?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Distribute the HEBs as planned — the donor approved it, and logistics are ready. Speed saves lives.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Timeliness is important, but CHS Commitment 2 requires support to be based on assessed needs and local capacities. Distributing what you have regardless of what is needed wastes resources, ignores community knowledge, and could even cause harm (e.g., introducing high-sugar foods in a non-acute nutrition setting). The donor's plan must be revisited.",
+            "character_response": "The HEB distribution happens. Three weeks later, a review finds 60% of biscuits were traded or discarded. Families still lack access to clean water."
+          },
+          {
+            "id": "b",
+            "text": "Pause the distribution and report back to the donor with your assessment findings, proposing to pivot to water purification tablets and rope/bucket kits based on community-identified priorities and existing local capacities.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "This is the right approach! CHS 2.1 says to 'plan and implement programmes which respect and build upon local knowledge, capacities and existing actions.' The community already has wells — your job is to support what they already have. Communicating revised needs to the donor is standard practice and most donors expect this. Speed matters, but relevance matters more.",
+            "character_response": "Alex sends an urgent sitrep to the donor with the revised assessment. The donor agrees to a partial pivot within 48 hours. Communities receive what they actually need."
+          },
+          {
+            "id": "c",
+            "text": "Run both: distribute the HEBs now for visibility and quick wins, then do a separate assessment for the water needs later.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "While pragmatic, this approach risks wasting resources on an irrelevant distribution just for visibility. CHS 2.2 requires 'fair, impartial and transparent criteria to define programmes.' 'Quick wins' and 'visibility' are not valid criteria — needs are. A better approach is to redirect resources to what is genuinely needed.",
+            "character_response": "The HEB distribution generates a press photo but uses up most of the transport budget. The water intervention is delayed by two weeks."
+          }
+        ]
+      },
+      "learning_point": "Effective humanitarian response starts with listening to communities, not just executing pre-made plans. Local knowledge and existing capacities are assets to build on, not obstacles to work around. Always revisit and adjust plans as needs evolve.",
+      "chs_quote": "Plan and implement programmes which respect and build upon local knowledge, capacities and existing actions. (CHS Requirement 2.1)"
+    },
+    {
+      "id": "chapter_3",
+      "type": "interactive",
+      "title": "Chapter 3: Building Back Better (or Not)",
+      "chs_commitment": {
+        "number": 3,
+        "title": "People and communities are better prepared and more resilient to potential crises.",
+        "key_requirements": ["3.1", "3.3", "3.4"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "The acute emergency phase is stabilising. HumanityCare's headquarters wants to transition the flood response into a recovery programme. At a planning workshop, your team proposes building 200 standardised prefabricated shelters in the flood-affected area. However, a local NGO partner raises a concern: the proposed shelter site is in a flood plain and the design does not match local building traditions or climate. The local NGO offers to co-design a shelter solution with community masons using locally sourced materials, but this will take three months longer. Headquarters wants delivery in six weeks.",
+      "situation": "How should Alex advise the team on shelter programming?",
+      "character_emotion": "under pressure from above, but building trust with local partners",
+      "image_prompt": "A workshop room in a field office. A large table with a map and shelter design blueprints. A team of humanitarians and local NGO staff debate. On one side, HQ staff point to a stopwatch and a prefab shelter diagram. On the other, a local NGO officer and community mason hold up a traditional architecture sketch. Whiteboards with decision trees in background. Flat digital illustration, warm earthy tones with greens, deliberate contrast between modern prefab vs traditional building imagery.",
+      "question": {
+        "id": "q3",
+        "text": "What should Alex advise?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Push for the six-week prefab delivery to meet HQ timelines. Speed and scale matter in a recovery context.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Speed without sustainability creates new risks. CHS 3.3 asks for 'long-term positive effects on people's lives, livelihoods, the local economy and the environment.' Building in a flood plain with designs that do not match local climate or traditions could result in shelters that are abandoned, destroyed, or even dangerous. Short-term delivery numbers are not worth long-term harm.",
+            "character_response": "The prefab shelters arrive on time. By the next rainy season, 40 are flooded and unusable. Communities return to their original damaged homes."
+          },
+          {
+            "id": "b",
+            "text": "Advocate for the locally-led co-design approach, present the risk evidence to HQ and donors, and propose a phased approach: immediate temporary shelter support while the durable solution is co-designed.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "Excellent! This balances urgency with sustainability. CHS 3.1 supports 'locally led efforts to reinforce resilience' and 3.4 calls for 'local ownership of resources and decision making from the outset.' Presenting evidence of flood risk and engaging HQ with a phased approach shows both accountability and pragmatism. This is what quality programming looks like.",
+            "character_response": "HQ is initially resistant, but after seeing the flood-plain risk assessment, agrees to the phased approach. The co-designed shelters are completed four months later — and community members helped build them, gaining transferable skills."
+          },
+          {
+            "id": "c",
+            "text": "Let HQ decide — they have more experience and a broader view of the programme.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "Field knowledge is invaluable. As the field coordinator, Alex has access to local context, community input, and risk information that HQ does not. Deferring without sharing this information fails communities and your colleagues at HQ. CHS 3.4 asks you to support local ownership 'from the outset' — which requires speaking up when better options exist.",
+            "character_response": "Alex stays silent. HQ proceeds with the prefab plan. The same concerns materialise six months later, and Alex regrets not speaking up."
+          }
+        ]
+      },
+      "learning_point": "Resilience-building requires locally-led, context-appropriate solutions from the very beginning. A programme that is technically sound but ignores local knowledge and risks often does more harm than good in the long run. Field coordinators have a responsibility to share their contextual insights with headquarters.",
+      "chs_quote": "Support local ownership of resources and decision making from the outset of work with people and communities. (CHS Requirement 3.4)"
+    },
+    {
+      "id": "chapter_4",
+      "type": "interactive",
+      "title": "Chapter 4: The Hidden Harm",
+      "chs_commitment": {
+        "number": 4,
+        "title": "People and communities access support that does not cause harm to people or the environment.",
+        "key_requirements": ["4.1", "4.3", "4.4"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "During a registration drive, your data team collects detailed personal information from beneficiaries — names, locations, family compositions, health conditions, and ethnicity — stored in an unencrypted spreadsheet shared via email across three organisations. Meanwhile, a well-meaning communications officer wants to post photos of families, including children, on social media to raise funds. One family included in the photos is from a minority ethnic group that faces targeted persecution in another part of the country. They did not give consent for public photography.",
+      "situation": "You discover both issues on the same afternoon. What do you do first and how?",
+      "character_emotion": "alarmed and urgent — these are serious protection risks",
+      "image_prompt": "Two split scenes side by side. Left: A data officer in a field office stares at an unencrypted spreadsheet on a laptop, surrounded by paper registration forms; a red warning icon hovers above. Right: A communications officer holds a camera, a family with children blurred slightly for privacy. Digital illustration with a red-alert color scheme over both scenes, split screen format. Flat design with bold graphic elements highlighting the risk in each situation.",
+      "question": {
+        "id": "q4",
+        "text": "How does Alex address the dual crisis?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Address the social media post first — it's public-facing and the most immediate reputational risk for the organisation.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Protecting the organisation's reputation is secondary to protecting vulnerable people. The unencrypted data spreadsheet potentially exposes hundreds of beneficiaries, including their health status and locations, to serious harm. CHS 4.3 requires 'safe, ethical and effective management of data to minimise risks for people and communities.' This is a protection crisis, not a communications issue.",
+            "character_response": "The photo is taken down, but by morning, the unencrypted spreadsheet has been forwarded to unintended recipients. A serious data breach is now being investigated."
+          },
+          {
+            "id": "b",
+            "text": "Stop both immediately in parallel: halt any social media posting pending consent review, and escalate the data security breach to your data protection focal point right now — treating it as an emergency.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "Correct! Both issues require immediate action. CHS 4.3 demands safe data management to minimise risks to people. CHS 4.4 requires protecting people from all forms of exploitation and abuse. Neither issue can wait. Escalating the data breach as an emergency — not just flagging it — is the right professional response. Your data protection policy should guide next steps.",
+            "character_response": "Alex escalates both immediately. The data is moved to a secure system within hours. The family is consulted before any photographs are used. A training session on data protection is scheduled for the full team."
+          },
+          {
+            "id": "c",
+            "text": "Inform the team about both issues in the next weekly meeting to ensure everyone is educated together.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Waiting for a weekly meeting when people are at immediate risk is unacceptable. Data breaches and consent violations are emergencies requiring immediate escalation. CHS 4 commitments around harm prevention are non-negotiable. Urgency and accountability go hand in hand.",
+            "character_response": "Both issues continue for another five days until the weekly meeting. By then, the family has seen their photo circulating online and is deeply distressed. The data breach has already caused harm."
+          }
+        ]
+      },
+      "learning_point": "Do No Harm is not just about physical harm. Data security and informed consent are critical protection issues. Both require immediate escalation — never wait for a scheduled meeting when people are at risk. Know your organisation's data protection and PSEA policies before deployment.",
+      "chs_quote": "Ensure safe, ethical and effective management of data and information to minimise risks for people and communities in line with recognised good practice for data protection. (CHS Requirement 4.3)"
+    },
+    {
+      "id": "chapter_5",
+      "type": "interactive",
+      "title": "Chapter 5: Listen Up",
+      "chs_commitment": {
+        "number": 5,
+        "title": "People and communities can safely report concerns and complaints and get them addressed.",
+        "key_requirements": ["5.1", "5.2", "5.5"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "A teenage girl approaches your community feedback officer, Yusuf, visibly distressed. She hints that a male staff member from a partner organisation asked for sexual favours in exchange for a higher food distribution allocation. Yusuf comes to you immediately — he looks shaken. Your organisation has a complaints mechanism, but it only has an in-person reporting form and a public suggestion box at the distribution site. The girl is afraid of being seen reporting and worried she will not receive food if she complains.",
+      "situation": "How do you handle this report and what does it reveal about your complaints system?",
+      "character_emotion": "deeply concerned, outraged, and determined to act with care",
+      "image_prompt": "A field office tent interior. A feedback officer (Yusuf) speaks quietly with a distressed teenage girl who is looking down. In the foreground, Alex listens carefully with a look of grave concern. In the background, a public suggestion box is visible through the tent entrance, highlighting an inadequate complaints mechanism. The scene conveys confidentiality and urgency. Soft, muted tones — grey-blue and warm orange. Digital illustration, realistic but stylised. No faces shown in full — privacy maintained through angles and silhouettes.",
+      "question": {
+        "id": "q5",
+        "text": "What should Alex do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Ask the girl to write down everything in the official report form before you take any action — you need a formal record.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Insisting on formal documentation before taking action places the burden on the survivor and could re-traumatise her. CHS 5.5 requires 'victim/survivor-centred approaches' to investigating complaints. The survivor's safety, dignity, and wishes must come first. Action (including protecting her access to food) can be taken before paperwork is completed.",
+            "character_response": "The girl refuses to complete the form and does not return. The complaint is never formally recorded and the alleged abuser continues working."
+          },
+          {
+            "id": "b",
+            "text": "Immediately ensure her safety and continued food access regardless of the complaint outcome, provide confidential support through a survivor-centred pathway, notify your PSEA focal point urgently, and flag the inadequacy of your complaints mechanism for urgent review.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "This is the correct response. CHS 5.5 mandates victim/survivor-centred approaches. Immediate actions: protect access to food (disconnect complaint from assistance), provide safe, confidential reporting, activate PSEA protocols, refer to specialist support. Simultaneously, the public suggestion box and in-person-only reporting form clearly fail CHS 5.1 requirements for 'safe, accessible, and appropriate' mechanisms — this must be escalated urgently.",
+            "character_response": "Alex ensures the girl's food allocation is protected and activates the PSEA focal point. An investigation is opened. The complaints system is redesigned to include a confidential hotline and trusted third-party reporting. The partner staff member is suspended pending investigation."
+          },
+          {
+            "id": "c",
+            "text": "Pass it directly to the partner organisation — it's their staff member, not yours.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Passing this to the partner without taking protective action first puts the survivor at risk. CHS 5.4 says complaints must be 'managed, investigated, addressed and/or appropriately referred' — not simply passed along. You are responsible for ensuring the complaint reaches the right people through safe channels and that the survivor is protected throughout. PSEA response protocols exist specifically for cross-organisational cases.",
+            "character_response": "Alex passes the complaint to the partner organisation. No action is taken. Two weeks later, another survivor comes forward."
+          }
+        ]
+      },
+      "learning_point": "Complaints and feedback mechanisms must be safe, accessible, and appropriate for all groups — especially the most vulnerable. Sexual exploitation and abuse (SEA) complaints require specialised, survivor-centred handling. Never let bureaucracy or unclear responsibility delay protection of survivors.",
+      "chs_quote": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct, including sexual exploitation, abuse and harassment. (CHS Requirement 5.5)"
+    },
+    {
+      "id": "chapter_6",
+      "type": "interactive",
+      "title": "Chapter 6: Better Together",
+      "chs_commitment": {
+        "number": 6,
+        "title": "People and communities access coordinated and complementary support.",
+        "key_requirements": ["6.1", "6.2", "6.4"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "The Verdania flood response has attracted 15 organisations to the same three affected districts. At a coordination meeting, you notice that four organisations — including HumanityCare — are all planning to distribute the same non-food items (NFIs) in the same village next week. Simultaneously, two remote northern communities with severe unmet needs have been completely overlooked. A local community-based organisation (CBO) in one of those northern villages has been responding independently but lacks resources to scale up. The coordination meeting has no local organisations represented.",
+      "situation": "How does Alex contribute to better coordination?",
+      "character_emotion": "frustrated by duplication, energised by the opportunity to do better",
+      "image_prompt": "A coordination meeting room. A large table with representatives from many international NGOs, all looking at the same map. Post-it notes and coloured markers cluster around the same two areas on the map, while two northern zones have no markers. A whiteboard shows overlapping project plans. Outside the window, a local CBO representative waits, not invited inside. Illustration style: bird's-eye view perspective with a warm, cluttered but purposeful feel. Bold graphic elements highlighting duplication vs gaps on the map.",
+      "question": {
+        "id": "q6",
+        "text": "What does Alex propose at the coordination meeting?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Proceed with HumanityCare's NFI plan — coordination takes too long and communities need items now.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Proceeding with duplication wastes resources and leaves communities in the north with nothing. CHS 6.1 requires work to be 'coordinated with and complementary to locally led and community-based actions and those of relevant stakeholders.' Racing to distribute in already-covered areas while ignoring gaps is the opposite of coordination.",
+            "character_response": "Four NFI distributions happen in the same village in the same week. Community members receive four tarpaulins each. The northern communities receive nothing for another month."
+          },
+          {
+            "id": "b",
+            "text": "Propose a gap/overlap analysis using the 4W matrix (Who does What, Where and When), advocate for the CBO to be invited to coordination, and offer to redirect HumanityCare's NFI response to one of the underserved northern communities.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "This is excellent coordination practice! CHS 6.1 asks for work complementary to local actions. Redirecting resources to fill gaps, inviting the CBO into coordination, and using the 4W tool to prevent duplication — all of this embodies CHS 6.4: 'collaboration and partnerships based on equitable decision making and resource sharing.' Local organisations should always be at the coordination table.",
+            "character_response": "The meeting adopts Alex's 4W proposal. HumanityCare pivots to the northern community. The CBO joins the coordination group and receives technical support. Within two weeks, all communities in the three districts have received at least one visit."
+          },
+          {
+            "id": "c",
+            "text": "Report the coordination failure to your HQ and wait for them to take action at the inter-agency level.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "Escalating to HQ might be appropriate, but waiting without acting at field level allows duplication and gaps to continue. CHS 6.1 places the responsibility on each organisation to coordinate actively. You have the tools and the opportunity — use them now at the coordination meeting, then inform HQ.",
+            "character_response": "HQ responds two weeks later with guidance. In the meantime, duplication continues and the northern communities remain unserved."
+          }
+        ]
+      },
+      "learning_point": "Coordination saves lives and resources. Preventing duplication and filling gaps is everyone's responsibility — not just cluster leads or headquarters. Local organisations are partners, not afterthoughts — they should be at the coordination table from day one.",
+      "chs_quote": "Ensure the work of the organisation is coordinated with and complementary to locally led and community-based actions, and those of relevant stakeholders. (CHS Requirement 6.1)"
+    },
+    {
+      "id": "chapter_7",
+      "type": "interactive",
+      "title": "Chapter 7: What Did We Actually Learn?",
+      "chs_commitment": {
+        "number": 7,
+        "title": "People and communities access support that is continually adapted and improved based on feedback and learning.",
+        "key_requirements": ["7.1", "7.3", "7.4"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "Six weeks in. Your monitoring data shows mixed results. Community satisfaction is at 62% — below your 80% target. Feedback forms reveal recurring complaints: distributions start late, information about eligibility criteria is unclear, and people with mobility challenges cannot reach distribution points. Your team has collected this data for three weeks but no one has actioned any of it. When you raise it with the team, one colleague responds: 'That's just people complaining. We can't please everyone. Let's focus on outputs.'",
+      "situation": "How does Alex respond and what do they do with the data?",
+      "character_emotion": "quietly determined, with growing urgency",
+      "image_prompt": "A field office wall covered in monitoring dashboards and feedback charts. A coordinator (Alex) points to a chart showing 62% satisfaction with a downward trend arrow. Team members are visible: one looking disengaged, one looking at their phone. In the corner, a stack of unread feedback forms sits untouched. Through the window, a person with a mobility aid is trying to reach a distribution point in the distance. Flat digital illustration. Colours: data blues and greens contrasting with urgent amber for unread feedback.",
+      "question": {
+        "id": "q7",
+        "text": "What should Alex do with the monitoring and feedback data?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Agree with the colleague — output targets are what matter. Feedback data is subjective.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Dismissing feedback as 'just complaining' is a critical failure. CHS Commitment 7 is entirely about using data, feedback, and monitoring to guide improvements. Low satisfaction scores linked to specific, recurring issues are exactly the kind of data that should drive programme adaptation. Ignoring it is a breach of your accountability commitments.",
+            "character_response": "Satisfaction drops to 48% by week eight. The donor receives an incident report. A programme review is triggered. Things that could have been fixed in week six now require major restructuring."
+          },
+          {
+            "id": "b",
+            "text": "Convene an urgent programme review using the feedback data to make specific, actionable changes — adjust distribution times, update communications on eligibility, and establish mobile distribution points for people with mobility challenges. Share the analysis and changes with communities.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "This is exactly what CHS 7.3 calls for: using 'data from monitoring, feedback, complaints and learning to guide decision making and improve programmes.' And critically, CHS 7.4 says to 'share the analysis and learning... with people and communities' — closing the feedback loop builds trust and shows accountability in action.",
+            "character_response": "Alex convenes the review. Within one week: distribution times shift to 7am, a mobile distribution team serves immobile beneficiaries, and eligibility criteria are posted in community gathering points. Satisfaction rises to 79% by week nine."
+          },
+          {
+            "id": "c",
+            "text": "Write up the feedback in the final programme report at the end of the response — that's what reports are for.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "Saving feedback for the final report means communities suffer from avoidable problems for months. CHS 7 is about continuous learning and adaptation, not retrospective documentation. Feedback should inform real-time decisions, not just lessons-learned documents. Act now — report later.",
+            "character_response": "Communities continue to face the same problems for six more weeks. The final report is thorough, but the damage to trust and outcomes is done."
+          }
+        ]
+      },
+      "learning_point": "Feedback is only valuable if it drives change. Collecting data without acting on it is a breach of accountability. Close the feedback loop by communicating back to communities about what changed and why. Continuous learning is a professional and ethical obligation — not optional reporting paperwork.",
+      "chs_quote": "Use data from monitoring, feedback, complaints and learning to guide decision making, and to improve programmes and the organisation's ways of working. (CHS Requirement 7.3)"
+    },
+    {
+      "id": "chapter_8",
+      "type": "interactive",
+      "title": "Chapter 8: Team Trouble",
+      "chs_commitment": {
+        "number": 8,
+        "title": "People and communities interact with staff and volunteers that are respectful, competent, and well-managed.",
+        "key_requirements": ["8.2", "8.4", "8.5"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "It's week eight. Your team has been working 14-hour days. Tempers are fraying. You hear from two national staff members that a senior international colleague, Marco, has been making demeaning comments about local staff, saying their ideas are 'not sophisticated enough' in front of beneficiaries and partners. Another team member confides that they want to report Marco but fear retaliation because Marco controls performance reviews. You also notice that your own team has had no structured support, debriefs, or wellness check-ins since deployment began.",
+      "situation": "What actions does Alex take?",
+      "character_emotion": "troubled, responsible, and determined to protect the team",
+      "image_prompt": "An outdoor team briefing in a field setting. Senior international staff member (Marco) stands with crossed arms and a dismissive expression. Two national staff members stand to the side, looking down and uncomfortable. A third team member watches from a distance with concern. A field office tent is visible in background. The scene radiates tension and power imbalance. Digital flat illustration, muted palette of greys and dusty beige with red tones to indicate stress. Subtle body language cues visible throughout.",
+      "question": {
+        "id": "q8",
+        "text": "How does Alex handle this situation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Wait and observe — it's just the stress of the deployment. Marco is effective in the field and disrupting the team now could harm the response.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "'Effective in the field' does not excuse discriminatory, demeaning behaviour. CHS 8.2 requires 'a safe and inclusive working environment' and CHS 8.4 mandates all staff adhere to a code of conduct prohibiting harassment and discrimination. Waiting or excusing misconduct makes you complicit and harms your team's wellbeing, dignity, and performance.",
+            "character_response": "Behaviour continues. Three national staff request emergency transfers. The response capacity drops sharply. A formal HR investigation begins anyway — but later, and with more damage done."
+          },
+          {
+            "id": "b",
+            "text": "Address the behaviour directly with Marco using HR processes, ensure the reporting staff members know how to report confidentially without fear of retaliation (CHS 8.5), implement a team well-being check-in, and escalate to HR if the behaviour does not stop immediately.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "All of these actions are correct. CHS 8.4 requires all staff to adhere to a code of conduct. CHS 8.5 requires 'safe, confidential and accessible ways' to raise concerns with protection from retaliation. CHS 8.2 extends to staff wellbeing — emergency deployments must include psychosocial support and regular check-ins. Leadership is accountability in action.",
+            "character_response": "Alex speaks to Marco directly and formally. HR is notified. The reporting staff members are assured of confidential processes. A team debrief is held that evening. Marco's behaviour changes; national staff feel heard and valued. Team cohesion improves."
+          },
+          {
+            "id": "c",
+            "text": "Hold a team meeting about 'respecting each other' without naming Marco — you don't want to cause a conflict.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "Generic team sessions are well-intentioned but insufficient for addressing specific misconduct. CHS 8.6 requires 'timely, appropriate actions to address misconduct.' Vague messaging without addressing the specific behaviour fails the national staff who are being harmed and sends the message that misconduct is tolerated if not named.",
+            "character_response": "Marco does not understand the session is directed at him. Behaviour continues. National staff members feel dismissed and unsupported."
+          }
+        ]
+      },
+      "learning_point": "Staff wellbeing and dignity are not luxuries — they are CHS commitments. Discriminatory or demeaning behaviour must be addressed promptly through formal channels. Create conditions where all team members can safely report concerns without fear. Team leaders set the culture — model what quality and accountability look like.",
+      "chs_quote": "Maintain a safe and inclusive working environment, taking measures to protect the safety, security and well-being and dignity of all staff and volunteers. (CHS Requirement 8.2)"
+    },
+    {
+      "id": "chapter_9",
+      "type": "interactive",
+      "title": "Chapter 9: Follow the Money",
+      "chs_commitment": {
+        "number": 9,
+        "title": "People and communities can expect that resources are managed ethically and responsibly.",
+        "key_requirements": ["9.2", "9.3", "9.5"]
+      },
+      "duration_hint_seconds": 90,
+      "narrative": "The response is in its final month. Your logistics officer brings you a procurement irregularity: a supplier who won a contract for water purification tablets submitted an invoice that is 30% higher than the agreed rate. When you investigate, you find the supplier's owner is the brother-in-law of a staff member who sat on the procurement committee. The discrepancy is $12,000. The staff member involved says it was 'just an oversight' and suggests processing the payment quickly before the grant closes in ten days.",
+      "situation": "The grant closes in ten days. What does Alex do?",
+      "character_emotion": "resolute, with zero tolerance for the temptation to look away",
+      "image_prompt": "A field office at night. Under the glow of a desk lamp, Alex examines a paper invoice next to a laptop showing a procurement database. A discrepancy is highlighted in red. Through the glass partition, a staff member (Sami) watches nervously. A wall clock shows late evening. The contrast between the bright, revealing lamp and dark background creates a detective-scene atmosphere. Flat digital illustration, muted dark blues and ambers with the red alert on the invoice as focal point.",
+      "question": {
+        "id": "q9",
+        "text": "What should Alex do about the procurement irregularity?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Process the payment at the correct contracted rate only, and treat the conflict of interest as a minor admin issue to resolve quietly after the grant closes.",
+            "is_correct": false,
+            "score": 5,
+            "feedback": "Correcting the invoice rate is right, but treating a conflict of interest as a minor admin issue is not sufficient. CHS 9.5 requires organisations to 'identify, prevent and manage conflicts of interest and take appropriate action if these are identified.' A conflict of interest in procurement is a serious integrity violation requiring formal reporting — regardless of grant timelines.",
+            "character_response": "The corrected payment goes through, but the conflict of interest is not reported. Three months later, an external audit discovers the issue. The organisation faces reputational damage and the staff member is investigated under much worse circumstances."
+          },
+          {
+            "id": "b",
+            "text": "Immediately halt the payment, formally document the conflict of interest and invoice discrepancy, escalate to your finance and compliance team, and inform the donor — all before the grant closes, regardless of time pressure.",
+            "is_correct": true,
+            "score": 10,
+            "feedback": "This is the correct response. CHS 9.5 explicitly covers fraud, corruption, and conflicts of interest. Grant closing timelines never justify bypassing compliance. CHS 9.2 requires 'responsible financial management in line with recognised good practices' — and donors have a right to know about compliance issues affecting their funds. Acting quickly and transparently is both the ethical and the professionally correct response.",
+            "character_response": "Alex escalates immediately. The donor is informed. A no-cost extension is granted to allow proper investigation. The contract is reviewed. The staff member is suspended pending investigation. HumanityCare's reputation for integrity is reinforced, not damaged."
+          },
+          {
+            "id": "c",
+            "text": "Process the payment at the original rate, say nothing to the donor, and write a strong new procurement policy for the next grant.",
+            "is_correct": false,
+            "score": 0,
+            "feedback": "Paying at the correct rate while concealing the conflict of interest is a serious breach of transparency and donor accountability. Writing a new policy does not retroactively address current misconduct. CHS 9.3 requires ethical fundraising and fund allocations that 'do not compromise the organisation's commitments and values.' Hiding misconduct from donors violates these commitments completely.",
+            "character_response": "The concealment is discovered during a routine audit six months later. The organisation is placed under enhanced donor scrutiny and loses two grants. The staff member's case is also more serious due to the attempted cover-up."
+          }
+        ]
+      },
+      "learning_point": "Resource integrity is non-negotiable. Conflicts of interest, fraud, and financial irregularities must be disclosed and addressed — grant deadlines are not valid reasons to bypass compliance. Transparency with donors about problems is always better than concealment. Ethical resource management protects communities, organisations, and the wider humanitarian system.",
+      "chs_quote": "Identify, prevent and manage risks at all levels of the organisation, including corruption, fraud, misuse of resources and conflicts of interest, and take appropriate action if these are identified. (CHS Requirement 9.5)"
+    }
+  ],
+  "epilogue": {
+    "id": "epilogue",
+    "type": "narrative_only",
+    "title": "Your Mission Report",
+    "narrative": "Ten weeks have passed since you landed in Verdania. The floodwaters are receding. You sit on the steps of your field office at sunset, writing your final situation report. Somewhere across the camp, children are playing. A community leader stops to thank you — not for the supplies, but for listening. You realise that quality and accountability are not checklists or compliance exercises. They are a mindset, a practice, and a daily choice. Every decision you made — or didn't make — shaped someone's experience of this crisis. The work continues.",
+    "image_prompt": "A field coordinator (Alex) sits on worn office steps at golden-hour sunset, writing in a notebook. In the background, a displacement camp at dusk — children playing, families cooking over small fires, tents glowing from within. The flood plain is visible in the distance, water now lower. The sky is dramatic orange and purple. The scene carries weight, warmth, and quiet resolution. Painterly digital illustration, warm tones dominating with deep shadows, impressionistic crowd detail in background.",
+    "score_feedback": {
+      "90_to_100": {
+        "title": "CHS Champion 🏆",
+        "message": "Outstanding. You consistently upheld the highest standards of quality and accountability across all nine commitments. The communities of Verdania are lucky to have had you. You are exactly the kind of humanitarian professional the sector needs — principled, contextual, and always putting people first.",
+        "badge_image_prompt": "A gold trophy badge with a globe and a heart symbol, surrounded by laurel leaves, inscribed with 'CHS Champion'. Clean flat digital icon design, gold and white colour scheme."
+      },
+      "70_to_89": {
+        "title": "Committed Practitioner 🌟",
+        "message": "Well done. You made strong decisions on most commitments, showing solid knowledge of the CHS. A few areas for growth remain — review the commitments where you scored lower and think about how you would apply them differently next time. The humanitarian sector is built on people like you who keep learning.",
+        "badge_image_prompt": "A silver star badge with a handshake icon and the text 'Committed Practitioner'. Clean flat digital icon design, silver and blue colour scheme."
+      },
+      "50_to_69": {
+        "title": "Learning in Action 📚",
+        "message": "You are on the right track but the communities of Verdania faced some avoidable gaps in your response. Revisit the CHS commitments where you scored lower, explore the CHS learning resources, and consider a refresher with your team. Every experienced humanitarian has made mistakes — what matters is learning from them.",
+        "badge_image_prompt": "A bronze circular badge with an open book and seedling growing from it, inscribed 'Learning in Action'. Clean flat digital icon design, bronze and green colour scheme."
+      },
+      "0_to_49": {
+        "title": "Rising Learner 🌱",
+        "message": "This game was challenging — that's the point. Humanitarian work is complex and the CHS exists to help us navigate it better. Consider reviewing the full CHS 2024 document and discuss these scenarios with your team. Every question you missed is a learning opportunity. Come back and play again!",
+        "badge_image_prompt": "A teal circular badge with a seedling and upward arrow, inscribed 'Rising Learner'. Clean flat digital icon design, teal and cream colour scheme."
+      }
+    }
+  },
+  "supplementary_assets": {
+    "key_characters": [
+      {
+        "name": "Alex",
+        "role": "Player Character — Field Coordinator",
+        "image_prompt": "Gender-neutral field coordinator in their mid-thirties. Light blue field vest with organisation logo. Thoughtful, determined expression. Holding notebook and satellite phone. Background: varies by chapter."
+      },
+      {
+        "name": "Mira",
+        "role": "Alex's colleague at the camp",
+        "image_prompt": "Female humanitarian worker, early thirties, south Asian appearance, wearing an orange field vest, clipboard in hand. Warm, collaborative energy but uncertain expression. Camp background."
+      },
+      {
+        "name": "Yusuf",
+        "role": "Community feedback officer",
+        "image_prompt": "Male community feedback officer, late twenties, east African appearance, wearing a green T-shirt with a feedback box logo. Compassionate and professional demeanour. Office tent background."
+      },
+      {
+        "name": "Marco",
+        "role": "Senior international colleague (Chapter 8)",
+        "image_prompt": "Male senior international humanitarian worker, mid-forties, European appearance, wearing a formal field shirt. Crossed arms, dismissive posture. Tense field office background."
+      }
+    ],
+    "ui_design_prompts": {
+      "main_menu_background": "Sweeping aerial landscape illustration of a semi-arid African country after flooding: patchwork of greens and yellows, brown floodwaters, white-tented displacement camps on high ground, a bright sky with dramatic clouds. Wide panoramic format. Flat digital illustration, vibrant and hopeful despite the crisis setting.",
+      "chapter_transition_screen": "Full-bleed abstract graphic showing interconnected circles in the 9 CHS commitment colours (a distinct colour for each of 1-9), flowing into each other like a web or network. Central icon: a heart with hands. Flat design, bold and modern.",
+      "score_dashboard": "A clean, modern dashboard design showing: 9 commitment icons in a grid (one per CHS commitment), each with a colour-coded score indicator (green/amber/red). A central circle shows total score as a percentage. Below: a progress bar and player badge. Flat UI design, white background with accent colour per commitment.",
+      "loading_screen": "Animated (or static) illustration of Alex walking along a dirt path toward the horizon, field vest on, backpack over shoulder. Verdanian landscape in background — semi-arid with distant mountains. Quote overlay: 'Quality and accountability are not destinations. They are daily choices.' Clean, hopeful, warm-toned illustration."
+    },
+    "printable_learning_card_prompts": [
+      {
+        "commitment": 1,
+        "card_headline": "PARTICIPATION — Every Voice Counts",
+        "card_visual_prompt": "A diverse circle of people of different ages, genders and abilities seated together in dialogue, each with a speech bubble. Flat vector illustration, inclusive and bright."
+      },
+      {
+        "commitment": 2,
+        "card_headline": "NEEDS-BASED SUPPORT — Build on What's Already There",
+        "card_visual_prompt": "A tree with deep roots labelled 'local knowledge' and 'community capacities'. A humanitarian worker waters it from a small can labelled 'external support'. Flat vector, warm earthy tones."
+      },
+      {
+        "commitment": 3,
+        "card_headline": "RESILIENCE — Programme for the Long Run",
+        "card_visual_prompt": "A community rebuilding together: people of all ages constructing a house with local materials, a local leader directing, mountains and green landscape in background. Flat vector, hopeful green palette."
+      },
+      {
+        "commitment": 4,
+        "card_headline": "DO NO HARM — Protection is Everyone's Job",
+        "card_visual_prompt": "A protective shield icon at the centre. Surrounding it: a locked padlock (data protection), a consent form, a green environment, and a PSEA symbol. Flat icon graphic, clear and bold."
+      },
+      {
+        "commitment": 5,
+        "card_headline": "FEEDBACK & COMPLAINTS — Safe Channels, Real Action",
+        "card_visual_prompt": "Multiple feedback pathways illustrated: phone, box, trusted person, community meeting. All pathways lead to a central 'action' icon. Flat vector, calm blues and greens."
+      },
+      {
+        "commitment": 6,
+        "card_headline": "COORDINATION — Together We Cover More Ground",
+        "card_visual_prompt": "A jigsaw puzzle map with different organisation pieces fitting together. Local NGO piece is the centrepiece. No gaps, no overlaps. Flat vector, multi-coloured organisations represented."
+      },
+      {
+        "commitment": 7,
+        "card_headline": "LEARNING — Listen, Adapt, Improve",
+        "card_visual_prompt": "A circular diagram: Data → Analysis → Decision → Action → Community Feedback → back to Data. Arrows in a virtuous cycle. Flat infographic style, bold blues and greens."
+      },
+      {
+        "commitment": 8,
+        "card_headline": "STAFF & VOLUNTEERS — Culture Starts at the Top",
+        "card_visual_prompt": "A team in a circle, all equal-sized figures of diverse backgrounds, with a code of conduct scroll in the centre. A protective umbrella over all. Flat vector, inclusive warm palette."
+      },
+      {
+        "commitment": 9,
+        "card_headline": "RESOURCES — Entrusted, Not Owned",
+        "card_visual_prompt": "A transparent piggy bank with community figures visible inside. A magnifying glass and a scale of justice on either side. Flat vector, clean blues and gold tones."
+      }
+    ]
+  },
+  "chs_reference_summary": {
+    "title": "The 9 CHS Commitments — Quick Reference",
+    "source": "Core Humanitarian Standard on Quality and Accountability, 2024",
+    "commitments": [
+      {
+        "number": 1,
+        "short_title": "Participation & Inclusion",
+        "summary": "Communities participate meaningfully in decisions that affect them, with attention to the most marginalised."
+      },
+      {
+        "number": 2,
+        "short_title": "Timely, Needs-Based Support",
+        "summary": "Support is based on assessed needs and local capacities, and is continuously monitored and adjusted."
+      },
+      {
+        "number": 3,
+        "short_title": "Resilience & Local Ownership",
+        "summary": "Programmes build community resilience and are locally owned from the outset."
+      },
+      {
+        "number": 4,
+        "short_title": "Do No Harm",
+        "summary": "Organisations prevent harm to people, protect data, and uphold PSEA standards."
+      },
+      {
+        "number": 5,
+        "short_title": "Safe Complaints & Feedback",
+        "summary": "Accessible, safe complaints mechanisms are in place and all reports are properly managed."
+      },
+      {
+        "number": 6,
+        "short_title": "Coordination",
+        "summary": "Work is coordinated with others, filling gaps and avoiding duplication, with local organisations as partners."
+      },
+      {
+        "number": 7,
+        "short_title": "Learning & Adaptation",
+        "summary": "Feedback and data drive continuous improvement, shared back with communities."
+      },
+      {
+        "number": 8,
+        "short_title": "Competent, Well-Managed Staff",
+        "summary": "Staff are supported, trained, held to a code of conduct, and can report concerns safely."
+      },
+      {
+        "number": 9,
+        "short_title": "Ethical Resource Management",
+        "summary": "Resources are managed responsibly and ethically, with zero tolerance for fraud and conflicts of interest."
+      }
+    ]
+  }
+}
