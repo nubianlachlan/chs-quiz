@@ -1,32 +1,45 @@
-# Kailani Rising: A Humanitarian Roleplay Game — Version 2
+# Kailani Rising: A Humanitarian Roleplay Game — v2 (Full Standard Edition)
 
 ## Overview
 
-**Kailani Rising** is a branching narrative roleplay game built on the [Core Humanitarian Standard on Quality and Accountability (CHS) 2024](CHS_2024.json).
+**Kailani Rising** is a comprehensive branching narrative roleplay game built on the
+[Core Humanitarian Standard on Quality and Accountability (CHS) 2024](CHS_2024.json).
 
-Unlike Version 1 (*Field Ready*), which follows a linear path of single-answer questions, Version 2 is a **true branching roleplay**: every decision creates a different story path, and there is no single "correct" journey. Players experience trade-offs, consequences, and systemic pressures that reflect real humanitarian and development work.
+This version covers **all 9 CHS commitments** and **all 50 sub-requirements** explicitly
+across nine decision chapters. It is not a quiz — it is a roleplay with real trade-offs,
+cascading consequences, and complex systemic pressures that reflect the realities of
+humanitarian and development work.
 
 ---
 
 ## The Story
 
-You are **Maya Chen**, newly appointed Country Director of HopeForward International, deployed to **Kailani** — a fictional Pacific island nation devastated by Cyclone Vera. Over the course of five critical decisions, you navigate:
+You are **Maya Chen**, newly appointed Country Director of HopeForward International,
+deployed to **Kailani** — a fictional Pacific island nation devastated by Cyclone Vera.
 
-1. How to conduct an inclusive needs assessment under time pressure
-2. Whether to distribute pre-positioned supplies or fight for community-led alternatives
-3. How to respond when field staff face a security crisis
-4. What to do when a credible complaint is made against a respected staff member
-5. Whether to extend the programme, hand over responsibly, or accept a rushed exit
+Over nine chapters, you face decisions that directly test each CHS commitment:
 
-Every choice shapes your score across four dimensions and leads to one of four possible endings.
+| Chapter | CHS Commitment | Core Dilemma |
+|---------|---------------|-------------|
+| 1 | Participation & Rights (CHS 1) | Who do you consult, and how? |
+| 2 | Timely & Effective Support (CHS 2) | What do you actually distribute, and how? |
+| 3 | Resilience & Local Ownership (CHS 3) | Are you building for the future? |
+| 4 | Do No Harm & Protection (CHS 4) | What risks are you creating? |
+| 5 | Complaints & Feedback (CHS 5) | How do you respond when someone speaks up? |
+| 6 | Coordination & Complementarity (CHS 6) | Do you compete or collaborate? |
+| 7 | Learning & Improvement (CHS 7) | What do you do with the truth? |
+| 8 | Staff Competence & Wellbeing (CHS 8) | How do you care for your team? |
+| 9 | Ethical Resource Management (CHS 9) | Whose interests does the money serve? |
 
 ---
 
-## File
+## Files
 
 | File | Description |
 |------|-------------|
-| `CHS_2024_game_v2.json` | Full game data file — skeleton version, ready for scene expansion |
+| `CHS_2024_game_v2.json` | Full game data file — v2 (full standard edition), 47 scenes, all 9 CHS commitments |
+| `CHS_2024.json` | Reference: full CHS 2024 text with all commitments and requirements |
+| `CHS_2024_game.json` | Version 1: Field Ready (linear quiz, 9 chapters, 3 options each) |
 
 ---
 
@@ -34,172 +47,363 @@ Every choice shapes your score across four dimensions and leads to one of four p
 
 ```
 Prologue: Day One in Port Hana
-       ↓
-Decision 1 — Whose Voice Counts?  (CHS 1)
-  ├── 1a: Top-down survey          → scene_1a
-  ├── 1b: Inclusive process [best] → scene_1b
-  └── 1c: Desk review only         → scene_1c
-       ↓ (all paths converge)
-Decision 2 — When Supplies Don't Match Needs  (CHS 2 & 4)
-  ├── 2a: Distribute as planned          → scene_2a
-  ├── 2b: Negotiate with donor [best]    → scene_2b
-  └── 2c: Redirect without approval     → scene_2c
-       ↓
-Decision 3 — When Staff Are at Risk  (CHS 8)
-  ├── 3a: Keep team deployed            → scene_3a
-  ├── 3b: Suspend and evacuate [best]   → scene_3b
-  └── 3c: Partial stand-down            → scene_3c
-       ↓
-Decision 4 — A Serious Complaint  (CHS 5)
-  ├── 4a: Handle quietly               → scene_4a
-  ├── 4b: Formal process [best]        → scene_4b
-  └── 4c: Dismiss complaint            → scene_4c
-       ↓
-Decision 5 — Time to Hand Over  (CHS 3 & 6)
-  ├── 5a: Request extension            → scene_5a
-  ├── 5b: Structured handover [best]   → scene_5b
-  └── 5c: Rapid HQ-driven exit         → scene_5c
-       ↓
+        ↓
+Chapter 1 — CHS 1 (Participation & Rights)
+  ├── A: Rapid English survey (fails 1.1, 1.3, 1.4)
+  ├── B: Inclusive KCV-led process [best] ✓ all 1.1-1.6    → sets: inclusive_assessment, community_informed
+  ├── C: Digital mobile survey (fails 1.1, 1.3)
+  └── D: Community council only (fails 1.1, 1.4)
+        ↓ (context flags cascade forward)
+Chapter 2 — CHS 2 (Timely & Effective Support)
+  ├── A: Distribute pre-positioned stocks (fails 2.1, 2.3, 2.5, 2.6)
+  ├── B: Adapt to assessed priorities [best] ✓ all 2.1-2.6  → sets: local_knowledge_built_in, referral_pathways_active
+  ├── C: External consultant's generic package (fails 2.1, 2.6)
+  └── D: Equal distribution to all (fails 2.2, 2.6)
+        ↓
+Chapter 3 — CHS 3 (Resilience & Local Ownership)
+  ├── A: Direct delivery, no sustainability (fails 3.1, 3.4)
+  ├── B: Co-governance with KCV                              → sets: local_ownership_by_design
+  ├── C: DRR integration, early warning system              → sets: drr_integrated
+  └── D: Co-governance + DRR [best] ✓ all 3.1-3.5          → sets: both flags
+        ↓
+Chapter 4 — CHS 4 (Do No Harm & Protection)
+  ├── A: Scale up ignoring all four risks (fails 4.1-4.5)
+  ├── B: Address all four risks [best] ✓ all 4.1-4.5        → sets: protection_framework_active, data_protection_in_place
+  ├── C: Address protection + data; skip environmental      → sets: protection_framework_active, data_protection_in_place
+  └── D: Address environment + data; handle PSEA informally → sets: data_protection_in_place
+        ↓
+Chapter 5 — CHS 5 (Complaints & Feedback)
+  ├── A: Informal handling (fails 5.4, 5.5, 5.6)
+  ├── B: Formal survivor-centred process [best] ✓ 5.1-5.6   → sets: complaints_trusted, survivor_centred_process
+  ├── C: Refer to police without survivor consent (fails 5.5)
+  └── D: Formal process + comprehensive feedback system     → sets: complaints_trusted, survivor_centred_process
+        ↓
+Chapter 6 — CHS 6 (Coordination & Complementarity)
+  ├── A: Minimal coordination, keep data proprietary (fails 6.1, 6.2, 6.3, 6.4)
+  ├── B: Full coordination [best] ✓ all 6.1-6.4             → sets: cluster_coordination_active, partner_quality_supported
+  ├── C: Selective coordination — resolve GAP, support KCV  → sets: partner_quality_supported
+  └── D: Create parallel coordination structure (fails 6.1, 6.4)
+        ↓
+Chapter 7 — CHS 7 (Learning & Improvement)
+  ├── A: Positive aggregates only (fails 7.1-7.5)
+  ├── B: Full transparency + course correction [best] ✓ 7.1-7.5 → sets: gender_data_actioned, learning_shared_externally
+  ├── C: Share innovation but downplay gender gap           → sets: learning_shared_externally
+  └── D: Commission verification study — delay action (fails 7.3)
+        ↓
+Chapter 8 — CHS 8 (Staff Competence & Wellbeing)
+  ├── A: Informal on all three issues (fails 8.2, 8.4, 8.5, 8.6)
+  ├── B: Evacuate + investigate + restore training [best] ✓ 8.1-8.7 → sets: duty_of_care_upheld, misconduct_addressed_formally
+  ├── C: Evacuate only; discrimination informal             → sets: duty_of_care_upheld
+  └── D: Restructure HR systems [best+ all 8] ✓            → sets: duty_of_care_upheld, misconduct_addressed_formally
+        ↓
+Chapter 9 — CHS 9 (Ethical Resource Management)
+  ├── A: Return funds; ignore COI; approve visibility campaign (fails 9.3-9.6)
+  ├── B: Negotiate reallocation + investigate + refuse [best] ✓ 9.1-9.6 → sets: donor_transparent_engagement, community_resources_transferred
+  ├── C: Reallocate without approval + investigate (fails 9.2) → sets: community_resources_transferred
+  └── D: Return funds; ignore COI; approve campaign (fails 9.3-9.5)
+        ↓
 Epilogue + Score-Based Ending
-  ├── 🏆 Transformative Leader   (32–40 pts)
-  ├── 🌟 Committed Practitioner  (22–31 pts)
-  ├── 📚 Struggling Responder    (12–21 pts)
-  └── 🌱 Crisis Mode              (0–11 pts)
+  ├── 🏆 Transformative Leader   (46–56 pts)
+  ├── 🌟 Committed Practitioner  (32–45 pts)
+  ├── 📚 Struggling Responder    (18–31 pts)
+  └── 🌱 Crisis Mode              (0–17 pts)
 ```
 
 ---
 
-## Scoring Dimensions
+## Scoring System
+
+**Four dimensions**, each starting at 0:
 
 | Dimension | What It Measures | Key CHS Commitments |
 |-----------|-----------------|---------------------|
-| **Community Trust** | How much affected communities trust and engage with HopeForward | 1, 2, 3, 5 |
-| **Staff Wellbeing** | Safety, morale, and health of national and international staff | 8 |
-| **Program Quality** | Effectiveness, relevance, and measurable impact of the response | 2, 3, 4, 6, 7 |
-| **Accountability** | Ethical standards, transparency, and organisational integrity | 5, 7, 9 |
+| **Community Trust** | Whether communities feel heard, respected, and engaged | 1, 2, 5, 6, 7 |
+| **Staff Wellbeing** | Safety, morale, professional support, and fair treatment of staff | 8 |
+| **Program Quality** | Effectiveness, relevance, technical quality, and community impact | 2, 3, 4, 6, 7 |
+| **Accountability & Ethics** | Transparency, integrity, complaint handling, and resource stewardship | 4, 5, 8, 9 |
 
-- Each dimension starts at **0** and can reach **10**
-- Total maximum score: **40**
-- Scores are cumulative across all five decisions
+- Scores accumulate across all nine decisions
+- Best option per decision typically gives **+2 per dimension** (total ~+7 per decision)
+- Poor choices give **−1 or −2** per relevant dimension
+- Maximum possible total: **~56**
+
+**Ending thresholds:**
+
+| Ending | Score Range | Meaning |
+|--------|------------|---------|
+| 🏆 Transformative Leader | 46–56 | All or most CHS commitments upheld in practice |
+| 🌟 Committed Practitioner | 32–45 | Strong intent; some gaps under pressure |
+| 📚 Struggling Responder | 18–31 | Inconsistent; operational pressure frequently won |
+| 🌱 Crisis Mode | 0–17 | Multiple significant failures; urgent learning needed |
+
+---
+
+## Context Flags System
+
+Early choices set **context flags** that cascade forward, changing the situation you face
+in later decisions. The game engine tracks these throughout the session.
+
+| Flag | Set By | Effect on Later Decisions |
+|------|--------|--------------------------|
+| `inclusive_assessment` | D1 option B | Communities expect continued participation; richer data for D2 |
+| `community_informed` | D1 options B or D | Communities know their rights; more likely to report concerns in D5 |
+| `local_knowledge_built_in` | D2 option B | Programme design is context-grounded; aids D7 adaptation |
+| `referral_pathways_active` | D2 options B or C | Cluster relationships exist; easier coordination in D6 |
+| `local_ownership_by_design` | D3 options B or D | KCV in governance; strengthens D6 partnership |
+| `drr_integrated` | D3 options C or D | Community early warning active when second storm arrives |
+| `protection_framework_active` | D4 option B | PSEA pathways ready; strengthens D5 complaint handling |
+| `data_protection_in_place` | D4 options B or C | Data managed ethically; D9 consent issues easier to address |
+| `complaints_trusted` | D5 options B or D | Feedback data is richer for D7; community engagement higher |
+| `survivor_centred_process` | D5 options B or D | Staff understand conduct expectations going into D8 |
+| `cluster_coordination_active` | D6 option B | Data and geography resolved; D7 learning reaches wider audience |
+| `partner_quality_supported` | D6 options B or C | KCV programme quality strengthens; D9 handover smoother |
+| `gender_data_actioned` | D7 option B | Women's outcomes improve; D9 impact data is stronger |
+| `learning_shared_externally` | D7 options B or C | Sector learns from Kailani; HopeForward's reputation strengthens |
+| `duty_of_care_upheld` | D8 options B or D | Staff retention high; national staff advisory input improves D9 |
+| `misconduct_addressed_formally` | D8 options B or D | Clear conduct culture; reduces D9 ethical risk |
+| `donor_transparent_engagement` | D9 option B | Donor trusts future flexible allocations |
+| `community_resources_transferred` | D9 options B or C | Exit strengthens local actors |
 
 ---
 
 ## Key Characters
 
-| Character | Role | Significance |
-|-----------|------|-------------|
-| **Maya Chen** | Player — Country Director, HopeForward | Mid-30s, first CD role, experienced but under pressure |
-| **Sione Taufa** | National Programme Officer, HopeForward | Ground-level advisor, trusted, Kailani national |
-| **Filomena Vaka** | Executive Director, KCV (local partner) | Proud civil society leader, watchful of international NGOs |
-| **Leila Hassan** | Field Coordinator, Northern Coast | Dedicated staff member at the centre of the security crisis |
-| **Carlos Reyes** | Logistics Coordinator, HopeForward | Efficient but sometimes prioritises speed over community needs |
+| Character | Role | Key Decisions |
+|-----------|------|--------------|
+| **Maya Chen** | Player — Country Director, HopeForward | All |
+| **Sione Taufa** | National Programme Officer | 1, 2, 3, 8 |
+| **Filomena Vaka** | Executive Director, KCV (local partner) | 1, 3, 5, 6, 9 |
+| **Leila Hassan** | Field Coordinator, Northern Coast | 8 |
+| **Carlos Reyes** | Logistics Coordinator | 2, 3, 4, 7 |
+| **Amara Diallo** | M&E Officer | 5, 7 |
+| **Toma Faleolo** | Finance & Compliance Manager | 9 |
+| **Dr. Ana Tuivaga** | Director, Kailani Aid Network (KAN) | 6 |
+| **Sina Talagi** | Community member, Manu Camp (complainant) | 5 |
+
+---
+
+## All 50 CHS Sub-Requirements — Coverage Map
+
+| Commitment | Requirements | Primarily Addressed |
+|-----------|-------------|-------------------|
+| CHS 1 | 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 | Decision 1 |
+| CHS 2 | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6 | Decision 2 |
+| CHS 3 | 3.1, 3.2, 3.3, 3.4, 3.5 | Decision 3 |
+| CHS 4 | 4.1, 4.2, 4.3, 4.4, 4.5 | Decision 4 |
+| CHS 5 | 5.1, 5.2, 5.3, 5.4, 5.5, 5.6 | Decision 5 |
+| CHS 6 | 6.1, 6.2, 6.3, 6.4 | Decision 6 |
+| CHS 7 | 7.1, 7.2, 7.3, 7.4, 7.5 | Decision 7 |
+| CHS 8 | 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7 | Decision 8 |
+| CHS 9 | 9.1, 9.2, 9.3, 9.4, 9.5, 9.6 | Decision 9 |
+
+Every option in every decision specifies which requirements it **addresses** and which it **misses** — making the learning explicit and traceable.
 
 ---
 
 ## Current Status: Skeleton
 
-The game skeleton is complete. All five decisions, 15 consequence scenes, prologue, epilogue, and four endings are defined with:
+The game structure is complete. All nine decisions, 36 consequence scenes, prologue, epilogue, and four endings are defined with:
 
-- ✅ Scene IDs and branching structure
-- ✅ CHS commitment links per decision
-- ✅ Score effects per option
-- ✅ Brief narrative summaries (1–3 sentences)
-- ✅ Learning notes and CHS quotes
-- ✅ Placeholder image prompts
-- ✅ Four scored endings with reflection questions
+- ✅ Scene IDs and complete branching structure (47 scenes)
+- ✅ All 9 CHS commitments explicitly addressed (one decision per commitment)
+- ✅ All 50 CHS sub-requirements mapped per option (addressed / missed)
+- ✅ 4 options per decision (36 consequence scenes total)
+- ✅ Score effects per option across 4 dimensions
+- ✅ Context flags system (18 flags with cascading effects)
+- ✅ `requirements_addressed` and `requirements_missed` per option
+- ✅ `delayed_impact` field per option (immediate + long-term consequences)
+- ✅ Learning notes and CHS quotes per consequence
+- ✅ All links validated ✓, JSON validated ✓
 
-**What still needs expansion** (marked with `"status": "placeholder"` in the JSON):
-- Full narrative text per scene (~80–150 words each)
+**What still needs expansion** (marked `"status": "placeholder"` in JSON):
+- Full narrative text per scene (~120–200 words each)
 - Character dialogue and emotional detail
-- Detailed AI image generation prompts
-- Complete ending narratives
-- Supporting character backstories and UI design prompts
+- AI image generation prompts
+- Context flag text in situation summaries
+- Ending narratives with character call-backs
+- Game engine implementation notes
 
-Use the prompts below to expand the game iteratively.
+Use the 12 development prompts below to expand iteratively.
 
 ---
 
 ## Development Prompts
 
-Use these prompts in sequence with an AI assistant (e.g. GitHub Copilot, ChatGPT, Claude) to expand the skeleton into a complete, production-ready game data file.
+Use these prompts in sequence with an AI assistant (GitHub Copilot, ChatGPT, Claude) to
+expand the skeleton into a complete, production-ready game data file.
 
 ---
 
-### Prompt 1 — Expand the Prologue and Epilogue
+### Prompt 1 — Expand the Prologue and Epilogue *(CHS framing)*
 
-> Using the skeleton in `CHS_2024_game_v2.json`, expand the `prologue` and `epilogue` scenes into full narrative text of approximately 150 words each. The prologue should describe Maya's arrival in Kailani in vivid, urgent detail. The epilogue should be reflective and personal. Also replace all PLACEHOLDER text in the `image_prompt` fields for these two scenes with complete, detailed AI image generation prompts in the same style as `CHS_2024_game.json`.
-
----
-
-### Prompt 2 — Expand Decision 1: Assessment & Participation
-
-> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_1` and its three consequence scenes (`scene_1a`, `scene_1b`, `scene_1c`). For `decision_1`: write a full scene narrative (~120 words) with character dialogue involving Sione and a KCV representative. For each consequence scene: write a full narrative (~100 words) with learning feedback and a detailed `image_prompt`. Remove all PLACEHOLDER text and `status` fields once complete. Maintain the JSON structure exactly.
-
----
-
-### Prompt 3 — Expand Decision 2: Aid Distribution Crisis
-
-> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_2` and its three consequence scenes (`scene_2a`, `scene_2b`, `scene_2c`). For `decision_2`: write a full scene narrative (~120 words) with pressure from Carlos (logistics) and tension around donor compliance. For each consequence scene: write a full narrative (~100 words) with learning feedback and a detailed `image_prompt`. Remove all PLACEHOLDER text and `status` fields once complete. Maintain JSON structure exactly.
+> Using the skeleton in `CHS_2024_game_v2.json`, expand the `prologue` and `epilogue` scenes
+> into full narrative text. The prologue (~200 words) should place Maya in Kailani with vivid
+> sensory detail, introduce Sione, and create a sense of stakes and complexity. The epilogue
+> (~200 words) should be reflective and personal — calling back to specific decisions and
+> characters from the game. Also replace PLACEHOLDER `image_prompt` fields for both scenes
+> with complete AI illustration prompts (flat digital illustration style, Pacific island
+> humanitarian setting, consistent character descriptions). Remove `status` fields when done.
 
 ---
 
-### Prompt 4 — Expand Decision 3: Staff Safety Crisis
+### Prompt 2 — Expand Decision 1 — CHS 1: Participation & Rights *(1.1–1.6)*
 
-> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_3` and its three consequence scenes (`scene_3a`, `scene_3b`, `scene_3c`). For `decision_3`: write a full scene narrative (~120 words) including messages from Leila and pressure from HQ. For each consequence scene: write a full narrative (~100 words) with learning feedback and a detailed `image_prompt`. Remove all PLACEHOLDER text and `status` fields once complete. Maintain JSON structure exactly.
-
----
-
-### Prompt 5 — Expand Decision 4: Complaints & Accountability
-
-> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_4` and its three consequence scenes (`scene_4a`, `scene_4b`, `scene_4c`). For `decision_4`: write a full scene narrative (~120 words) with detail about the complaint, the staff dynamics, and Maya's internal conflict. For each consequence scene: write a full narrative (~100 words) with learning feedback and a detailed `image_prompt`. Remove all PLACEHOLDER text and `status` fields once complete. Maintain JSON structure exactly.
-
----
-
-### Prompt 6 — Expand Decision 5: Handover & Exit
-
-> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_5` and its three consequence scenes (`scene_5a`, `scene_5b`, `scene_5c`). For `decision_5`: write a full scene narrative (~120 words) involving Filomena from KCV, HQ pressure for extension, and the long-term perspective. For each consequence scene: write a full narrative (~100 words) with learning feedback and a detailed `image_prompt`. Remove all PLACEHOLDER text and `status` fields once complete. Maintain JSON structure exactly.
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_1` and its four consequence
+> scenes (`scene_1A`, `scene_1B`, `scene_1C`, `scene_1D`). For `decision_1`: write a full
+> scene narrative (~150 words) with dialogue from Sione, Filomena (KCV), and the government
+> official. Show Maya's internal conflict between speed and inclusion. For each consequence
+> scene: write a full narrative (~120 words) with specific character reactions, delayed impact
+> detail, and a complete `image_prompt`. Requirements 1.1–1.6 should each be visibly addressed
+> or missed in the relevant options. Remove PLACEHOLDER and `status` fields. Keep JSON exactly.
 
 ---
 
-### Prompt 7 — Write the Four Endings
+### Prompt 3 — Expand Decision 2 — CHS 2: Timely & Effective Support *(2.1–2.6)*
 
-> Using the skeleton in `CHS_2024_game_v2.json`, expand all four endings: `ending_transformative`, `ending_committed`, `ending_struggling`, and `ending_crisis`. For each ending: write a full `narrative_summary` of ~100 words that reflects Maya's journey in Kailani, the human impact of her choices, and what the score dimensions mean. Also write detailed `badge_image_prompts` for each badge. Keep the reflection questions as-is but ensure they fit the narrative tone. Maintain JSON structure exactly.
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_2` and its four consequence
+> scenes (`scene_2A`, `scene_2B`, `scene_2C`, `scene_2D`). Show the `context_flag_effects`
+> in the scene narrative — if `inclusive_assessment` was set, Sione has richer data. Include
+> dialogue from Carlos (logistics pressure) and the donor representative (compliance pressure).
+> For each consequence: ~120 words with specific Sphere standard references, delayed impacts,
+> and `image_prompts`. Requirements 2.1–2.6 should each be visibly addressed or missed.
+> Remove PLACEHOLDER and `status` fields. Keep JSON exactly.
 
 ---
 
-### Prompt 8 — Expand Supporting Characters and UI Design Prompts
+### Prompt 4 — Expand Decision 3 — CHS 3: Resilience & Local Ownership *(3.1–3.5)*
 
-> Using the skeleton in `CHS_2024_game_v2.json`, expand the `supplementary_assets` section. For each of the four `key_supporting_characters`: write a fuller backstory (~60 words) and replace the PLACEHOLDER `image_prompt` with a complete AI illustration prompt. For the `ui_design_prompts` section: replace each PLACEHOLDER with a detailed, production-ready AI image generation prompt for each UI screen (main_menu, score_dashboard, decision_screen, chapter_transition). Use the same style as the prompts in `CHS_2024_game.json` for consistency.
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_3` and its four consequence
+> scenes (`scene_3A`, `scene_3B`, `scene_3C`, `scene_3D`). Show the HQ direct delivery
+> pressure, Filomena's co-governance proposal, and Sione's traditional knowledge offer.
+> Reference the approaching tropical storm as a real risk that gives DRR integration urgency.
+> For each consequence: ~120 words with context-flag effects (especially for options B and D
+> which set `local_ownership_by_design` and `drr_integrated`), delayed impacts, and `image_prompts`.
+> Requirements 3.1–3.5 addressed or missed per option. Remove PLACEHOLDER and `status` fields.
 
 ---
 
-## Relationship to Version 1
+### Prompt 5 — Expand Decision 4 — CHS 4: Do No Harm & Protection *(4.1–4.5)*
 
-| Feature | v1: Field Ready | v2: Kailani Rising |
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_4` and its four consequence
+> scenes (`scene_4A`, `scene_4B`, `scene_4C`, `scene_4D`). Show the four simultaneous risks
+> as concrete, urgent details — not abstractions. Reference the Tevita Village coercion signal,
+> the specific Google Drive data exposure, the truck idling near children, and the absent PSEA
+> framework. Show Carlos's push for scale-up on schedule. For each consequence: ~120 words with
+> specific harm descriptions, community member voices, and `image_prompts`. All five requirements
+> (4.1–4.5) addressed or missed per option. Remove PLACEHOLDER and `status` fields.
+
+---
+
+### Prompt 6 — Expand Decision 5 — CHS 5: Complaints & Feedback *(5.1–5.6)*
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_5` and its four consequence
+> scenes (`scene_5A`, `scene_5B`, `scene_5C`, `scene_5D`). Give Sina Talagi a specific,
+> dignified voice in the scene narrative. Show the 12% complaints awareness finding as a
+> concrete management failure. Reference how the `protection_framework_active` flag (if set in
+> Decision 4) changes what systems are available. For each consequence: ~120 words with
+> Sina's experience at the centre (survivor-centred), staff reaction, community perception,
+> and `image_prompts`. All six requirements (5.1–5.6) visible. Remove PLACEHOLDER and `status`.
+
+---
+
+### Prompt 7 — Expand Decision 6 — CHS 6: Coordination & Complementarity *(6.1–6.4)*
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_6` and its four consequence
+> scenes (`scene_6A`, `scene_6B`, `scene_6C`, `scene_6D`). Show the concrete impacts of
+> the geographic duplication in the two villages. Give Dr. Ana Tuivaga (KAN) a specific,
+> compelling voice — her exclusion is the human face of CHS 6 failure. Reference how
+> `local_ownership_by_design` and `referral_pathways_active` flags (if set) change the dynamics.
+> For each consequence: ~120 words with inter-agency tension, community confusion, and
+> `image_prompts`. All four requirements (6.1–6.4) visible. Remove PLACEHOLDER and `status`.
+
+---
+
+### Prompt 8 — Expand Decision 7 — CHS 7: Learning & Improvement *(7.1–7.5)*
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_7` and its four consequence
+> scenes (`scene_7A`, `scene_7B`, `scene_7C`, `scene_7D`). Give Amara a specific, confident
+> voice in presenting the monitoring findings. Show Carlos's "preliminary and contestable"
+> pushback in dialogue. Reference the two specific community members whose feedback was not
+> acknowledged. Show how `complaints_trusted` and `inclusive_assessment` flags make the data
+> richer. For each consequence: ~120 words with specific outcome data, community voice, and
+> `image_prompts`. All five requirements (7.1–7.5) visible. Remove PLACEHOLDER and `status`.
+
+---
+
+### Prompt 9 — Expand Decision 8 — CHS 8: Staff Competence & Wellbeing *(8.1–8.7)*
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_8` and its four consequence
+> scenes (`scene_8A`, `scene_8B`, `scene_8C`, `scene_8D`). Give Leila's distress a
+> specific, human voice through her WhatsApp messages. Give Tevi's discrimination experience
+> careful, dignified framing. Show the training budget reallocation as Carlos's pragmatic
+> decision that ignored a contract commitment. Reference how `duty_of_care_upheld` and
+> `protection_framework_active` flags (if set) change staff expectations. For each consequence:
+> ~120 words with specific staff experiences, HR outcomes, and `image_prompts`. All seven
+> requirements (8.1–8.7) visible. Remove PLACEHOLDER and `status`.
+
+---
+
+### Prompt 10 — Expand Decision 9 — CHS 9: Ethical Resource Management *(9.1–9.6)*
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand `decision_9` and its four consequence
+> scenes (`scene_9A`, `scene_9B`, `scene_9C`, `scene_9D`). Give Toma a specific, careful
+> voice — he is a principled professional who is also professionally vulnerable. Show the
+> HQ visibility campaign request as a real institutional pressure, not an obvious wrongdoing.
+> Reference how `donor_transparent_engagement` and `community_informed` flags (if set) change
+> what is possible. For each consequence: ~120 words with specific financial, ethical, and
+> community outcomes, and `image_prompts`. All six requirements (9.1–9.6) visible.
+> Remove PLACEHOLDER and `status`.
+
+---
+
+### Prompt 11 — Write the Four Endings *(all 9 commitments, synthesis)*
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand all four endings: `ending_transformative`,
+> `ending_committed`, `ending_struggling`, and `ending_crisis`. For each ending: write a full
+> `narrative_summary` (~150 words) that references specific decisions, characters, and outcomes
+> from the game — reflecting what Maya did well or where she fell short across all nine CHS
+> commitments. Reference the context flags the player may have set. The tone should be
+> reflective, human, and educational — not punitive. Write `badge_image_prompts` that
+> visually represent the journey. Keep the `reflection_questions` and `chs_requirements` fields
+> exactly as-is. Remove PLACEHOLDER and `status`.
+
+---
+
+### Prompt 12 — Expand Characters, UI Design, and Game Engine Guidance
+
+> Using the skeleton in `CHS_2024_game_v2.json`, expand the `supplementary_assets` section:
+> Write backstory paragraphs (~80 words each) for all nine key characters (Maya, Sione,
+> Filomena, Leila, Carlos, Amara, Toma, Dr. Ana Tuivaga, Sina Talagi). Replace all
+> `image_prompt` PLACEHOLDERs with complete, consistent AI illustration prompts (flat
+> digital illustration style, Pacific island setting, consistent palette). For `ui_design_prompts`:
+> write production-ready prompts for all six screen types (main menu, score dashboard,
+> decision screen, consequence screen, chapter transition card, ending screen). Add a
+> `game_engine_notes` section with guidance on implementing the `context_flags_system` —
+> specifically which flags affect which later scene narratives and how the UI should surface them.
+
+---
+
+## Comparison: Version 1 vs Version 2
+
+| Feature | v1: Field Ready | v2: Kailani Rising (Full Standard) |
 |---------|----------------|-------------------|
-| Structure | Linear (9 chapters in sequence) | Branching (5 decisions, 15 paths) |
-| Question format | Single correct answer | Three options with trade-offs |
-| Scoring | Single score (0–100) | Four dimensions (0–10 each) |
-| Endings | One epilogue with 4 score tiers | Four distinct narrative endings |
-| Character | Alex (field coordinator) | Maya Chen (country director) |
-| Setting | Verdania (floods, Africa) | Kailani (cyclone, Pacific) |
-| Estimated playtime | 12 minutes | 25 minutes |
-| CHS commitments covered | All 9 (one per chapter) | 1, 2, 3, 4, 5, 8, 9 (embedded in decisions) |
+| Structure | Linear (9 chapters, sequential) | Branching (9 chapters, cascading flags) |
+| Options per decision | 3 (one best, two wrong) | 4 (nuanced trade-offs, rarely simple) |
+| CHS commitments | All 9 (one per chapter, broadly) | All 9 (one per chapter, all sub-requirements mapped) |
+| Sub-requirements covered | Illustrative | All 50, explicitly per option |
+| Scoring | Single score (0–100) | 4 dimensions (cumulative across 9 decisions) |
+| Consequences | Learning feedback | Immediate + delayed impact, character-specific |
+| Cascading effects | None | 18 context flags shape later decision contexts |
+| Endings | Score-tiered epilogue | 4 distinct narrative endings with flag-aware reflection |
+| Characters | Alex (field coordinator) | Maya + 8 named supporting characters |
+| Setting | Verdania (floods) | Kailani (cyclone, Pacific) |
+| Estimated duration | 12 minutes | 45 minutes |
+| File size | ~60 KB | ~176 KB |
 
 ---
 
-## CHS Commitments Reference
+## CHS Reference
 
-| # | Title | Covered in |
-|---|-------|-----------|
-| 1 | Participation & Inclusion | Decision 1 |
-| 2 | Timely, Needs-Based Support | Decisions 1 & 2 |
-| 3 | Resilience & Local Ownership | Decision 5 |
-| 4 | Do No Harm | Decision 2 |
-| 5 | Safe Complaints & Feedback | Decision 4 |
-| 6 | Coordination & Complementarity | Decision 5 |
-| 7 | Learning & Accountability | All endings |
-| 8 | Competent, Well-Managed Staff | Decision 3 |
-| 9 | Ethical Resource Management | Decisions 2 & 4 |
+Source: [Core Humanitarian Standard on Quality and Accountability, 2024](CHS_2024.json)
 
-Reference: [Core Humanitarian Standard on Quality and Accountability, 2024](CHS_2024.json)
+All 9 commitments. All 50 sub-requirements. Each one explicitly tested in this game.
