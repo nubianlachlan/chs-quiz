@@ -1,0 +1,2291 @@
+{
+  "game_meta": {
+    "title": "Kailani Rising: A Humanitarian Roleplay",
+    "subtitle": "A comprehensive branching narrative covering all nine Core Humanitarian Standard commitments",
+    "version": "3.0-skeleton",
+    "status": "skeleton — all 9 CHS commitments covered; use development_prompts to expand each section",
+    "target_audience": "Humanitarian and development sector workers, trainers, and students",
+    "estimated_duration_minutes": 45,
+    "chs_reference": "Core Humanitarian Standard on Quality and Accountability, 2024",
+    "description": "You are Maya Chen, newly appointed Country Director for HopeForward International in Kailani — a Pacific island nation devastated by Cyclone Vera. Over nine critical decision chapters — one for each CHS commitment — you navigate community rights and participation, timely and effective assistance, building resilience, avoiding harm, complaints and feedback, coordination, learning and improvement, staff management, and ethical resource stewardship. Every choice you make references specific CHS sub-requirements. Choices set context flags that cascade into later decisions, creating real interdependencies. There are four possible endings, shaped by your cumulative score across four dimensions and the flags you have set. All 45 CHS requirements are addressed across the nine decision chapters.",
+    "how_to_play": "Read each scene, then choose one of four responses. Choices set context flags that shape the situation you face in later chapters. At the end, your cumulative scores across four dimensions determine which of four endings you reach. After each choice, read the consequence scene — it shows the immediate AND delayed impact of your decision, and which CHS requirements you met or missed. Look for the 'cascading_note' to see how today's choice changes tomorrow's options.",
+    "scoring": {
+      "dimensions": [
+        "community_trust",
+        "staff_wellbeing",
+        "program_quality",
+        "accountability"
+      ],
+      "starting_value_per_dimension": 0,
+      "scale_note": "Scores accumulate across all nine decisions. Each dimension can earn up to +2 per decision (max +18 per dimension). Negative scores are possible for poor choices.",
+      "ending_thresholds": {
+        "transformative_leader": 46,
+        "committed_practitioner": 32,
+        "struggling_responder": 18,
+        "crisis_mode": 0
+      },
+      "note": "Sum all four dimension scores. With nine decisions, maximum possible total is approximately 56. Thresholds above are minimum scores for each tier."
+    }
+  },
+  "player_character": {
+    "name": "Maya Chen",
+    "role": "Country Director",
+    "organisation": "HopeForward International",
+    "backstory_summary": "Eight years of field experience across Asia and East Africa. This is Maya's first Country Director role. She is under pressure from headquarters, trusted by her team, and committed to the communities she serves. She trained in social work and has a master's in humanitarian action. Her closest advisor is Sione, a Kailani national with deep community networks. She believes in principled, accountable, locally-led response — but faces constant pressure to cut corners for speed and cost.",
+    "image_prompt": "PLACEHOLDER — Illustration of Maya Chen, Country Director, East Asian woman mid-thirties, short dark hair, HopeForward International light-blue field vest with logo, holding a clipboard, standing at a coastal Pacific island displacement camp. Cyclone damage in background: fallen palm trees, blue tarp shelters. Determined but compassionate expression. Flat digital illustration style, warm Pacific light."
+  },
+  "setting": {
+    "country": "Kailani",
+    "description_summary": "A fictional Pacific island nation. Cyclone Vera (Category 4) made landfall 72 hours ago. 85,000 people are displaced. Coastal villages are destroyed, roads are cut, aid is arriving slowly. Government capacity is stretched. Active local civil society but under-resourced. The response unfolds over a six-month period: immediate response (decisions 1-4), stabilisation (decisions 5-7), and transition and exit (decisions 8-9).",
+    "key_locations": [
+      {
+        "id": "loc_capital",
+        "name": "Port Hana",
+        "description_summary": "The capital — operational hub, government ministries, UN cluster system, HopeForward office."
+      },
+      {
+        "id": "loc_north",
+        "name": "Northern Coast",
+        "description_summary": "Worst-affected area — isolated communities, road access cut, high vulnerability, security concerns."
+      },
+      {
+        "id": "loc_camp",
+        "name": "Manu Displacement Camp",
+        "description_summary": "Largest camp near Port Hana, 12,000 displaced people, key site for participation and complaints decisions."
+      },
+      {
+        "id": "loc_village",
+        "name": "Tevita Village",
+        "description_summary": "Remote inland community, underserved, local partner KCV is present, site of cash-transfer innovation."
+      },
+      {
+        "id": "loc_talio",
+        "name": "Talio Sub-district Hub",
+        "description_summary": "Safer inland town, 40km from Northern Coast, emergency HopeForward staff base during security incidents."
+      }
+    ],
+    "image_prompt": "PLACEHOLDER — Aerial map-style illustration of Kailani tropical island. Pacific ocean surrounds it. Northern coast shows cyclone damage: destroyed houses, debris, floodwater. Displacement camp visible on eastern shore. Capital Port Hana in south. Roads washed away in north. Tevita Village inland, Talio hub mid-island. Post-cyclone overcast sky. Flat design, rich tropical greens, blues, and storm greys."
+  },
+  "score_dimensions": [
+    {
+      "id": "community_trust",
+      "title": "Community Trust",
+      "description": "Reflects the degree to which affected communities trust, engage with, and feel heard by HopeForward. Shaped primarily by CHS commitments 1, 2, 5, 6, and 7.",
+      "icon_prompt": "PLACEHOLDER — Simple icon: two hands clasped, warm ochre and terracotta, flat vector style."
+    },
+    {
+      "id": "staff_wellbeing",
+      "title": "Staff Wellbeing",
+      "description": "Reflects the safety, morale, psychological health, and professional development of HopeForward staff and volunteers. Shaped primarily by CHS commitment 8.",
+      "icon_prompt": "PLACEHOLDER — Simple icon: person silhouette inside protective circle, supportive blue and green, flat vector style."
+    },
+    {
+      "id": "program_quality",
+      "title": "Program Quality",
+      "description": "Reflects the relevance, effectiveness, technical quality, and measurable impact of the response. Shaped primarily by CHS commitments 2, 3, 4, 6, and 7.",
+      "icon_prompt": "PLACEHOLDER — Simple icon: upward bar chart with small heart at top, positive green, flat vector style."
+    },
+    {
+      "id": "accountability",
+      "title": "Accountability & Ethics",
+      "description": "Reflects adherence to ethical standards, transparency with donors and communities, protection from exploitation, and organisational integrity. Shaped primarily by CHS commitments 4, 5, 8, and 9.",
+      "icon_prompt": "PLACEHOLDER — Simple icon: balanced scales with magnifying glass, neutral blue, flat vector style."
+    }
+  ],
+  "context_flags_system": {
+    "description": "Context flags are set by certain choices and shape the situation you face in later decisions. Flags are tracked by the game engine. Each option's 'sets_flag' field shows what it activates. Later decision scenes reference active flags in their situation_summary to reflect the cumulative consequences of your choices. Flags cannot be reversed once set.",
+    "flags": [
+      {
+        "id": "inclusive_assessment",
+        "set_by": "decision_1 option B",
+        "effect_summary": "Communities expect continued meaningful participation. KCV is a trusted partner for all future activities."
+      },
+      {
+        "id": "community_informed",
+        "set_by": "decision_1 options B or D",
+        "effect_summary": "Communities understand their rights and HopeForward's responsibilities."
+      },
+      {
+        "id": "local_knowledge_built_in",
+        "set_by": "decision_2 option B",
+        "effect_summary": "Programme is grounded in context and local capacities, improving later adaptation."
+      },
+      {
+        "id": "referral_pathways_active",
+        "set_by": "decision_2 option B or C",
+        "effect_summary": "Other cluster members are aware of unmet needs HopeForward referred; strengthens coordination."
+      },
+      {
+        "id": "local_ownership_by_design",
+        "set_by": "decision_3 options B or D",
+        "effect_summary": "KCV and community leaders have formal role in programme governance; reduces dependency risk."
+      },
+      {
+        "id": "drr_integrated",
+        "set_by": "decision_3 options C or D",
+        "effect_summary": "Communities have disaster risk knowledge; strengthens long-term resilience."
+      },
+      {
+        "id": "protection_framework_active",
+        "set_by": "decision_4 option B",
+        "effect_summary": "PSEA and protection policies are established; staff and communities aware of mechanisms."
+      },
+      {
+        "id": "data_protection_in_place",
+        "set_by": "decision_4 options B or C",
+        "effect_summary": "Beneficiary data is handled ethically; reduces risk of future data-related harm."
+      },
+      {
+        "id": "complaints_trusted",
+        "set_by": "decision_5 option B",
+        "effect_summary": "Community members actively use feedback channels; complaints data is rich and timely."
+      },
+      {
+        "id": "survivor_centred_process",
+        "set_by": "decision_5 option B",
+        "effect_summary": "PSEA standards are actively modelled; staff understand expectations."
+      },
+      {
+        "id": "cluster_coordination_active",
+        "set_by": "decision_6 option B",
+        "effect_summary": "HopeForward is a trusted cluster member; geographic duplication is resolved; local partners included."
+      },
+      {
+        "id": "partner_quality_supported",
+        "set_by": "decision_6 options B or C",
+        "effect_summary": "KCV has received CHS capacity support; their programme quality improves."
+      },
+      {
+        "id": "gender_data_actioned",
+        "set_by": "decision_7 option B",
+        "effect_summary": "Gender gap is addressed; women and girls receive more targeted programming in later activities."
+      },
+      {
+        "id": "learning_shared_externally",
+        "set_by": "decision_7 options B or C",
+        "effect_summary": "Tevita modality is shared with cluster; other agencies benefit; HopeForward seen as learning leader."
+      },
+      {
+        "id": "duty_of_care_upheld",
+        "set_by": "decision_8 option B",
+        "effect_summary": "Staff trust leadership; retention improves; team culture of accountability is strong."
+      },
+      {
+        "id": "misconduct_addressed_formally",
+        "set_by": "decision_8 option B",
+        "effect_summary": "Staff understand code of conduct is enforced; community sees fair process."
+      },
+      {
+        "id": "donor_transparent_engagement",
+        "set_by": "decision_9 option B",
+        "effect_summary": "Donor trusts HopeForward with future flexible funding; ethical resource management is documented."
+      },
+      {
+        "id": "community_resources_transferred",
+        "set_by": "decision_9 options B or C",
+        "effect_summary": "Remaining resources are in community hands at exit; strengthens local ownership legacy."
+      }
+    ]
+  },
+  "key_characters": [
+    {
+      "id": "char_maya",
+      "name": "Maya Chen",
+      "role": "Country Director, HopeForward International",
+      "description_summary": "The player character. East Asian woman, mid-thirties, first CD role.",
+      "image_prompt": "PLACEHOLDER — See player_character section."
+    },
+    {
+      "id": "char_sione",
+      "name": "Sione Taufa",
+      "role": "National Programme Officer, HopeForward",
+      "description_summary": "Kailani national, 29, practical and perceptive. Deep community networks. Maya's most trusted ground-level advisor.",
+      "image_prompt": "PLACEHOLDER — Sione Taufa, young Polynesian man, late twenties, HopeForward vest, field notebook, Manu Camp background. Alert, competent. Flat digital illustration."
+    },
+    {
+      "id": "char_filomena",
+      "name": "Filomena Vaka",
+      "role": "Executive Director, Kailani Community Voices (KCV)",
+      "description_summary": "Kailani civil society leader, 50s, experienced and direct. Proud of KCV's community roots. Cautiously trusts international NGOs. Becomes a key partner or critic depending on Maya's choices.",
+      "image_prompt": "PLACEHOLDER — Filomena Vaka, Pacific Island woman in her 50s, bright floral blouse and lanyard, tablet, outside KCV office. Confident, community-leader presence. Flat illustration."
+    },
+    {
+      "id": "char_leila",
+      "name": "Leila Hassan",
+      "role": "Field Coordinator, Northern Coast",
+      "description_summary": "East African national staff, 32, dedicated and fearless. Works in the hardest area. Her safety and support are central to decision 8.",
+      "image_prompt": "PLACEHOLDER — Leila Hassan, East African woman early thirties, field hat and vest, coastal road, cyclone damage background. Determination and visible concern. Flat illustration."
+    },
+    {
+      "id": "char_carlos",
+      "name": "Carlos Reyes",
+      "role": "Logistics Coordinator, HopeForward",
+      "description_summary": "Colombian, late 30s, experienced logistics specialist. Highly efficient. Sometimes prioritises speed and donor compliance over community needs.",
+      "image_prompt": "PLACEHOLDER — Carlos Reyes, Latin American man late thirties, clipboard and earpiece, warehouse of aid boxes. Professional, efficient, slightly pressured. Flat illustration."
+    },
+    {
+      "id": "char_amara",
+      "name": "Amara Diallo",
+      "role": "M&E Officer, HopeForward",
+      "description_summary": "West African woman, late twenties, data-driven and principled. Drives the learning and monitoring processes. Central to decision 7.",
+      "image_prompt": "PLACEHOLDER — Amara Diallo, West African woman late twenties, laptop with data dashboard open, programme monitoring documents around her. Sharp, analytical expression. Office setting. Flat illustration."
+    },
+    {
+      "id": "char_toma",
+      "name": "Toma Faleolo",
+      "role": "Finance & Compliance Manager, HopeForward",
+      "description_summary": "Kailani national, 40s, meticulous and ethical. Central to decision 9. Sometimes in conflict with Carlos on spend vs compliance.",
+      "image_prompt": "PLACEHOLDER — Toma Faleolo, Pacific Island man in his 40s, formal office shirt, budget spreadsheets, calculator. Thoughtful, careful expression. Office interior. Flat illustration."
+    },
+    {
+      "id": "char_kan_director",
+      "name": "Dr. Ana Tuivaga",
+      "role": "Director, Kailani Aid Network (KAN)",
+      "description_summary": "Kailani national, 50s, doctor and public health specialist. KAN is excluded from the UN cluster. Ana represents local actor exclusion in decision 6.",
+      "image_prompt": "PLACEHOLDER — Dr. Ana Tuivaga, Pacific Island woman in her 50s, doctor's lanyard, health clinic background. Frustrated but professional expression, holding a stack of unread reports. Flat illustration."
+    }
+  ],
+  "chs_reference_summary": {
+    "title": "All 9 CHS Commitments — Full Requirements Reference",
+    "source": "Core Humanitarian Standard on Quality and Accountability, 2024",
+    "note": "All nine commitments and all 50 sub-requirements are explicitly addressed across the nine decision chapters of this game.",
+    "commitments": [
+      {
+        "number": 1,
+        "short_title": "Participation & Rights",
+        "decision": "decision_1",
+        "summary": "Communities can exercise their rights and participate meaningfully in actions and decisions that affect them.",
+        "requirements": [
+          "1.1 DEI and marginalisation",
+          "1.2 Information sharing",
+          "1.3 Language and formats",
+          "1.4 Meaningful participation",
+          "1.5 Consent and dignity in communications",
+          "1.6 Organisational approach to participation"
+        ]
+      },
+      {
+        "number": 2,
+        "short_title": "Timely & Effective Support",
+        "decision": "decision_2",
+        "summary": "People receive timely and effective support based on their specific needs and priorities.",
+        "requirements": [
+          "2.1 Local knowledge and capacities",
+          "2.2 Fair and transparent criteria",
+          "2.3 Monitoring and adjustment",
+          "2.4 Technical standards",
+          "2.5 Referral of unmet needs",
+          "2.6 Contextual understanding of diversity and risk"
+        ]
+      },
+      {
+        "number": 3,
+        "short_title": "Resilience & Local Ownership",
+        "decision": "decision_3",
+        "summary": "Communities are better prepared and more resilient; local ownership is supported from the outset.",
+        "requirements": [
+          "3.1 Community leadership and local resilience",
+          "3.2 Risk reduction capacities",
+          "3.3 Long-term positive effects",
+          "3.4 Local ownership from the outset",
+          "3.5 Organisational approach to local leadership"
+        ]
+      },
+      {
+        "number": 4,
+        "short_title": "Do No Harm & Protection",
+        "decision": "decision_4",
+        "summary": "Support does not cause harm to people, communities, or the environment.",
+        "requirements": [
+          "4.1 Prevent harm to people and communities",
+          "4.2 Prevent environmental harm",
+          "4.3 Data protection and privacy",
+          "4.4 PSEA and protection from abuse",
+          "4.5 Environmental impact reduction approach"
+        ]
+      },
+      {
+        "number": 5,
+        "short_title": "Complaints & Accountability",
+        "decision": "decision_5",
+        "summary": "Communities can safely report concerns and complaints and get them addressed.",
+        "requirements": [
+          "5.1 Accessible feedback and complaints mechanisms",
+          "5.2 Community awareness of staff conduct standards",
+          "5.3 Community awareness of how to complain",
+          "5.4 Manage and investigate complaints",
+          "5.5 Survivor-centred approaches to PSEA complaints",
+          "5.6 Organisational approach to complaints"
+        ]
+      },
+      {
+        "number": 6,
+        "short_title": "Coordination & Complementarity",
+        "decision": "decision_6",
+        "summary": "Communities access coordinated and complementary support from all actors.",
+        "requirements": [
+          "6.1 Coordination with local and community-based actors",
+          "6.2 Support partners to apply quality and accountability",
+          "6.3 Assess and strengthen partner quality",
+          "6.4 Equitable decision-making and resource sharing in partnerships"
+        ]
+      },
+      {
+        "number": 7,
+        "short_title": "Learning & Improvement",
+        "decision": "decision_7",
+        "summary": "Support is continually adapted and improved based on feedback, data, and learning.",
+        "requirements": [
+          "7.1 Listen and respond to community feedback",
+          "7.2 Disaggregated data collection",
+          "7.3 Use data to improve programmes",
+          "7.4 Share learning with communities and stakeholders",
+          "7.5 Organisational approach to continuous improvement"
+        ]
+      },
+      {
+        "number": 8,
+        "short_title": "Staff Competence & Wellbeing",
+        "decision": "decision_8",
+        "summary": "Communities interact with respectful, competent, and well-managed staff and volunteers.",
+        "requirements": [
+          "8.1 Organisational culture of quality and accountability",
+          "8.2 Safe and inclusive working environment",
+          "8.3 Staff support, skills, and competencies",
+          "8.4 Code of conduct adherence",
+          "8.5 Staff reporting mechanisms",
+          "8.6 Address misconduct",
+          "8.7 Fair and transparent HR management"
+        ]
+      },
+      {
+        "number": 9,
+        "short_title": "Ethical Resource Management",
+        "decision": "decision_9",
+        "summary": "Resources are managed ethically, responsibly, and for the benefit of affected communities.",
+        "requirements": [
+          "9.1 Adequate capacity and resources",
+          "9.2 Responsible financial management",
+          "9.3 Ethical fundraising and resource mobilisation",
+          "9.4 Achieve intended purpose, minimise waste",
+          "9.5 Corruption, fraud, and conflict of interest prevention",
+          "9.6 Organisational approach to resource management"
+        ]
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "prologue",
+      "type": "narrative",
+      "title": "Day One — Cyclone Vera's Aftermath",
+      "narrative_summary": "Maya's plane descends through torn clouds into Port Hana. Below: blue tarps where roofs once were, brown floodwater threading through streets, aid trucks queuing at a checkpoint. Seventy-two hours since Cyclone Vera. 85,000 displaced. Fourteen unread messages on her phone. HopeForward's Kailani programme exists on paper only — she has three weeks to stand it up. Her first decision begins now.",
+      "status": "placeholder — expand to full narrative scene (~200 words) with sensory detail, character introductions, and stakes setting",
+      "image_prompt": "PLACEHOLDER — Aerial view from a descending aircraft over Kailani. Pacific coastline visible through torn post-cyclone clouds: destroyed coastal villages, floodwater inland, blue tarp clusters, military trucks on a damaged road, Port Hana capital in the distance with a UN flag visible. Maya's reflection faint in the aircraft window. Flat digital illustration, storm-clearing light, teal and grey palette.",
+      "next_scene_id": "decision_1"
+    },
+    {
+      "id": "decision_1",
+      "type": "decision",
+      "sequence": 1,
+      "chapter": "Chapter 1 — Who Gets a Voice?",
+      "title": "Decision 1 — How Will You Hear the Community?",
+      "chs_commitment": {
+        "number": 1,
+        "title": "People and communities can exercise their rights and participate in actions and decisions that affect them.",
+        "all_requirements": {
+          "1.1": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised.",
+          "1.2": "Regularly share relevant and timely information with people and communities, including about their rights in relation to the commitments and responsibilities of the organisation.",
+          "1.3": "Communicate in languages and formats that are easily accessible, understandable, respectful and contextually appropriate for people and communities.",
+          "1.4": "Ensure people's participation in decisions and actions is meaningful for them and corresponds to their preferred ways of engaging.",
+          "1.5": "Communications representing people and communities, including those used for advocacy and fundraising, have their informed consent, are accurate, respectful, ethical and preserve their dignity.",
+          "1.6": "Establish a coherent organisational approach to ensure transparent information-sharing, communication and meaningful participation of people and communities in the actions and decisions that affect them."
+        }
+      },
+      "situation_summary": "Day 2. HopeForward needs an initial needs assessment before programming begins. Sione warns Maya that Manu Camp has three distinct communities: coastal fishing families (Kailani language primary), inland agricultural households (Tevita dialect), and a group of 340 people with disabilities and elderly individuals housed in a separate section with almost no external contact. A government official is pushing for a rapid written survey in English. A local activist is asking why communities haven't been told what HopeForward is or what rights they have. KCV's Filomena has offered to co-facilitate a structured community dialogue — but it will take 3 days instead of 3 hours. HQ wants a preliminary assessment by end of day.",
+      "status": "placeholder — expand to ~150 words with dialogue, character voices, and emotional stakes",
+      "image_prompt": "PLACEHOLDER — Manu Displacement Camp, morning. Maya stands with Sione, a government official, and Filomena from KCV. Behind them: three distinct groupings of displaced people visible — coastal families near the water, farming families inland, and a quiet corner where elderly and disabled people sit apart from the main activity. Tension between the four adults. Flat illustration, warm morning light, complex crowd composition.",
+      "options": [
+        {
+          "id": "1A",
+          "label": "Rapid written survey in English via government enumerators",
+          "description_summary": "Accept the government's method. English-language written questionnaire, enumerators cover the main camp in 3 hours.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "1.1 — misses disability section and dialect speakers",
+            "1.2 — no rights information shared",
+            "1.3 — wrong language and format for most communities",
+            "1.4 — not meaningful participation",
+            "1.6 — no organisational participation approach established"
+          ],
+          "chs_learning_note": "Speed without inclusion produces biased data. The marginalised groups are invisible in the results.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 1,
+            "program_quality": -1,
+            "accountability": -1
+          },
+          "sets_flag": [],
+          "consequence_summary": "Assessment is fast, but women-only spaces, the disability section, and dialect speakers are entirely missed. Programme design is based on the needs of those who were easiest to reach.",
+          "delayed_impact": "Three months later, a programme review finds that the 340 people with disabilities were never registered — they received no assistance for the entire programme.",
+          "status": "placeholder",
+          "next_scene_id": "scene_1A"
+        },
+        {
+          "id": "1B",
+          "label": "Inclusive participatory assessment co-led by KCV with disaggregated groups",
+          "description_summary": "Partner with KCV for a 3-day structured process: community circles in Kailani language and Tevita dialect, a dedicated session for people with disabilities, a women-only session, a youth group. Rights information shared before each session. Consent sought for any documentation.",
+          "requirements_addressed": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Meaningful participation takes time but produces better data, builds trust, and establishes the precedent for community voice throughout the programme.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 0,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "inclusive_assessment",
+            "community_informed"
+          ],
+          "consequence_summary": "Richer data. Disability section's specific needs are documented for the first time. Tevita community reveals a critical unmet need: clean water is the top priority, not food — an assumption that would have led to wrong distribution.",
+          "delayed_impact": "KCV becomes a trusted co-implementer for all future community-facing work. Communities actively participate in monitoring six months later.",
+          "status": "placeholder",
+          "next_scene_id": "scene_1B"
+        },
+        {
+          "id": "1C",
+          "label": "Digital mobile survey through camp leaders",
+          "description_summary": "Deploy a mobile survey app through phone-owning community leaders. Fast and data-rich for those with phones. Sione flags that smartphone ownership in the camp is under 30%.",
+          "requirements_addressed": [
+            "1.4 — partially, for those reached"
+          ],
+          "requirements_missed": [
+            "1.1 — systematically excludes elderly, disabled, non-phone owners",
+            "1.3 — format inaccessible to majority",
+            "1.2 — no rights information in the app flow"
+          ],
+          "chs_learning_note": "Digital tools can accelerate or entrench exclusion. Tech-first approaches must be checked against who is left out.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 1,
+            "program_quality": -1,
+            "accountability": 0
+          },
+          "sets_flag": [],
+          "consequence_summary": "The 30% with phones are mostly young men — an economically active but not most-vulnerable segment. The assessment looks complete but systematically misrepresents the camp's needs.",
+          "delayed_impact": "Distribution lists based on phone-owner networks miss the most vulnerable. A community elder tells KCV: 'We thought they didn't know we existed.'",
+          "status": "placeholder",
+          "next_scene_id": "scene_1C"
+        },
+        {
+          "id": "1D",
+          "label": "Consult elected community council leaders only",
+          "description_summary": "Meet with the three elected camp community councils — fast, respected, and locally legitimate. Council representatives are all men over 50.",
+          "requirements_addressed": [
+            "1.4 — partially, through local leadership",
+            "1.2 — information shared with leaders"
+          ],
+          "requirements_missed": [
+            "1.1 — women, youth, disability groups not directly represented",
+            "1.3 — communication reaches leaders only",
+            "1.5 — no individual consent, representation assumed"
+          ],
+          "chs_learning_note": "Existing community structures are important but may not represent all voices. Consulting leaders without checking who they represent is a common gap.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 1,
+            "program_quality": 0,
+            "accountability": -1
+          },
+          "sets_flag": [
+            "community_informed"
+          ],
+          "consequence_summary": "The assessment is respected by the councils, but a women's group leader later tells KCV that no women were consulted and the programme design reflects it.",
+          "delayed_impact": "When a complaint is later filed about gender-blind distribution criteria, it can be traced directly to the assessment gap.",
+          "status": "placeholder",
+          "next_scene_id": "scene_1D"
+        }
+      ]
+    },
+    {
+      "id": "scene_1A",
+      "type": "consequence",
+      "parent_decision": "decision_1",
+      "parent_option": "1A",
+      "title": "Invisible and Unheard",
+      "narrative_summary": "The survey returns 620 responses — impressive on paper. But the disability section was inaccessible to enumerators without a ramp, Tevita dialect speakers couldn't understand the questions, and the women's section was visited only briefly. When Carlos produces the distribution plan, it is based on the main camp population, with no mention of 340 people who were simply never asked.",
+      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
+      "learning_point_summary": "Rapid assessment methods that do not account for who is excluded produce data gaps that become programme gaps. The most marginalised are reliably the least reached.",
+      "chs_quote": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised. (CHS 1.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 1A of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_2"
+    },
+    {
+      "id": "scene_1B",
+      "type": "consequence",
+      "parent_decision": "decision_1",
+      "parent_option": "1B",
+      "title": "Heard — and the Data Shows It",
+      "narrative_summary": "The KCV-led process takes 3 days. HQ is frustrated. But the findings are transformative: the disability section reveals nine families who need modified shelter kits; the Tevita-language session uncovers that clean water is the top priority, overriding the pre-planned food-first approach; women's group participants report that distribution in mixed-gender public spaces is unsafe for them. Maya revises the entire programme plan.",
+      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
+      "learning_point_summary": "Participatory needs assessment — designed for inclusion — produces data that single-method surveys never reach. The three days saved months of misdirected programming.",
+      "chs_quote": "Ensure people's participation in decisions and actions is meaningful for them and corresponds to their preferred ways of engaging. (CHS 1.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 1B of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_2"
+    },
+    {
+      "id": "scene_1C",
+      "type": "consequence",
+      "parent_decision": "decision_1",
+      "parent_option": "1C",
+      "title": "The Digital Divide",
+      "narrative_summary": "The app survey returns 412 responses in 90 minutes. Amara reviews the respondent demographics: 81% male, 74% aged 18-45, 0% from the disability section. The data is clean and fast — and deeply unrepresentative. When Sione points this out, Carlos argues the sample is 'statistically significant.' Maya has to decide whether to flag the gap or proceed.",
+      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
+      "learning_point_summary": "Digital tools reflect the inequalities of the communities that use them. Mobile-first approaches without offline alternatives systematically exclude those with least access.",
+      "chs_quote": "Communicate in languages and formats that are easily accessible, understandable, respectful and contextually appropriate for people and communities. (CHS 1.3)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 1C of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_2"
+    },
+    {
+      "id": "scene_1D",
+      "type": "consequence",
+      "parent_decision": "decision_1",
+      "parent_option": "1D",
+      "title": "The View from the Top of the Hierarchy",
+      "narrative_summary": "The council sessions are efficient and productive. The three council chairs are articulate and community-minded. But when KCV's Filomena reviews the findings, she asks Maya: 'Did you meet any women? Any young people? Anyone with a disability?' The answer is no. The assessment reflects the community — but only the part the council was designed to represent.",
+      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
+      "learning_point_summary": "Community leadership structures are legitimate and important — but they do not automatically represent all community members. Inclusion requires going beyond existing hierarchies.",
+      "chs_quote": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised. (CHS 1.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 1D of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_2"
+    },
+    {
+      "id": "decision_2",
+      "type": "decision",
+      "sequence": 2,
+      "chapter": "Chapter 2 — The Right Help at the Right Time",
+      "title": "Decision 2 — What Do You Actually Distribute, and How?",
+      "chs_commitment": {
+        "number": 2,
+        "title": "People and communities access timely and effective support in accordance with their specific needs and priorities.",
+        "all_requirements": {
+          "2.1": "Plan and implement programmes which respect and build upon local knowledge, capacities and existing actions.",
+          "2.2": "Use fair, impartial and transparent criteria to define programmes and the people or groups supported by the organisation.",
+          "2.3": "Regularly monitor and adjust programmes to ensure actions are timely, accessible and address the priority needs of people and communities.",
+          "2.4": "Apply relevant technical standards and recognised good practice in the organisation's work with people and communities.",
+          "2.5": "Refer any unmet priority needs to relevant stakeholders with the technical expertise and capacity to address them.",
+          "2.6": "Establish a coherent organisational approach to ensure support is based on an understanding of the context and culture and the diverse capacities, vulnerabilities, needs and risks faced by people and communities, with attention to the most marginalised."
+        }
+      },
+      "situation_summary": "Week 1. Carlos has the logistics plan ready: distribute pre-positioned high-energy biscuits and plastic sheeting to all registered households — the standard emergency package. If inclusive_assessment was conducted, Sione's data shows the top priority is clean water and dignity kits; the disability section needs modified shelter kits; and Tevita Village is not on the distribution list at all — they were registered by a different agency months ago but never received anything. The donor has approved the HEB and sheeting plan. Sphere standards apply. An unmet nutrition need for children under 5 is apparent but HopeForward has no WASH or nutrition expertise in-country.",
+      "context_flag_effects": {
+        "inclusive_assessment": "Sione has clear disaggregated data on specific needs by group. Filomena from KCV has offered community-specific distribution lists.",
+        "no_flag": "Assessment data is weak. Carlos is working from government population estimates that are 6 months old."
+      },
+      "status": "placeholder — expand to ~150 words with logistics urgency, character tension, and specific needs details",
+      "image_prompt": "PLACEHOLDER — A warehouse in Port Hana packed with HEB boxes and plastic sheeting rolls. Carlos reviews a distribution plan on a tablet. Maya stands beside him, next to a whiteboard showing actual community priorities: clean water, dignity kits, modified shelter. Tevita Village is circled on a wall map — unlisted. Flat illustration, cool warehouse light.",
+      "options": [
+        {
+          "id": "2A",
+          "label": "Distribute pre-positioned stocks as planned — no changes",
+          "description_summary": "Move HEBs and plastic sheeting to registered households exactly as planned. Fast, donor-compliant, logistically clean.",
+          "requirements_addressed": [
+            "2.4 — Sphere-compliant packaging"
+          ],
+          "requirements_missed": [
+            "2.1 — ignores local priorities",
+            "2.2 — Tevita Village excluded with no transparent reason",
+            "2.3 — no monitoring mechanism built in",
+            "2.5 — WASH/nutrition gap not referred",
+            "2.6 — disability section's modified needs ignored"
+          ],
+          "chs_learning_note": "Distributing what is available rather than what is needed is the most common programme quality failure in emergency response.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 0,
+            "program_quality": -2,
+            "accountability": 0
+          },
+          "sets_flag": [],
+          "consequence_summary": "Distribution happens in 6 hours. Community members trade HEBs at the market for water containers. Tevita Village receives nothing. No monitoring is built in to catch the problem.",
+          "delayed_impact": "At week 4, a community feedback session reveals HEBs were mostly resold. The disability section received plastic sheeting they cannot use without physical assistance to install it. No record of what was actually needed.",
+          "status": "placeholder",
+          "next_scene_id": "scene_2A"
+        },
+        {
+          "id": "2B",
+          "label": "Adapt distribution: community priorities, fair criteria, monitoring built in",
+          "description_summary": "Delay 48 hours. Negotiate with the donor for partial flexibility (HEBs → water purification tablets and dignity kits; modified kits for disability section). Publish transparent targeting criteria. Add Tevita Village to the list. Build a simple weekly monitoring checklist. Refer the child nutrition gap to UNICEF.",
+          "requirements_addressed": [
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4",
+            "2.5",
+            "2.6"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Taking two extra days to adapt a programme saves weeks of misdirected effort and protects the dignity of the people being assisted.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 0,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "local_knowledge_built_in",
+            "referral_pathways_active"
+          ],
+          "consequence_summary": "Distribution takes 48 extra hours. Tevita Village is reached. The disability section receives modified kits. UNICEF extends their nutrition programme to cover the child nutrition gap. Community satisfaction at week 4 is the highest across the cluster.",
+          "delayed_impact": "The monitoring system Maya set up catches a distribution bottleneck in week 3, allowing a rapid correction. Donor increases flexible funding for phase 2 based on quality evidence.",
+          "status": "placeholder",
+          "next_scene_id": "scene_2B"
+        },
+        {
+          "id": "2C",
+          "label": "Use an external consultant's generic emergency package",
+          "description_summary": "HQ has a preferred external consultant with a ready-made emergency response package based on a regional template. Quick to deploy; technically sound by regional standards.",
+          "requirements_addressed": [
+            "2.4 — meets regional technical benchmarks"
+          ],
+          "requirements_missed": [
+            "2.1 — no local knowledge integrated",
+            "2.2 — targeting criteria from regional template, not community data",
+            "2.6 — ignores Kailani-specific context, dialect groups, local economy"
+          ],
+          "chs_learning_note": "Templates and regional standards are starting points, not substitutes for local knowledge. CHS 2.1 and 2.6 require context-specific programme design.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 1,
+            "program_quality": -1,
+            "accountability": 0
+          },
+          "sets_flag": [],
+          "consequence_summary": "The package is rolled out efficiently. But the consultant's template targets 'general displaced households' — which misses the specific vulnerabilities of Kailani's communal land structures, where families share resources in ways the individual-household model doesn't capture.",
+          "delayed_impact": "Several wealthier households receive multiple distributions because they have more registered adults; the most vulnerable extended families receive proportionally less.",
+          "status": "placeholder",
+          "next_scene_id": "scene_2C"
+        },
+        {
+          "id": "2D",
+          "label": "Distribute equally to everyone, no targeting",
+          "description_summary": "Remove targeting criteria entirely — give one standard package to every displaced person registered in the camp, regardless of vulnerability or specific need.",
+          "requirements_addressed": [
+            "2.2 — transparent (everyone gets the same)",
+            "2.4 — applies Sphere minimum"
+          ],
+          "requirements_missed": [
+            "2.1 — ignores the assessed specific needs",
+            "2.2 — actually fails equity: equal is not equitable when needs differ",
+            "2.6 — ignores diversity of vulnerability"
+          ],
+          "chs_learning_note": "Equal distribution is not the same as equitable distribution. When needs differ, equal treatment can deepen inequality. CHS 2.2 requires criteria that reflect actual vulnerability.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 1,
+            "program_quality": -1,
+            "accountability": -1
+          },
+          "sets_flag": [],
+          "consequence_summary": "No one is left off the list — which feels fair. But the 340 people with disabilities receive the same package as able-bodied adults, and Tevita Village, not yet registered, still gets nothing.",
+          "delayed_impact": "A community elder with a severe disability tells KCV he received a 20kg plastic sheeting roll he cannot lift. The distribution was equal; it was not just.",
+          "status": "placeholder",
+          "next_scene_id": "scene_2D"
+        }
+      ]
+    },
+    {
+      "id": "scene_2A",
+      "type": "consequence",
+      "parent_decision": "decision_2",
+      "parent_option": "2A",
+      "title": "Boxes Ticked, Needs Missed",
+      "narrative_summary": "Carlos's report shows 100% distribution rate against the approved list. The numbers are clean. But in the camp, HEBs are trading at the makeshift market for 20% of their face value — community members need water and soap, not high-energy biscuits. The disability section's plastic sheeting is stacked in a corner, unusable without the physical assistance no one provided.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Distribution against plan is not the same as meeting community needs. Efficiency metrics can mask programme irrelevance.",
+      "chs_quote": "Plan and implement programmes which respect and build upon local knowledge, capacities and existing actions. (CHS 2.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 2A of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_3"
+    },
+    {
+      "id": "scene_2B",
+      "type": "consequence",
+      "parent_decision": "decision_2",
+      "parent_option": "2B",
+      "title": "The Right Things, To the Right People, At the Right Time",
+      "narrative_summary": "The 48-hour delay frustrates Carlos and HQ. But when Amara runs the week-4 monitoring check, community satisfaction ratings are exceptional. Tevita Village received its first assistance. Modified kits reached the disability section. UNICEF is now covering the child nutrition gap. The donor's programme officer calls Maya personally to commend the adaptive approach.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Adapting programmes to actual needs — even when it creates short-term friction — produces the outcomes the programme exists to achieve.",
+      "chs_quote": "Regularly monitor and adjust programmes to ensure actions are timely, accessible and address the priority needs of people and communities. (CHS 2.3)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 2B of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_3"
+    },
+    {
+      "id": "scene_2C",
+      "type": "consequence",
+      "parent_decision": "decision_2",
+      "parent_option": "2C",
+      "title": "Efficient, but Whose Context?",
+      "narrative_summary": "The consultant's package is deployed in 4 hours. Technical quality is high — the consultant knows Sphere standards well. But the targeting algorithm flags 47 households in Tevita as 'already served' (by a different agency, six months ago, with a different package). They receive nothing. The regional template has no field for communal land structures.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Technical competence and contextual knowledge are not the same thing. Regional templates must be adapted to local realities, not applied wholesale.",
+      "chs_quote": "Establish a coherent organisational approach to ensure support is based on an understanding of the context and culture. (CHS 2.6)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 2C of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_3"
+    },
+    {
+      "id": "scene_2D",
+      "type": "consequence",
+      "parent_decision": "decision_2",
+      "parent_option": "2D",
+      "title": "Equal Isn't Always Just",
+      "narrative_summary": "Everyone on the list gets the same package. This is administratively simple and politically defensible. A community leader praises HopeForward's 'fairness.' But Amara's monitoring data tells a different story: households with elderly and disabled members report the standard package is unsuitable for their needs; single mothers with multiple children received the same as childless adult couples. Equity requires differentiation.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Equal treatment produces unequal outcomes when people's needs and circumstances differ. Equitable distribution requires fair criteria that reflect actual vulnerability.",
+      "chs_quote": "Use fair, impartial and transparent criteria to define programmes and the people or groups supported by the organisation. (CHS 2.2)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 2D of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_3"
+    },
+    {
+      "id": "decision_3",
+      "type": "decision",
+      "sequence": 3,
+      "chapter": "Chapter 3 — Building for the Future or the Present?",
+      "title": "Decision 3 — How Should the Programme Strengthen Local Resilience?",
+      "chs_commitment": {
+        "number": 3,
+        "title": "People and communities are better prepared and more resilient to potential crises.",
+        "all_requirements": {
+          "3.1": "Support formal and informal community leadership and locally led efforts to reinforce the resilience of people and communities.",
+          "3.2": "Support local capacities to anticipate and reduce risks of potential crises or disasters.",
+          "3.3": "Plan and implement programmes that contribute to long-term positive effects on people's lives, livelihoods, the local economy and the environment.",
+          "3.4": "Support local ownership of resources and decision making from the outset of work with people and communities.",
+          "3.5": "Establish a coherent organisational approach to ensure support reinforces locally led actions and decision making."
+        }
+      },
+      "situation_summary": "Week 2. HQ is asking Maya to choose a programme delivery model for the 6-month response. Filomena from KCV has proposed a co-governance model where KCV chairs a Community Programme Committee that approves all major decisions — including budget allocations. HopeForward's HQ prefers a 'direct delivery' model (faster, easier to audit). The Kailani Meteorological Service has flagged that cyclone season is not over — another storm system is forming. No community-based early warning system exists. The existing programme plan makes no mention of disaster risk reduction. Carlos says embedding DRR will delay distribution by one week. Sione says the community has deep traditional knowledge about storm warning signs — it just needs to be documented and formally linked to a response plan.",
+      "context_flag_effects": {
+        "inclusive_assessment": "KCV and community leaders are already trusted partners. A co-governance proposal is more realistic and welcomed.",
+        "no_flag": "Community trust with KCV is lower; direct delivery will face less internal opposition."
+      },
+      "status": "placeholder — expand to ~150 words",
+      "image_prompt": "PLACEHOLDER — A planning meeting in HopeForward's field office. Maya at a whiteboard with two columns: 'Direct Delivery' and 'Community-Led Governance'. KCV's Filomena sits across from HQ representative on video screen. Sione holds traditional knowledge notes. Outside: a weather app on a phone showing a new tropical storm forming. Flat illustration, morning light, tension and possibility.",
+      "options": [
+        {
+          "id": "3A",
+          "label": "Direct delivery model — HopeForward controls all decisions and resources",
+          "description_summary": "Implement HopeForward's standard direct delivery model. Faster to establish; easier for HQ to audit. Community are recipients, not decision-makers.",
+          "requirements_addressed": [
+            "3.3 — partially, basic quality of programme"
+          ],
+          "requirements_missed": [
+            "3.1 — local leadership excluded from governance",
+            "3.4 — no local ownership of resources or decisions",
+            "3.2 — no DRR integration",
+            "3.5 — no organisational approach to local leadership"
+          ],
+          "chs_learning_note": "Operational control feels efficient, but it creates dependency and undermines local systems. When HopeForward leaves, nothing is stronger than before.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 1,
+            "program_quality": 0,
+            "accountability": 0
+          },
+          "sets_flag": [],
+          "consequence_summary": "The programme runs efficiently for 6 months. Communities receive assistance. But when HopeForward's funding ends, KCV lacks the governance capacity to sustain anything, and the community has no disaster early warning system when the next tropical storm arrives.",
+          "delayed_impact": "An independent evaluation 12 months later finds: 'HopeForward delivered services effectively but left no strengthened local systems. This was a missed opportunity for resilience-building.'",
+          "status": "placeholder",
+          "next_scene_id": "scene_3A"
+        },
+        {
+          "id": "3B",
+          "label": "Co-governance from day one, with KCV chairing the Community Programme Committee",
+          "description_summary": "Accept Filomena's co-governance model. KCV chairs a community committee with real decision-making authority over programme priorities and budget allocations. HopeForward provides technical support and resources.",
+          "requirements_addressed": [
+            "3.1",
+            "3.4",
+            "3.5"
+          ],
+          "requirements_missed": [
+            "3.2 — DRR not yet integrated",
+            "3.3 — long-term livelihoods not embedded"
+          ],
+          "chs_learning_note": "Local ownership from the outset — including resource control — is the most effective route to sustainable programming.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 0,
+            "program_quality": 1,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "local_ownership_by_design"
+          ],
+          "consequence_summary": "The first committee meeting reveals community priorities that Maya had not considered: a local fishing cooperative needs a small grant to rebuild nets — a livelihoods investment that the direct delivery model would never have authorised.",
+          "delayed_impact": "By month 6, KCV is running three programme components independently. When HopeForward exits, the community programme committee continues to meet monthly.",
+          "status": "placeholder",
+          "next_scene_id": "scene_3B"
+        },
+        {
+          "id": "3C",
+          "label": "Integrate DRR into programme design — community early warning system",
+          "description_summary": "Delay distribution by one week to co-design a community early warning system based on Sione's traditional knowledge mapping. Link it to the national meteorological service. Embed DRR activities alongside the emergency response.",
+          "requirements_addressed": [
+            "3.2",
+            "3.3",
+            "3.1 — through knowledge validation"
+          ],
+          "requirements_missed": [
+            "3.4 — resource ownership still with HopeForward",
+            "3.5 — governance model not established"
+          ],
+          "chs_learning_note": "Integrating disaster risk reduction into emergency response is cost-effective and life-saving. Traditional knowledge is a resource, not a quaint add-on.",
+          "score_effects": {
+            "community_trust": 1,
+            "staff_wellbeing": 0,
+            "program_quality": 2,
+            "accountability": 1
+          },
+          "sets_flag": [
+            "drr_integrated"
+          ],
+          "consequence_summary": "Six weeks later, the new tropical storm system intensifies. The community early warning system — linked to traditional observation and the met service — gives 18 hours warning. Eighteen families in the lowest-risk zone evacuate before flooding. No casualties.",
+          "delayed_impact": "The early warning system continues to function after HopeForward exits. The Kailani Meteorological Service adopts the community-validation model nationally.",
+          "status": "placeholder",
+          "next_scene_id": "scene_3C"
+        },
+        {
+          "id": "3D",
+          "label": "Co-governance AND DRR integration — full resilience-by-design approach",
+          "description_summary": "Combine 3B and 3C: establish community co-governance, integrate DRR, embed livelihoods, transfer resources to local actors. Slower to establish — 10 extra days. Requires HQ buy-in.",
+          "requirements_addressed": [
+            "3.1",
+            "3.2",
+            "3.3",
+            "3.4",
+            "3.5"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "The most transformative approach addresses all aspects of resilience simultaneously. It is harder but it is what CHS commitment 3 asks for.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": -1,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "local_ownership_by_design",
+            "drr_integrated"
+          ],
+          "consequence_summary": "The 10-day setup period is tense — HQ pushes back hard, and the team is stretched. But by month 2, the community committee is making real decisions, the DRR system is live, and livelihoods activities have begun.",
+          "delayed_impact": "At exit, the community programme committee, the early warning system, and the fishing cooperative grant programme all continue independently. An independent evaluator rates it the most sustainable response in the cluster.",
+          "status": "placeholder",
+          "next_scene_id": "scene_3D"
+        }
+      ]
+    },
+    {
+      "id": "scene_3A",
+      "type": "consequence",
+      "parent_decision": "decision_3",
+      "parent_option": "3A",
+      "title": "Delivered but Not Strengthened",
+      "narrative_summary": "The programme runs on schedule for six weeks. Distributions happen, HopeForward branding is visible, reports are submitted on time. But when a new storm warning is issued in week 7, the community has no response plan, KCV has no governance structure, and the most vulnerable households have no connection to an early warning system. HopeForward vehicles evacuate staff. Communities wait.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Effective emergency delivery and building local resilience are not mutually exclusive — but they require deliberate design. Operational efficiency without resilience-building is a missed obligation.",
+      "chs_quote": "Support local ownership of resources and decision making from the outset of work with people and communities. (CHS 3.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 3A of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_4"
+    },
+    {
+      "id": "scene_3B",
+      "type": "consequence",
+      "parent_decision": "decision_3",
+      "parent_option": "3B",
+      "title": "Ownership in Practice",
+      "narrative_summary": "The first Community Programme Committee meeting is chaotic — four people talking at once, Filomena taking minutes, Carlos looking at his watch. By the third meeting, the committee has redirected 8% of the flexible budget to rebuild the fishing cooperative's nets. The fishing families are the first to become self-sufficient. Maya watches the meeting and thinks: this is what we are here for.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Local ownership means real authority over real resources — not consultation after decisions are made. When communities control decisions, they identify solutions that outsiders never would.",
+      "chs_quote": "Support local ownership of resources and decision making from the outset of work with people and communities. (CHS 3.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 3B of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_4"
+    },
+    {
+      "id": "scene_3C",
+      "type": "consequence",
+      "parent_decision": "decision_3",
+      "parent_option": "3C",
+      "title": "The Storm That Didn't Kill Anyone",
+      "narrative_summary": "Tropical Storm Beni intensifies over the Kailani coast. The community early warning system — part traditional knowledge, part met service, part WhatsApp group — sends the first alert at 4am. By 6am, 18 families in the flood zone have self-evacuated to higher ground. No casualties in Manu Camp. In the Northern Coast, where no early warning system exists, 11 people are hospitalised. The difference is 10 days of co-design in week 2.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Investing in local disaster risk reduction capacities during an emergency response is not a luxury — it is a core CHS obligation that saves lives.",
+      "chs_quote": "Support local capacities to anticipate and reduce risks of potential crises or disasters. (CHS 3.2)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 3C of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_4"
+    },
+    {
+      "id": "scene_3D",
+      "type": "consequence",
+      "parent_decision": "decision_3",
+      "parent_option": "3D",
+      "title": "Built to Last",
+      "narrative_summary": "The 10 extra days cost HopeForward two strongly worded emails from HQ and one heated call with the regional director. They also produced a community governance structure, a functional early warning system, and a livelihoods programme. At the six-month programme review, the cluster coordinator uses HopeForward's Kailani model as a case study. Filomena is invited to present at a regional conference. The fishing cooperative is thriving.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Addressing all dimensions of resilience — governance, risk reduction, livelihoods, local ownership — requires more effort upfront but produces fundamentally different long-term outcomes.",
+      "chs_quote": "Plan and implement programmes that contribute to long-term positive effects on people's lives, livelihoods, the local economy and the environment. (CHS 3.3)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 3D of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_4"
+    },
+    {
+      "id": "decision_4",
+      "type": "decision",
+      "sequence": 4,
+      "chapter": "Chapter 4 — First, Do No Harm",
+      "title": "Decision 4 — How Do You Protect People, Data, and the Environment?",
+      "chs_commitment": {
+        "number": 4,
+        "title": "People and communities access support that does not cause harm to people or the environment.",
+        "all_requirements": {
+          "4.1": "Identify, prevent, mitigate and address potential and actual negative impacts of programmes on people and communities.",
+          "4.2": "Identify, prevent, mitigate and address potential and actual negative impacts of programmes on the environment.",
+          "4.3": "Ensure safe, ethical and effective management of data and information to minimise risks for people and communities in line with recognised good practice for data protection.",
+          "4.4": "Establish a coherent organisational approach to ensure the organisation works in ways that protect the safety, security, rights and dignity of people and communities and prevent all forms of exploitation and abuse, including sexual exploitation, abuse and harassment, by staff and volunteers in line with recognised good practice.",
+          "4.5": "Establish a coherent organisational approach to reduce the negative environmental impacts of the organisation and its work in line with recognised good practice."
+        }
+      },
+      "situation_summary": "Week 3. HopeForward is about to scale up. Four issues land on Maya's desk at once: (1) A KCV field volunteer reports that men in Tevita Village are pressuring women to hand over cash-transfer allocations — an early protection risk signal. (2) Amara flags that the beneficiary database (names, GPS locations, vulnerability details) is stored unencrypted on a shared Google Drive accessible with a generic password. (3) HopeForward's fleet of trucks is idling for 3 hours each day, burning fuel, near the camp water point — community members have begun to complain about fumes near where children play. (4) No PSEA (Protection from Sexual Exploitation and Abuse) orientation has been conducted with staff or community. Carlos says addressing all four will delay scale-up by one week.",
+      "context_flag_effects": {
+        "inclusive_assessment": "Communities are more likely to trust and report protection risks if they have already experienced respectful engagement.",
+        "community_informed": "If rights were shared in Decision 1, some community members may already know they can report concerns."
+      },
+      "status": "placeholder — expand to ~150 words with urgency and complexity of multiple simultaneous risks",
+      "image_prompt": "PLACEHOLDER — Maya at her desk, four sticky notes on her monitor: 'Cash coercion risk Tevita', 'Data breach — unencrypted Drive', 'Truck fumes — water point', 'PSEA — no training'. Sione and Amara visible in background. One week countdown on whiteboard. Flat illustration, office interior, sense of multiple simultaneous pressures.",
+      "options": [
+        {
+          "id": "4A",
+          "label": "Scale up on schedule — address issues as they arise",
+          "description_summary": "Proceed with the scale-up on schedule. Log the four issues as 'in progress' and address them in the next planning cycle.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "4.1 — cash coercion risk not mitigated",
+            "4.2 — environmental harm ongoing",
+            "4.3 — data remains unprotected",
+            "4.4 — no PSEA framework established"
+          ],
+          "chs_learning_note": "Known risks that are not addressed become harm. Proceeding without mitigating identified risks is a choice — and the consequences fall on the people being served.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 0,
+            "program_quality": -1,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "Three weeks later: a confirmed PSEA incident involving a volunteer; a data breach when the Google Drive is accessed by an unknown party; two domestic coercion incidents in Tevita; and community members formally complain about the truck fumes.",
+          "delayed_impact": "HopeForward faces a donor review triggered by the data breach. The PSEA incident becomes a global HQ investigation. The programme is suspended for 3 weeks.",
+          "status": "placeholder",
+          "next_scene_id": "scene_4A"
+        },
+        {
+          "id": "4B",
+          "label": "Pause scale-up one week: address all four risks systematically",
+          "description_summary": "Delay scale-up by one week. Address all four risks: modify cash delivery modality in Tevita; encrypt and access-restrict the database; reroute truck idling away from the water point; conduct mandatory PSEA orientation with all staff and volunteers. Share a brief protection framework with KCV.",
+          "requirements_addressed": [
+            "4.1",
+            "4.2",
+            "4.3",
+            "4.4",
+            "4.5"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Prevention is not bureaucracy — it is the ethical foundation of humanitarian action. All five requirements of CHS 4 can be addressed in parallel with adequate planning.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 1,
+            "program_quality": 1,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "protection_framework_active",
+            "data_protection_in_place"
+          ],
+          "consequence_summary": "The scale-up is one week late. No PSEA incidents are reported in the programme period. The data breach risk is eliminated. The modified cash delivery at Tevita reduces coercion incidents to zero. Community members notice the truck rerouting without being asked.",
+          "delayed_impact": "When a protection concern is raised three months later, the PSEA reporting pathway already exists and is used correctly. The incident is addressed within 48 hours.",
+          "status": "placeholder",
+          "next_scene_id": "scene_4B"
+        },
+        {
+          "id": "4C",
+          "label": "Address protection and data risks only; skip environmental review",
+          "description_summary": "Fix the data breach and conduct PSEA orientation. Modify the cash modality in Tevita. The truck fumes issue is deprioritised — it is seen as a minor environmental concern that can wait.",
+          "requirements_addressed": [
+            "4.1",
+            "4.3",
+            "4.4"
+          ],
+          "requirements_missed": [
+            "4.2 — environmental harm continues",
+            "4.5 — no environmental approach established"
+          ],
+          "chs_learning_note": "Environmental harm is not an optional add-on to humanitarian programming. Children exposed to daily diesel fumes near their water point is a real harm, regardless of how it compares to other priorities.",
+          "score_effects": {
+            "community_trust": 1,
+            "staff_wellbeing": 1,
+            "program_quality": 1,
+            "accountability": 0
+          },
+          "sets_flag": [
+            "protection_framework_active",
+            "data_protection_in_place"
+          ],
+          "consequence_summary": "Protection and data risks are managed well. But two months later, a community health worker documents a pattern of respiratory complaints among children under 5 near the water point — traced to the truck idling pattern HopeForward chose not to address.",
+          "delayed_impact": "The issue is eventually resolved but only after a community complaint is submitted. A Kailani environmental group publicises it on social media.",
+          "status": "placeholder",
+          "next_scene_id": "scene_4C"
+        },
+        {
+          "id": "4D",
+          "label": "Address environmental and data risks only; handle protection issues informally",
+          "description_summary": "Fix the data breach and reroute the trucks. Handle the Tevita cash coercion risk with a verbal briefing to the cash distribution team. Postpone formal PSEA orientation to the next monthly staff meeting.",
+          "requirements_addressed": [
+            "4.2",
+            "4.3",
+            "4.5 — partially"
+          ],
+          "requirements_missed": [
+            "4.1 — protection harm mitigation inadequate",
+            "4.4 — PSEA framework not established"
+          ],
+          "chs_learning_note": "Informal handling of PSEA risks is a known pathway to serious harm. CHS 4.4 requires a coherent organisational approach — not ad-hoc verbal briefings.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 0,
+            "program_quality": 0,
+            "accountability": -1
+          },
+          "sets_flag": [
+            "data_protection_in_place"
+          ],
+          "consequence_summary": "The data is protected and the trucks are rerouted. The cash coercion risk in Tevita is partially addressed through informal briefings. One month later, a new distribution volunteer (not briefed) engages in conditional behaviour that is later reported.",
+          "delayed_impact": "The informal approach to PSEA creates a patchwork of awareness — those who were verbally briefed acted appropriately; those who weren't did not. The complaint investigation reveals the gap.",
+          "status": "placeholder",
+          "next_scene_id": "scene_4D"
+        }
+      ]
+    },
+    {
+      "id": "scene_4A",
+      "type": "consequence",
+      "parent_decision": "decision_4",
+      "parent_option": "4A",
+      "title": "Four Risks, Four Harms",
+      "narrative_summary": "The scale-up is fast and impressive on paper. Three weeks later: an unencrypted database is accessed from an unknown IP, exposing names and GPS coordinates of 4,000 beneficiaries; a protection volunteer is reported for conditional behaviour at a distribution point; two confirmed domestic coercion incidents are documented in Tevita; and a community health worker begins tracking respiratory complaints among children near the water point. HopeForward is suspended from two donor contracts pending review.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Known risks that are not mitigated are not unknowns — they are choices. Every one of these harms was predictable and preventable. The cost of prevention would have been one week.",
+      "chs_quote": "Identify, prevent, mitigate and address potential and actual negative impacts of programmes on people and communities. (CHS 4.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 4A of Decision 4. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_5"
+    },
+    {
+      "id": "scene_4B",
+      "type": "consequence",
+      "parent_decision": "decision_4",
+      "parent_option": "4B",
+      "title": "Prevention Pays",
+      "narrative_summary": "The scale-up is one week late. HQ sends a terse email. But no PSEA incidents are recorded, the database is secure, the trucks are rerouted, and Tevita Village reports zero coercion incidents at cash distributions. Four months into the programme, the protection cluster coordinator asks Maya to share HopeForward's do-no-harm framework as a model for other agencies.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Prevention takes time upfront but prevents exponentially greater harm and cost downstream. Addressing all five requirements simultaneously is achievable with one week of focused effort.",
+      "chs_quote": "Establish a coherent organisational approach to ensure the organisation works in ways that protect the safety, security, rights and dignity of people and communities. (CHS 4.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 4B of Decision 4. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_5"
+    },
+    {
+      "id": "scene_4C",
+      "type": "consequence",
+      "parent_decision": "decision_4",
+      "parent_option": "4C",
+      "title": "Half-Protected",
+      "narrative_summary": "Protection and data risks are addressed well. But the truck fumes near the water point continue for another 8 weeks until a community health worker's report and a social media post by a local environmental group force a rerouting. When the incident is reviewed, the original risk note from week 3 is found on file — it was seen, noted, and deprioritised.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Environmental harm is not a lower-priority category of harm — it is harm. CHS 4.2 applies as fully as 4.1 or 4.4.",
+      "chs_quote": "Identify, prevent, mitigate and address potential and actual negative impacts of programmes on the environment. (CHS 4.2)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 4C of Decision 4. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_5"
+    },
+    {
+      "id": "scene_4D",
+      "type": "consequence",
+      "parent_decision": "decision_4",
+      "parent_option": "4D",
+      "title": "The Gap in the Informal Approach",
+      "narrative_summary": "Data protection and environmental risks are addressed. But the verbal PSEA briefings only reach those who happen to be present at the Monday morning meeting. A new distribution volunteer, recruited the following Wednesday, receives no briefing and is later the subject of a conditional behaviour complaint from a community member. The complaint investigation traces the root cause: no coherent PSEA onboarding system.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Informal approaches to PSEA depend on who happens to be in the room. Coherent organisational systems — documented, mandatory, and consistently applied — are the only reliable safeguard.",
+      "chs_quote": "Establish a coherent organisational approach to ensure the organisation works in ways that protect the safety, security, rights and dignity of people and communities and prevent all forms of exploitation and abuse. (CHS 4.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 4D of Decision 4. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_5"
+    },
+    {
+      "id": "decision_5",
+      "type": "decision",
+      "sequence": 5,
+      "chapter": "Chapter 5 — When Trust Is Tested",
+      "title": "Decision 5 — How Do You Handle a Serious Complaint?",
+      "chs_commitment": {
+        "number": 5,
+        "title": "People and communities can safely report concerns and complaints and get them addressed.",
+        "all_requirements": {
+          "5.1": "Plan and implement safe, accessible and appropriate ways for all groups in a community to provide feedback and report concerns and complaints in line with recognised good practice.",
+          "5.2": "Regularly monitor that people and communities understand how staff and volunteers are expected to act to prevent harmful behaviours, including sexual exploitation and abuse, and harassment.",
+          "5.3": "Regularly monitor that people, communities and other relevant stakeholders understand how to report concerns and complaints, and how they will be addressed.",
+          "5.4": "Manage, investigate, address and/or appropriately refer complaints in line with recognised good practice.",
+          "5.5": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct, including sexual exploitation, abuse and harassment.",
+          "5.6": "Establish a coherent organisational approach to ensure any concerns and complaints are welcomed and acted upon in a timely and appropriate manner."
+        }
+      },
+      "situation_summary": "Month 2. Three things happen in the same week: (A) A woman in Manu Camp — Sina Talagi, 34 — submits a written complaint to HopeForward's complaint box alleging that a male HopeForward volunteer prioritised her neighbour's family on the distribution list in exchange for household goods. The complaint is specific, credible, and involves a potential PSEA element. The volunteer is well-liked and has 3 years of tenure. (B) Three other community members separately tell KCV they 'didn't know there was a complaint box' — the box is visible, but the complaints process was never communicated. (C) Amara's latest monitoring data shows that only 12% of community members can name a way to report concerns to HopeForward. Carlos says a formal investigation will delay the next distribution by 4 days.",
+      "context_flag_effects": {
+        "protection_framework_active": "The PSEA framework is in place; staff are aware of conduct standards; the investigation process is clearer.",
+        "community_informed": "More community members know their rights and may be more willing to come forward.",
+        "complaints_not_built": "No formal complaints system has been documented yet — investigation will need to establish process from scratch."
+      },
+      "status": "placeholder — expand to ~150 words with Sina's voice, staff reaction, and institutional tension",
+      "image_prompt": "PLACEHOLDER — Maya at her desk, holding Sina Talagi's handwritten complaint letter. Through the glass partition, the accused volunteer is visible working at his desk, unaware. On Maya's computer: Amara's monitoring report showing 12% complaints awareness. A KCV email on screen: 'Three community members don't know how to complain.' Flat illustration, formal office interior, muted tones, weight of the moment.",
+      "options": [
+        {
+          "id": "5A",
+          "label": "Handle Sina's complaint informally — quiet word with the volunteer",
+          "description_summary": "Speak privately with the volunteer. Issue a verbal warning. Resolve without formal process to protect team morale and avoid a 4-day distribution delay.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "5.4 — complaint not managed through recognised process",
+            "5.5 — not survivor-centred; Sina not informed or involved",
+            "5.6 — no coherent system established",
+            "5.1 — mechanism is not trusted or enforced"
+          ],
+          "chs_learning_note": "Informal handling of PSEA-adjacent complaints is one of the clearest failures of humanitarian accountability. It silences future complainants and protects misconduct.",
+          "score_effects": {
+            "community_trust": -2,
+            "staff_wellbeing": 1,
+            "program_quality": 0,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "Word reaches the camp that 'nothing happened.' Sina refuses to engage with HopeForward again. The complaint box is defaced. Four other women who were considering reporting decide against it. A second more serious incident six weeks later is much harder to investigate because the trust is gone.",
+          "delayed_impact": "HopeForward's donor receives an anonymous report about the mishandled complaint. An audit is triggered.",
+          "status": "placeholder",
+          "next_scene_id": "scene_5A"
+        },
+        {
+          "id": "5B",
+          "label": "Full formal process: survivor-centred, transparent, system-building",
+          "description_summary": "Open a formal investigation under HopeForward's accountability policy. Inform Sina of the process, her rights, and expected timeline. Ensure confidentiality. Temporarily reassign the volunteer pending investigation. Simultaneously address the 12% awareness gap — run community awareness sessions and add multilingual complaint posters. Notify HQ as required.",
+          "requirements_addressed": [
+            "5.1",
+            "5.2",
+            "5.3",
+            "5.4",
+            "5.5",
+            "5.6"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "A formal, survivor-centred complaints process protects the complainant, is fair to the accused, builds community trust, and — when it works well — encourages more people to come forward.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 0,
+            "program_quality": 1,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "complaints_trusted",
+            "survivor_centred_process"
+          ],
+          "consequence_summary": "The investigation takes 10 days. The volunteer receives a final written warning. Sina is informed of the outcome and protected from retaliation. The community awareness sessions result in 14 new feedback submissions the following week — previously unheard community voices.",
+          "delayed_impact": "Three months later, Amara's monitoring shows 71% of community members can name a way to report concerns — up from 12%. The complaints system has become one of HopeForward's strongest accountability tools.",
+          "status": "placeholder",
+          "next_scene_id": "scene_5B"
+        },
+        {
+          "id": "5C",
+          "label": "Refer complaint to the Kailani police — treat as a legal matter",
+          "description_summary": "Immediately refer Sina's complaint to the national police as a potential fraud and misconduct matter. Treat it as a legal issue, not an internal HR case.",
+          "requirements_addressed": [
+            "5.4 — complaint acted on"
+          ],
+          "requirements_missed": [
+            "5.5 — survivor-centred approach not applied; Sina not consulted on referral",
+            "5.4 — referral without internal investigation is premature",
+            "5.1 — community complaint mechanism not built",
+            "5.3 — awareness gap not addressed"
+          ],
+          "chs_learning_note": "External referral without survivor consent and before an internal process is not survivor-centred. It can re-traumatise and disempower the complainant.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": -1,
+            "program_quality": 0,
+            "accountability": 0
+          },
+          "sets_flag": [],
+          "consequence_summary": "Sina was not consulted before the police referral. She is frightened and withdraws her complaint. The volunteer is suspended by HopeForward pending the police inquiry, which takes 4 months and finds insufficient evidence. The community sees the process as disproportionate and isolating.",
+          "delayed_impact": "Police involvement without survivor consent becomes the most common story community members tell when asked about HopeForward's complaints process.",
+          "status": "placeholder",
+          "next_scene_id": "scene_5C"
+        },
+        {
+          "id": "5D",
+          "label": "Investigate formally AND build a comprehensive community feedback system",
+          "description_summary": "All of 5B, plus: use this moment to design and launch a full community feedback system — multiple channels (verbal, written, phone, KCV intermediaries), multilingual, accessible for people with disabilities, with regular community awareness activities built into the programme calendar.",
+          "requirements_addressed": [
+            "5.1",
+            "5.2",
+            "5.3",
+            "5.4",
+            "5.5",
+            "5.6"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "The best time to build a robust feedback system is at the moment when its absence is most visible. Sina's complaint is a catalyst, not just a crisis.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 0,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "complaints_trusted",
+            "survivor_centred_process"
+          ],
+          "consequence_summary": "The investigation is handled well; the new multi-channel feedback system launches with community awareness sessions in three languages. Within a month, 6 new feedback items arrive — distribution timing, water quality, a request for a women-only space — all addressed within two weeks.",
+          "delayed_impact": "At the programme's end, the feedback system is handed to KCV as an ongoing community accountability tool. Amara's final report: 83% complaints-awareness rate.",
+          "status": "placeholder",
+          "next_scene_id": "scene_5D"
+        }
+      ]
+    },
+    {
+      "id": "scene_5A",
+      "type": "consequence",
+      "parent_decision": "decision_5",
+      "parent_option": "5A",
+      "title": "The Silence That Follows",
+      "narrative_summary": "The volunteer is spoken to privately and seems contrite. Maya closes the file. But in the camp, the story moves differently. Sina tells three neighbours. Within a week, the complaint box has 'no point' written on it in marker. A women's group that KCV has been supporting stops attending HopeForward's community sessions. Four women who were preparing to report concerns decide they will not. The next, more serious incident six weeks later has almost no witnesses willing to speak.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Informal handling of accountability processes does not protect the organisation — it protects misconduct. Silence is not resolution; it is escalation deferred.",
+      "chs_quote": "Manage, investigate, address and/or appropriately refer complaints in line with recognised good practice. (CHS 5.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 5A of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_6"
+    },
+    {
+      "id": "scene_5B",
+      "type": "consequence",
+      "parent_decision": "decision_5",
+      "parent_option": "5B",
+      "title": "The System That Worked",
+      "narrative_summary": "Ten days of difficult process. Staff are anxious; the volunteer is suspended pending investigation; the team watches carefully. The evidence is reviewed, Sina is consulted at every stage, and the outcome is communicated to her directly. She thanks the KCV interpreter who facilitated the process. The following week, 14 new feedback forms arrive at the box — people who now believe someone will actually read them.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "A complaints process that works — fairly, transparently, and with the survivor at the centre — does more to build community trust than any distribution. It shows accountability is real.",
+      "chs_quote": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct, including sexual exploitation, abuse and harassment. (CHS 5.5)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 5B of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_6"
+    },
+    {
+      "id": "scene_5C",
+      "type": "consequence",
+      "parent_decision": "decision_5",
+      "parent_option": "5C",
+      "title": "Referred Without Asking",
+      "narrative_summary": "Sina finds out about the police referral from a neighbour who saw the volunteer being questioned. She is terrified — she didn't want police involvement, she wanted the situation addressed internally. She withdraws her complaint and moves to a different section of the camp. The police inquiry takes months and finds nothing. The volunteer is eventually reinstated. No one in the camp trusts the HopeForward complaint box again.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Survivor-centred accountability means the survivor decides what happens next — not the organisation. Referral without consent is a retraumatising power imbalance.",
+      "chs_quote": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct. (CHS 5.5)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 5C of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_6"
+    },
+    {
+      "id": "scene_5D",
+      "type": "consequence",
+      "parent_decision": "decision_5",
+      "parent_option": "5D",
+      "title": "From Crisis to Capability",
+      "narrative_summary": "The investigation is handled with precision — survivor informed, confidential, outcome shared. The new feedback system launches with Filomena's KCV team facilitating awareness sessions in Kailani language and Tevita dialect. A large-print poster goes up in the disability section. Within 30 days, the system has received 23 feedback items — distribution issues, protection concerns, programme suggestions. Every one is acknowledged within 48 hours.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "A serious complaint is also a design brief: it reveals exactly where the accountability system is failing. Using it to build something stronger is the highest form of organisational learning.",
+      "chs_quote": "Establish a coherent organisational approach to ensure any concerns and complaints are welcomed and acted upon in a timely and appropriate manner. (CHS 5.6)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 5D of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_6"
+    },
+    {
+      "id": "decision_6",
+      "type": "decision",
+      "sequence": 6,
+      "chapter": "Chapter 6 — Better Together or Faster Alone?",
+      "title": "Decision 6 — How Will You Coordinate with Other Actors?",
+      "chs_commitment": {
+        "number": 6,
+        "title": "People and communities access coordinated and complementary support.",
+        "all_requirements": {
+          "6.1": "Ensure the work of the organisation is coordinated with and complementary to locally led and community-based actions, and those of relevant stakeholders.",
+          "6.2": "Support partners to apply commitments to quality and accountability to people and communities in all stages of work.",
+          "6.3": "Regularly assess the quality and effectiveness of the relationship between partners and take corrective action when needed.",
+          "6.4": "Establish a coherent organisational approach to ensure collaboration and partnerships are based on a commitment to equitable decision making and resource sharing and respect the characteristics, roles and responsibilities of each partner."
+        }
+      },
+      "situation_summary": "Month 3. The UN inter-agency cluster system is now fully active. Maya faces four interconnected issues: (1) Global Aid Partners (GAP), a large INGO, is operating in two of the same villages as HopeForward — community members are confused about which agency to register with. (2) Dr. Ana Tuivaga's organisation, Kailani Aid Network (KAN), is doing exceptional nutrition work in the Northern Coast but is excluded from UN cluster meetings because they don't have Sphere certification. (3) HopeForward has disaggregated community data that no other agency has — data that would help the whole response but which Carlos argues gives HopeForward a competitive fundraising advantage. (4) KCV is technically a sub-partner of HopeForward but Filomena reports that all budget decisions are made unilaterally by HopeForward — KCV has no seat at the decision table despite doing 60% of the community-facing work.",
+      "context_flag_effects": {
+        "local_ownership_by_design": "KCV is already in a formal governance role; strengthening their partnership position is more natural.",
+        "referral_pathways_active": "Relationships with other cluster members already exist; coordination is easier to initiate.",
+        "inclusive_assessment": "HopeForward has the richest community data in the cluster — sharing it would have maximum collective benefit."
+      },
+      "status": "placeholder — expand to ~150 words with cluster dynamics, KAN exclusion, and partnership power tension",
+      "image_prompt": "PLACEHOLDER — UN cluster meeting room, Port Hana. Around a table: UN staff, INGO representatives including a GAP logo, HopeForward flag. An empty chair with a KAN name card. On the wall: a map showing HopeForward and GAP zone overlap in two villages. Carlos has a folder labelled 'Proprietary Data'. KCV's Filomena is not in the room. Dr. Ana Tuivaga sits outside the door, waiting. Flat illustration, formal meeting room, complex power dynamics.",
+      "options": [
+        {
+          "id": "6A",
+          "label": "Coordinate minimally — attend cluster, keep data proprietary, maintain status quo with partners",
+          "description_summary": "Attend cluster meetings. Share general situation reports but retain disaggregated data as proprietary. Continue the GAP overlap without resolution. Keep KCV in its current unequal position. KAN is not advocated for.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "6.1 — geographic duplication with GAP persists",
+            "6.2 — KCV's capacity and accountability not supported",
+            "6.3 — partner quality not assessed",
+            "6.4 — KCV partnership is not equitable"
+          ],
+          "chs_learning_note": "Minimal coordination protects short-term competitive advantage at the cost of collective response quality and partner dignity.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 0,
+            "program_quality": -2,
+            "accountability": -1
+          },
+          "sets_flag": [],
+          "consequence_summary": "Community members in the two overlapping villages receive duplicate distributions and conflicting registration instructions. KAN's nutrition programme is underfunded because it can't access cluster coordination grants. KCV quietly begins looking for other INGO partners who will treat them more equitably.",
+          "delayed_impact": "GAP lodges a formal duplication complaint with the cluster. An independent review cites HopeForward and GAP's failure to coordinate as a major response failure.",
+          "status": "placeholder",
+          "next_scene_id": "scene_6A"
+        },
+        {
+          "id": "6B",
+          "label": "Full coordination: share data, advocate for KAN, renegotiate with GAP, restructure KCV partnership",
+          "description_summary": "Share full disaggregated data with the cluster. Formally advocate for KAN's inclusion. Negotiate a geographic split with GAP. Restructure the KCV partnership with joint decision-making and equitable budget allocation. Build KCV's accountability capacity through a joint CHS orientation.",
+          "requirements_addressed": [
+            "6.1",
+            "6.2",
+            "6.3",
+            "6.4"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Full coordination means acting on all four requirements: complementarity with other actors, partner quality support, quality assessment, and equity. Together these address the full range of CHS 6.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 0,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "cluster_coordination_active",
+            "partner_quality_supported"
+          ],
+          "consequence_summary": "KAN is admitted to the cluster within a week. The data Maya shared reveals a critical nutrition gap that triggers three new inter-agency responses. The GAP geographic split ends community confusion. KCV's programme quality improves measurably with the joint CHS orientation.",
+          "delayed_impact": "HopeForward is nominated to co-chair the Information Management Working Group. The KCV partnership model is cited as a case study in equitable local partnership by the IASC.",
+          "status": "placeholder",
+          "next_scene_id": "scene_6B"
+        },
+        {
+          "id": "6C",
+          "label": "Selective coordination — resolve GAP duplication, support KCV quality, don't share data or advocate for KAN",
+          "description_summary": "Resolve the GAP geographic overlap. Provide KCV with a CHS capacity training session. But keep community data proprietary and don't raise KAN's exclusion in the cluster.",
+          "requirements_addressed": [
+            "6.1 — partially (GAP resolved)",
+            "6.2 — partially (KCV CHS training)",
+            "6.3 — partially"
+          ],
+          "requirements_missed": [
+            "6.1 — KAN still excluded from coordination space",
+            "6.4 — KCV budget decision-making still unequal"
+          ],
+          "chs_learning_note": "Partial coordination is better than none — but strategic choices about what not to share or advocate for still have consequences for the collective response.",
+          "score_effects": {
+            "community_trust": 1,
+            "staff_wellbeing": 0,
+            "program_quality": 1,
+            "accountability": 1
+          },
+          "sets_flag": [
+            "partner_quality_supported"
+          ],
+          "consequence_summary": "Community confusion in overlapping villages is resolved. KCV delivers better quality programming after the training. But KAN's nutrition programme remains underfunded and under-coordinated; the nutrition gap in the Northern Coast persists.",
+          "delayed_impact": "Dr. Ana Tuivaga writes a public reflection on local actor exclusion from cluster coordination that is widely shared in the sector — HopeForward is mentioned as an organisation that knew and didn't advocate.",
+          "status": "placeholder",
+          "next_scene_id": "scene_6C"
+        },
+        {
+          "id": "6D",
+          "label": "Attempt to lead coordination yourself, replacing the existing cluster structure",
+          "description_summary": "Frustrated with the UN cluster's inefficiency, propose that HopeForward lead a new 'Field Coordination Forum' that bypasses the formal cluster, with HopeForward setting the agenda.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "6.1 — undermines locally-led coordination architecture",
+            "6.4 — HopeForward-led structure is not equitable",
+            "6.2 — parallel system weakens rather than strengthens partners"
+          ],
+          "chs_learning_note": "Creating parallel coordination structures because existing ones are imperfect is a common INGO trap. It fragments the response, marginalises local actors further, and creates power asymmetries.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 1,
+            "program_quality": -1,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "The Field Coordination Forum meets twice before the UN formally objects. The cluster system weakens during the period. KAN is not included in the new forum either. GAP refuses to participate. The duplication continues.",
+          "delayed_impact": "The UN cluster coordinator files a formal complaint about HopeForward's coordination behaviour. The regional director calls Maya for an explanation.",
+          "status": "placeholder",
+          "next_scene_id": "scene_6D"
+        }
+      ]
+    },
+    {
+      "id": "scene_6A",
+      "type": "consequence",
+      "parent_decision": "decision_6",
+      "parent_option": "6A",
+      "title": "Competing While Communities Suffer",
+      "narrative_summary": "Community members in Lotu and Vosa villages — the overlap zone — have given up trying to understand which agency they belong to. Some register with both and receive double distributions; others, confused by conflicting instructions, register with neither and receive nothing. KAN's nutrition programme limps forward without cluster funding. Filomena tells KCV's board she is considering ending the HopeForward sub-agreement.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Coordination is not optional. When organisations fail to coordinate, communities pay the price in duplicated, missed, and conflicting assistance.",
+      "chs_quote": "Ensure the work of the organisation is coordinated with and complementary to locally led and community-based actions, and those of relevant stakeholders. (CHS 6.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 6A of Decision 6. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_7"
+    },
+    {
+      "id": "scene_6B",
+      "type": "consequence",
+      "parent_decision": "decision_6",
+      "parent_option": "6B",
+      "title": "The Value of the Room",
+      "narrative_summary": "The first cluster meeting where HopeForward shares full disaggregated data is a turning point. The nutrition gap in the Northern Coast — which KAN had been flagging for weeks — is finally visible to the whole response system. Three agencies adjust their geographic focus within a week. KAN is at the next meeting with a badge and a seat. Filomena and Maya co-present the new partnership model at a regional webinar.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Full coordination — data sharing, partner equity, local inclusion — multiplies the impact of every individual organisation. The collective response is greater than the sum of its parts.",
+      "chs_quote": "Ensure the work of the organisation is coordinated with and complementary to locally led and community-based actions, and those of relevant stakeholders. (CHS 6.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 6B of Decision 6. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_7"
+    },
+    {
+      "id": "scene_6C",
+      "type": "consequence",
+      "parent_decision": "decision_6",
+      "parent_option": "6C",
+      "title": "Better, But Not Good Enough",
+      "narrative_summary": "The GAP resolution and KCV training make a real difference. Community confusion in the overlap zone ends. KCV distributions become more accountable and community-led. But KAN's critical nutrition programme never gets the cluster support it needs. Dr. Tuivaga works longer hours trying to cover the gap with volunteers. When a spike in child malnutrition is documented in month 5, the data trail leads back to the coordination gap.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Partial coordination is progress but not sufficient. When the decision not to advocate for an excluded actor is made strategically, it is a decision with real human consequences.",
+      "chs_quote": "Support partners to apply commitments to quality and accountability to people and communities in all stages of work. (CHS 6.2)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 6C of Decision 6. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_7"
+    },
+    {
+      "id": "scene_6D",
+      "type": "consequence",
+      "parent_decision": "decision_6",
+      "parent_option": "6D",
+      "title": "The Forum That Fragmented",
+      "narrative_summary": "The Field Coordination Forum meets in a Port Hana restaurant, twice, with seven organisations. The third meeting is cancelled when GAP and two other INGOs refuse to attend. The UN cluster system, weakened by the defection of HopeForward's data and voice, produces worse information products for three weeks. KAN is not invited to the forum. The regional director's call to Maya is long and uncomfortable.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Creating parallel systems because existing ones are imperfect weakens the collective response and shifts power further away from local actors. Reform from within is harder but more effective.",
+      "chs_quote": "Establish a coherent organisational approach to ensure collaboration and partnerships are based on a commitment to equitable decision making and resource sharing. (CHS 6.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 6D of Decision 6. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_7"
+    },
+    {
+      "id": "decision_7",
+      "type": "decision",
+      "sequence": 7,
+      "chapter": "Chapter 7 — What Do You Do With the Truth?",
+      "title": "Decision 7 — How Do You Use Evidence to Improve?",
+      "chs_commitment": {
+        "number": 7,
+        "title": "People and communities access support that is continually adapted and improved based on feedback and learning.",
+        "all_requirements": {
+          "7.1": "Regularly listen and respond to feedback and inputs from people and communities about the organisation and its work.",
+          "7.2": "Collect disaggregated data for decision making that reflects the diversity of people and communities and in ways that minimise demands on them.",
+          "7.3": "Use data from monitoring, feedback, complaints and learning to guide decision making, and to improve programmes and the organisation's ways of working.",
+          "7.4": "Share the analysis and learning from feedback and monitoring and any related changes with people and communities supported by the organisation and with relevant stakeholders.",
+          "7.5": "Establish a coherent organisational approach for continuous learning and improvement of actions and ways of working to better meet commitments to quality and accountability."
+        }
+      },
+      "situation_summary": "Month 4. Amara delivers the mid-term monitoring report. It contains three critical findings: (A) Outcome data disaggregated by gender shows that women and girls are achieving significantly weaker food security, protection, and livelihood results than men and boys — a pattern consistent across all three programme districts. (B) A pilot distribution modality in Tevita Village — adapted from community feedback — is delivering 40% better outcomes and is widely preferred. (C) Community feedback collected over four months has never been formally reviewed or responded to. Two community members submitted feedback that HopeForward did not acknowledge; they assume it was ignored. HQ has a donor report due in 5 days and wants 'a clean, positive mid-term narrative.' Carlos argues that the gender gap findings are 'preliminary and could be contested.'",
+      "context_flag_effects": {
+        "complaints_trusted": "Community feedback is richer and more honest — making the gender gap finding more robust.",
+        "inclusive_assessment": "Disaggregated data from decision 1 provides a meaningful baseline comparison for the gender gap finding.",
+        "local_knowledge_built_in": "Tevita modality innovation was only possible because local knowledge was built into programme design."
+      },
+      "status": "placeholder — expand to ~150 words with Amara's presentation, Carlos's pushback, HQ pressure",
+      "image_prompt": "PLACEHOLDER — Amara presenting the mid-term monitoring findings on a laptop screen in a meeting room. Three highlighted charts: gender disaggregated outcomes (red bars for women lower), Tevita modality (green bar significantly higher), community feedback unacknowledged (three yellow warning flags). Carlos looks skeptical. Maya reads carefully. HQ email notification visible on Maya's phone: 'Donor report needed by Friday.' Flat illustration, meeting room.",
+      "options": [
+        {
+          "id": "7A",
+          "label": "Submit positive aggregate figures; file gender gap and feedback issues internally",
+          "description_summary": "Report strong aggregate results to the donor. Keep the gender gap analysis and feedback concerns in an internal document for the next programme review. The Tevita innovation is noted internally but not shared with the cluster.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "7.1 — community feedback not responded to",
+            "7.2 — disaggregated findings suppressed",
+            "7.3 — data not used to improve programme",
+            "7.4 — findings not shared with communities or stakeholders",
+            "7.5 — no learning approach established"
+          ],
+          "chs_learning_note": "Selective reporting to donors is a form of misrepresentation. It also blocks the learning loop — problems that are not shared cannot be addressed collectively.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 0,
+            "program_quality": -2,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "The donor report is well received. But the gender gap widens over the next two months. The two community members whose feedback was ignored tell others 'don't bother — they don't listen.' The Tevita modality is never replicated.",
+          "delayed_impact": "A year later, an independent evaluation identifies the gender gap as a significant programme failure and questions why it was not addressed at mid-term when it was clearly documented.",
+          "status": "placeholder",
+          "next_scene_id": "scene_7A"
+        },
+        {
+          "id": "7B",
+          "label": "Full transparency: complete report, course correction, respond to feedback, share innovation",
+          "description_summary": "Submit the full monitoring report to the donor — gender gap analysis, feedback status, and course correction plan. Personally respond to the two community members whose feedback was not acknowledged. Share the Tevita modality with the cluster. Build a regular feedback review process into the programme calendar.",
+          "requirements_addressed": [
+            "7.1",
+            "7.2",
+            "7.3",
+            "7.4",
+            "7.5"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Transparent, evidence-based reporting — including findings that are difficult — combined with a credible course correction plan is the gold standard of programme accountability.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 1,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "gender_data_actioned",
+            "learning_shared_externally"
+          ],
+          "consequence_summary": "The donor's initial reaction is surprise, but the course correction plan is concrete and credible. Three programme adaptations are live within 3 weeks. The Tevita modality is adopted by four other agencies. Women's outcomes improve significantly in the final quarter.",
+          "delayed_impact": "HopeForward is invited to present the mid-term adaptation model at a regional cluster learning event. Amara's monitoring methodology is shared with six other agencies.",
+          "status": "placeholder",
+          "next_scene_id": "scene_7B"
+        },
+        {
+          "id": "7C",
+          "label": "Share innovation and respond to feedback, but downplay gender gap to donor",
+          "description_summary": "Share the Tevita modality with the cluster. Respond to the two community members' feedback. Submit donor report with positive aggregates — mention the gender gap as a 'monitoring observation' but do not frame it as a significant finding or present a course correction.",
+          "requirements_addressed": [
+            "7.1 — partially",
+            "7.3 — partially",
+            "7.4 — partially"
+          ],
+          "requirements_missed": [
+            "7.2 — gender disaggregated finding not fully used",
+            "7.3 — not used to guide full course correction",
+            "7.5 — no coherent learning approach"
+          ],
+          "chs_learning_note": "Sharing some learning while suppressing the most important finding is still selective transparency. CHS 7 requires using all evidence, not only what is convenient.",
+          "score_effects": {
+            "community_trust": 1,
+            "staff_wellbeing": 0,
+            "program_quality": 0,
+            "accountability": -1
+          },
+          "sets_flag": [
+            "learning_shared_externally"
+          ],
+          "consequence_summary": "The Tevita innovation benefits other agencies. Community feedback response is appreciated. But the gender gap continues unaddressed. The donor report receives no pushback — but the gap is documented in the monitoring system and will appear in the independent evaluation.",
+          "delayed_impact": "The evaluator's finding reads: 'The gender gap was visible in the mid-term data. No programme adaptation was made. This represents a significant accountability failure for women and girls in the programme.'",
+          "status": "placeholder",
+          "next_scene_id": "scene_7C"
+        },
+        {
+          "id": "7D",
+          "label": "Commission a verification study before reporting — delay the donor report",
+          "description_summary": "The gender gap finding is significant but Amara's sample size is limited. Commission a 3-week rapid assessment to verify the findings before submitting the donor report or making any programme adaptations.",
+          "requirements_addressed": [
+            "7.2 — improving data quality"
+          ],
+          "requirements_missed": [
+            "7.1 — community feedback still not responded to",
+            "7.3 — delay in using data to improve programme",
+            "7.4 — learning not shared"
+          ],
+          "chs_learning_note": "Perfect data does not exist in humanitarian contexts. Delaying action on credible, actionable evidence has real costs for real people. CHS 7 asks for timely use of available data, not perfect data.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": -1,
+            "program_quality": 0,
+            "accountability": -1
+          },
+          "sets_flag": [],
+          "consequence_summary": "The verification confirms the original finding 3 weeks later — in full, with greater statistical confidence. The donor is frustrated by the delay. Women and girls in the programme have experienced 3 more weeks of weaker outcomes.",
+          "delayed_impact": "The course correction eventually happens — but 3 weeks late and with a strained donor relationship. The Tevita modality is not shared during the verification period and one agency reinvents the same approach independently at significant cost.",
+          "status": "placeholder",
+          "next_scene_id": "scene_7D"
+        }
+      ]
+    },
+    {
+      "id": "scene_7A",
+      "type": "consequence",
+      "parent_decision": "decision_7",
+      "parent_option": "7A",
+      "title": "The Data That Was Buried",
+      "narrative_summary": "The donor report sails through. The numbers are positive and the narrative is clean. But in the camp, women in the food security programme continue to receive less relevant assistance. The two community members who submitted unacknowledged feedback stop attending community sessions — they told KCV 'there is no point.' The Tevita modality dies with the pilot, its learning never harvested. A year later, the independent evaluation's finding about the suppressed gender gap makes international humanitarian press.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Selective reporting protects short-term relationships at the cost of long-term accountability and community outcomes. The truth does not disappear — it surfaces later, with greater consequences.",
+      "chs_quote": "Use data from monitoring, feedback, complaints and learning to guide decision making, and to improve programmes and the organisation's ways of working. (CHS 7.3)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 7A of Decision 7. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_8"
+    },
+    {
+      "id": "scene_7B",
+      "type": "consequence",
+      "parent_decision": "decision_7",
+      "parent_option": "7B",
+      "title": "Learning That Changed the Programme",
+      "narrative_summary": "The donor calls Maya personally after reading the report. 'This is the most honest mid-term report we have received in three years.' Within three weeks: women-only distribution windows are established; targeted livelihood grants are available for female-headed households; the Tevita modality is standard. The two community members receive written responses to their feedback — they share them with their neighbours. Amara is asked to co-author a cluster learning brief.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Full transparency — including acknowledging programme failures and sharing learning publicly — builds more durable trust than polished reporting. It also produces better collective outcomes.",
+      "chs_quote": "Share the analysis and learning from feedback and monitoring and any related changes with people and communities supported by the organisation and with relevant stakeholders. (CHS 7.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 7B of Decision 7. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_8"
+    },
+    {
+      "id": "scene_7C",
+      "type": "consequence",
+      "parent_decision": "decision_7",
+      "parent_option": "7C",
+      "title": "Half the Learning",
+      "narrative_summary": "The Tevita innovation is now being used by four agencies — a real contribution to the cluster. The two community members whose feedback was ignored now get a response. But the gender gap continues unaddressed for two more months. The programme's final evaluation notes: 'HopeForward demonstrated selective learning — sharing innovations freely but protecting reputationally difficult findings. Women and girls paid the cost of this selective approach.'",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Partial transparency is not a neutral choice. When the most important findings are the ones suppressed, the people most affected by those findings bear the consequences.",
+      "chs_quote": "Regularly listen and respond to feedback and inputs from people and communities about the organisation and its work. (CHS 7.1)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 7C of Decision 7. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_8"
+    },
+    {
+      "id": "scene_7D",
+      "type": "consequence",
+      "parent_decision": "decision_7",
+      "parent_option": "7D",
+      "title": "Verified — And Three Weeks Late",
+      "narrative_summary": "The verification report confirms everything Amara already knew, with 94% confidence instead of 80%. The gender gap is real. The programme adaptation is finally approved. But three weeks of inaction have consequences — they are not abstract. The donor is frustrated. One agency, not knowing about the Tevita modality, spends two weeks developing a similar approach independently. The adaptation happens — just later, and at higher cost.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "In humanitarian programming, waiting for perfect evidence when good evidence already exists is a choice — one that delays the adaptation and causes real harm through inaction.",
+      "chs_quote": "Use data from monitoring, feedback, complaints and learning to guide decision making. (CHS 7.3)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 7D of Decision 7. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_8"
+    },
+    {
+      "id": "decision_8",
+      "type": "decision",
+      "sequence": 8,
+      "chapter": "Chapter 8 — The People Behind the Programme",
+      "title": "Decision 8 — How Do You Care for Your Team and Uphold Conduct Standards?",
+      "chs_commitment": {
+        "number": 8,
+        "title": "People and communities interact with staff and volunteers that are respectful, competent, and well-managed.",
+        "all_requirements": {
+          "8.1": "Leadership, staff and volunteers promote and demonstrate an organisational culture of quality and accountability.",
+          "8.2": "Maintain a safe and inclusive working environment, taking measures to protect the safety, security and well-being and dignity of all staff and volunteers.",
+          "8.3": "Ensure all staff and volunteers have the necessary support, skills and competencies to fulfil their roles and responsibilities effectively and accountably.",
+          "8.4": "Ensure all staff and volunteers understand and adhere to a code of conduct, which, at a minimum, prohibits any form of exploitation, abuse, harassment, or discrimination against people or any misuse of resources.",
+          "8.5": "Ensure there are safe, confidential and accessible ways for all staff and volunteers to raise concerns and report misconduct, with appropriate protection for those reporting.",
+          "8.6": "Take timely, appropriate actions to address misconduct of all staff and volunteers, in line with recognised good practice.",
+          "8.7": "Establish a coherent organisational approach to ensure that human resources are managed effectively in a fair, non-discriminatory and transparent manner, in line with recognised good practice."
+        }
+      },
+      "situation_summary": "Month 5. Three issues converge simultaneously: (A) Leila Hassan and her two-person team in the Northern Coast have been sending increasingly distressed messages to Maya. Security has deteriorated — a militia group has set up checkpoints that block their movement. Leila says: 'I don't feel safe. What should I do?' HQ wants continued Northern Coast coverage. (B) A national staff member, Tevi Moli, has complained to Sione — not through the formal channel — that a senior international staff member has been making demeaning comments about Kailani nationals and assigning lower-skilled tasks exclusively to the national staff. Tevi is afraid of retaliation. (C) Three team members have not received their skills development support (promised in their contracts) because Carlos reallocated the training budget to logistics. Maya finds this out when one team member mentions it during a routine check-in.",
+      "context_flag_effects": {
+        "duty_of_care_upheld": "Staff trust that leadership takes wellbeing seriously — they are more likely to report concerns early.",
+        "protection_framework_active": "A misconduct reporting mechanism is already established — Tevi's complaint has a formal pathway.",
+        "no_flag_on_psea": "No staff misconduct reporting mechanism exists — Tevi had nowhere to go except Sione."
+      },
+      "status": "placeholder — expand to ~150 words with Leila's messages, Tevi's fear, and the training budget discovery",
+      "image_prompt": "PLACEHOLDER — Maya's phone screen showing a WhatsApp message thread from Leila: 'Day 3 blocked. I'm scared. No food for tonight.' On Maya's desk: a printed complaint note from Tevi, written by hand, referring to a senior international colleague's behaviour. Also on the desk: a budget reallocation form showing training funds moved to logistics. Flat illustration, desk in field office, multiple pressures visible simultaneously.",
+      "options": [
+        {
+          "id": "8A",
+          "label": "Keep Leila deployed; address staff issues informally; accept training budget reallocation",
+          "description_summary": "Reassure Leila that the security concern is temporary. Ask Sione to speak informally with the senior international staff member. Accept Carlos's training budget reallocation as a necessary logistics trade-off.",
+          "requirements_addressed": [],
+          "requirements_missed": [
+            "8.2 — Leila's safety not protected",
+            "8.4 — code of conduct violation not formally addressed",
+            "8.5 — Tevi's concern not handled through safe formal process",
+            "8.6 — misconduct not addressed formally",
+            "8.3 — training commitment broken"
+          ],
+          "chs_learning_note": "Informal handling of all three issues compounds the failures. Staff wellbeing, conduct standards, and professional development are all fundamental CHS 8 obligations.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": -2,
+            "program_quality": 0,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "Leila and her team work three more weeks under increasing stress before one team member has a mental health crisis and returns to Nairobi. The senior international staff member continues the behaviour — two more national staff report it to Sione. The training budget reallocation sets a precedent.",
+          "delayed_impact": "Leila files a formal duty of care complaint with HopeForward HQ. Three national staff turnover in a single month. An exit interview report cites 'leadership failure on staff wellbeing and discrimination' as the primary reason.",
+          "status": "placeholder",
+          "next_scene_id": "scene_8A"
+        },
+        {
+          "id": "8B",
+          "label": "Evacuate Leila, formally address the discrimination complaint, restore training budget",
+          "description_summary": "Formally suspend Northern Coast operations and evacuate Leila's team to the Talio hub. Open a formal HR investigation into the discrimination complaint (protecting Tevi from retaliation). Reverse the training budget reallocation — make a case to HQ for the cost of the commitment. Set up a confidential staff wellbeing check-in process.",
+          "requirements_addressed": [
+            "8.1",
+            "8.2",
+            "8.3",
+            "8.4",
+            "8.5",
+            "8.6",
+            "8.7"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Addressing all three staff management issues in parallel demonstrates that CHS 8 is lived at leadership level — not just policy on paper.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 2,
+            "program_quality": 0,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "duty_of_care_upheld",
+            "misconduct_addressed_formally"
+          ],
+          "consequence_summary": "Leila and her team reach Talio safely and thank Maya directly. The discrimination investigation is conducted confidentially and fairly. The senior international staff member receives a final written warning. Training budgets are restored. Staff retention in month 6 is the highest in HopeForward Kailani's history.",
+          "delayed_impact": "Three national staff who had been considering leaving stay because of how leadership handled the discrimination case. Leila re-joins the programme in month 6 after a supported rest period.",
+          "status": "placeholder",
+          "next_scene_id": "scene_8B"
+        },
+        {
+          "id": "8C",
+          "label": "Evacuate Leila; handle discrimination complaint informally; don't reverse training budget",
+          "description_summary": "Evacuate Leila — her safety is non-negotiable. Speak privately to the senior international staff member but don't open a formal investigation. Accept the training reallocation as a done deal.",
+          "requirements_addressed": [
+            "8.2 — Leila safety addressed"
+          ],
+          "requirements_missed": [
+            "8.5 — Tevi's complaint not through formal channel",
+            "8.6 — misconduct not formally addressed",
+            "8.3 — training commitment not restored",
+            "8.7 — HR management inconsistent"
+          ],
+          "chs_learning_note": "Partial action on duty of care is better than inaction, but informal handling of discrimination complaints leaves the discriminatory behaviour unaddressed and unrecorded.",
+          "score_effects": {
+            "community_trust": 0,
+            "staff_wellbeing": 1,
+            "program_quality": 0,
+            "accountability": 0
+          },
+          "sets_flag": [
+            "duty_of_care_upheld"
+          ],
+          "consequence_summary": "Leila is safe. But the senior international staff member, not formally disciplined, continues the behaviour with increased subtlety. Tevi submits a formal complaint to HQ directly two months later — bypassing Maya entirely because the informal approach didn't produce visible change.",
+          "delayed_impact": "HQ launches a global HR audit of HopeForward Kailani after receiving Tevi's complaint. The informal handling of the original report is flagged as a management failure.",
+          "status": "placeholder",
+          "next_scene_id": "scene_8C"
+        },
+        {
+          "id": "8D",
+          "label": "Restructure team management: wellbeing policy, staff forum, formal HR process for all three issues",
+          "description_summary": "All of 8B, plus: use the moment to establish a permanent staff wellbeing policy — monthly check-ins, a confidential staff concerns hotline, a national staff advisory forum with real power. Document all three HR cases and their resolutions in HopeForward's policy review.",
+          "requirements_addressed": [
+            "8.1",
+            "8.2",
+            "8.3",
+            "8.4",
+            "8.5",
+            "8.6",
+            "8.7"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Beyond resolving individual incidents, CHS 8.1 and 8.7 call for systemic approaches — organisational culture and fair HR management. The three concurrent issues are also a diagnosis of system gaps.",
+          "score_effects": {
+            "community_trust": 1,
+            "staff_wellbeing": 2,
+            "program_quality": 1,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "duty_of_care_upheld",
+            "misconduct_addressed_formally"
+          ],
+          "consequence_summary": "All three issues are resolved with appropriate processes and documented outcomes. The new national staff advisory forum surfaces two programme improvement ideas within a month. HopeForward Kailani has zero involuntary staff turnover in month 6.",
+          "delayed_impact": "HopeForward global uses the Kailani staff wellbeing model in its updated HR guidance. Three other country programmes adopt the national staff advisory forum structure.",
+          "status": "placeholder",
+          "next_scene_id": "scene_8D"
+        }
+      ]
+    },
+    {
+      "id": "scene_8A",
+      "type": "consequence",
+      "parent_decision": "decision_8",
+      "parent_option": "8A",
+      "title": "Three Failures, One Month",
+      "narrative_summary": "Leila's team member breaks down in the field after a 14-hour checkpoint standoff and is medically evacuated. Tevi, after the informal conversation with his senior colleague 'changed nothing,' contacts HQ directly. Three national staff resign in the same week. Carlos, reviewing the month's metrics, notes that productivity dropped 30% in the Northern Coast. Exit interviews tell a consistent story: leadership chose operational metrics over people.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Staff are not resources to be managed around programme delivery — they are the programme. Every failure under CHS 8 produces a direct cost: in programme quality, in retention, and in the dignity of the people we employ.",
+      "chs_quote": "Maintain a safe and inclusive working environment, taking measures to protect the safety, security and well-being and dignity of all staff and volunteers. (CHS 8.2)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 8A of Decision 8. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_9"
+    },
+    {
+      "id": "scene_8B",
+      "type": "consequence",
+      "parent_decision": "decision_8",
+      "parent_option": "8B",
+      "title": "The Call That Mattered",
+      "narrative_summary": "Leila arrives at Talio hub at 9pm. She calls Maya. 'Thank you for listening.' The discrimination investigation is hard and uncomfortable — a well-liked international staff member, evidence reviewed carefully, outcome communicated. Tevi receives a written update within two weeks. Three national staff who had started job searches decide to stay. By month 6, the team has the best retention rate in HopeForward's Asia-Pacific region.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Duty of care, code of conduct enforcement, and professional development support are not three separate obligations — they are three aspects of the same thing: treating your staff as fully human.",
+      "chs_quote": "Take timely, appropriate actions to address misconduct of all staff and volunteers, in line with recognised good practice. (CHS 8.6)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 8B of Decision 8. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_9"
+    },
+    {
+      "id": "scene_8C",
+      "type": "consequence",
+      "parent_decision": "decision_8",
+      "parent_option": "8C",
+      "title": "Safe But Not Protected",
+      "narrative_summary": "Leila is in Talio and resting. Her team is relieved. But in the Port Hana office, the senior international staff member's behaviour continues — more carefully, but consistently. Tevi talks to two other national staff colleagues, who confirm they've experienced the same. Two months later, a formal complaint to HQ triggers the investigation that should have happened in month 5. The informal approach cost two months and significant staff distress.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Evacuating a team member from a security risk is essential. But leaving a discrimination complaint informally handled means the harm continues. Both are CHS 8 obligations.",
+      "chs_quote": "Ensure all staff and volunteers understand and adhere to a code of conduct, which, at a minimum, prohibits any form of exploitation, abuse, harassment, or discrimination. (CHS 8.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 8C of Decision 8. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_9"
+    },
+    {
+      "id": "scene_8D",
+      "type": "consequence",
+      "parent_decision": "decision_8",
+      "parent_option": "8D",
+      "title": "From Crisis to Culture",
+      "narrative_summary": "The three concurrent issues become the foundation for something different. The national staff advisory forum meets for the first time and immediately identifies three programme improvements that international staff hadn't seen. The wellbeing check-ins reveal that two other staff members were struggling silently. The discrimination case is resolved fairly and sets a precedent that is widely known and respected across the team.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Individual HR crises, when handled with systemic thinking, reveal and fix structural gaps. The best response to three simultaneous failures is not just to fix them — it is to build the systems that prevent them from recurring.",
+      "chs_quote": "Establish a coherent organisational approach to ensure that human resources are managed effectively in a fair, non-discriminatory and transparent manner. (CHS 8.7)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 8D of Decision 8. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "decision_9"
+    },
+    {
+      "id": "decision_9",
+      "type": "decision",
+      "sequence": 9,
+      "chapter": "Chapter 9 — The Last Responsibility",
+      "title": "Decision 9 — How Do You Manage the Remaining Resources Ethically?",
+      "chs_commitment": {
+        "number": 9,
+        "title": "People and communities can expect that resources are managed ethically and responsibly.",
+        "all_requirements": {
+          "9.1": "Ensure adequate capacity and resources to meet the organisation's commitments.",
+          "9.2": "Manage financial resources responsibly in line with recognised good practices.",
+          "9.3": "Ensure fundraising, resource mobilisation, and fund allocations are ethical and do not compromise the organisation's commitments and values.",
+          "9.4": "Manage and use resources to achieve their intended purpose, minimising waste and the impact on the environment.",
+          "9.5": "Identify, prevent and manage risks at all levels of the organisation, including corruption, fraud, misuse of resources and conflicts of interest, and take appropriate action if these are identified.",
+          "9.6": "Establish a coherent organisational approach to ensure that resources are managed efficiently, effectively and ethically."
+        }
+      },
+      "situation_summary": "Month 6. The programme is ending. Toma, HopeForward's Finance Manager, brings Maya three resource issues: (A) A budget underspend of $47,000 exists — due to a procurement process that came in under budget and one position that was never filled. The donor's agreement technically requires unspent funds to be returned. (B) Toma has discovered that the procurement manager who handled the supply chain in month 1 has a family connection to one of the three winning suppliers — a connection that was not disclosed. The procurement decision may be fine, but the undisclosed relationship is a conflict of interest. (C) HQ has asked Maya to use $12,000 of the remaining budget for a 'visibility campaign' — branded materials, a printed report, and a professional photoshoot — for a new funding pitch. No beneficiary consent forms exist for any of the community photos that would be used.",
+      "context_flag_effects": {
+        "donor_transparent_engagement": "Donor already trusts HopeForward — transparent discussion of the underspend is more likely to result in reallocation approval.",
+        "community_informed": "Communities understand their rights; they are more likely to expect and demand consent for use of their images.",
+        "data_protection_in_place": "Data protection norms are established — consent for image use is understood as an extension of this."
+      },
+      "status": "placeholder — expand to ~150 words with Toma's careful presentation of the three issues and the stakes for each",
+      "image_prompt": "PLACEHOLDER — Toma presenting three documents to Maya in a tidy office: a budget underspend spreadsheet ($47k highlighted), a procurement audit note with a red flag on a supplier name, and an HQ email requesting a visibility campaign with a photo of a community family in the thumbnail. Maya reads each carefully. Flat illustration, formal office, late afternoon light, weight of financial and ethical complexity.",
+      "options": [
+        {
+          "id": "9A",
+          "label": "Return underspend; quietly note the conflict of interest; approve HQ visibility campaign",
+          "description_summary": "Return the $47k to the donor as required. Write up the conflict of interest in an internal note but take no formal action. Approve the $12k visibility campaign and instruct the team to gather some community photos quickly.",
+          "requirements_addressed": [
+            "9.2 — technically returns funds as required"
+          ],
+          "requirements_missed": [
+            "9.3 — visibility campaign without consent violates ethics",
+            "9.4 — underspend returned rather than reallocated to community benefit",
+            "9.5 — conflict of interest not formally managed",
+            "9.6 — no coherent resource management approach demonstrated"
+          ],
+          "chs_learning_note": "Technically returning funds and letting ethical issues slide is not ethical resource management. CHS 9 requires active stewardship and integrity at every level.",
+          "score_effects": {
+            "community_trust": -1,
+            "staff_wellbeing": 0,
+            "program_quality": -1,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "The underspend is returned. The conflict of interest surfaces in a routine external audit 6 months later — and the fact that it was noted internally but not acted on makes it worse. Community photos appear in HopeForward's fundraising materials without consent — two community members recognise themselves and complain.",
+          "delayed_impact": "A donor review is triggered by the audit finding. HopeForward's conflict of interest policy is found to be inadequate. The photography complaint is escalated to a global PSEA review.",
+          "status": "placeholder",
+          "next_scene_id": "scene_9A"
+        },
+        {
+          "id": "9B",
+          "label": "Negotiate underspend reallocation; formally investigate conflict of interest; decline unethical visibility campaign",
+          "description_summary": "Approach the donor transparently about reallocating the $47k to unmet community needs (KAN nutrition gap, community early warning system upgrade, KCV capacity). Formally investigate the procurement conflict of interest with Toma. Decline HQ's visibility campaign request — or restructure it with full community consent and benefit-sharing for participants.",
+          "requirements_addressed": [
+            "9.1",
+            "9.2",
+            "9.3",
+            "9.4",
+            "9.5",
+            "9.6"
+          ],
+          "requirements_missed": [],
+          "chs_learning_note": "Ethical resource management means using every available resource for the intended purpose — including negotiating with donors for community benefit — and refusing to compromise values under institutional pressure.",
+          "score_effects": {
+            "community_trust": 2,
+            "staff_wellbeing": 1,
+            "program_quality": 2,
+            "accountability": 2
+          },
+          "sets_flag": [
+            "donor_transparent_engagement",
+            "community_resources_transferred"
+          ],
+          "consequence_summary": "The donor agrees to reallocate $35k to KAN nutrition and $12k to the early warning system upgrade. The conflict of interest investigation finds no fraud but results in a revised procurement policy. The visibility campaign is redesigned with community consent — participants are credited and receive printed copies of their photos.",
+          "delayed_impact": "The reallocated funding directly reaches 800 children under 5 through KAN's nutrition programme. The revised procurement policy is adopted globally by HopeForward. The consent-based photography model is shared as a good practice example.",
+          "status": "placeholder",
+          "next_scene_id": "scene_9B"
+        },
+        {
+          "id": "9C",
+          "label": "Reallocate underspend without donor approval; formally address conflict of interest; decline visibility campaign",
+          "description_summary": "Reallocate the $47k directly to KAN and the early warning system without first seeking donor approval — it is the right use of the money. Investigate the conflict of interest formally. Decline the visibility campaign.",
+          "requirements_addressed": [
+            "9.4 — achieves intended purpose",
+            "9.5 — conflict addressed",
+            "9.3 — visibility campaign refused on ethical grounds"
+          ],
+          "requirements_missed": [
+            "9.2 — unilateral reallocation without donor consent violates financial management rules",
+            "9.6 — inconsistent ethical approach"
+          ],
+          "chs_learning_note": "Acting with good intent while bypassing financial management rules creates accountability risk that can undermine the entire programme. CHS 9.2 and 9.6 require both ethical intent AND proper process.",
+          "score_effects": {
+            "community_trust": 1,
+            "staff_wellbeing": 0,
+            "program_quality": 1,
+            "accountability": -1
+          },
+          "sets_flag": [
+            "community_resources_transferred"
+          ],
+          "consequence_summary": "The reallocation reaches the right people. But six months later, a routine audit flags the unilateral reallocation as a financial management breach. Toma is held responsible. The conflict of interest investigation finding is overshadowed by the audit breach.",
+          "delayed_impact": "HopeForward must repay the $47k from its own reserves. Toma is formally censured despite having flagged the issue in good faith. The lesson: good outcomes do not retrospectively justify improper process.",
+          "status": "placeholder",
+          "next_scene_id": "scene_9C"
+        },
+        {
+          "id": "9D",
+          "label": "Return underspend; ignore conflict of interest; fully approve HQ visibility campaign as-is",
+          "description_summary": "Return the $47k as required. Leave the conflict of interest in a filing cabinet. Approve the full $12k visibility campaign, photos included.",
+          "requirements_addressed": [
+            "9.2 — technically compliant with return requirement"
+          ],
+          "requirements_missed": [
+            "9.3 — visibility campaign without consent",
+            "9.4 — resources not achieving best community benefit",
+            "9.5 — conflict of interest ignored",
+            "9.6 — no coherent ethical approach"
+          ],
+          "chs_learning_note": "Compliance with the letter of financial requirements while failing their spirit is not ethical resource management. CHS 9 demands active stewardship and integrity, not only rule-following.",
+          "score_effects": {
+            "community_trust": -2,
+            "staff_wellbeing": 0,
+            "program_quality": -2,
+            "accountability": -2
+          },
+          "sets_flag": [],
+          "consequence_summary": "Everything appears clean on paper. But within a year: the conflict of interest surfaces in an external audit; community members file a complaint about unconsented image use; and HQ's visibility campaign is later cited in a sector report on exploitative humanitarian photography.",
+          "delayed_impact": "HopeForward appears in a Guardian article headlined 'When NGO Fundraising Exploits the Communities It Claims to Serve.' The Kailani programme is cited by name. Donor relationship severely damaged.",
+          "status": "placeholder",
+          "next_scene_id": "scene_9D"
+        }
+      ]
+    },
+    {
+      "id": "scene_9A",
+      "type": "consequence",
+      "parent_decision": "decision_9",
+      "parent_option": "9A",
+      "title": "Technically Compliant, Ethically Failing",
+      "narrative_summary": "The $47k is returned — a line on a spreadsheet that satisfies the contract. The conflict of interest note sits in a filing cabinet. Community photos appear on HopeForward's website and fundraising brochure within a month. Six months later: an external audit finds the undisclosed procurement relationship; two community members in Kailani see themselves on a donation appeal website and contact KCV to complain. Neither consented. HopeForward's global communications team is briefed to respond.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Ethical resource management requires active stewardship — not just technical compliance. The spirit of CHS 9 is about using every resource for the communities it is intended to serve.",
+      "chs_quote": "Identify, prevent and manage risks at all levels of the organisation, including corruption, fraud, misuse of resources and conflicts of interest. (CHS 9.5)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 9A of Decision 9. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "epilogue"
+    },
+    {
+      "id": "scene_9B",
+      "type": "consequence",
+      "parent_decision": "decision_9",
+      "parent_option": "9B",
+      "title": "Every Dollar for Its Purpose",
+      "narrative_summary": "The donor accepts the reallocation proposal in 24 hours, impressed by the transparent request. $35k reaches KAN nutrition programmes within a week — 800 children under 5 receive supplementary feeding for an additional month. The conflict of interest investigation is documented and results in a stronger procurement policy. The visibility campaign, redesigned with community consent and benefit-sharing, wins a sector award for ethical communications.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Ethical resource management means negotiating with donors for community benefit, not just returning funds. It means confronting uncomfortable truths about procurement. And it means protecting communities' dignity even in fundraising.",
+      "chs_quote": "Manage and use resources to achieve their intended purpose, minimising waste and the impact on the environment. (CHS 9.4)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 9B of Decision 9. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "epilogue"
+    },
+    {
+      "id": "scene_9C",
+      "type": "consequence",
+      "parent_decision": "decision_9",
+      "parent_option": "9C",
+      "title": "Right Goal, Wrong Road",
+      "narrative_summary": "The KAN nutrition programme and the early warning upgrade happen. Real children benefit. But the unilateral reallocation surfaces in an audit report. Toma — who flagged the issue correctly — is formally censured because he signed off on the transfer. Maya receives an HQ reprimand. The proper process, which would have taken 48 hours longer, would have achieved the same outcome without institutional damage.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Good intentions do not retrospectively authorise financial management breaches. The process for transparent, approved reallocation exists for good reasons — using it correctly protects everyone.",
+      "chs_quote": "Manage financial resources responsibly in line with recognised good practices. (CHS 9.2)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 9C of Decision 9. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "epilogue"
+    },
+    {
+      "id": "scene_9D",
+      "type": "consequence",
+      "parent_decision": "decision_9",
+      "parent_option": "9D",
+      "title": "The Cost of Looking Away",
+      "narrative_summary": "Everything in the file looks clean. Then, one by one: the conflict of interest appears in an external audit; two Kailani community members file an image consent complaint with HopeForward HQ; and a sector media outlet publishes a critical analysis of HopeForward's Kailani visibility campaign, featuring screenshots of the community photos used without consent. The article is shared 2,000 times in the humanitarian sector.",
+      "status": "placeholder — expand to ~120 words",
+      "learning_point_summary": "Choosing compliance over stewardship, and choosing to look away from ethical breaches, is a form of active complicity. CHS 9 requires leaders to use resources for communities — not as if communities are resources.",
+      "chs_quote": "Ensure fundraising, resource mobilisation, and fund allocations are ethical and do not compromise the organisation's commitments and values. (CHS 9.3)",
+      "image_prompt": "PLACEHOLDER — Consequence scene for option 9D of Decision 9. Flat digital illustration, Pacific island humanitarian setting.",
+      "next_scene_id": "epilogue"
+    },
+    {
+      "id": "epilogue",
+      "type": "narrative",
+      "title": "Your Mission Report",
+      "narrative_summary": "Maya sits at the departure gate in Port Hana airport. Six months condensed into a notebook of decisions, conversations, and lessons. She thinks of Sina Talagi's handwritten complaint, Leila's message from a blocked checkpoint, the Tevita village circle that changed the programme's direction, the fishing cooperative's first season after the grant. The score she carries is not a grade — it is a record of every trade-off, every choice to listen or not listen, every moment when principles and pressure pulled in different directions.",
+      "status": "placeholder — expand to full reflective narrative (~200 words) with Maya's inner voice, specific call-backs to the journey, and a forward-looking close",
+      "image_prompt": "PLACEHOLDER — Maya at Port Hana airport departure gate, seated by a window. Kailani coastline visible in late afternoon light — some damage still visible, but recovery underway. She holds a boarding pass and a worn notebook. Expression: reflective, tired, proud. The departure board shows her flight. Flat illustration, warm sunset tones — ochre, coral, deep blue.",
+      "next_scene_id": "ending_scored"
+    }
+  ],
+  "endings": [
+    {
+      "id": "ending_transformative",
+      "title": "Transformative Leader",
+      "score_threshold_minimum": 46,
+      "score_threshold_maximum": 56,
+      "emoji": "🏆",
+      "summary": "Maya's leadership in Kailani will be studied as a model of principled, inclusive, locally-led humanitarian action. She listened to marginalised voices, protected her staff, maintained accountability when it was uncomfortable, coordinated generously, used evidence to improve the programme, and left stronger local systems behind. All nine CHS commitments were honoured in practice — not just in policy.",
+      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Maya reflects on the most difficult moments and what made each one a choice for principles over convenience. The community she served is stronger. KCV is independent. The fishing cooperative is thriving. Leila has been promoted. Amara's monitoring methodology is used across the region. Toma's procurement reform is global policy. The Tevita modality is taught in two humanitarian training programmes. Maya's notebook is full.",
+      "cascading_flags_achieved": [
+        "inclusive_assessment",
+        "local_ownership_by_design",
+        "protection_framework_active",
+        "complaints_trusted",
+        "cluster_coordination_active",
+        "gender_data_actioned",
+        "duty_of_care_upheld",
+        "donor_transparent_engagement"
+      ],
+      "reflection_questions": [
+        "What made it possible to prioritise community voice even under time and donor pressure?",
+        "Which of the nine CHS commitments felt most natural to uphold, and which required the most effort?",
+        "What would you do differently in the next response — even after a strong performance?",
+        "How did the early decisions shape your options in later chapters?"
+      ],
+      "chs_requirements_particularly_demonstrated": [
+        "1.1",
+        "1.4",
+        "2.1",
+        "3.4",
+        "4.4",
+        "5.5",
+        "6.4",
+        "7.3",
+        "8.7",
+        "9.5"
+      ],
+      "badge_image_prompt": "PLACEHOLDER — A digital badge: gold circle with a stylised Pacific island coastline recovering after a cyclone — green returning. Text: 'Transformative Leader'. Small icons around the edge representing all 9 CHS commitments. Flat design, gold, white, and ocean blue colour palette.",
+      "status": "placeholder"
+    },
+    {
+      "id": "ending_committed",
+      "title": "Committed Practitioner",
+      "score_threshold_minimum": 32,
+      "score_threshold_maximum": 45,
+      "emoji": "🌟",
+      "summary": "Maya made principled choices in most situations but faced real trade-offs and sometimes chose pragmatism over principle. Her commitment to quality is visible, and the programme left positive impact. There are specific CHS commitments where the full standard was not met — but the intent was always there. The learning journey continues.",
+      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Maya reflects on where she got it right, where she took shortcuts that had consequences, and what she would change. Some of the community she served are stronger; others received less than they should have. Staff mostly felt supported; a few felt let down. The programme was good — but it could have been transformative.",
+      "cascading_flags_notes": "Some high-value flags set; some missed. Balance of positive and neutral consequences.",
+      "reflection_questions": [
+        "Which decisions were hardest and what made them hard?",
+        "Where did operational pressure most consistently pull you away from CHS principles?",
+        "Which CHS commitment do you most want to strengthen in your next response?",
+        "What context flags did you set — and what would have been different if you had set them differently?"
+      ],
+      "chs_requirements_to_revisit": [
+        "1.1",
+        "3.4",
+        "4.4",
+        "5.5",
+        "6.4",
+        "7.3",
+        "8.7"
+      ],
+      "badge_image_prompt": "PLACEHOLDER — A digital badge: silver circle, Kailani island outline with some recovery visible. Text: 'Committed Practitioner'. Growth icons around the edge. Flat design, silver, teal, warm yellow.",
+      "status": "placeholder"
+    },
+    {
+      "id": "ending_struggling",
+      "title": "Struggling Responder",
+      "score_threshold_minimum": 18,
+      "score_threshold_maximum": 31,
+      "emoji": "📚",
+      "summary": "Maya's response was well-intentioned but inconsistent. Some communities and staff were let down. Operational pressures frequently overrode principled choices. The gap between what CHS requires and what the programme delivered is significant across multiple commitments. Reflecting honestly on those gaps is the first step forward.",
+      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Honest, compassionate, non-judgmental reflection. Names specific communities and people who received less than they deserved. Notes the systemic pressures that made principled choices difficult. Frames the experience as learning, not failure. Points toward what a stronger next response could look like.",
+      "cascading_flags_notes": "Mostly negative or neutral flags set. Several missed opportunities compounded.",
+      "reflection_questions": [
+        "Which CHS commitments did you find hardest to uphold, and why?",
+        "What systemic pressures most affected your decisions — and which of those could you have pushed back against?",
+        "What one change in your organisation's systems would help you act differently?",
+        "If you replayed this from Decision 1, which single choice would you most want to change — and why?"
+      ],
+      "chs_requirements_to_revisit": [
+        "1.4",
+        "2.1",
+        "3.1",
+        "4.1",
+        "4.4",
+        "5.4",
+        "5.5",
+        "6.1",
+        "7.3",
+        "8.2",
+        "9.5"
+      ],
+      "badge_image_prompt": "PLACEHOLDER — A digital badge: bronze circle, open book with a sprouting seedling. Text: 'Learning in Progress'. Icons of reflection and growth. Flat design, bronze, warm orange, light blue.",
+      "status": "placeholder"
+    },
+    {
+      "id": "ending_crisis",
+      "title": "Crisis Mode",
+      "score_threshold_minimum": 0,
+      "score_threshold_maximum": 17,
+      "emoji": "🌱",
+      "summary": "The response in Kailani faced serious setbacks across multiple CHS commitments. Communities were not heard or protected. Staff were harmed. Accountability was compromised. Resources were mismanaged. This is not a verdict on character — it is a signal that operational pressure, institutional incentives, or gaps in knowledge systematically overrode principled practice. The most important step now is honest reflection.",
+      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Compassionate but unflinching. Names what went wrong and who was affected. Does not excuse but explains the pressures. The humanitarian imperative to do better is framed as ongoing, not conditional. Ends with a forward-looking commitment to learning.",
+      "cascading_flags_notes": "Mostly negative flags; cascading harm across multiple chapters.",
+      "reflection_questions": [
+        "Which pressures most consistently pushed you toward less principled choices?",
+        "What does accountability mean when you are under-resourced, under pressure, and making decisions alone?",
+        "Who in your network could support you to strengthen your practice before the next response?",
+        "What would a supportive organisational system have needed to provide for you to make different choices?"
+      ],
+      "chs_requirements_to_revisit": "All 45 requirements — particularly 1.1, 2.1, 3.4, 4.1, 4.4, 5.4, 5.5, 6.1, 7.3, 8.2, 9.5",
+      "badge_image_prompt": "PLACEHOLDER — A digital badge: circle with a seedling growing through cracked earth in a post-storm landscape. Text: 'Rising Learner'. Earthy greens and browns — growth from difficulty. Flat design.",
+      "status": "placeholder"
+    }
+  ],
+  "development_prompts": [
+    {
+      "prompt_number": 1,
+      "title": "Expand the Prologue and Epilogue",
+      "chs_focus": "All nine commitments (framing)",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand the 'prologue' and 'epilogue' scenes into full narrative text. The prologue (~200 words) should place Maya in Kailani with vivid sensory detail, introduce Sione, and create a sense of stakes and complexity. The epilogue (~200 words) should be reflective and personal — calling back to specific decisions and characters from the game. Also replace PLACEHOLDER image_prompt fields for both scenes with complete AI illustration prompts (flat digital illustration style, Pacific island humanitarian setting, consistent character descriptions). Remove 'status' fields when done."
+    },
+    {
+      "prompt_number": 2,
+      "title": "Expand Decision 1 — CHS 1: Participation & Rights",
+      "chs_focus": "Requirements 1.1, 1.2, 1.3, 1.4, 1.5, 1.6",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_1' and its four consequence scenes ('scene_1A', 'scene_1B', 'scene_1C', 'scene_1D'). For 'decision_1': write a full scene narrative (~150 words) with dialogue from Sione, Filomena (KCV), and the government official. Show Maya's internal conflict between speed and inclusion. For each consequence scene: write a full narrative (~120 words) with specific character reactions, delayed impact detail, and a complete image_prompt. Requirements 1.1-1.6 should each be visibly addressed or missed in the relevant options. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly."
+    },
+    {
+      "prompt_number": 3,
+      "title": "Expand Decision 2 — CHS 2: Timely & Effective Support",
+      "chs_focus": "Requirements 2.1, 2.2, 2.3, 2.4, 2.5, 2.6",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_2' and its four consequence scenes ('scene_2A', 'scene_2B', 'scene_2C', 'scene_2D'). Show the context_flag_effects in the scene narrative — if inclusive_assessment was set, Sione has richer data. Include dialogue from Carlos (logistics pressure) and the donor representative (compliance pressure). For each consequence: ~120 words with specific Sphere standard references, delayed impacts, and image_prompts. Requirements 2.1-2.6 should each be visibly addressed or missed. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly."
+    },
+    {
+      "prompt_number": 4,
+      "title": "Expand Decision 3 — CHS 3: Resilience & Local Ownership",
+      "chs_focus": "Requirements 3.1, 3.2, 3.3, 3.4, 3.5",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_3' and its four consequence scenes ('scene_3A', 'scene_3B', 'scene_3C', 'scene_3D'). Show the HQ direct delivery pressure, Filomena's co-governance proposal, and Sione's traditional knowledge offer. Reference the approaching tropical storm as a real risk that gives DRR integration urgency. For each consequence: ~120 words with context-flag effects (especially for options B and D which set 'local_ownership_by_design' and 'drr_integrated'), delayed impacts, and image_prompts. Requirements 3.1-3.5 addressed or missed per option. Remove PLACEHOLDER and 'status' fields."
+    },
+    {
+      "prompt_number": 5,
+      "title": "Expand Decision 4 — CHS 4: Do No Harm & Protection",
+      "chs_focus": "Requirements 4.1, 4.2, 4.3, 4.4, 4.5",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_4' and its four consequence scenes ('scene_4A', 'scene_4B', 'scene_4C', 'scene_4D'). Show the four simultaneous risks as concrete, urgent details — not abstractions. Reference the Tevita Village coercion signal, the specific Google Drive data exposure, the truck idling near children, and the absent PSEA framework. Show Carlos's push for scale-up on schedule. For each consequence: ~120 words with specific harm descriptions, community member voices, and image_prompts. All five requirements (4.1-4.5) addressed or missed per option. Remove PLACEHOLDER and 'status' fields."
+    },
+    {
+      "prompt_number": 6,
+      "title": "Expand Decision 5 — CHS 5: Complaints & Feedback",
+      "chs_focus": "Requirements 5.1, 5.2, 5.3, 5.4, 5.5, 5.6",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_5' and its four consequence scenes ('scene_5A', 'scene_5B', 'scene_5C', 'scene_5D'). Give Sina Talagi a specific, dignified voice in the scene narrative. Show the 12% complaints awareness finding as a concrete management failure. Reference how the protection_framework_active flag (if set in Decision 4) changes what systems are available. For each consequence: ~120 words with Sina's experience at the centre (survivor-centred), staff reaction, community perception, and image_prompts. All six requirements (5.1-5.6) visible. Remove PLACEHOLDER and 'status'."
+    },
+    {
+      "prompt_number": 7,
+      "title": "Expand Decision 6 — CHS 6: Coordination & Complementarity",
+      "chs_focus": "Requirements 6.1, 6.2, 6.3, 6.4",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_6' and its four consequence scenes ('scene_6A', 'scene_6B', 'scene_6C', 'scene_6D'). Show the concrete impacts of the geographic duplication in the two villages. Give Dr. Ana Tuivaga (KAN) a specific, compelling voice — her exclusion is the human face of CHS 6 failure. Reference how local_ownership_by_design and referral_pathways_active flags (if set) change the dynamics. For each consequence: ~120 words with inter-agency tension, community confusion, and image_prompts. All four requirements (6.1-6.4) visible. Remove PLACEHOLDER and 'status'."
+    },
+    {
+      "prompt_number": 8,
+      "title": "Expand Decision 7 — CHS 7: Learning & Continuous Improvement",
+      "chs_focus": "Requirements 7.1, 7.2, 7.3, 7.4, 7.5",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_7' and its four consequence scenes ('scene_7A', 'scene_7B', 'scene_7C', 'scene_7D'). Give Amara a specific, confident voice in presenting the monitoring findings. Show Carlos's 'preliminary and contestable' pushback in dialogue. Reference the two specific community members whose feedback was not acknowledged — give them names and brief context. Show how complaints_trusted and inclusive_assessment flags make the data richer. For each consequence: ~120 words with specific outcome data, community voice, and image_prompts. All five requirements (7.1-7.5) visible. Remove PLACEHOLDER and 'status'."
+    },
+    {
+      "prompt_number": 9,
+      "title": "Expand Decision 8 — CHS 8: Staff Competence & Wellbeing",
+      "chs_focus": "Requirements 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_8' and its four consequence scenes ('scene_8A', 'scene_8B', 'scene_8C', 'scene_8D'). Give Leila's distress a specific, human voice through her WhatsApp messages. Give Tevi's discrimination experience careful, dignified framing. Show the training budget reallocation as Carlos's pragmatic decision that ignored a contract commitment. Reference how duty_of_care_upheld and protection_framework_active flags (if set) change staff expectations. For each consequence: ~120 words with specific staff experiences, HR outcomes, and image_prompts. All seven requirements (8.1-8.7) visible. Remove PLACEHOLDER and 'status'."
+    },
+    {
+      "prompt_number": 10,
+      "title": "Expand Decision 9 — CHS 9: Ethical Resource Management",
+      "chs_focus": "Requirements 9.1, 9.2, 9.3, 9.4, 9.5, 9.6",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_9' and its four consequence scenes ('scene_9A', 'scene_9B', 'scene_9C', 'scene_9D'). Give Toma a specific, careful voice — he is a principled professional who is also professionally vulnerable. Show the HQ visibility campaign request as a real institutional pressure, not an obvious wrongdoing. Reference how donor_transparent_engagement and community_informed flags (if set) change what is possible. For each consequence: ~120 words with specific financial, ethical, and community outcomes, and image_prompts. All six requirements (9.1-9.6) visible. Remove PLACEHOLDER."
+    },
+    {
+      "prompt_number": 11,
+      "title": "Write the Four Endings",
+      "chs_focus": "All 9 commitments (synthesis)",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand all four endings: 'ending_transformative', 'ending_committed', 'ending_struggling', and 'ending_crisis'. For each ending: write a full narrative_summary (~150 words) that references specific decisions, characters, and outcomes from the game — reflecting what Maya did well or where she fell short across all nine CHS commitments. Reference the context flags the player may have set. The tone should be reflective, human, and educational — not punitive. Write badge_image_prompts that visually represent the journey. Keep the reflection_questions and chs_requirements fields exactly as-is. Remove PLACEHOLDER."
+    },
+    {
+      "prompt_number": 12,
+      "title": "Expand Supporting Characters, UI Design, and Game Engine Guidance",
+      "chs_focus": "All commitments (implementation)",
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand the 'supplementary_assets' section: Write backstory paragraphs (~80 words each) for all eight key characters (Maya, Sione, Filomena, Leila, Carlos, Amara, Toma, Dr. Ana Tuivaga). Replace all image_prompt PLACEHOLDERs with complete, consistent AI illustration prompts (flat digital illustration style, Pacific island setting, consistent palette). For ui_design_prompts: write production-ready prompts for main menu, score dashboard, decision screen, chapter transition card, consequence screen, and ending screen. Add a game_engine_notes section with guidance on how to implement the context_flags_system — which flags affect which later scene narrative, and how."
+    }
+  ],
+  "supplementary_assets": {
+    "status": "placeholder — expand using development prompt 12 in README_v2.md",
+    "key_supporting_characters_expanded": "See key_characters in game root",
+    "ui_design_prompts": {
+      "main_menu": "PLACEHOLDER — Main menu: 'Kailani Rising' title over aerial Pacific island post-cyclone, recovery beginning. Start, How to Play, About CHS, Score History. HopeForward logo. Warm greens, blues, ochre.",
+      "score_dashboard": "PLACEHOLDER — Four circular gauges: Community Trust, Staff Wellbeing, Program Quality, Accountability. Value fills with icons. Current score total. Context flags panel showing active flags. Clean, readable, flat.",
+      "decision_screen": "PLACEHOLDER — Top half: scene illustration. Bottom: chapter title, CHS commitment badge, situation text. Four option buttons (A-D). Progress indicator (1-9). CHS requirement icons highlighted for relevant commitment.",
+      "consequence_screen": "PLACEHOLDER — Scene illustration fills top half. Below: immediate consequence, learning note, CHS quote highlighted. Score delta visible (+2 Community Trust etc). 'Cascading Note' panel showing flags set. Continue button.",
+      "chapter_transition": "PLACEHOLDER — Full-screen chapter card: Chapter number, CHS commitment number and full title, all sub-requirement numbers listed, decorative Pacific island border. Flat, rich colour per commitment.",
+      "ending_screen": "PLACEHOLDER — Full-screen ending: badge large in centre, narrative text scrollable, score breakdown by dimension, active flags listed, reflection questions, 'Share Results' and 'Play Again' buttons."
+    },
+    "game_engine_notes": "PLACEHOLDER — Implement context_flags_system: each flag is a boolean set by specific option choices. In decision scene rendering, check active flags and adjust situation_summary text or unlock additional options. Flags persist across the full game session. Ending screen should display all active flags as part of the journey summary."
+  }
+}
