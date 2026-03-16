@@ -43,10 +43,10 @@
       "5x",
       "10x"
     ],
-    "total_scenes_skeleton": 82,
+    "total_scenes_skeleton": 77,
     "timeline_months": 12,
     "status": "skeleton-v3",
-    "design_notes": "Sub-decisions 2x, 5x and 10x appear conditionally based on flags set in earlier decisions. Sub-decision 2x appears if 'local_knowledge_built_in' is active (set by Decision 1 options B/C/D). Sub-decision 5x appears if 'survivor_centred_process' is active (set by Decision 5 options B/C/D). Sub-decision 10x appears if 'local_partnership_formalized' is active (set by Decision 10 options B/C/D)."
+    "design_notes": "Sub-decisions 2x, 5x and 10x appear conditionally based on flags set in earlier decisions. Sub-decision 2x appears if 'local_knowledge_built_in' is active (set by Decision 1 options B/C/D). Sub-decision 5x appears if 'survivor_centred_process' is active (set by Decision 5 options B/C/D). Sub-decision 10x appears if 'local_partnership_formalized' is active (set by Decision 10 options B/C/D). Total scenes: 77 (2 prologue + 12 decision + 3 sub-decision + 48 consequence + 3 bridge + 1 epilogue). design_notes value 82 in predecessor v2 referred to planned max including all flag variants."
   },
   "player_character": {
     "name": "Maya Chen",
@@ -332,8 +332,9 @@
       },
       {
         "id": "direct_local_funding_pathway",
-        "set_by": "Decision 10 option C or Sub-decision 10x option C",
-        "effect_summary": "KCV direct funding pathway established. Dependency cycle broken. Foundation for Decision 12 community-ownership exit."
+        "set_by": "Decision 10 option C OR Sub-decision 10x option C (dual pathway)",
+        "effect_summary": "KCV direct funding pathway established. Dependency cycle broken. Foundation for Decision 12 community-ownership exit.",
+        "dual_pathway_note": "Can be set either at Decision 10 (if player chooses direct funding at the strategic level) or at Sub-decision 10x (if player negotiates direct terms at the agreement level). Sub-decision 10x only appears if local_partnership_formalized is active."
       },
       {
         "id": "nexus_programming_active",
@@ -1966,8 +1967,7 @@
       "flags_set": [
         "survivor_centred_process",
         "complaint_mechanism_accessible",
-        "confidentiality_protocols_in_place",
-        "community_monitoring_engaged"
+        "confidentiality_protocols_in_place"
       ],
       "next_scene_id": "sd5x_investigation"
     },
@@ -3895,7 +3895,8 @@
             "government_handover_prepared",
             "community_ownership_transferred"
           ],
-          "next_scene_id": "d12_opt_D"
+          "next_scene_id": "d12_opt_D",
+          "score_effects_note": "staff_wellbeing -1 reflects the real operational cost of a complex 4-month community-ownership exit process. The outcome is positive; the process is demanding."
         }
       ]
     },
