@@ -586,8 +586,7 @@
         "inclusive_assessment": "Sione has clear disaggregated data on specific needs by group. Filomena from KCV has offered community-specific distribution lists.",
         "no_flag": "Assessment data is weak. Carlos is working from government population estimates that are 6 months old."
       },
-      "status": "placeholder — expand to ~150 words with logistics urgency, character tension, and specific needs details",
-      "image_prompt": "PLACEHOLDER — A warehouse in Port Hana packed with HEB boxes and plastic sheeting rolls. Carlos reviews a distribution plan on a tablet. Maya stands beside him, next to a whiteboard showing actual community priorities: clean water, dignity kits, modified shelter. Tevita Village is circled on a wall map — unlisted. Flat illustration, cool warehouse light.",
+      "image_prompt": "HopeForward logistics warehouse, Port Hana, Day 5 after Cyclone Vera. Carlos Reyes stands at a long metal shelving unit, one hand resting on a stack of HEB boxes, the other holding a tablet showing a colour-coded distribution timeline. His expression is tight with urgency. Maya Chen stands opposite, arms folded, looking at a whiteboard she has half-covered with community priority notes: 'WATER — top priority (Tevita),' 'Dignity kits,' 'Modified shelter kits — disability section,' 'Tevita Village — NOT on list.' A printed donor approval letter is pinned to the corkboard behind Carlos. Sione stands to Maya's left, field notebook open to a disaggregated needs table with rows for each community group. On a side table, a phone shows a missed-call notification labelled 'Donor Rep — M. Fischer.' Flat digital illustration, cool warehouse fluorescent light, blue-grey and amber palette.",
       "options": [
         {
           "id": "2A",
@@ -613,7 +612,6 @@
           "sets_flag": [],
           "consequence_summary": "Distribution happens in 6 hours. Community members trade HEBs at the market for water containers. Tevita Village receives nothing. No monitoring is built in to catch the problem.",
           "delayed_impact": "At week 4, a community feedback session reveals HEBs were mostly resold. The disability section received plastic sheeting they cannot use without physical assistance to install it. No record of what was actually needed.",
-          "status": "placeholder",
           "next_scene_id": "scene_2A"
         },
         {
@@ -642,7 +640,6 @@
           ],
           "consequence_summary": "Distribution takes 48 extra hours. Tevita Village is reached. The disability section receives modified kits. UNICEF extends their nutrition programme to cover the child nutrition gap. Community satisfaction at week 4 is the highest across the cluster.",
           "delayed_impact": "The monitoring system Maya set up catches a distribution bottleneck in week 3, allowing a rapid correction. Donor increases flexible funding for phase 2 based on quality evidence.",
-          "status": "placeholder",
           "next_scene_id": "scene_2B"
         },
         {
@@ -667,7 +664,6 @@
           "sets_flag": [],
           "consequence_summary": "The package is rolled out efficiently. But the consultant's template targets 'general displaced households' — which misses the specific vulnerabilities of Kailani's communal land structures, where families share resources in ways the individual-household model doesn't capture.",
           "delayed_impact": "Several wealthier households receive multiple distributions because they have more registered adults; the most vulnerable extended families receive proportionally less.",
-          "status": "placeholder",
           "next_scene_id": "scene_2C"
         },
         {
@@ -693,10 +689,10 @@
           "sets_flag": [],
           "consequence_summary": "No one is left off the list — which feels fair. But the 340 people with disabilities receive the same package as able-bodied adults, and Tevita Village, not yet registered, still gets nothing.",
           "delayed_impact": "A community elder with a severe disability tells KCV he received a 20kg plastic sheeting roll he cannot lift. The distribution was equal; it was not just.",
-          "status": "placeholder",
           "next_scene_id": "scene_2D"
         }
-      ]
+      ],
+      "narrative": "Carlos is already pulling the warehouse door open when Maya arrives. \"HEBs and sheeting, six hundred registered households, delivery starts at seven tomorrow.\" He taps his tablet: the logistics chain is green all the way down. \"Donor approval came through at midnight. If we wait, we lose the truck convoy.\"\n\nSione steps forward quietly and opens his field notebook to a page of disaggregated data. If the inclusive assessment was completed, the numbers are precise: water purification ranked first by Tevita households; nine families in the disability section flagged structural shelter needs; Tevita Village — forty-seven households — absent from the registry entirely. \"They're not on the approved list,\" Sione says. \"They won't receive anything.\"\n\nMaya's phone buzzes. Donor representative M. Fischer. She lets it ring once, then answers. \"The HEB and sheeting budget has been approved,\" Fischer says. \"Any material changes require a formal amendment — that takes five to seven working days.\" A pause. \"I'd strongly encourage you to proceed as planned.\"\n\nCarlos watches Maya. The trucks are booked. The donor is waiting. The community data says something different."
     },
     {
       "id": "scene_2A",
@@ -705,11 +701,11 @@
       "parent_option": "2A",
       "title": "Boxes Ticked, Needs Missed",
       "narrative_summary": "Carlos's report shows 100% distribution rate against the approved list. The numbers are clean. But in the camp, HEBs are trading at the makeshift market for 20% of their face value — community members need water and soap, not high-energy biscuits. The disability section's plastic sheeting is stacked in a corner, unusable without the physical assistance no one provided.",
-      "status": "placeholder — expand to ~120 words",
       "learning_point_summary": "Distribution against plan is not the same as meeting community needs. Efficiency metrics can mask programme irrelevance.",
       "chs_quote": "Plan and implement programmes which respect and build upon local knowledge, capacities and existing actions. (CHS 2.1)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 2A of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_3"
+      "image_prompt": "Manu Camp distribution point, morning, Day 6 after Cyclone Vera. Two HopeForward staff carry HEB boxes off a truck and stack them on a trestle table. A short queue of registered household heads collects packages. In the foreground, a woman with a disability sits outside the distribution tent; a large plastic sheeting roll leans against the wall beside her — she cannot lift it alone. In the background, at the camp perimeter, a cluster of Tevita Village residents watch from a distance with empty hands — no table, no queue, no aid. Carlos stands to one side, marking names off a tablet checklist, expression satisfied. A makeshift market stall behind the main tent shows HEB packets trading for water containers. Flat digital illustration, harsh morning light, muted ochre and grey.",
+      "next_scene_id": "decision_3",
+      "narrative": "Carlos's report lands in Maya's inbox before breakfast: 100% distribution rate against the approved list. The Sphere minimum for non-food items — 3.5 square metres of plastic sheeting per person — is met on paper. But at the distribution point, Sione watches a Tevita household member trade two HEB packets at the makeshift market for a plastic water container worth three times their value. Biscuits do not address a WASH deficit. Sphere's Water, Sanitation and Hygiene minimum — 15 litres of safe water per person per day — remains unmet, and no referral has been made to a WASH actor.\n\nIn the disability section, a 20-kilogram sheeting roll sits against the wall. The family received the Sphere-standard quantity. They received it in a format they cannot install without physical assistance that was never arranged. Requirement 2.6 — attention to the most marginalised — was not activated. Tevita Village, absent from the list, receives nothing. By week four, community feedback confirms that the distribution met the plan and missed the need."
     },
     {
       "id": "scene_2B",
@@ -718,11 +714,11 @@
       "parent_option": "2B",
       "title": "The Right Things, To the Right People, At the Right Time",
       "narrative_summary": "The 48-hour delay frustrates Carlos and HQ. But when Amara runs the week-4 monitoring check, community satisfaction ratings are exceptional. Tevita Village received its first assistance. Modified kits reached the disability section. UNICEF is now covering the child nutrition gap. The donor's programme officer calls Maya personally to commend the adaptive approach.",
-      "status": "placeholder — expand to ~120 words",
       "learning_point_summary": "Adapting programmes to actual needs — even when it creates short-term friction — produces the outcomes the programme exists to achieve.",
       "chs_quote": "Regularly monitor and adjust programmes to ensure actions are timely, accessible and address the priority needs of people and communities. (CHS 2.3)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 2B of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_3"
+      "image_prompt": "Manu Camp distribution point, morning, Day 8 after Cyclone Vera. A well-organised, sector-divided distribution is underway. One lane shows water purification tablets and dignity kits; a second has modified shelter kits being handed to disability section families with a staff member assisting. A third lane at the far end shows Tevita Village residents — new arrivals — receiving packages for the first time. Amara stands to one side with a tablet, entering data into a weekly monitoring checklist. A handwritten sign reads: 'Targeting criteria — visible and public.' In the distance, a UNICEF vehicle pulls into the camp gate for the nutrition extension. Carlos leans against a truck, arms folded, expression tight but resigned. Flat digital illustration, clear morning light, blues and warm greens.",
+      "next_scene_id": "decision_3",
+      "narrative": "The 48-hour delay is uncomfortable. Carlos files a formal logistics note — \"convoy rescheduled, HQ notified\" — and does not hide his frustration. The donor's amendment process is triggered for the partial reallocation from HEBs to water purification tablets and dignity kits, with the Sphere WASH minimum of 15 litres per person per day cited as the technical basis.\n\nOn Day 8, the distribution runs in three parallel lanes. Tevita Village — forty-seven households, previously invisible to the registry — receives assistance for the first time. Modified kits reach the disability section; installation support was arranged with a community volunteer. The transparent targeting criteria, posted at the distribution point per CHS 2.2, draw no complaints. UNICEF confirms the child nutrition referral (CHS 2.5) and extends their programme to cover the under-five gap. By week four, Amara's monitoring checklist — built to CHS 2.3 standards — flags a distribution bottleneck at the northern end of camp, corrected within 48 hours. Programme quality scores are the highest across the cluster."
     },
     {
       "id": "scene_2C",
@@ -731,11 +727,11 @@
       "parent_option": "2C",
       "title": "Efficient, but Whose Context?",
       "narrative_summary": "The consultant's package is deployed in 4 hours. Technical quality is high — the consultant knows Sphere standards well. But the targeting algorithm flags 47 households in Tevita as 'already served' (by a different agency, six months ago, with a different package). They receive nothing. The regional template has no field for communal land structures.",
-      "status": "placeholder — expand to ~120 words",
       "learning_point_summary": "Technical competence and contextual knowledge are not the same thing. Regional templates must be adapted to local realities, not applied wholesale.",
       "chs_quote": "Establish a coherent organisational approach to ensure support is based on an understanding of the context and culture. (CHS 2.6)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 2C of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_3"
+      "image_prompt": "HopeForward field office, Port Hana, Day 6 after Cyclone Vera. A projector displays a consultant's regional template on a white wall: neatly colour-coded rows, a standardised 'general displaced household' targeting category, Sphere-standard quantities for food and shelter. The consultant — a professional in a polo shirt — gestures confidently at the table. Sione stands apart, pointing at a line on a printed camp map: Tevita Village, flagged as 'already served — GAP agency, six months prior.' His expression is flat. Behind him, a handwritten note on the whiteboard reads: 'Communal land structure — no individual-household field in template.' Maya sits at the table, pen in hand, looking from the template to Sione's map. Flat digital illustration, projector blue-white light, cool and clinical palette.",
+      "next_scene_id": "decision_3",
+      "narrative": "The consultant's package deploys in four hours. Sphere standards for emergency food and non-food items are met — the regional template is technically rigorous. Carlos is relieved. But Sione flags a problem on Day 2.\n\nThe targeting algorithm marks 47 Tevita households as 'already served' — a GAP agency distribution from six months before the cyclone, with a different package, for a different need. The flag has not been cleared. Requirement 2.1 — building on local knowledge — was bypassed; the consultant had no brief on Kailani's communal land structures, where extended families share resources across registered households. Wealthier households with more registered adults receive proportionally more. The most vulnerable extended families receive less. The regional template had no field to capture this. Requirement 2.6 — contextual understanding of diversity and risk — was not applied. No monitoring mechanism was built in to catch the discrepancy; by week three, KCV's Filomena is the first to report it."
     },
     {
       "id": "scene_2D",
@@ -744,11 +740,11 @@
       "parent_option": "2D",
       "title": "Equal Isn't Always Just",
       "narrative_summary": "Everyone on the list gets the same package. This is administratively simple and politically defensible. A community leader praises HopeForward's 'fairness.' But Amara's monitoring data tells a different story: households with elderly and disabled members report the standard package is unsuitable for their needs; single mothers with multiple children received the same as childless adult couples. Equity requires differentiation.",
-      "status": "placeholder — expand to ~120 words",
       "learning_point_summary": "Equal treatment produces unequal outcomes when people's needs and circumstances differ. Equitable distribution requires fair criteria that reflect actual vulnerability.",
       "chs_quote": "Use fair, impartial and transparent criteria to define programmes and the people or groups supported by the organisation. (CHS 2.2)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 2D of Decision 2. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_3"
+      "image_prompt": "Manu Camp main distribution square, Day 6 after Cyclone Vera. A single distribution lane stretches across the square: every person in the registration queue receives the same standard package — one HEB box, one plastic sheeting roll. A community leader stands beside a HopeForward banner, smiling. A printed sign reads: 'One package per registered person — fair for all.' In the foreground, an elderly man in a wheelchair holds the registration slip for his package; a 20-kilogram plastic sheeting roll sits beside him on the ground. He looks at it. He cannot lift it. Sione stands at a distance, field notebook open, writing. Tevita Village residents remain outside the camp boundary — still unregistered, still invisible. Flat digital illustration, flat midday light, neutral palette with one detail of warm colour on the wheelchair, isolated.",
+      "next_scene_id": "decision_3",
+      "narrative": "The decision is administratively clean. One package per registered person: the Sphere minimum for non-food items, applied uniformly. No targeting criteria to defend, no community group left explicitly excluded. A community leader publicly commends HopeForward's fairness at the distribution point. Carlos sends a one-line update to HQ: 'Distribution complete. Zero complaints received.'\n\nAmara's monitoring data tells a different story. Households with elderly and disabled members report the standard 20-kilogram sheeting roll is impossible to install without assistance that was never provided — CHS 2.6 requires attention to the most marginalised, and equal treatment has produced unequal outcomes. Single mothers with multiple children received the same package as childless couples. The disability section's assessed need for modified kits — documented in Sione's data — was set aside to avoid differential treatment. Tevita Village, unregistered, receives nothing. By week four, a community elder tells KCV: 'The distribution was equal. It was not just.'"
     },
     {
       "id": "decision_3",
