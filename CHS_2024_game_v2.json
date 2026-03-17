@@ -768,8 +768,7 @@
         "inclusive_assessment": "KCV and community leaders are already trusted partners. A co-governance proposal is more realistic and welcomed.",
         "no_flag": "Community trust with KCV is lower; direct delivery will face less internal opposition."
       },
-      "status": "placeholder — expand to ~150 words",
-      "image_prompt": "PLACEHOLDER — A planning meeting in HopeForward's field office. Maya at a whiteboard with two columns: 'Direct Delivery' and 'Community-Led Governance'. KCV's Filomena sits across from HQ representative on video screen. Sione holds traditional knowledge notes. Outside: a weather app on a phone showing a new tropical storm forming. Flat illustration, morning light, tension and possibility.",
+      "image_prompt": "HopeForward's field office, Week 2. Maya stands at a whiteboard with two columns: 'Direct Delivery' and 'Community-Led Governance'. A laptop screen shows a HQ video call — the regional director's face tight with impatience. Across the table, Filomena Tui holds a laminated co-governance proposal. Sione Taufa sits to one side, a notepad of hand-drawn storm-sign symbols in his lap. Through the window, a weather app on a phone displays a new tropical depression forming. Maps pinned to the wall show Manu Camp and the coastline. Flat digital illustration, morning light, tension between urgency and possibility, relief-blue and ochre palette.",
       "options": [
         {
           "id": "3A",
@@ -794,7 +793,6 @@
           "sets_flag": [],
           "consequence_summary": "The programme runs efficiently for 6 months. Communities receive assistance. But when HopeForward's funding ends, KCV lacks the governance capacity to sustain anything, and the community has no disaster early warning system when the next tropical storm arrives.",
           "delayed_impact": "An independent evaluation 12 months later finds: 'HopeForward delivered services effectively but left no strengthened local systems. This was a missed opportunity for resilience-building.'",
-          "status": "placeholder",
           "next_scene_id": "scene_3A"
         },
         {
@@ -822,7 +820,6 @@
           ],
           "consequence_summary": "The first committee meeting reveals community priorities that Maya had not considered: a local fishing cooperative needs a small grant to rebuild nets — a livelihoods investment that the direct delivery model would never have authorised.",
           "delayed_impact": "By month 6, KCV is running three programme components independently. When HopeForward exits, the community programme committee continues to meet monthly.",
-          "status": "placeholder",
           "next_scene_id": "scene_3B"
         },
         {
@@ -850,7 +847,6 @@
           ],
           "consequence_summary": "Six weeks later, the new tropical storm system intensifies. The community early warning system — linked to traditional observation and the met service — gives 18 hours warning. Eighteen families in the lowest-risk zone evacuate before flooding. No casualties.",
           "delayed_impact": "The early warning system continues to function after HopeForward exits. The Kailani Meteorological Service adopts the community-validation model nationally.",
-          "status": "placeholder",
           "next_scene_id": "scene_3C"
         },
         {
@@ -878,7 +874,6 @@
           ],
           "consequence_summary": "The 10-day setup period is tense — HQ pushes back hard, and the team is stretched. But by month 2, the community committee is making real decisions, the DRR system is live, and livelihoods activities have begun.",
           "delayed_impact": "At exit, the community programme committee, the early warning system, and the fishing cooperative grant programme all continue independently. An independent evaluator rates it the most sustainable response in the cluster.",
-          "status": "placeholder",
           "next_scene_id": "scene_3D"
         }
       ]
@@ -889,12 +884,12 @@
       "parent_decision": "decision_3",
       "parent_option": "3A",
       "title": "Delivered but Not Strengthened",
-      "narrative_summary": "The programme runs on schedule for six weeks. Distributions happen, HopeForward branding is visible, reports are submitted on time. But when a new storm warning is issued in week 7, the community has no response plan, KCV has no governance structure, and the most vulnerable households have no connection to an early warning system. HopeForward vehicles evacuate staff. Communities wait.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "For six weeks the programme runs to schedule. Distributions complete on time, HopeForward branding is visible at every distribution point, and Carlos submits weekly donor reports without a red flag. HQ is satisfied. Then, in week 7, the Kailani Meteorological Service issues a tropical storm warning for the coast. Maya looks for a community response plan: there is none. She looks for an evacuation route map: the file is blank. KCV has no emergency contact list beyond three HopeForward staff names. HopeForward vehicles are loaded with equipment and depart the camp by 6pm. The community — twelve thousand displaced people — waits with no early warning system, no local coordination structure, and no information. The storm veers north. This time. The six-month evaluation reads: 'Efficient delivery; zero investment in community resilience.'",
       "learning_point_summary": "Effective emergency delivery and building local resilience are not mutually exclusive — but they require deliberate design. Operational efficiency without resilience-building is a missed obligation.",
       "chs_quote": "Support local ownership of resources and decision making from the outset of work with people and communities. (CHS 3.4)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 3A of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_4"
+      "image_prompt": "Manu Camp field office, evening, Week 7. Maya sits at a table with a blank evacuation-routes folder open in front of her. Carlos is loading HopeForward equipment boxes onto a vehicle visible through the open doorway. On the laptop screen: a satellite image of a tropical storm system approaching the Kailani coast. Through the window, twelve thousand displaced people are visible waiting outside their shelters — no visible community leader, no signs, no coordination. A HopeForward banner hangs undisturbed. The tone is eerie calm before a storm. Flat digital illustration, dusk light, grey and ochre palette.",
+      "next_scene_id": "decision_4",
+      "narrative": "Carlos sets the last crate in the vehicle and brushes his hands clean. \"HQ is happy,\" he says. \"Six distributions, zero complaints filed, reports submitted on time.\"\n\nMaya opens the emergency response folder. It contains one page: a list of three HopeForward staff phone numbers. No community contact tree. No evacuation map. No early warning protocol.\n\nThe Kailani Met Service alert arrived forty minutes ago. Tropical depression forming. Intensification likely.\n\nShe looks out at the camp. Twelve thousand people. No one is doing anything because no one knows what to do. KCV's Filomena was never given authority to organise a response. Sione's traditional knowledge about storm behaviour — the cloud formations, the sea colour, the specific bird patterns he mentioned in Week 2 — was never documented.\n\nThe vehicles pull out at 6pm.\n\nThe storm veers north at 11pm. No casualties. Forty shelters damaged. The evaluation report, twelve months later, will note: 'Operational efficiency; no strengthened local systems. A missed obligation.'"
     },
     {
       "id": "scene_3B",
@@ -902,12 +897,16 @@
       "parent_decision": "decision_3",
       "parent_option": "3B",
       "title": "Ownership in Practice",
-      "narrative_summary": "The first Community Programme Committee meeting is chaotic — four people talking at once, Filomena taking minutes, Carlos looking at his watch. By the third meeting, the committee has redirected 8% of the flexible budget to rebuild the fishing cooperative's nets. The fishing families are the first to become self-sufficient. Maya watches the meeting and thinks: this is what we are here for.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "The first Community Programme Committee meeting is loud and overlapping — four conversations at once, Filomena writing minutes across multiple threads, Carlos checking his watch from the doorway. By the third meeting, the committee has voted to redirect 8% of the flexible budget to rebuild the fishing cooperative's nets. Maya does not authorise it. Filomena does, as committee chair. The fishing families, now co-owners of a functioning livelihood, organise their own distribution volunteers in week 5 without being asked. When HQ queries the budget variance, Maya sends the committee minutes as programme documentation. By month 4, KCV is leading two programme components independently. The dependency that direct delivery would have guaranteed is, quietly, not forming.",
       "learning_point_summary": "Local ownership means real authority over real resources — not consultation after decisions are made. When communities control decisions, they identify solutions that outsiders never would.",
       "chs_quote": "Support local ownership of resources and decision making from the outset of work with people and communities. (CHS 3.4)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 3B of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_4"
+      "image_prompt": "Community hall, Manu Camp, Week 3. The Community Programme Committee meeting is in progress: Filomena Tui at the head of the table, writing on a large notepad, visibly managing several conversations simultaneously. Six community members — fishing cooperative representatives, a women's group leader, a youth delegate — are talking at once. Carlos stands in the doorway, arms folded, watching. Maya sits to one side, notably not at the head of the table — an observer, not the chair. A whiteboard shows a budget breakdown with '8% — nets, fishing coop' circled. The energy is productive chaos, not crisis. Flat digital illustration, daytime indoor light, blues and warm ochre palette.",
+      "next_scene_id": "decision_4",
+      "context_flag_effects": {
+        "local_ownership_by_design": "KCV's established governance role reduces friction in all subsequent co-implementation decisions. HQ audits accept Community Programme Committee minutes as legitimate programme documentation. At Decision 6 (Coordination), HopeForward can propose KCV as a cluster co-lead without needing to establish their credibility from scratch.",
+        "no_flag": "Default path: HopeForward retains full decision-making authority. Community consultation occurs but programme authority remains centralised. KCV functions as a service provider, not a governance partner."
+      },
+      "narrative": "The first committee meeting is, by any objective measure, a disaster. Four people speak at the same time. Filomena writes in three columns simultaneously. Carlos checks his watch from the doorway with the expression of a man calculating how much this is costing per hour.\n\nThe second meeting is better. The third meeting is where it changes.\n\nThe committee votes — by show of hands — to redirect 8% of the flexible budget to rebuild the fishing cooperative's nets. Maya does not authorise it. Filomena authorises it, as committee chair, because that is what the governance model says she can do. Carlos raises an eyebrow. Maya says nothing.\n\nIn week 5, the fishing families organise their own distribution volunteers. Nobody asked them to. The committee planned it.\n\nWhen HQ queries the budget variance, Maya sends the committee minutes. The variance is approved.\n\nBy month 4, KCV is running two programme components independently. The thing that was supposed to take a year is already happening."
     },
     {
       "id": "scene_3C",
@@ -915,12 +914,16 @@
       "parent_decision": "decision_3",
       "parent_option": "3C",
       "title": "The Storm That Didn't Kill Anyone",
-      "narrative_summary": "Tropical Storm Beni intensifies over the Kailani coast. The community early warning system — part traditional knowledge, part met service, part WhatsApp group — sends the first alert at 4am. By 6am, 18 families in the flood zone have self-evacuated to higher ground. No casualties in Manu Camp. In the Northern Coast, where no early warning system exists, 11 people are hospitalised. The difference is 10 days of co-design in week 2.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "Week 7, 3:47am. The first early warning alert goes out — a WhatsApp broadcast combining Sione's traditional storm indicators (specific cloud formations, unusual sea colour, migratory bird behaviour) with the Kailani Meteorological Service's satellite data. By 5am, eighteen families in the lowest flood-risk zone have self-evacuated to the community hall on higher ground. By 6am, the flooding begins. In Manu Camp: zero casualties. On the Northern Coast, where no community early warning system exists: eleven people hospitalised. At 8am the Kailani Met Service director calls Maya to ask if HopeForward can document the community validation protocol. They want to replicate it nationally. Ten days of co-design in Week 2 is the difference between a natural hazard and a disaster.",
       "learning_point_summary": "Investing in local disaster risk reduction capacities during an emergency response is not a luxury — it is a core CHS obligation that saves lives.",
       "chs_quote": "Support local capacities to anticipate and reduce risks of potential crises or disasters. (CHS 3.2)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 3C of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_4"
+      "image_prompt": "Manu Camp community hall, predawn, Week 7. Eighteen families — adults carrying children, elderly supported by younger relatives — move up the path toward higher ground, guided by hand-held torches. A community member holds a phone showing the WhatsApp early warning message. Sione stands at the hall entrance directing people in. In the background, below the hill, water is beginning to rise in the low-lying camp area. The sky is dark and turbulent. The contrast between orderly movement uphill and the spreading floodwater below is the image's central tension. Flat digital illustration, predawn blue-grey palette, torch-light warm accents.",
+      "next_scene_id": "decision_4",
+      "context_flag_effects": {
+        "drr_integrated": "The community early warning system remains active after programme exit. At Decision 9 (Exit Planning), the DRR system is cited as evidence of sustainable local capacity — reducing pressure to extend the programme. The Kailani Met Service partnership provides ongoing technical validation.",
+        "no_flag": "Default path: no community early warning capacity exists at exit. Future climate events reach the community without advance preparation. Any new response must rebuild risk-reduction capacity from zero."
+      },
+      "narrative": "3:47am. The WhatsApp broadcast goes to 340 community members simultaneously.\n\nThe message combines two things: Sione's traditional storm indicators — the specific cloud stacking he described in Week 2, the unusual sea colour reported by the fishing cooperative, the migratory birds that shouldn't be here at this season — and the Kailani Met Service's satellite pressure readings, cross-referenced and confirmed.\n\nIt took ten days to co-design this system in Week 2. Carlos called it a delay.\n\nBy 5am, eighteen families in the flood zone have reached the community hall. The same hall that the committee — the one that doesn't exist in Option A's timeline — designated as the evacuation point. By 6am, the water is rising.\n\nZero casualties in Manu Camp.\n\nOn the Northern Coast: eleven people hospitalised. No early warning system there.\n\nAt 8am, the Kailani Met Service director calls. She wants the community validation protocol documented. They're going to replicate it for every coastal community in the archipelago.\n\nTen days. That was the investment."
     },
     {
       "id": "scene_3D",
@@ -928,12 +931,17 @@
       "parent_decision": "decision_3",
       "parent_option": "3D",
       "title": "Built to Last",
-      "narrative_summary": "The 10 extra days cost HopeForward two strongly worded emails from HQ and one heated call with the regional director. They also produced a community governance structure, a functional early warning system, and a livelihoods programme. At the six-month programme review, the cluster coordinator uses HopeForward's Kailani model as a case study. Filomena is invited to present at a regional conference. The fishing cooperative is thriving.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "Two strongly worded emails from HQ. One call with the regional director described internally as 'heated.' The ten-day setup period stretches the team. Then: week 3, the Community Programme Committee meets for the first time. Week 5, the committee approves the fishing cooperative grant independently — no HopeForward sign-off required. Week 7, Tropical Storm Beni intensifies. The early warning system activates at 3:47am; eighteen families self-evacuate; zero casualties. At the six-month programme review, the cluster coordinator uses the Kailani model as the benchmark for sustainable response. The regional director who complained about the delays asks Maya to write a case study. Filomena presents at a regional resilience conference. Three months after HopeForward exits, the committee still meets monthly.",
       "learning_point_summary": "Addressing all dimensions of resilience — governance, risk reduction, livelihoods, local ownership — requires more effort upfront but produces fundamentally different long-term outcomes.",
       "chs_quote": "Plan and implement programmes that contribute to long-term positive effects on people's lives, livelihoods, the local economy and the environment. (CHS 3.3)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 3D of Decision 3. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_4"
+      "image_prompt": "Split scene, two moments in time. Left panel: Week 2 setup — Maya, Filomena, and Sione around a table covered in governance framework documents and traditional storm-knowledge sketches; Carlos in the background on a phone, expression strained; a laptop showing two strongly worded HQ emails. Right panel: Month 6 programme review — the same three figures, now at a cluster meeting table; the Community Programme Committee chair position clearly Filomena's; a map showing the early warning system coverage; the cluster coordinator pointing at the Kailani model on a presentation screen. Progression from tension to recognition. Flat digital illustration, warm Pacific light, blues and ochre palette.",
+      "next_scene_id": "decision_4",
+      "context_flag_effects": {
+        "local_ownership_by_design": "KCV's co-governance role is formally documented. At Decision 6 (Coordination) HopeForward can propose KCV as cluster co-lead. HQ accepts committee minutes as programme governance documentation. Dependency risk is structurally reduced.",
+        "drr_integrated": "The community early warning system provides ongoing protection after programme exit. At Decision 9 (Exit Planning), the integrated DRR infrastructure reduces pressure to extend the programme and demonstrates sustainable local capacity. The Kailani Met Service partnership continues independently.",
+        "both_flags_combined": "The combination of community governance and DRR integration produces the highest long-term resilience score in the cluster. Both systems reinforce each other: the committee oversees DRR maintenance; the DRR system gives the committee a credible mandate beyond the programme cycle."
+      },
+      "narrative": "HQ's second email arrives on Day 8. The subject line is: \"RE: RE: Delivery Timeline — Escalation Required.\"\n\nMaya reads it and files it.\n\nThe committee holds its first meeting in Week 3. It is loud and imperfect and completely, structurally real: Filomena is the chair, the budget line is there, the decision-making authority is written into the programme framework. Carlos watches from the doorway with the expression of someone who is not sure he was wrong but is starting to wonder.\n\nWeek 5: the committee approves the fishing cooperative grant. No one calls Maya. No one needs to.\n\nWeek 7, 3:47am: Tropical Storm Beni. The early warning system — part Sione's traditional indicators, part Kailani Met Service data, part the committee's designated evacuation protocol — activates. Eighteen families move to higher ground before the flooding begins. Zero casualties.\n\nAt the six-month review, the regional director — who sent the escalation email — asks Maya to write a case study.\n\nThree months after HopeForward exits, the committee meets without anyone from HopeForward present. The early warning system is still active. The fishing cooperative is still running.\n\nThe evaluator's summary: 'Most sustainable response in the cluster.'"
     },
     {
       "id": "decision_4",
