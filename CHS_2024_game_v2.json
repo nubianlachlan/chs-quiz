@@ -1158,8 +1158,7 @@
         "community_informed": "More community members know their rights and may be more willing to come forward.",
         "complaints_not_built": "No formal complaints system has been documented yet — investigation will need to establish process from scratch."
       },
-      "status": "placeholder — expand to ~150 words with Sina's voice, staff reaction, and institutional tension",
-      "image_prompt": "PLACEHOLDER — Maya at her desk, holding Sina Talagi's handwritten complaint letter. Through the glass partition, the accused volunteer is visible working at his desk, unaware. On Maya's computer: Amara's monitoring report showing 12% complaints awareness. A KCV email on screen: 'Three community members don't know how to complain.' Flat illustration, formal office interior, muted tones, weight of the moment.",
+      "image_prompt": "Maya Chen at her desk in the HopeForward operations office, holding Sina Talagi’s sealed handwritten complaint letter — two languages, full name at the bottom. Through the glass partition behind her, the accused volunteer is visible at his desk, working, unaware. Amara Diallo stands to Maya’s left, tablet open showing the monitoring dashboard: ‘12% — community members who can name a reporting channel’. On Maya’s laptop screen, an email from Filomena Tui: ‘Three community members said they didn’t know there was a box.’ Carlos Reyes stands in the doorway. The complaint box is visible outside the window, bolted to its post, unmarked. Flat digital illustration, formal programme office interior, Pacific island humanitarian setting, muted blues and ochre, stillness and weight.",
       "options": [
         {
           "id": "5A",
@@ -1182,7 +1181,6 @@
           "sets_flag": [],
           "consequence_summary": "Word reaches the camp that 'nothing happened.' Sina refuses to engage with HopeForward again. The complaint box is defaced. Four other women who were considering reporting decide against it. A second more serious incident six weeks later is much harder to investigate because the trust is gone.",
           "delayed_impact": "HopeForward's donor receives an anonymous report about the mishandled complaint. An audit is triggered.",
-          "status": "placeholder",
           "next_scene_id": "scene_5A"
         },
         {
@@ -1211,7 +1209,6 @@
           ],
           "consequence_summary": "The investigation takes 10 days. The volunteer receives a final written warning. Sina is informed of the outcome and protected from retaliation. The community awareness sessions result in 14 new feedback submissions the following week — previously unheard community voices.",
           "delayed_impact": "Three months later, Amara's monitoring shows 71% of community members can name a way to report concerns — up from 12%. The complaints system has become one of HopeForward's strongest accountability tools.",
-          "status": "placeholder",
           "next_scene_id": "scene_5B"
         },
         {
@@ -1237,7 +1234,6 @@
           "sets_flag": [],
           "consequence_summary": "Sina was not consulted before the police referral. She is frightened and withdraws her complaint. The volunteer is suspended by HopeForward pending the police inquiry, which takes 4 months and finds insufficient evidence. The community sees the process as disproportionate and isolating.",
           "delayed_impact": "Police involvement without survivor consent becomes the most common story community members tell when asked about HopeForward's complaints process.",
-          "status": "placeholder",
           "next_scene_id": "scene_5C"
         },
         {
@@ -1266,10 +1262,10 @@
           ],
           "consequence_summary": "The investigation is handled well; the new multi-channel feedback system launches with community awareness sessions in three languages. Within a month, 6 new feedback items arrive — distribution timing, water quality, a request for a women-only space — all addressed within two weeks.",
           "delayed_impact": "At the programme's end, the feedback system is handed to KCV as an ongoing community accountability tool. Amara's final report: 83% complaints-awareness rate.",
-          "status": "placeholder",
           "next_scene_id": "scene_5D"
         }
-      ]
+      ],
+      "narrative": "The complaint arrives on a Tuesday morning, sealed and hand-delivered to the programme office. Sina Talagi, 34, has written it in two languages — Kailani first, then English — and addressed it to the programme manager by name. Her account is precise: dates, the distribution queue, the volunteer’s words, and what her neighbour’s family received that she did not. She has signed it with her full name.\n\nAmara is already at Maya’s door when she finishes reading. The monitoring dashboard is open on her tablet: twelve percent. That is the share of Manu Camp residents who can name a single way to report a concern to HopeForward. The complaint box has stood on the same post for six weeks. No session announced it. No poster described what would happen if you used it.\n\n“That’s not a data gap,” Carlos says, scanning the figure. “That’s a system we never built.”\n\nThree community members had already told KCV they did not know the box existed. Sina trusted it anyway.\n\nWhere HopeForward set the ‘protection_framework_active’ flag in Decision 4, investigation procedures, PSEA conduct standards, and confidentiality protocols are already documented and available. Where that framework was never established, Maya is about to reach for a policy document that has never been written."
     },
     {
       "id": "scene_5A",
@@ -1277,12 +1273,12 @@
       "parent_decision": "decision_5",
       "parent_option": "5A",
       "title": "The Silence That Follows",
-      "narrative_summary": "The volunteer is spoken to privately and seems contrite. Maya closes the file. But in the camp, the story moves differently. Sina tells three neighbours. Within a week, the complaint box has 'no point' written on it in marker. A women's group that KCV has been supporting stops attending HopeForward's community sessions. Four women who were preparing to report concerns decide they will not. The next, more serious incident six weeks later has almost no witnesses willing to speak.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "The volunteer is spoken to privately. Maya marks the case closed. By Friday, word has already moved through the camp — not from Maya’s side, from the volunteer’s. Sina hears the outcome from a neighbour, not from HopeForward. She tells Filomena: “I wrote everything down carefully. I put it in the box. I thought that was how it worked.”\n\nBy Saturday morning, someone has written ‘no point’ across the complaint slot in black marker. Four women who had been preparing their own reports fold their notes away and do not return to the box. The women’s KCV group quietly stops attending HopeForward’s community sessions. Staff notice the empty chairs and log a ‘community engagement drop’; no one asks why.\n\nThe 12% complaints-awareness finding was a management failure before Sina filed her complaint. The informal resolution confirms it. Six weeks later, a second and more serious incident surfaces with almost no witnesses willing to speak.",
       "learning_point_summary": "Informal handling of accountability processes does not protect the organisation — it protects misconduct. Silence is not resolution; it is escalation deferred.",
       "chs_quote": "Manage, investigate, address and/or appropriately refer complaints in line with recognised good practice. (CHS 5.4)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 5A of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_6"
+      "image_prompt": "The HopeForward complaint box on its post in Manu Camp, morning light. ‘NO POINT’ is written in black marker across the slot. Sina Talagi stands at a distance, arms folded, facing partly away. Four women cluster behind her — one holds a folded piece of paper and slides it back into her pocket. The KCV community session tent is visible with empty plastic chairs. Sione Taufa photographs the defaced box with his phone, expression flat. No programme staff are visible. Flat digital illustration, Pacific island humanitarian setting, muted ochre and grey palette, sense of institutional silence and community withdrawal.",
+      "next_scene_id": "decision_6",
+      "narrative": "Carlos calls it handled. Maya closes the file on Thursday afternoon.\n\nBy Friday evening the camp has a different story. Sina finds out from a neighbour — not from any letter, not from Filomena, not from the programme office. She received no acknowledgment, no update, no outcome. She tells the KCV interpreter the following morning: “I wrote every detail. I signed my name. I thought that was enough to make it real.”\n\nOn Saturday, Sione walks past the complaint box and stops. Someone has written ‘no point’ across the slot in black marker. He photographs it and sends the image to Maya without comment.\n\nFour women who had folded complaint notes in their pockets unfold them, read them again, and put them away for good. The women’s KCV group stops attending HopeForward’s community sessions the following week. No one explains why, and no one asks.\n\nAmara’s twelve-percent finding — the share of camp residents who knew they could report anything at all — sits uncorrected in the monitoring file. The informal resolution did not address it. It confirmed it.\n\nSix weeks later, a more serious incident has almost no witnesses who will speak."
     },
     {
       "id": "scene_5B",
@@ -1290,12 +1286,12 @@
       "parent_decision": "decision_5",
       "parent_option": "5B",
       "title": "The System That Worked",
-      "narrative_summary": "Ten days of difficult process. Staff are anxious; the volunteer is suspended pending investigation; the team watches carefully. The evidence is reviewed, Sina is consulted at every stage, and the outcome is communicated to her directly. She thanks the KCV interpreter who facilitated the process. The following week, 14 new feedback forms arrive at the box — people who now believe someone will actually read them.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "The investigation takes ten days. Carlos objects to the four-day distribution delay it creates; Maya holds the process. Before any formal step begins, she meets Sina privately — in the KCV office, not the programme tent — to explain the process, her rights, the expected timeline, and what confidentiality means in practice. Sina asks two questions. Maya answers both directly. The volunteer is temporarily reassigned on day one.\n\nThe evidence is reviewed by a case officer from the regional team. On day ten, the outcome is communicated directly to Sina before it is entered in any system. She thanks the KCV interpreter who stayed through every meeting.\n\nThe following week, fourteen new feedback submissions arrive at the complaint box — community members who had watched and decided the system was real. The 12% complaints-awareness figure, documented as a management failure, becomes the baseline a targeted communications session will correct in month three.",
       "learning_point_summary": "A complaints process that works — fairly, transparently, and with the survivor at the centre — does more to build community trust than any distribution. It shows accountability is real.",
       "chs_quote": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct, including sexual exploitation, abuse and harassment. (CHS 5.5)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 5B of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_6"
+      "image_prompt": "Sina Talagi sits across from a female case officer at a small table in a private room — no programme branding on the walls, natural light, Filomena Tui present as interpreter. Sina’s hands are clasped on the table, composed and purposeful. The case officer’s notepad is open; a process timeline is pinned to the corkboard behind her, each step numbered, several already checked. Through the window the complaint box is visible with a new A4 notice in Kailani language beside it. The next distribution queue is orderly in the background. Flat digital illustration, Pacific island humanitarian setting, warm natural light, tone of careful institutional respect and due process.",
+      "next_scene_id": "decision_6",
+      "narrative": "Carlos’s objection is quick and specific: the investigation will push the next distribution back four days, and that is four days real people will be waiting. He says it twice.\n\nMaya agrees. And opens the investigation file.\n\nBefore any formal step is taken, she meets Sina in a private space — not the programme office, not near the distribution queue, not anywhere Sina did not choose. She explains the ten-day process, the timeline, what confidentiality means in practice, and what the possible outcomes are. Sina listens carefully. She asks two questions. Maya answers both without hesitation.\n\nThe volunteer is reassigned on day one. A regional case officer reviews the evidence. On day nine the complaint is found to be substantiated. On day ten the outcome is communicated to Sina before it is entered in any record.\n\n“I didn’t expect to be kept informed,” she tells the KCV interpreter at the final meeting. “I expected to submit the form and hear nothing.”\n\nThe following week, fourteen new feedback forms arrive at the box. The 12% awareness figure — documented as a management failure in Amara’s report — is now also a baseline to correct. Community awareness sessions are scheduled for month three."
     },
     {
       "id": "scene_5C",
@@ -1303,12 +1299,12 @@
       "parent_decision": "decision_5",
       "parent_option": "5C",
       "title": "Referred Without Asking",
-      "narrative_summary": "Sina finds out about the police referral from a neighbour who saw the volunteer being questioned. She is terrified — she didn't want police involvement, she wanted the situation addressed internally. She withdraws her complaint and moves to a different section of the camp. The police inquiry takes months and finds nothing. The volunteer is eventually reinstated. No one in the camp trusts the HopeForward complaint box again.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "The complaint is referred to the Kailani national police on Monday morning. Sina is not informed before the referral is made. She finds out from a neighbour who saw a uniformed officer at the distribution gate asking for the volunteer by name. She had wanted the situation addressed inside HopeForward, not escalated to authorities she has reason to distrust. She withdraws her complaint that same afternoon and moves to a different section of the camp within the week.\n\nThe police inquiry runs four months and finds insufficient evidence. The volunteer is eventually reinstated. Staff describe the process as ‘thorough’ but are uncertain in private. No one asks Sina’s view.\n\nWhat travels through the camp is not the story of the misconduct. It is the story of what happened to the woman who used the complaint box. Three women considering their own reports decide, independently, that they will not. The 12% awareness finding needed correcting; the referral without consent adds a second management failure to the record.",
       "learning_point_summary": "Survivor-centred accountability means the survivor decides what happens next — not the organisation. Referral without consent is a retraumatising power imbalance.",
       "chs_quote": "Apply appropriate victim/survivor-centred approaches to investigate and address complaints and reports of any misconduct. (CHS 5.5)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 5C of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_6"
+      "image_prompt": "Sina Talagi stands alone in her section of Manu Camp, arms close to her body, looking away from the distribution area. In the middle distance, a uniformed Kailani police officer speaks to a HopeForward staff member at the gate — the volunteer visible in the background. A neighbour’s hand rests on Sina’s shoulder; Sina’s expression is closed, frightened. The complaint box stands untouched on its post. On the near wall, a handwritten note from another woman has been torn half-off. Flat digital illustration, Pacific island humanitarian setting, flat grey-blue midday light, sense of institutional power misdirected and survivor displacement.",
+      "next_scene_id": "decision_6",
+      "narrative": "The referral is made on Monday morning. Carlos sees it as decisive — the matter is out of HopeForward’s hands, which feels clean.\n\nSina learns what happened from a neighbour who saw a uniformed police officer at the distribution gate asking for the volunteer by name. She was not told before the referral. There was no conversation, no letter, no question about what she wanted or what she feared.\n\nShe withdraws her complaint by Monday afternoon. She tells Filomena: “I wanted them to deal with it inside. I didn’t want this. Nobody asked me.” She moves to a different section of the camp within the week and does not return to the distribution site.\n\nThe police inquiry takes four months. It finds insufficient evidence. The volunteer is reinstated. Staff describe the outcome as ‘thorough’ in conversations with one another. No one contacts Sina.\n\nWhat circulates in the camp is not the story of the misconduct. It is the story of what happened to the woman who used the box: police arrived without warning, and she disappeared from her section. Three women who had been considering reports decide, separately and quietly, that they will not.\n\nThe 12% awareness figure was a management failure. The referral without consent is a second one."
     },
     {
       "id": "scene_5D",
@@ -1316,12 +1312,12 @@
       "parent_decision": "decision_5",
       "parent_option": "5D",
       "title": "From Crisis to Capability",
-      "narrative_summary": "The investigation is handled with precision — survivor informed, confidential, outcome shared. The new feedback system launches with Filomena's KCV team facilitating awareness sessions in Kailani language and Tevita dialect. A large-print poster goes up in the disability section. Within 30 days, the system has received 23 feedback items — distribution issues, protection concerns, programme suggestions. Every one is acknowledged within 48 hours.",
-      "status": "placeholder — expand to ~120 words",
+      "narrative_summary": "The investigation follows the process from first contact: Sina is consulted before any formal step begins, informed at every stage, and told the outcome before it goes anywhere else. She chooses the meeting location, requests a female case officer, and asks that no one approach her at the distribution site. All three requests are met. The complaint is substantiated. The volunteer receives a written warning and is permanently reassigned.\n\nThe complaint also becomes a design brief. With Filomena’s KCV team facilitating, a multi-channel feedback system launches within three weeks: written forms in three languages, a phone-based voice option, KCV intermediaries for people who cannot visit the office, large-print format in the disability section. Community awareness sessions run in all zones.\n\nWithin thirty days, twenty-three new feedback items arrive. Every one is acknowledged within forty-eight hours. Amara’s monitoring note reads: ‘12% complaints awareness — baseline for correction.’ By month four, it reads 79%.",
       "learning_point_summary": "A serious complaint is also a design brief: it reveals exactly where the accountability system is failing. Using it to build something stronger is the highest form of organisational learning.",
       "chs_quote": "Establish a coherent organisational approach to ensure any concerns and complaints are welcomed and acted upon in a timely and appropriate manner. (CHS 5.6)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 5D of Decision 5. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_6"
+      "image_prompt": "A community noticeboard in Manu Camp showing the new multi-channel feedback system: trilingual written forms, a phone number in bold Kailani type, a large-print format mounted at lower height for the disability section. Filomena Tui addresses a small group of women in an outdoor awareness session; two KCV intermediaries hold translated leaflets. Sina Talagi stands at the edge of the group, small notepad in hand, listening with quiet authority. To the right, Maya Chen reviews the feedback dashboard on her tablet — 23 submissions, acknowledgement timestamps visible. The original complaint-box post remains, now with a new trilingual notice beside it. Flat digital illustration, Pacific island humanitarian setting, warm mid-morning palette, sense of survivor-led institutional transformation.",
+      "next_scene_id": "decision_6",
+      "narrative": "Maya drafts the investigation mandate before calling anyone else. She meets Sina the same day — in the KCV office, not the programme tent, with Filomena present as interpreter.\n\nSina says, at the start: “I want to understand what will happen to the information I give you.”\n\nMaya explains the process, the confidentiality protocols, the timeline, who reviews the evidence, and what the possible outcomes are. She asks what Sina needs from HopeForward throughout. Sina asks for a female case officer, a meeting location away from the distribution site, and control over what information is shared with the wider community. Maya writes all three down. All three are met.\n\nThe investigation concludes in nine days. The complaint is substantiated. The volunteer receives a written warning and is permanently reassigned.\n\nThe complaint box is Sina’s. So is the design brief it generates.\n\nWithin three weeks, a new system is live: written forms in three languages, a phone-based voice option, KCV intermediaries, large-print versions in the disability section, community awareness sessions in all zones with Filomena leading.\n\nAmara’s monitoring note reads: ‘12% complaints awareness — baseline for correction.’ By month four, it reads 79%. Twenty-three feedback items in the first thirty days; every one acknowledged within forty-eight hours."
     },
     {
       "id": "decision_6",
