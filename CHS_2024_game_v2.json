@@ -403,8 +403,7 @@
         }
       },
       "situation_summary": "Day 2. HopeForward needs an initial needs assessment before programming begins. Sione warns Maya that Manu Camp has three distinct communities: coastal fishing families (Kailani language primary), inland agricultural households (Tevita dialect), and a group of 340 people with disabilities and elderly individuals housed in a separate section with almost no external contact. A government official is pushing for a rapid written survey in English. A local activist is asking why communities haven't been told what HopeForward is or what rights they have. KCV's Filomena has offered to co-facilitate a structured community dialogue — but it will take 3 days instead of 3 hours. HQ wants a preliminary assessment by end of day.",
-      "status": "placeholder — expand to ~150 words with dialogue, character voices, and emotional stakes",
-      "image_prompt": "PLACEHOLDER — Manu Displacement Camp, morning. Maya stands with Sione, a government official, and Filomena from KCV. Behind them: three distinct groupings of displaced people visible — coastal families near the water, farming families inland, and a quiet corner where elderly and disabled people sit apart from the main activity. Tension between the four adults. Flat illustration, warm morning light, complex crowd composition.",
+      "image_prompt": "Manu Displacement Camp, morning, Day 2 after Cyclone Vera. Maya Chen stands in the open camp yard at a folding table covered in printed maps and a government survey form. To her left: Sione Taufa, HopeForward field vest, field notebook open, jaw set with concern. To her right: a sharp-suited government official, pen tapping an English-language questionnaire. Across the table: Filomena Vaka, KCV executive director, floral blouse and lanyard, holding a 3-day facilitation schedule. Behind the four adults, three distinct groupings of displaced people are visible at the far edge of the frame — coastal families near makeshift fishing gear, farming households with bundles of tools, and a quiet corner where elderly and disabled residents sit apart from the main activity under a patched tarpaulin. Tension between the four standing figures. Flat digital illustration, warm Pacific morning light, complex crowd composition, relief-blue and ochre palette.",
       "options": [
         {
           "id": "1A",
@@ -428,7 +427,6 @@
           "sets_flag": [],
           "consequence_summary": "Assessment is fast, but women-only spaces, the disability section, and dialect speakers are entirely missed. Programme design is based on the needs of those who were easiest to reach.",
           "delayed_impact": "Three months later, a programme review finds that the 340 people with disabilities were never registered — they received no assistance for the entire programme.",
-          "status": "placeholder",
           "next_scene_id": "scene_1A"
         },
         {
@@ -457,7 +455,6 @@
           ],
           "consequence_summary": "Richer data. Disability section's specific needs are documented for the first time. Tevita community reveals a critical unmet need: clean water is the top priority, not food — an assumption that would have led to wrong distribution.",
           "delayed_impact": "KCV becomes a trusted co-implementer for all future community-facing work. Communities actively participate in monitoring six months later.",
-          "status": "placeholder",
           "next_scene_id": "scene_1B"
         },
         {
@@ -482,7 +479,6 @@
           "sets_flag": [],
           "consequence_summary": "The 30% with phones are mostly young men — an economically active but not most-vulnerable segment. The assessment looks complete but systematically misrepresents the camp's needs.",
           "delayed_impact": "Distribution lists based on phone-owner networks miss the most vulnerable. A community elder tells KCV: 'We thought they didn't know we existed.'",
-          "status": "placeholder",
           "next_scene_id": "scene_1C"
         },
         {
@@ -510,10 +506,10 @@
           ],
           "consequence_summary": "The assessment is respected by the councils, but a women's group leader later tells KCV that no women were consulted and the programme design reflects it.",
           "delayed_impact": "When a complaint is later filed about gender-blind distribution criteria, it can be traced directly to the assessment gap.",
-          "status": "placeholder",
           "next_scene_id": "scene_1D"
         }
-      ]
+      ],
+      "narrative": "The government official spreads the survey on the table before Maya has finished her coffee. \"English, twenty questions, three hours,\" he says. \"My enumerators know this camp.\"\n\nSione catches Maya's eye. \"This camp has three different communities,\" he says, quietly but clearly. \"Coastal Kailani, inland Tevita dialect speakers, and a section of about three hundred and forty elderly and disabled people at the far end — almost no outsiders go there. A written English survey won't reach any of them meaningfully.\"\n\nFilomena steps forward, tablet in hand. \"KCV can co-facilitate. Three days: community circles in both languages, a dedicated session for the disability section, a women-only group. We share their rights with them before we ask anything. Consent before data.\"\n\n\"Headquarters wants a preliminary assessment by end of day,\" Maya says, hearing the words as she speaks them. Sione looks at the ground. Filomena waits. The official recaps his pen.\n\nThree days versus three hours. Everyone heard. No one heard. Maya makes her choice."
     },
     {
       "id": "scene_1A",
@@ -522,11 +518,11 @@
       "parent_option": "1A",
       "title": "Invisible and Unheard",
       "narrative_summary": "The survey returns 620 responses — impressive on paper. But the disability section was inaccessible to enumerators without a ramp, Tevita dialect speakers couldn't understand the questions, and the women's section was visited only briefly. When Carlos produces the distribution plan, it is based on the main camp population, with no mention of 340 people who were simply never asked.",
-      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
       "learning_point_summary": "Rapid assessment methods that do not account for who is excluded produce data gaps that become programme gaps. The most marginalised are reliably the least reached.",
       "chs_quote": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised. (CHS 1.1)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 1A of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_2"
+      "image_prompt": "Manu Displacement Camp, late afternoon. Maya and Carlos stand over a laptop showing a clean table: 620 survey responses, 100% distribution coverage against the approved list. Carlos points at the screen, satisfied. Behind them, through the open tent flap, a long concrete ramp leads to the disability section — no enumerator visible, the area quiet and unreached. To the side, a cluster of Tevita-dialect speakers exchange confused looks at a printed English form. Sione stands apart, field notebook pressed to his chest, expression unreadable. A single elderly man in a wheelchair sits alone at the camp perimeter, facing away. Flat digital illustration, fading afternoon light, ochre and grey palette.",
+      "next_scene_id": "decision_2",
+      "narrative": "Carlos sets the laptop on the field table with a small satisfied motion. \"Six hundred and twenty responses. Done by midday. HQ will be happy.\"\n\nMaya scans the summary: coverage mapped against the government population list, every section ticked. It looks complete. It looks like a programme.\n\nSione reads over her shoulder, then walks to the tent entrance and looks toward the far corner of the camp. The disability section. She can see the concrete path that leads there — no enumerator footprints in the wet ground. \"They didn't go in,\" he says. \"No ramp access on their side. The team went around.\"\n\nFilomena arrives with a single sheet of paper. \"Forty-seven Tevita households. I asked them what the survey questions meant. None of them knew.\"\n\nThe number 340 sits in Maya's chest like a stone. Not a data gap. Three hundred and forty people who were never asked a single question. Three months from now, a programme review will confirm they received no assistance at all."
     },
     {
       "id": "scene_1B",
@@ -535,11 +531,11 @@
       "parent_option": "1B",
       "title": "Heard — and the Data Shows It",
       "narrative_summary": "The KCV-led process takes 3 days. HQ is frustrated. But the findings are transformative: the disability section reveals nine families who need modified shelter kits; the Tevita-language session uncovers that clean water is the top priority, overriding the pre-planned food-first approach; women's group participants report that distribution in mixed-gender public spaces is unsafe for them. Maya revises the entire programme plan.",
-      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
       "learning_point_summary": "Participatory needs assessment — designed for inclusion — produces data that single-method surveys never reach. The three days saved months of misdirected programming.",
       "chs_quote": "Ensure people's participation in decisions and actions is meaningful for them and corresponds to their preferred ways of engaging. (CHS 1.4)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 1B of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_2"
+      "image_prompt": "Manu Displacement Camp, end of Day 4. A community dialogue circle is in progress under a large shade shelter: Filomena Vaka facilitates in the foreground, a mixed group of women, elders, youth, and wheelchair users seated in the circle, all visibly engaged. Sione translates quietly at the edge. Maya sits beside a table covered in handwritten flip-chart notes, a map of the camp with disaggregated data pencilled in. One note reads: 'Water — TOP PRIORITY (Tevita).' Another: 'Modified shelter kits — 9 families.' A third: 'Women-only distribution space needed.' Through the shelter's open side: the disability section is visible and active for the first time. Flat digital illustration, warm late-afternoon Pacific light, blues and warm greens.",
+      "next_scene_id": "decision_2",
+      "narrative": "Headquarters sends a second reminder on Day 3. Maya reads it and puts her phone face-down.\n\nOn Day 4, Filomena presents the findings on flip-chart paper pinned to the shelter wall. The disability section: nine families documented for the first time, their specific shelter needs recorded in careful handwriting. The Tevita-language session: a revelation. The community's top priority is not food — it is clean water. The pre-planned food-first approach would have been wrong from the start.\n\nSione reads aloud from his notes. \"Women's group asked that distribution not happen in the main square. They said mixed-gender public spaces feel unsafe for them.\"\n\nMaya crosses out two lines of the programme plan and begins writing new ones. Three days spent. Months of misdirected programming avoided.\n\n\"This is what we needed,\" she says. Filomena nods. It is not a compliment — it is a fact. KCV becomes the trusted co-implementer for every community-facing step that follows."
     },
     {
       "id": "scene_1C",
@@ -548,11 +544,11 @@
       "parent_option": "1C",
       "title": "The Digital Divide",
       "narrative_summary": "The app survey returns 412 responses in 90 minutes. Amara reviews the respondent demographics: 81% male, 74% aged 18-45, 0% from the disability section. The data is clean and fast — and deeply unrepresentative. When Sione points this out, Carlos argues the sample is 'statistically significant.' Maya has to decide whether to flag the gap or proceed.",
-      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
       "learning_point_summary": "Digital tools reflect the inequalities of the communities that use them. Mobile-first approaches without offline alternatives systematically exclude those with least access.",
       "chs_quote": "Communicate in languages and formats that are easily accessible, understandable, respectful and contextually appropriate for people and communities. (CHS 1.3)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 1C of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_2"
+      "image_prompt": "HopeForward field office, 90 minutes after the digital survey launch. Amara sits at a laptop displaying a demographic breakdown dashboard: a stark bar chart showing 81% male respondents, 74% aged 18–45, a bold zero in the disability section column. Carlos stands behind her, arms folded, half-smiling — 412 responses, fast and tidy. Maya stands to the side, arms at her sides, looking at the zero. Through the window: the camp is visible. A group of elderly women sit outside the disability section with no phones in sight. Sione stands at the office door, field notebook open to a page with a single underlined question: 'Who was left out?' Flat digital illustration, harsh midday light, blue-grey office palette contrasting with warm camp colours outside.",
+      "next_scene_id": "decision_2",
+      "narrative": "Ninety minutes. Four hundred and twelve responses. Carlos sends the summary to HQ before Maya has finished reading it.\n\nAmara opens the demographic breakdown quietly. She does not say anything at first. She just rotates the laptop so Maya can see the screen: 81% male respondents, 74% aged 18 to 45. The disability section column reads zero.\n\n\"The sample is statistically significant,\" Carlos says. \"Coverage looks solid.\"\n\n\"Significant for whom?\" Sione asks from the doorway. \"The 30% with smartphones in this camp are mostly young men. We've surveyed the most economically mobile people here. We've built a programme plan for them.\"\n\nMaya thinks of the elderly women she passed this morning near the camp's quiet corner, none of them holding phones. The data is clean. It is also a systematic record of who was easiest to reach — not who needed to be heard. Six months later, a community elder will tell KCV: \"We thought they didn't know we existed.\""
     },
     {
       "id": "scene_1D",
@@ -561,11 +557,11 @@
       "parent_option": "1D",
       "title": "The View from the Top of the Hierarchy",
       "narrative_summary": "The council sessions are efficient and productive. The three council chairs are articulate and community-minded. But when KCV's Filomena reviews the findings, she asks Maya: 'Did you meet any women? Any young people? Anyone with a disability?' The answer is no. The assessment reflects the community — but only the part the council was designed to represent.",
-      "status": "placeholder — expand to ~120 words with character reaction, specific detail, and emotional texture",
       "learning_point_summary": "Community leadership structures are legitimate and important — but they do not automatically represent all community members. Inclusion requires going beyond existing hierarchies.",
       "chs_quote": "Ensure diversity, equity and inclusion considerations are integrated into the organisation's work with people and communities, with attention to the most marginalised. (CHS 1.1)",
-      "image_prompt": "PLACEHOLDER — Consequence scene for option 1D of Decision 1. Describe key visual: who is present, what they see or feel, what is revealed. Flat digital illustration, Pacific island humanitarian setting.",
-      "next_scene_id": "decision_2"
+      "image_prompt": "Manu Camp community hall, morning. Maya sits at a table with three male council chairs — all men over 50, each with a visible leadership symbol: a carved staff, a formal sash, a government lanyard. The meeting is cordial and productive; papers are being signed. But through the hall's open doorway, Filomena Vaka stands in the threshold, arms folded, watching. Her expression is quiet but pointed. Behind Filomena: a group of camp women gathered outside, not invited, watching from a distance. A young woman with a disability sits on a low wall nearby, also excluded. Flat digital illustration, morning light through louvred windows, warm brown tones, institutional setting contrasting with the excluded figures in the doorway.",
+      "next_scene_id": "decision_2",
+      "narrative": "The council meeting takes seventy minutes. All three chairs are articulate, community-minded, and generous with their time. By the end, Maya has four pages of notes and a handshake from each man.\n\nOutside, Filomena is waiting. She doesn't sit down.\n\n\"Did you speak with any women?\" she asks.\n\nMaya hesitates.\n\n\"Any young people? Anyone from the disability section?\"\n\n\"The councils represent the whole community,\" Maya says.\n\nFilomena opens her notebook. \"These three chairs were elected by adult male household heads. That's how the council structure works here. The women's group has a separate leadership — they weren't informed this meeting was happening.\" She pauses. \"The disability section has no council representation at all.\"\n\nThe assessment is locally legitimate and socially respected. It reflects the community — the part of it that the formal hierarchy was built to represent. When a complaint about gender-blind distribution criteria is filed three months later, the gap can be traced directly to today."
     },
     {
       "id": "decision_2",
