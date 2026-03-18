@@ -275,19 +275,19 @@ Context flags are boolean states set by specific option choices. They are tracke
 | `inclusive_assessment` | Decision 1, Option B | Communities expect continued meaningful participation; KCV is a trusted partner for all future activities |
 | `community_informed` | Decision 1, Options B or D | Communities understand their rights and HopeForward's responsibilities |
 | `local_knowledge_built_in` | Decision 2, Option B | Programme is grounded in context and local capacities, improving later adaptation |
-| `referral_pathways_active` | Decision 2, Options B or C | Other cluster members are aware of unmet needs HopeForward referred; strengthens coordination |
+| `referral_pathways_active` | Decision 2, Option B | Other cluster members are aware of unmet needs HopeForward referred; strengthens coordination |
 | `local_ownership_by_design` | Decision 3, Options B or D | KCV and community leaders have formal role in programme governance; reduces dependency risk |
 | `drr_integrated` | Decision 3, Options C or D | Communities have disaster risk knowledge; strengthens long-term resilience |
-| `protection_framework_active` | Decision 4, Option B | PSEA and protection policies are established; staff and communities aware of mechanisms |
-| `data_protection_in_place` | Decision 4, Options B or C | Beneficiary data is handled ethically; reduces risk of future data-related harm |
-| `complaints_trusted` | Decision 5, Option B | Community members actively use feedback channels; complaints data is rich and timely |
-| `survivor_centred_process` | Decision 5, Option B | PSEA standards are actively modelled; staff understand expectations |
+| `protection_framework_active` | Decision 4, Options B or C | PSEA and protection policies are established; staff and communities aware of mechanisms |
+| `data_protection_in_place` | Decision 4, Options B, C or D | Beneficiary data is handled ethically; reduces risk of future data-related harm |
+| `complaints_trusted` | Decision 5, Options B or D | Community members actively use feedback channels; complaints data is rich and timely |
+| `survivor_centred_process` | Decision 5, Options B or D | PSEA standards are actively modelled; staff understand expectations |
 | `cluster_coordination_active` | Decision 6, Option B | HopeForward is a trusted cluster member; geographic duplication resolved; local partners included |
 | `partner_quality_supported` | Decision 6, Options B or C | KCV has received CHS capacity support; their programme quality improves |
 | `gender_data_actioned` | Decision 7, Option B | Gender gap addressed; women and girls receive more targeted programming in later activities |
 | `learning_shared_externally` | Decision 7, Options B or C | Tevita modality shared with cluster; other agencies benefit; HopeForward seen as learning leader |
-| `duty_of_care_upheld` | Decision 8, Option B | Staff trust leadership; retention improves; team culture of accountability is strong |
-| `misconduct_addressed_formally` | Decision 8, Option B | Staff understand code of conduct is enforced; community sees fair process |
+| `duty_of_care_upheld` | Decision 8, Options B, C or D | Staff trust leadership; retention improves; team culture of accountability is strong |
+| `misconduct_addressed_formally` | Decision 8, Options B or D | Staff understand code of conduct is enforced; community sees fair process |
 | `donor_transparent_engagement` | Decision 9, Option B | Donor trusts HopeForward; future funding relationship is stable and honest |
 | `community_resources_transferred` | Decision 9, Options B or C | Remaining resources are in community hands at exit; strengthens local ownership legacy |
 
@@ -408,6 +408,42 @@ Detailed illustration prompts for key interface elements:
 | Consequence screen layout | Full-width consequence scene illustration with narrative text and score-dimension indicators |
 | Score dashboard | Four dimension bars in a horizontal layout with icons and running totals |
 | Ending screen | Badge image, ending title, narrative summary, and reflection question cards |
+
+### Pixel Art Implementation Recommendation
+
+The `pixel_art_implementation` key in `supplementary_assets` contains a full pixel art visual style and engine implementation guide. Summary:
+
+#### Recommended Engine: Ren'Py
+
+[Ren'Py](https://www.renpy.org/) is the primary recommendation — open-source, cross-platform (Windows, macOS, Linux, Android, iOS, Web), and purpose-built for branching narrative games. Its flag/variable system maps directly to `context_flags_system`, and its scripting language is readable by non-programmers. The JSON file can be loaded at runtime with a Python `json.loads()` block.
+
+**Alternatives:**
+
+| Engine | Best For |
+|---|---|
+| RPG Maker MZ | Overworld map, movement mechanics, richer pixel environments |
+| GB Studio 4 | Ultra-minimal Game Boy–style browser demo; conference/event use |
+| Godot 4 | Point-and-click or map-navigation expansion; full open-source control |
+| Twine + SugarCube | Zero-install web prototype; trainer-editable content |
+
+#### Pixel Art Specs
+
+| Setting | Value |
+|---|---|
+| Base canvas | 320×180 px (16:9, integer-scaled to 720p/1080p) |
+| Colour palette | 24-colour Kailani palette (Pacific Teal, Warm Ochre, Tropical Green, Storm Grey, Relief Blue, Warm Coral, three skin tones, and supporting shades) |
+| Character sprites | 48×48 px full-body; 32×48 px bust portrait for dialogue boxes |
+| Backgrounds | 320×180 px, 3 parallax layers |
+| UI tile grid | 8×8 px base grid |
+| Recommended fonts | Press Start 2P (headers), Munro (body/dialogue), Pixel Operator (accessibility variant) |
+
+#### Audio
+
+Chiptune with Pacific island atmosphere. Tools: FamiTracker, LMMS, or BeepBox. Seven distinct music tracks (main menu, each environment type, high/low endings) plus six core sound effects (page turn, positive ding, negative thud, flag-set chime, dialogue blip, chapter transition).
+
+#### Accessibility
+
+Integer scaling only · Font-size toggle (bitmap ↔ system sans-serif) · Text labels on all colour-coded deltas · Minimum 44×44 CSS px tap targets on mobile.
 
 ---
 
