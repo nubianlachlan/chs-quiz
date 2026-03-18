@@ -7,7 +7,7 @@
     "target_audience": "Humanitarian and development sector workers, trainers, and students",
     "estimated_duration_minutes": 45,
     "chs_reference": "Core Humanitarian Standard on Quality and Accountability, 2024",
-    "description": "You are Maya Chen, newly appointed Country Director for HopeForward International in Kailani — a Pacific island nation devastated by Cyclone Vera. Over nine critical decision chapters — one for each CHS commitment — you navigate community rights and participation, timely and effective assistance, building resilience, avoiding harm, complaints and feedback, coordination, learning and improvement, staff management, and ethical resource stewardship. Every choice you make references specific CHS sub-requirements. Choices set context flags that cascade into later decisions, creating real interdependencies. There are four possible endings, shaped by your cumulative score across four dimensions and the flags you have set. All 45 CHS requirements are addressed across the nine decision chapters.",
+    "description": "You are Maya Chen, newly appointed Country Director for HopeForward International in Kailani — a Pacific island nation devastated by Cyclone Vera. Over nine critical decision chapters — one for each CHS commitment — you navigate community rights and participation, timely and effective assistance, building resilience, avoiding harm, complaints and feedback, coordination, learning and improvement, staff management, and ethical resource stewardship. Every choice you make references specific CHS sub-requirements. Choices set context flags that cascade into later decisions, creating real interdependencies. There are four possible endings, shaped by your cumulative score across four dimensions and the flags you have set. All 50 CHS sub-requirements are addressed across the nine decision chapters.",
     "how_to_play": "Read each scene, then choose one of four responses. Choices set context flags that shape the situation you face in later chapters. At the end, your cumulative scores across four dimensions determine which of four endings you reach. After each choice, read the consequence scene — it shows the immediate AND delayed impact of your decision, and which CHS requirements you met or missed. Look for the 'cascading_note' to see how today's choice changes tomorrow's options.",
     "scoring": {
       "dimensions": [
@@ -112,7 +112,7 @@
       },
       {
         "id": "referral_pathways_active",
-        "set_by": "decision_2 option B or C",
+        "set_by": "decision_2 option B",
         "effect_summary": "Other cluster members are aware of unmet needs HopeForward referred; strengthens coordination."
       },
       {
@@ -127,22 +127,22 @@
       },
       {
         "id": "protection_framework_active",
-        "set_by": "decision_4 option B",
+        "set_by": "decision_4 options B or C",
         "effect_summary": "PSEA and protection policies are established; staff and communities aware of mechanisms."
       },
       {
         "id": "data_protection_in_place",
-        "set_by": "decision_4 options B or C",
+        "set_by": "decision_4 options B, C or D",
         "effect_summary": "Beneficiary data is handled ethically; reduces risk of future data-related harm."
       },
       {
         "id": "complaints_trusted",
-        "set_by": "decision_5 option B",
+        "set_by": "decision_5 options B or D",
         "effect_summary": "Community members actively use feedback channels; complaints data is rich and timely."
       },
       {
         "id": "survivor_centred_process",
-        "set_by": "decision_5 option B",
+        "set_by": "decision_5 options B or D",
         "effect_summary": "PSEA standards are actively modelled; staff understand expectations."
       },
       {
@@ -167,12 +167,12 @@
       },
       {
         "id": "duty_of_care_upheld",
-        "set_by": "decision_8 option B",
+        "set_by": "decision_8 options B, C or D",
         "effect_summary": "Staff trust leadership; retention improves; team culture of accountability is strong."
       },
       {
         "id": "misconduct_addressed_formally",
-        "set_by": "decision_8 option B",
+        "set_by": "decision_8 options B or D",
         "effect_summary": "Staff understand code of conduct is enforced; community sees fair process."
       },
       {
@@ -2200,73 +2200,85 @@
       "prompt_number": 1,
       "title": "Expand the Prologue and Epilogue",
       "chs_focus": "All nine commitments (framing)",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand the 'prologue' and 'epilogue' scenes into full narrative text. The prologue (~200 words) should place Maya in Kailani with vivid sensory detail, introduce Sione, and create a sense of stakes and complexity. The epilogue (~200 words) should be reflective and personal — calling back to specific decisions and characters from the game. Also replace PLACEHOLDER image_prompt fields for both scenes with complete AI illustration prompts (flat digital illustration style, Pacific island humanitarian setting, consistent character descriptions). Remove 'status' fields when done."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand the 'prologue' and 'epilogue' scenes into full narrative text. The prologue (~200 words) should place Maya in Kailani with vivid sensory detail, introduce Sione, and create a sense of stakes and complexity. The epilogue (~200 words) should be reflective and personal — calling back to specific decisions and characters from the game. Also replace PLACEHOLDER image_prompt fields for both scenes with complete AI illustration prompts (flat digital illustration style, Pacific island humanitarian setting, consistent character descriptions). Remove 'status' fields when done.",
+      "id": "expand_prologue_epilogue"
     },
     {
       "prompt_number": 2,
       "title": "Expand Decision 1 — CHS 1: Participation & Rights",
       "chs_focus": "Requirements 1.1, 1.2, 1.3, 1.4, 1.5, 1.6",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_1' and its four consequence scenes ('scene_1A', 'scene_1B', 'scene_1C', 'scene_1D'). For 'decision_1': write a full scene narrative (~150 words) with dialogue from Sione, Filomena (KCV), and the government official. Show Maya's internal conflict between speed and inclusion. For each consequence scene: write a full narrative (~120 words) with specific character reactions, delayed impact detail, and a complete image_prompt. Requirements 1.1-1.6 should each be visibly addressed or missed in the relevant options. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_1' and its four consequence scenes ('scene_1A', 'scene_1B', 'scene_1C', 'scene_1D'). For 'decision_1': write a full scene narrative (~150 words) with dialogue from Sione, Filomena (KCV), and the government official. Show Maya's internal conflict between speed and inclusion. For each consequence scene: write a full narrative (~120 words) with specific character reactions, delayed impact detail, and a complete image_prompt. Requirements 1.1-1.6 should each be visibly addressed or missed in the relevant options. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly.",
+      "id": "expand_decision_1_participation"
     },
     {
       "prompt_number": 3,
       "title": "Expand Decision 2 — CHS 2: Timely & Effective Support",
       "chs_focus": "Requirements 2.1, 2.2, 2.3, 2.4, 2.5, 2.6",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_2' and its four consequence scenes ('scene_2A', 'scene_2B', 'scene_2C', 'scene_2D'). Show the context_flag_effects in the scene narrative — if inclusive_assessment was set, Sione has richer data. Include dialogue from Carlos (logistics pressure) and the donor representative (compliance pressure). For each consequence: ~120 words with specific Sphere standard references, delayed impacts, and image_prompts. Requirements 2.1-2.6 should each be visibly addressed or missed. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_2' and its four consequence scenes ('scene_2A', 'scene_2B', 'scene_2C', 'scene_2D'). Show the context_flag_effects in the scene narrative — if inclusive_assessment was set, Sione has richer data. Include dialogue from Carlos (logistics pressure) and the donor representative (compliance pressure). For each consequence: ~120 words with specific Sphere standard references, delayed impacts, and image_prompts. Requirements 2.1-2.6 should each be visibly addressed or missed. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly.",
+      "id": "expand_decision_2_timely_support"
     },
     {
       "prompt_number": 4,
       "title": "Expand Decision 3 — CHS 3: Resilience & Local Ownership",
       "chs_focus": "Requirements 3.1, 3.2, 3.3, 3.4, 3.5",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_3' and its four consequence scenes ('scene_3A', 'scene_3B', 'scene_3C', 'scene_3D'). Show the HQ direct delivery pressure, Filomena's co-governance proposal, and Sione's traditional knowledge offer. Reference the approaching tropical storm as a real risk that gives DRR integration urgency. For each consequence: ~120 words with context-flag effects (especially for options B and D which set 'local_ownership_by_design' and 'drr_integrated'), delayed impacts, and image_prompts. Requirements 3.1-3.5 addressed or missed per option. Remove PLACEHOLDER and 'status' fields."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_3' and its four consequence scenes ('scene_3A', 'scene_3B', 'scene_3C', 'scene_3D'). Show the HQ direct delivery pressure, Filomena's co-governance proposal, and Sione's traditional knowledge offer. Reference the approaching tropical storm as a real risk that gives DRR integration urgency. For each consequence: ~120 words with context-flag effects (especially for options B and D which set 'local_ownership_by_design' and 'drr_integrated'), delayed impacts, and image_prompts. Requirements 3.1-3.5 addressed or missed per option. Remove PLACEHOLDER and 'status' fields.",
+      "id": "expand_decision_3_resilience"
     },
     {
       "prompt_number": 5,
       "title": "Expand Decision 4 — CHS 4: Do No Harm & Protection",
       "chs_focus": "Requirements 4.1, 4.2, 4.3, 4.4, 4.5",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_4' and its four consequence scenes ('scene_4A', 'scene_4B', 'scene_4C', 'scene_4D'). Show the four simultaneous risks as concrete, urgent details — not abstractions. Reference the Tevita Village coercion signal, the specific Google Drive data exposure, the truck idling near children, and the absent PSEA framework. Show Carlos's push for scale-up on schedule. For each consequence: ~120 words with specific harm descriptions, community member voices, and image_prompts. All five requirements (4.1-4.5) addressed or missed per option. Remove PLACEHOLDER and 'status' fields."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_4' and its four consequence scenes ('scene_4A', 'scene_4B', 'scene_4C', 'scene_4D'). Show the four simultaneous risks as concrete, urgent details — not abstractions. Reference the Tevita Village coercion signal, the specific Google Drive data exposure, the truck idling near children, and the absent PSEA framework. Show Carlos's push for scale-up on schedule. For each consequence: ~120 words with specific harm descriptions, community member voices, and image_prompts. All five requirements (4.1-4.5) addressed or missed per option. Remove PLACEHOLDER and 'status' fields.",
+      "id": "expand_decision_4_do_no_harm"
     },
     {
       "prompt_number": 6,
       "title": "Expand Decision 5 — CHS 5: Complaints & Feedback",
       "chs_focus": "Requirements 5.1, 5.2, 5.3, 5.4, 5.5, 5.6",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_5' and its four consequence scenes ('scene_5A', 'scene_5B', 'scene_5C', 'scene_5D'). Give Sina Talagi a specific, dignified voice in the scene narrative. Show the 12% complaints awareness finding as a concrete management failure. Reference how the protection_framework_active flag (if set in Decision 4) changes what systems are available. For each consequence: ~120 words with Sina's experience at the centre (survivor-centred), staff reaction, community perception, and image_prompts. All six requirements (5.1-5.6) visible. Remove PLACEHOLDER and 'status'."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_5' and its four consequence scenes ('scene_5A', 'scene_5B', 'scene_5C', 'scene_5D'). Give Sina Talagi a specific, dignified voice in the scene narrative. Show the 12% complaints awareness finding as a concrete management failure. Reference how the protection_framework_active flag (if set in Decision 4) changes what systems are available. For each consequence: ~120 words with Sina's experience at the centre (survivor-centred), staff reaction, community perception, and image_prompts. All six requirements (5.1-5.6) visible. Remove PLACEHOLDER and 'status'.",
+      "id": "expand_decision_5_complaints"
     },
     {
       "prompt_number": 7,
       "title": "Expand Decision 6 — CHS 6: Coordination & Complementarity",
       "chs_focus": "Requirements 6.1, 6.2, 6.3, 6.4",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_6' and its four consequence scenes ('scene_6A', 'scene_6B', 'scene_6C', 'scene_6D'). Show the concrete impacts of the geographic duplication in the two villages. Give Dr. Ana Tuivaga (KAN) a specific, compelling voice — her exclusion is the human face of CHS 6 failure. Reference how local_ownership_by_design and referral_pathways_active flags (if set) change the dynamics. For each consequence: ~120 words with inter-agency tension, community confusion, and image_prompts. All four requirements (6.1-6.4) visible. Remove PLACEHOLDER and 'status'."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_6' and its four consequence scenes ('scene_6A', 'scene_6B', 'scene_6C', 'scene_6D'). Show the concrete impacts of the geographic duplication in the two villages. Give Dr. Ana Tuivaga (KAN) a specific, compelling voice — her exclusion is the human face of CHS 6 failure. Reference how local_ownership_by_design and referral_pathways_active flags (if set) change the dynamics. For each consequence: ~120 words with inter-agency tension, community confusion, and image_prompts. All four requirements (6.1-6.4) visible. Remove PLACEHOLDER and 'status'.",
+      "id": "expand_decision_6_coordination"
     },
     {
       "prompt_number": 8,
       "title": "Expand Decision 7 — CHS 7: Learning & Continuous Improvement",
       "chs_focus": "Requirements 7.1, 7.2, 7.3, 7.4, 7.5",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_7' and its four consequence scenes ('scene_7A', 'scene_7B', 'scene_7C', 'scene_7D'). Give Amara a specific, confident voice in presenting the monitoring findings. Show Carlos's 'preliminary and contestable' pushback in dialogue. Reference the two specific community members whose feedback was not acknowledged — give them names and brief context. Show how complaints_trusted and inclusive_assessment flags make the data richer. For each consequence: ~120 words with specific outcome data, community voice, and image_prompts. All five requirements (7.1-7.5) visible. Remove PLACEHOLDER and 'status'."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_7' and its four consequence scenes ('scene_7A', 'scene_7B', 'scene_7C', 'scene_7D'). Give Amara a specific, confident voice in presenting the monitoring findings. Show Carlos's 'preliminary and contestable' pushback in dialogue. Reference the two specific community members whose feedback was not acknowledged — give them names and brief context. Show how complaints_trusted and inclusive_assessment flags make the data richer. For each consequence: ~120 words with specific outcome data, community voice, and image_prompts. All five requirements (7.1-7.5) visible. Remove PLACEHOLDER and 'status'.",
+      "id": "expand_decision_7_learning"
     },
     {
       "prompt_number": 9,
       "title": "Expand Decision 8 — CHS 8: Staff Competence & Wellbeing",
       "chs_focus": "Requirements 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_8' and its four consequence scenes ('scene_8A', 'scene_8B', 'scene_8C', 'scene_8D'). Give Leila's distress a specific, human voice through her WhatsApp messages. Give Tevi's discrimination experience careful, dignified framing. Show the training budget reallocation as Carlos's pragmatic decision that ignored a contract commitment. Reference how duty_of_care_upheld and protection_framework_active flags (if set) change staff expectations. For each consequence: ~120 words with specific staff experiences, HR outcomes, and image_prompts. All seven requirements (8.1-8.7) visible. Remove PLACEHOLDER and 'status'."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_8' and its four consequence scenes ('scene_8A', 'scene_8B', 'scene_8C', 'scene_8D'). Give Leila's distress a specific, human voice through her WhatsApp messages. Give Tevi's discrimination experience careful, dignified framing. Show the training budget reallocation as Carlos's pragmatic decision that ignored a contract commitment. Reference how duty_of_care_upheld and protection_framework_active flags (if set) change staff expectations. For each consequence: ~120 words with specific staff experiences, HR outcomes, and image_prompts. All seven requirements (8.1-8.7) visible. Remove PLACEHOLDER and 'status'.",
+      "id": "expand_decision_8_staff_wellbeing"
     },
     {
       "prompt_number": 10,
       "title": "Expand Decision 9 — CHS 9: Ethical Resource Management",
       "chs_focus": "Requirements 9.1, 9.2, 9.3, 9.4, 9.5, 9.6",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_9' and its four consequence scenes ('scene_9A', 'scene_9B', 'scene_9C', 'scene_9D'). Give Toma a specific, careful voice — he is a principled professional who is also professionally vulnerable. Show the HQ visibility campaign request as a real institutional pressure, not an obvious wrongdoing. Reference how donor_transparent_engagement and community_informed flags (if set) change what is possible. For each consequence: ~120 words with specific financial, ethical, and community outcomes, and image_prompts. All six requirements (9.1-9.6) visible. Remove PLACEHOLDER."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand 'decision_9' and its four consequence scenes ('scene_9A', 'scene_9B', 'scene_9C', 'scene_9D'). Give Toma a specific, careful voice — he is a principled professional who is also professionally vulnerable. Show the HQ visibility campaign request as a real institutional pressure, not an obvious wrongdoing. Reference how donor_transparent_engagement and community_informed flags (if set) change what is possible. For each consequence: ~120 words with specific financial, ethical, and community outcomes, and image_prompts. All six requirements (9.1-9.6) visible. Remove PLACEHOLDER.",
+      "id": "expand_decision_9_resource_management"
     },
     {
       "prompt_number": 11,
       "title": "Write the Four Endings",
       "chs_focus": "All 9 commitments (synthesis)",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand all four endings: 'ending_transformative', 'ending_committed', 'ending_struggling', and 'ending_crisis'. For each ending: write a full narrative_summary (~150 words) that references specific decisions, characters, and outcomes from the game — reflecting what Maya did well or where she fell short across all nine CHS commitments. Reference the context flags the player may have set. The tone should be reflective, human, and educational — not punitive. Write badge_image_prompts that visually represent the journey. Keep the reflection_questions and chs_requirements fields exactly as-is. Remove PLACEHOLDER."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand all four endings: 'ending_transformative', 'ending_committed', 'ending_struggling', and 'ending_crisis'. For each ending: write a full narrative_summary (~150 words) that references specific decisions, characters, and outcomes from the game — reflecting what Maya did well or where she fell short across all nine CHS commitments. Reference the context flags the player may have set. The tone should be reflective, human, and educational — not punitive. Write badge_image_prompts that visually represent the journey. Keep the reflection_questions and chs_requirements fields exactly as-is. Remove PLACEHOLDER.",
+      "id": "write_four_endings"
     },
     {
       "prompt_number": 12,
       "title": "Expand Supporting Characters, UI Design, and Game Engine Guidance",
       "chs_focus": "All commitments (implementation)",
-      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand the 'supplementary_assets' section: Write backstory paragraphs (~80 words each) for all eight key characters (Maya, Sione, Filomena, Leila, Carlos, Amara, Toma, Dr. Ana Tuivaga). Replace all image_prompt PLACEHOLDERs with complete, consistent AI illustration prompts (flat digital illustration style, Pacific island setting, consistent palette). For ui_design_prompts: write production-ready prompts for main menu, score dashboard, decision screen, chapter transition card, consequence screen, and ending screen. Add a game_engine_notes section with guidance on how to implement the context_flags_system — which flags affect which later scene narrative, and how."
+      "prompt": "Using the skeleton in CHS_2024_game_v2.json, expand the 'supplementary_assets' section: Write backstory paragraphs (~80 words each) for all eight key characters (Maya, Sione, Filomena, Leila, Carlos, Amara, Toma, Dr. Ana Tuivaga). Replace all image_prompt PLACEHOLDERs with complete, consistent AI illustration prompts (flat digital illustration style, Pacific island setting, consistent palette). For ui_design_prompts: write production-ready prompts for main menu, score dashboard, decision screen, chapter transition card, consequence screen, and ending screen. Add a game_engine_notes section with guidance on how to implement the context_flags_system — which flags affect which later scene narrative, and how.",
+      "id": "expand_supporting_characters_ui_engine"
     }
   ],
   "supplementary_assets": {
@@ -2523,7 +2535,7 @@
           },
           {
             "flag": "duty_of_care_upheld",
-            "set_by": "decision_8 options B or D",
+            "set_by": "decision_8 options B, C or D",
             "affects_scenes": [
               "decision_9"
             ],
@@ -2575,6 +2587,368 @@
         "chs_badge_rendering": "Each decision scene references a CHS commitment number. Render the CHS commitment badge (commitment number and short title) as a persistent element on the decision screen so the learning connection is always visible. The badge should appear even when the player is reading the situation and choosing an option.",
         "score_delta_animation": "When displaying score deltas on the consequence screen, animate each dimension change sequentially (200ms delay between dimensions) to draw attention to the multi-dimensional impact of each choice. Positive deltas: teal fill animation upward. Negative deltas: coral fill animation downward."
       }
+    },
+    "pixel_art_implementation": {
+      "overview": "This section provides a pixel art visual style recommendation and engine implementation guide for Kailani Rising. The pixel art approach is an intentional design choice: the lo-fi aesthetic contrasts with the weight of humanitarian subject matter, creating emotional distance that helps learners engage with difficult scenarios without feeling overwhelmed. Retro JRPG and visual-novel conventions are familiar to a wide adult audience and are well-suited to a decision-driven narrative.",
+      "recommended_tech_stack": {
+        "primary_recommendation": "Ren'Py (Python-based visual novel engine)",
+        "rationale": "Ren'Py is open-source, cross-platform (Windows, macOS, Linux, Android, iOS, Web), and designed precisely for dialogue-heavy branching narratives. It natively supports variables, conditional branches (if/else), flags, scene transitions, and scored endings — a direct match to the CHS_2024_game_v2.json architecture. Its scripting language is readable by non-programmers, which suits humanitarian training teams who may want to modify content without a full developer.",
+        "alternatives": [
+          {
+            "engine": "RPG Maker MZ",
+            "rationale": "Excellent pixel art tooling and a large community asset library. Best if a full overworld map or movement mechanic is desired (e.g. Maya walking between camp, office, and Northern Coast). Higher visual complexity but requires more development time."
+          },
+          {
+            "engine": "GB Studio 4",
+            "rationale": "Produces Game Boy–style pixel art games that run in a browser or on actual Game Boy hardware. Extreme accessibility and novelty value — effective for conference and event demos. Limited in branching complexity; suitable for a condensed 3-decision version of the game."
+          },
+          {
+            "engine": "Godot 4 (GDScript)",
+            "rationale": "Full-featured open-source engine supporting pixel art rendering (nearest-neighbour scaling, integer zoom). Suitable if the game is to expand beyond a visual novel into a point-and-click or map-navigation format. Higher technical overhead than Ren'Py."
+          },
+          {
+            "engine": "Twine + SugarCube (web)",
+            "rationale": "Zero-install, runs in any browser. No pixel art native support, but CSS pixel art filters and inline sprite images can achieve the style. Best for rapid prototyping and trainer-editable content. Lowest barrier to deployment."
+          }
+        ],
+        "data_format_note": "CHS_2024_game_v2.json can be loaded directly by a lightweight JavaScript or Python parser. In Ren'Py, the JSON is best converted to a Python dictionary at game start (json.loads) and scenes rendered via a dynamic label loop. In Godot, use the built-in JSON class. The context_flags_system maps directly to a Ren'Py persistent dictionary or a Godot Dictionary, initialised false at game start."
+      },
+      "pixel_art_specifications": {
+        "base_canvas_resolution": "320x180 pixels (16:9, integer-scaled to 1280x720 or 1920x1080)",
+        "colour_palette": {
+          "name": "Kailani 24-colour palette",
+          "rationale": "A constrained 24-colour palette enforces visual consistency across all artists and assets, evokes the SNES/GBA era, and is practical for solo or small-team development.",
+          "palette": [
+            {
+              "name": "Pacific Teal",
+              "hex": "#2E7D8C",
+              "use": "UI headers, water, active flags"
+            },
+            {
+              "name": "Teal Highlight",
+              "hex": "#4DB8C8",
+              "use": "Water reflections, UI highlights"
+            },
+            {
+              "name": "Teal Shadow",
+              "hex": "#1A4F5A",
+              "use": "Deep water, shadow on teal surfaces"
+            },
+            {
+              "name": "Warm Ochre",
+              "hex": "#C8832A",
+              "use": "Soil, wood, warm UI accents"
+            },
+            {
+              "name": "Ochre Highlight",
+              "hex": "#E8A94E",
+              "use": "Sand, sun-lit ground"
+            },
+            {
+              "name": "Ochre Shadow",
+              "hex": "#7A4A10",
+              "use": "Dark soil, tree trunks"
+            },
+            {
+              "name": "Tropical Green",
+              "hex": "#3A8C40",
+              "use": "Healthy vegetation, positive score fill"
+            },
+            {
+              "name": "Green Highlight",
+              "hex": "#68C46E",
+              "use": "Palm fronds, grass highlights"
+            },
+            {
+              "name": "Green Shadow",
+              "hex": "#1E5622",
+              "use": "Dense foliage shadow"
+            },
+            {
+              "name": "Storm Grey",
+              "hex": "#6E7B82",
+              "use": "Damaged structures, storm clouds"
+            },
+            {
+              "name": "Grey Highlight",
+              "hex": "#A8B8BE",
+              "use": "Concrete, corrugated iron highlights"
+            },
+            {
+              "name": "Grey Shadow",
+              "hex": "#3A454A",
+              "use": "Deep shadow, debris"
+            },
+            {
+              "name": "Relief Blue",
+              "hex": "#2456A4",
+              "use": "HopeForward vests, UN branding"
+            },
+            {
+              "name": "Sky Blue",
+              "hex": "#7CB8E8",
+              "use": "Clearing sky, hope moments"
+            },
+            {
+              "name": "Tarp Blue",
+              "hex": "#4888CC",
+              "use": "Blue tarp shelters (iconic displacement imagery)"
+            },
+            {
+              "name": "Warm Coral",
+              "hex": "#D45C4A",
+              "use": "Negative score fill, warning UI"
+            },
+            {
+              "name": "Skin Tone 1",
+              "hex": "#F0C89A",
+              "use": "Character skin — lightest"
+            },
+            {
+              "name": "Skin Tone 2",
+              "hex": "#C8885A",
+              "use": "Character skin — medium"
+            },
+            {
+              "name": "Skin Tone 3",
+              "hex": "#7A4830",
+              "use": "Character skin — dark"
+            },
+            {
+              "name": "Hair Dark",
+              "hex": "#1C1410",
+              "use": "Dark hair (Maya, Sione, Filomena)"
+            },
+            {
+              "name": "Warm White",
+              "hex": "#F2EDE4",
+              "use": "Text backgrounds, paper, clothing"
+            },
+            {
+              "name": "UI Dark",
+              "hex": "#1A2028",
+              "use": "Text, outlines, UI borders"
+            },
+            {
+              "name": "Amber Flag",
+              "hex": "#E8A020",
+              "use": "Active context flag banners"
+            },
+            {
+              "name": "Pure White",
+              "hex": "#FFFFFF",
+              "use": "UI text on dark backgrounds"
+            }
+          ]
+        },
+        "sprite_specifications": {
+          "character_portrait_size": "48x48 pixels (full body standing) or 32x48 pixels (bust portrait for dialogue)",
+          "animation_frames": "4-frame idle animation (2 frames left, 2 frames right), 4-frame walk cycle, 2-frame talk animation (mouth open/closed)",
+          "character_sprites_required": [
+            {
+              "id": "char_maya",
+              "name": "Maya Chen",
+              "palette_notes": "Light-blue HopeForward vest, dark hair, Skin Tone 2, clipboard prop"
+            },
+            {
+              "id": "char_sione",
+              "name": "Sione Taufa",
+              "palette_notes": "Green HopeForward field shirt, dark skin Tone 3, field notebook prop"
+            },
+            {
+              "id": "char_filomena",
+              "name": "Filomena Vaka",
+              "palette_notes": "Floral blouse in teal/ochre, Skin Tone 3, tablet prop"
+            },
+            {
+              "id": "char_leila",
+              "name": "Leila Hassan",
+              "palette_notes": "Dusty field vest, headscarf in storm grey, Skin Tone 2, satellite phone prop"
+            },
+            {
+              "id": "char_carlos",
+              "name": "Carlos Reyes",
+              "palette_notes": "Logistics uniform in grey, clipboard, Skin Tone 2"
+            },
+            {
+              "id": "char_amara",
+              "name": "Amara Diallo",
+              "palette_notes": "Blue data-analyst shirt, glasses, Skin Tone 3, laptop prop"
+            },
+            {
+              "id": "char_toma",
+              "name": "Toma Faleolo",
+              "palette_notes": "Formal shirt in warm white, Skin Tone 3, ledger prop"
+            },
+            {
+              "id": "char_kan_director",
+              "name": "Dr. Ana Tuivaga",
+              "palette_notes": "Professional blazer in Pacific Teal, Skin Tone 2, ID lanyard"
+            },
+            {
+              "id": "char_sina",
+              "name": "Sina Talagi",
+              "palette_notes": "Simple camp clothing, Skin Tone 3, folded letter prop"
+            }
+          ]
+        },
+        "background_specifications": {
+          "size": "320x180 pixels (full canvas)",
+          "parallax_layers": 3,
+          "layer_guidance": "Layer 1 (far background): sky, distant landscape, horizon. Layer 2 (midground): buildings, tents, vegetation. Layer 3 (foreground): props, furniture, interactive objects.",
+          "backgrounds_required": [
+            {
+              "id": "bg_port_hana_aerial",
+              "scene": "prologue",
+              "description": "Aerial view of Port Hana — aid trucks on runway, blue tarps on rooftops, brown floodwater in streets, storm-clearing sky"
+            },
+            {
+              "id": "bg_manu_camp_yard",
+              "scene": "decision_1, scene_1A, scene_1B, scene_1C, scene_1D",
+              "description": "Camp yard, folding tables, tarp shelters, crowd of displaced people in background"
+            },
+            {
+              "id": "bg_distribution_point",
+              "scene": "decision_2, scene_2A, scene_2B, scene_2C, scene_2D",
+              "description": "Camp distribution area, pallets of supplies, HopeForward banner, crowd queuing"
+            },
+            {
+              "id": "bg_tevita_village",
+              "scene": "decision_3, scene_3A, scene_3B, scene_3C, scene_3D",
+              "description": "Remote inland village clearing, corrugated-roof community shelter, damaged palm trees, community members gathered"
+            },
+            {
+              "id": "bg_northern_coast_road",
+              "scene": "decision_4, scene_4A, scene_4B, scene_4C, scene_4D",
+              "description": "Damaged coastal road, aid truck, cracked infrastructure, distant ocean, stormy atmosphere"
+            },
+            {
+              "id": "bg_hopeforward_office",
+              "scene": "decision_5, scene_5A, scene_5B, scene_5C, scene_5D",
+              "description": "Small NGO office in Port Hana, maps on wall, complaint box visible, fluorescent lighting"
+            },
+            {
+              "id": "bg_un_cluster_room",
+              "scene": "decision_6, scene_6A, scene_6B, scene_6C, scene_6D",
+              "description": "UN cluster coordination room, white boards, agency logos, folding chairs, mixed group of coordinators"
+            },
+            {
+              "id": "bg_field_data_tent",
+              "scene": "decision_7, scene_7A, scene_7B, scene_7C, scene_7D",
+              "description": "Field data tent, laptop, printed charts, Amara's M&E workstation, afternoon camp light through canvas"
+            },
+            {
+              "id": "bg_talio_staff_base",
+              "scene": "decision_8, scene_8A, scene_8B, scene_8C, scene_8D",
+              "description": "Talio sub-district staff base, briefing room, whiteboard, worried team atmosphere"
+            },
+            {
+              "id": "bg_hopeforward_boardroom",
+              "scene": "decision_9, scene_9A, scene_9B, scene_9C, scene_9D",
+              "description": "HopeForward boardroom, donor video-call on laptop, Toma's finance sheets, formal end-of-programme atmosphere"
+            },
+            {
+              "id": "bg_airport_departure",
+              "scene": "epilogue",
+              "description": "Port Hana airport departure gate, large window showing recovering coastline, late afternoon light"
+            }
+          ]
+        },
+        "ui_pixel_art_elements": {
+          "tile_size": "8x8 pixels (base grid for all UI elements)",
+          "dialogue_box": "Full-width bar at bottom, 320x48 pixels, 2-pixel border in UI Dark, Warm White fill, character name plate top-left in Pacific Teal, text in UI Dark at 8px monospace or clear pixel font (recommend 'Munro', 'Press Start 2P' at half-size, or a custom 5x7 bitmap font)",
+          "option_buttons": "Full-width 320x16 pixel tiles, stacked with 2px gap, labelled A/B/C/D, Pacific Teal fill on hover/selected, storm grey default, rounded 2-pixel corners",
+          "score_bars": "16-pixel-tall horizontal progress bars with 2-pixel border, dimension colour fill animated at 4px per frame step, 3-digit numeric label in Warm White to the right",
+          "flag_chips": "16x8 pixel pill shapes with 1-pixel border, Amber Flag fill when active, grey when inactive, 5-pixel label text",
+          "chapter_transition_card": "Centred 200x120 pixel card on dark overlay, Pacific Teal border, chapter number large at top, woven pattern bottom border in 8x8 tiles",
+          "chs_badge": "24x24 pixel badge rendered as a pixelated coin or shield icon with the commitment number in the centre, coloured by commitment (matches chapter_transition colour per chapter)"
+        },
+        "recommended_fonts": [
+          {
+            "name": "Press Start 2P",
+            "source": "Google Fonts (free)",
+            "use": "Chapter titles, ending titles, UI headers — at 8px gives classic Game Boy feel"
+          },
+          {
+            "name": "Munro",
+            "source": "Ten by Twenty (free)",
+            "use": "Body text, dialogue, option labels — highly readable bitmap font at small sizes"
+          },
+          {
+            "name": "Pixel Operator",
+            "source": "itch.io (free)",
+            "use": "Alternative body font — slightly larger x-height, recommended for accessibility on high-DPI screens"
+          }
+        ],
+        "audio_recommendations": {
+          "music_style": "Chiptune with Pacific island and humanitarian atmosphere. Recommended tools: FamiTracker (NES chiptune), LMMS with 8-bit plugins, or BeepBox (browser-based). Each chapter should have a distinct ambient track; the epilogue track should fade between the crisis mode and transformative leader themes based on final score.",
+          "suggested_tracks": [
+            {
+              "id": "mus_main_menu",
+              "mood": "Hopeful but tense — Pacific island melody over driving bass, storm undertone"
+            },
+            {
+              "id": "mus_camp_day",
+              "mood": "Urgent, warm — acoustic-style chiptune, human activity"
+            },
+            {
+              "id": "mus_north_coast",
+              "mood": "Tense, isolated — sparse melody, distant wind sound effect"
+            },
+            {
+              "id": "mus_office",
+              "mood": "Focused, bureaucratic — steady rhythm, minimal melody"
+            },
+            {
+              "id": "mus_community",
+              "mood": "Warm, communal — major key, gentle percussion"
+            },
+            {
+              "id": "mus_ending_high",
+              "mood": "Triumphant, Pacific sunrise — full chiptune orchestration"
+            },
+            {
+              "id": "mus_ending_low",
+              "mood": "Reflective, unresolved — minor key, slower tempo"
+            }
+          ],
+          "sound_effects": [
+            "Page turn (decision confirmed)",
+            "Coin / positive ding (positive score delta)",
+            "Low thud (negative score delta)",
+            "Flag set chime (context flag activated)",
+            "Dialogue blip (character speech indicator, one per character)",
+            "Chapter transition swoosh"
+          ]
+        }
+      },
+      "ren_py_implementation_sketch": {
+        "description": "Skeleton Ren'Py script structure for loading CHS_2024_game_v2.json and rendering the first decision. Expand this pattern for all nine decisions.",
+        "file_structure": [
+          "game/",
+          "  script.rpy          — main game flow, scene rendering loop",
+          "  json_loader.rpy     — Python block to load and parse CHS_2024_game_v2.json",
+          "  flags.rpy           — flag initialisation and helper functions",
+          "  characters.rpy      — character definitions and sprite assignments",
+          "  screens.rpy         — custom screens: decision_screen, consequence_screen, score_dashboard, ending_screen",
+          "  images/",
+          "    bg/               — background pixel art (320x180 PNG, nearest-neighbour)",
+          "    sprites/          — character sprites (48x48 PNG spritesheets, 4 frames)",
+          "    ui/               — UI tiles, flag chips, badges",
+          "  audio/",
+          "    music/            — .ogg chiptune tracks",
+          "    sfx/              — .ogg sound effects"
+        ],
+        "script_rpy_sketch": "# script.rpy — simplified skeleton\ndefault flags = {f['id']: False for f in game_data['context_flags_system']['flags']}\ndefault scores = {'community_trust': 0, 'staff_wellbeing': 0, 'program_quality': 0, 'accountability': 0}\n\nlabel start:\n    python:\n        import json\n        with open(config.gamedir + '/CHS_2024_game_v2.json', 'r') as f:\n            game_data = json.load(f)\n        scenes_by_id = {s['id']: s for s in game_data['scenes']}\n        current_scene_id = 'prologue'\n    jump scene_loop\n\nlabel scene_loop:\n    python:\n        scene = scenes_by_id[current_scene_id]\n    if scene['type'] == 'narrative':\n        jump render_narrative\n    elif scene['type'] == 'decision':\n        jump render_decision\n    elif scene['type'] == 'consequence':\n        jump render_consequence\n\nlabel render_decision:\n    show screen decision_screen(scene, flags, scores)\n    $ chosen_option_id = ui.interact()\n    python:\n        option = next(o for o in scene['options'] if o['id'] == chosen_option_id)\n        for dim, val in option['score_effects'].items():\n            scores[dim] += val\n        for flag_id in option['sets_flag']:\n            flags[flag_id] = True\n        current_scene_id = option['consequence_scene_id']\n    jump scene_loop"
+      },
+      "accessibility_notes": [
+        "Use integer scaling only (1×, 2×, 3×, 4×) — never fractional scaling — to preserve pixel art crispness.",
+        "Provide a font-size toggle that switches from pixel font to a system sans-serif (e.g. Atkinson Hyperlegible) for players who find bitmap fonts hard to read.",
+        "Ensure all colour-coded score deltas are also labelled with text (do not rely on colour alone — support colour-blind players).",
+        "Provide subtitles for any voice-acted content.",
+        "Minimum tap target size on mobile: 44x44 CSS pixels, equivalent to at least 22x22 game pixels at 2× scale.",
+        "Translate the pixel art option buttons and dialogue boxes into screen-reader-friendly HTML alt text if deploying as a web app."
+      ]
     }
   }
 }
