@@ -1,56 +1,431 @@
-# Kailani Rising: A Humanitarian Roleplay
+# Field Ready: A Humanitarian Adventure — Game Build Guide
 
-**File:** `CHS_2024_game_v2.json`
-**Version:** 3.0-skeleton
-**Status:** Skeleton — all 9 CHS commitments covered; use `development_prompts` to expand each section
+**File:** `CHS_2024_game.json`
+**Version:** 1.0
 **Reference:** Core Humanitarian Standard on Quality and Accountability, 2024
 
 ---
 
 ## Overview
 
-*Kailani Rising: A Humanitarian Roleplay* is a comprehensive branching narrative game covering all nine commitments of the Core Humanitarian Standard (CHS) 2024. Players take the role of **Maya Chen**, a newly appointed Country Director for HopeForward International in **Kailani** — a fictional Pacific island nation devastated by Cyclone Vera.
+*Field Ready: A Humanitarian Adventure* is a story-driven, interactive learning game designed to help humanitarian and development sector workers understand and apply the nine commitments of the Core Humanitarian Standard (CHS) 2024. Players step into the shoes of **Alex**, a field coordinator freshly deployed to **Verdania** — a fictional semi-arid sub-Saharan nation struck by catastrophic flooding — and navigate real-world dilemmas that affect 200,000 displaced people.
 
-Over nine critical decision chapters — one per CHS commitment — Maya navigates community rights and participation, timely and effective assistance, building local resilience, avoiding harm, complaints and feedback, coordination, learning and improvement, staff management, and ethical resource stewardship. Every choice references specific CHS sub-requirements. Choices set **context flags** that cascade into later decisions, creating real interdependencies. At the end, four possible **scored endings** are determined by the player's cumulative performance across four dimensions.
+The game consists of ten chapters (one narrative prologue and nine interactive chapters) plus a scored epilogue. Each interactive chapter targets one CHS commitment, presenting a contextual narrative scenario followed by a multiple-choice question. Players receive instant feedback after every decision, and a final impact report grades their overall performance.
 
-All 50 CHS sub-requirements are addressed across the nine decision chapters.
+**Estimated duration:** approximately **12 minutes** per playthrough.
+
+---
+
+## How to Build This Game — Web Implementation
+
+This game is designed as a **web-based application** built with standard HTML, CSS, and JavaScript. No build tools or frameworks are required. Pixel art backgrounds and animated GIFs are used to create atmosphere and immersion. All game content is loaded from `CHS_2024_game.json` at runtime.
+
+### Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Markup | HTML5 |
+| Styling | CSS3 (full-screen layout, transitions, pixel-scaling) |
+| Logic | Vanilla JavaScript (ES6+) |
+| Data | `CHS_2024_game.json` loaded via `fetch()` |
+| Visuals | Pixel art PNG/GIF backgrounds per scene |
+| Animation | CSS animations + animated GIF sprites and ambience loops |
+| Fonts | Press Start 2P (headings), a readable pixel or system sans-serif (body text) |
+
+### Project File Structure
+
+```
+/
+├── index.html              ← Single-page game shell
+├── style.css               ← Full-screen layout and UI styles
+├── game.js                 ← Game logic and state machine
+├── CHS_2024_game.json      ← All game content and questions
+└── assets/
+    ├── backgrounds/        ← Full-screen pixel art backgrounds (PNG or animated GIF)
+    │   ├── prologue.gif
+    │   ├── chapter_1.gif
+    │   ├── chapter_2.gif
+    │   ├── ...
+    │   └── epilogue.gif
+    ├── characters/         ← Character portrait sprites (PNG)
+    │   ├── alex.png
+    │   ├── mira.png
+    │   ├── yusuf.png
+    │   └── marco.png
+    ├── ui/                 ← UI background panels (PNG)
+    │   ├── main_menu_bg.gif
+    │   ├── chapter_transition.gif
+    │   ├── score_dashboard.png
+    │   └── loading_screen.gif
+    └── audio/              ← Optional chiptune and sound effects (MP3/OGG)
+```
+
+### Full-Screen Pixel Art Design Philosophy
+
+The game uses **full-screen pixel art backgrounds** for every scene. These backgrounds are:
+
+- Rendered at **320×180 px base resolution** and scaled up to fill the viewport using CSS `image-rendering: pixelated` and `transform: scale()` or `zoom`. This preserves the pixel art aesthetic at any screen size.
+- Delivered as **animated GIFs** where ambience effects are needed (rain, flickering lights, rippling water, smoke).
+- Designed to fill the full browser viewport (`100vw × 100vh`), with game text and UI elements layered on top using semi-transparent dark panels for readability.
+- Styled with **pixel art colour palettes** relevant to each scene — warm ochres and dusty blues for the field, deep greens and ambers for the epilogue, urgent reds for crisis scenes.
+
+### HTML Shell (`index.html`)
+
+The page has a single `<div id="game">` container that fills the full viewport. Layers inside it (back to front):
+
+1. `<div id="background">` — full-screen pixel art GIF background for the current scene
+2. `<div id="overlay">` — semi-transparent dark panel to ensure text legibility
+3. `<div id="screen">` — the active screen content (narrative, question, feedback, score)
+4. `<div id="hud">` — score display and chapter indicator (always visible during gameplay)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Ready: A Humanitarian Adventure</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game" role="main">
+    <div id="background" aria-hidden="true"></div>
+    <div id="overlay" aria-hidden="true"></div>
+    <div id="screen" aria-live="polite"></div>
+    <div id="hud" role="complementary" aria-label="Game progress">
+      <span id="chapter-label"></span>
+      <span id="score-display">Score: 0</span>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
+```
+
+### CSS — Full-Screen Pixel Art Layout (`style.css`)
+
+Key rules to implement:
+
+```css
+/* Full-screen game container */
+body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #000; }
+#game { position: relative; width: 100vw; height: 100vh; }
+
+/* Full-screen background — pixel-scaled */
+#background {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;      /* Standard (Chrome, Firefox, Edge) */
+  image-rendering: crisp-edges;   /* Fallback for Safari */
+}
+
+/* Legibility overlay */
+#overlay {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Content panel */
+#screen {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 2rem;
+  color: #f5f0e8;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  line-height: 1.8;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Answer option buttons */
+.option-btn {
+  display: block; width: 100%; max-width: 640px;
+  min-height: 48px; /* WCAG touch target minimum */
+  margin: 0.5rem auto; padding: 0.8rem 1.2rem;
+  background: rgba(20, 30, 20, 0.85);
+  border: 2px solid #a0c060;
+  color: #e8f0d8;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.7;
+  transition: background 0.15s, border-color 0.15s;
+}
+.option-btn:hover { background: rgba(60, 100, 40, 0.9); border-color: #d4f080; }
+.option-btn.correct { border-color: #80ff80; background: rgba(0, 100, 0, 0.8); }
+.option-btn.incorrect { border-color: #ff6060; background: rgba(100, 0, 0, 0.75); }
+.option-btn.partial { border-color: #ffc060; background: rgba(100, 70, 0, 0.75); }
+
+/* HUD */
+#hud {
+  position: absolute; top: 1rem; left: 1rem; right: 1rem;
+  display: flex; justify-content: space-between;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem; color: #e8e0c0;
+  text-shadow: 1px 1px 0 #000;
+}
+```
+
+### JavaScript — Game State Machine (`game.js`)
+
+The game is driven by a simple state machine with six states:
+
+| State | Description |
+|---|---|
+| `MAIN_MENU` | Title screen with start button |
+| `PROLOGUE` | Narrative-only opening scene |
+| `CHAPTER_NARRATIVE` | Show chapter narrative and situation text |
+| `CHAPTER_QUESTION` | Show question and answer options |
+| `CHAPTER_FEEDBACK` | Show selected option's feedback + learning point + CHS quote |
+| `EPILOGUE` | Show final narrative and score-based badge |
+
+#### Loading the Game Data
+
+```javascript
+let gameData = null;
+let currentChapterIndex = 1; // 0 = prologue; 1–9 = interactive chapters
+let totalScore = 0;
+
+async function init() {
+  try {
+    const response = await fetch('CHS_2024_game.json');
+    if (!response.ok) throw new Error(`Failed to load game data: ${response.status}`);
+    gameData = await response.json();
+    showMainMenu();
+  } catch (err) {
+    document.getElementById('screen').innerHTML =
+      `<p style="color:#ff8080;">Error loading game: ${err.message}. Please check that CHS_2024_game.json is accessible.</p>`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+```
+
+#### Rendering the Background
+
+Each chapter object has an `image_prompt` field. The corresponding background asset is a pixel art GIF in `assets/backgrounds/` named by chapter ID (`prologue.gif`, `chapter_1.gif`, etc.):
+
+```javascript
+function setBackground(chapterId) {
+  const bg = document.getElementById('background');
+  bg.style.backgroundImage = `url('assets/backgrounds/${chapterId}.gif')`;
+}
+```
+
+#### Rendering a Chapter
+
+```javascript
+function showChapterNarrative(index) {
+  const chapter = gameData.chapters[index];
+  setBackground(chapter.id);
+  const screen = document.getElementById('screen');
+
+  // Build chapter header from CHS commitment (if interactive)
+  const commitmentBadge = chapter.chs_commitment
+    ? `<p class="commitment-badge">CHS Commitment ${chapter.chs_commitment.number}</p>`
+    : '';
+
+  screen.innerHTML = `
+    <h2 class="chapter-title">${chapter.title}</h2>
+    ${commitmentBadge}
+    <p class="narrative">${chapter.narrative}</p>
+    ${chapter.situation ? `<p class="situation"><em>${chapter.situation}</em></p>` : ''}
+    <button class="continue-btn" data-next="${index}">Continue →</button>
+  `;
+
+  screen.querySelector('.continue-btn').addEventListener('click', function() {
+    showChapterQuestion(parseInt(this.dataset.next, 10));
+  });
+
+  document.getElementById('chapter-label').textContent =
+    chapter.chs_commitment ? `Ch. ${chapter.chs_commitment.number} / 9` : 'Prologue';
+}
+```
+
+#### Rendering the Question
+
+Use `data-` attributes instead of inline `onclick` handlers for safe event binding:
+
+```javascript
+function showChapterQuestion(index) {
+  const chapter = gameData.chapters[index];
+  const q = chapter.question;
+  const screen = document.getElementById('screen');
+
+  // Fisher-Yates shuffle for replayability (optional — create a copy first)
+  const options = [...q.options];
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+
+  screen.innerHTML = `
+    <p class="question-text">${q.text}</p>
+    <div class="options-list" id="options-list">
+      ${options.map(opt => `
+        <button class="option-btn" data-chapter="${index}" data-optid="${opt.id}">
+          ${opt.text}
+        </button>
+      `).join('')}
+    </div>
+  `;
+
+  // Bind events via delegation — avoids inline onclick and XSS risk
+  document.getElementById('options-list').addEventListener('click', function(e) {
+    const btn = e.target.closest('.option-btn');
+    if (!btn) return;
+    const chIdx = parseInt(btn.dataset.chapter, 10);
+    const optId = btn.dataset.optid;
+    selectOption(chIdx, optId);
+  }, { once: true });
+}
+```
+
+#### Handling an Answer
+
+```javascript
+function selectOption(chapterIndex, optionId) {
+  const chapter = gameData.chapters[chapterIndex];
+  const chosen = chapter.question.options.find(o => o.id === optionId);
+
+  // Lock all buttons and highlight result using data attributes
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = true;
+    const btnOptId = btn.dataset.optid;
+    const opt = chapter.question.options.find(o => o.id === btnOptId);
+    if (!opt) return;
+    if (opt.is_correct) btn.classList.add('correct');
+    else if (opt.score === 5) btn.classList.add('partial');
+    else btn.classList.add('incorrect');
+  });
+
+  // Add score
+  totalScore += chosen.score;
+  document.getElementById('score-display').textContent = `Score: ${totalScore}`;
+
+  // Show feedback panel
+  showFeedback(chapterIndex, chosen);
+}
+```
+
+#### Showing Feedback
+
+```javascript
+function showFeedback(chapterIndex, chosen) {
+  const chapter = gameData.chapters[chapterIndex];
+  const screen = document.getElementById('screen');
+
+  // Determine result label
+  const resultLabel = chosen.is_correct
+    ? '✔ Correct!'
+    : chosen.score === 5 ? '~ Partial credit' : '✖ Incorrect';
+  const resultClass = chosen.is_correct ? 'correct' : chosen.score === 5 ? 'partial' : 'incorrect';
+
+  const nextIndex = chapterIndex + 1;
+  const isLast = nextIndex >= gameData.chapters.length;
+
+  screen.innerHTML = `
+    <p class="result-label ${resultClass}">${resultLabel} (+${chosen.score} pts)</p>
+    <p class="feedback">${chosen.feedback}</p>
+    <p class="learning-point"><strong>Key Learning:</strong> ${chapter.learning_point}</p>
+    <blockquote class="chs-quote">"${chapter.chs_quote}"</blockquote>
+    <button class="continue-btn" data-next="${nextIndex}" data-last="${isLast}">
+      ${isLast ? 'View Your Mission Report →' : 'Next Chapter →'}
+    </button>
+  `;
+
+  screen.querySelector('.continue-btn').addEventListener('click', function() {
+    if (this.dataset.last === 'true') showEpilogue();
+    else showChapterNarrative(parseInt(this.dataset.next, 10));
+  });
+}
+```
+
+#### Prologue (Narrative Only)
+
+The prologue (`chapters[0]`) has no question. After showing the narrative, advance directly to `chapters[1]`:
+
+```javascript
+function showPrologue() {
+  const prologue = gameData.chapters[0];
+  setBackground(prologue.id);
+  const screen = document.getElementById('screen');
+  screen.innerHTML = `
+    <h2>${prologue.title}</h2>
+    <p>${prologue.narrative}</p>
+    <button class="continue-btn">Begin →</button>
+  `;
+  screen.querySelector('.continue-btn').addEventListener('click', () => showChapterNarrative(1));
+  document.getElementById('chapter-label').textContent = 'Prologue';
+}
+```
+
+#### Epilogue and Score Badge
+
+```javascript
+function showEpilogue() {
+  const epilogue = gameData.epilogue;
+  setBackground('epilogue');
+
+  // Determine badge band
+  let band;
+  if (totalScore >= 90) band = epilogue.score_feedback['90_to_100'];
+  else if (totalScore >= 70) band = epilogue.score_feedback['70_to_89'];
+  else if (totalScore >= 50) band = epilogue.score_feedback['50_to_69'];
+  else band = epilogue.score_feedback['0_to_49'];
+
+  const screen = document.getElementById('screen');
+  screen.innerHTML = `
+    <h2>${epilogue.title}</h2>
+    <p>${epilogue.narrative}</p>
+    <hr />
+    <p class="final-score">Your score: ${totalScore} / 100</p>
+    <h3 class="badge-title">${band.title}</h3>
+    <p class="badge-message">${band.message}</p>
+    <button class="continue-btn">Play Again</button>
+  `;
+  screen.querySelector('.continue-btn').addEventListener('click', showMainMenu);
+  document.getElementById('chapter-label').textContent = 'Mission Report';
+}
+```
+
+### Animation and Atmosphere
+
+- **Animated GIF backgrounds:** Each scene background is a looping animated GIF with subtle pixel-art ambience: rain falling in street scenes, flickering lamplight in night scenes, slow cloud movement in outdoor scenes, gentle fire glow in the epilogue camp scene.
+- **CSS transitions:** Use a brief `opacity` fade (0.3s) between screens to smooth scene changes without jarring cuts.
+- **HUD pulse:** When a score is added, use a CSS `@keyframes` pulse on `#score-display` to draw attention.
+- **Button hover effects:** Pixel-accurate border-colour shifts on hover — no blur or shadow.
+
+### Accessibility
+
+- All background images have a dark overlay to ensure sufficient contrast for text.
+- Font-size uses `clamp()` to scale with viewport while respecting user preferences.
+- All answer buttons are full-width and easily tappable on mobile (`min-height: 48px`).
+- After an answer is selected, all buttons show correct/incorrect state visually *and* via text labels — never colour alone.
 
 ---
 
 ## Target Audience
 
-Humanitarian and development sector workers, trainers, and students seeking a deep, scenario-based exploration of all nine CHS commitments. The game is designed for use in facilitated training sessions as well as self-directed learning.
-
----
-
-## Estimated Duration
-
-Approximately **45 minutes** for a single playthrough. Due to the branching structure and reflection content, facilitated use may require 60–90 minutes.
+Humanitarian and development sector workers — including field staff, programme managers, team leaders, and trainers — who want an engaging, scenario-based introduction to or refresher on CHS 2024.
 
 ---
 
 ## Setting
 
-### Country Overview
-
 | Field | Detail |
 |---|---|
-| Country | Kailani (fictional Pacific island nation) |
-| Crisis | Cyclone Vera (Category 4), landfall 72 hours before the game begins |
-| Displaced population | 85,000 people |
-| Government capacity | Stretched; limited response capability |
-| Civil society | Active local organisations, under-resourced |
-| Response timeline | Six months: immediate response (decisions 1–4), stabilisation (decisions 5–7), transition and exit (decisions 8–9) |
-
-### Key Locations
-
-| ID | Name | Description |
-|---|---|---|
-| `loc_capital` | Port Hana | Capital city; operational hub, government ministries, UN cluster system, HopeForward office |
-| `loc_north` | Northern Coast | Worst-affected area; isolated communities, cut road access, high vulnerability, security concerns |
-| `loc_camp` | Manu Displacement Camp | Largest camp near Port Hana; 12,000 displaced people; key site for participation and complaints decisions |
-| `loc_village` | Tevita Village | Remote inland community; underserved; local partner KCV present; site of cash-transfer innovation |
-| `loc_talio` | Talio Sub-district Hub | Safer inland town, 40 km from Northern Coast; emergency staff base during security incidents |
+| Country | Verdania (fictional) |
+| Region | Sub-Saharan Africa |
+| Crisis type | Catastrophic flash floods |
+| Scale | 200,000+ displaced people across three regions |
+| Infrastructure | Damaged roads, disrupted markets |
+| Vulnerable groups | Women, children, elderly, people with disabilities |
 
 ---
 
@@ -58,392 +433,346 @@ Approximately **45 minutes** for a single playthrough. Due to the branching stru
 
 | Field | Detail |
 |---|---|
-| Name | Maya Chen |
-| Role | Country Director |
-| Organisation | HopeForward International |
-| Background | Eight years of field experience across Asia and East Africa; trained in social work with a master's in humanitarian action |
-| Backstory | First Country Director role; under pressure from headquarters; trusted by her team; committed to principled, accountable, locally-led response |
-| Closest advisor | Sione Taufa, Kailani national with deep community networks |
+| Name | Alex |
+| Role | Field Coordinator |
+| Organisation | HumanityCare International |
+| Experience | Three years of field experience |
+| Backstory | Just landed at Verdania International Airport after a 14-hour flight; co-leads the emergency response to the worst floods the country has seen in 50 years |
 
 ---
 
-## Key Characters
+## Supporting Characters
 
-The game features nine named supporting characters, each defined by a detailed backstory, primary role, and a flat-vector illustration prompt:
-
-| ID | Name | Role | Key Decisions |
-|---|---|---|---|
-| `char_maya` | Maya Chen | Country Director, HopeForward (player character) | All |
-| `char_sione` | Sione Taufa | National Programme Officer, HopeForward | 1, 2, 3, 8 |
-| `char_filomena` | Filomena Vaka | Executive Director, Kailani Community Voices (KCV) | 1, 3, 5, 6, 9 |
-| `char_leila` | Leila Hassan | Field Coordinator, Northern Coast | 8 |
-| `char_carlos` | Carlos Reyes | Logistics Coordinator, HopeForward | 2, 3, 4, 7 |
-| `char_amara` | Amara Diallo | M&E Officer, HopeForward | 7 |
-| `char_toma` | Toma Faleolo | Finance & Compliance Manager, HopeForward | 9 |
-| `char_kan_director` | Dr. Ana Tuivaga | Director, Kailani Aid Network (KAN) | 6 |
-| `char_sina` | Sina Talagi | Community member, Manu Camp (complainant) | 5 |
-
-### Character Summaries
-
-**Sione Taufa** is a Kailani national with deep community networks, serving as Maya's most trusted ground-level advisor. Practical and perceptive, he holds local knowledge no international hire could replicate.
-
-**Filomena Vaka** leads Kailani Community Voices (KCV), the island's most respected civil society organisation. She has seen every variation of "partnership" that is really outsourcing. Warm and sharp, she is cautiously generous with her trust — and becomes a key partner or critic depending on Maya's choices.
-
-**Leila Hassan** is HopeForward's Field Coordinator on the Northern Coast, operating in the hardest environment in the response. Fearless and meticulous, her safety and wellbeing are central to Decision 8.
-
-**Carlos Reyes** is a highly efficient logistics specialist. His instinct is always to ask "how quickly?" rather than "whether?" — sometimes prioritising speed and donor compliance over community needs.
-
-**Amara Diallo** is a data-driven M&E Officer who drives the learning and monitoring process. Central to Decision 7.
-
-**Toma Faleolo** is HopeForward's meticulous Finance & Compliance Manager, central to Decision 9 and sometimes in tension with Carlos over spend versus compliance.
-
-**Dr. Ana Tuivaga** leads the Kailani Aid Network (KAN), which is excluded from the UN cluster — representing local actor exclusion in Decision 6.
-
-**Sina Talagi** is a 34-year-old displaced community member at Manu Camp and mother of two, whose formal complaint tests HopeForward's PSEA and complaints processes in Decision 5.
+| Name | Role |
+|---|---|
+| Mira | Alex's colleague at the displacement camp |
+| Yusuf | Community feedback officer |
+| Marco | Senior international colleague (Chapter 8) |
+| Sami | Staff member observed during procurement investigation (Chapter 9) |
 
 ---
 
 ## Game Structure
 
-The game is stored in a single JSON object with the following top-level keys:
+The game is stored in a single JSON object (`CHS_2024_game.json`) with the following top-level keys:
 
 | Key | Description |
 |---|---|
-| `game_meta` | Title, version, status, audience, duration, description, how-to-play, and multi-dimensional scoring rules |
-| `setting` | Country description, key locations, and image prompt |
-| `player_character` | Maya Chen's name, role, organisation, and backstory |
-| `key_characters` | Array of nine named characters with roles, descriptions, and image prompts |
-| `scenes` | Array of 47 scene objects (prologue + 9 decisions + 36 consequence scenes + epilogue) |
-| `score_dimensions` | Four scoring dimensions with descriptions and icon prompts |
-| `context_flags_system` | Description of the flag system and full list of 18 context flags |
-| `endings` | Four possible endings with score thresholds, narratives, and reflection questions |
-| `chs_reference_summary` | Quick-reference of all nine commitments with all 50 sub-requirements |
-| `supplementary_assets` | Expanded character backstories and UI design prompts |
-| `development_prompts` | Eleven expansion prompts for developing each section from skeleton to full text |
+| `game_meta` | Title, version, audience, duration, description, how-to-play, and scoring rules |
+| `player_character` | Name, role, organisation, backstory, and avatar description |
+| `setting` | Country context and description |
+| `chapters` | Array of 10 chapter objects (1 prologue + 9 interactive chapters) |
+| `epilogue` | Final narrative and four score-based feedback bands |
+| `supplementary_assets` | Key characters, UI design prompts, and printable learning card prompts |
+| `chs_reference_summary` | Quick-reference summary of all nine CHS commitments |
 
----
+### Chapters Array
 
-## Scenes Array
+The `chapters` array contains **10 entries** at indices 0–9:
 
-The `scenes` array contains **47 entries** covering the full arc from prologue to epilogue:
+| Index | ID | Title | CHS Commitment |
+|---|---|---|---|
+| 0 | `prologue` | Welcome to Verdania | — (narrative only) |
+| 1 | `chapter_1` | Chapter 1: Who Gets a Voice? | Commitment 1 — Participation & Inclusion |
+| 2 | `chapter_2` | Chapter 2: Whose Needs Count? | Commitment 2 — Timely, Needs-Based Support |
+| 3 | `chapter_3` | Chapter 3: Building Back Better (or Not) | Commitment 3 — Resilience & Local Ownership |
+| 4 | `chapter_4` | Chapter 4: The Hidden Harm | Commitment 4 — Do No Harm |
+| 5 | `chapter_5` | Chapter 5: Listen Up | Commitment 5 — Safe Complaints & Feedback |
+| 6 | `chapter_6` | Chapter 6: Better Together | Commitment 6 — Coordination |
+| 7 | `chapter_7` | Chapter 7: What Did We Actually Learn? | Commitment 7 — Learning & Adaptation |
+| 8 | `chapter_8` | Chapter 8: Team Trouble | Commitment 8 — Competent, Well-Managed Staff |
+| 9 | `chapter_9` | Chapter 9: Follow the Money | Commitment 9 — Ethical Resource Management |
 
-### Scene Types
+### Chapter Object Schema
 
-| Type | Description |
-|---|---|
-| `narrative` | Non-interactive scene; sets context or closes the game |
-| `decision` | Interactive scene presenting the situation and four options, each with scores and consequence links |
-| `consequence` | Follow-on scene shown after an option is chosen; reveals immediate and delayed impacts |
-
-### Scene Index
-
-| Index | Scene ID | Type | Title | CHS # |
-|---|---|---|---|---|
-| 0 | `prologue` | narrative | Day One — Cyclone Vera's Aftermath | — |
-| 1 | `decision_1` | decision | Decision 1 — How Will You Hear the Community? | 1 |
-| 2 | `scene_1A` | consequence | Invisible and Unheard | — |
-| 3 | `scene_1B` | consequence | Heard — and the Data Shows It | — |
-| 4 | `scene_1C` | consequence | The Digital Divide | — |
-| 5 | `scene_1D` | consequence | The View from the Top of the Hierarchy | — |
-| 6 | `decision_2` | decision | Decision 2 — What Do You Actually Distribute, and How? | 2 |
-| 7 | `scene_2A` | consequence | Boxes Ticked, Needs Missed | — |
-| 8 | `scene_2B` | consequence | The Right Things, To the Right People, At the Right Time | — |
-| 9 | `scene_2C` | consequence | Efficient, but Whose Context? | — |
-| 10 | `scene_2D` | consequence | Equal Isn't Always Just | — |
-| 11 | `decision_3` | decision | Decision 3 — How Should the Programme Strengthen Local Resilience? | 3 |
-| 12 | `scene_3A` | consequence | Delivered but Not Strengthened | — |
-| 13 | `scene_3B` | consequence | Ownership in Practice | — |
-| 14 | `scene_3C` | consequence | The Storm That Didn't Kill Anyone | — |
-| 15 | `scene_3D` | consequence | Built to Last | — |
-| 16 | `decision_4` | decision | Decision 4 — How Do You Protect People, Data, and the Environment? | 4 |
-| 17 | `scene_4A` | consequence | Four Risks, Four Harms | — |
-| 18 | `scene_4B` | consequence | Prevention Pays | — |
-| 19 | `scene_4C` | consequence | Half-Protected | — |
-| 20 | `scene_4D` | consequence | The Gap in the Informal Approach | — |
-| 21 | `decision_5` | decision | Decision 5 — How Do You Handle a Serious Complaint? | 5 |
-| 22 | `scene_5A` | consequence | The Silence That Follows | — |
-| 23 | `scene_5B` | consequence | The System That Worked | — |
-| 24 | `scene_5C` | consequence | Referred Without Asking | — |
-| 25 | `scene_5D` | consequence | From Crisis to Capability | — |
-| 26 | `decision_6` | decision | Decision 6 — How Will You Coordinate with Other Actors? | 6 |
-| 27 | `scene_6A` | consequence | Competing While Communities Suffer | — |
-| 28 | `scene_6B` | consequence | The Value of the Room | — |
-| 29 | `scene_6C` | consequence | Better, But Not Good Enough | — |
-| 30 | `scene_6D` | consequence | The Forum That Fragmented | — |
-| 31 | `decision_7` | decision | Decision 7 — How Do You Use Evidence to Improve? | 7 |
-| 32 | `scene_7A` | consequence | The Data That Was Buried | — |
-| 33 | `scene_7B` | consequence | Learning That Changed the Programme | — |
-| 34 | `scene_7C` | consequence | Half the Learning | — |
-| 35 | `scene_7D` | consequence | Verified — And Three Weeks Late | — |
-| 36 | `decision_8` | decision | Decision 8 — How Do You Care for Your Team and Uphold Conduct Standards? | 8 |
-| 37 | `scene_8A` | consequence | Three Failures, One Month | — |
-| 38 | `scene_8B` | consequence | The Call That Mattered | — |
-| 39 | `scene_8C` | consequence | Safe But Not Protected | — |
-| 40 | `scene_8D` | consequence | From Crisis to Culture | — |
-| 41 | `decision_9` | decision | Decision 9 — How Do You Manage the Remaining Resources Ethically? | 9 |
-| 42 | `scene_9A` | consequence | Technically Compliant, Ethically Failing | — |
-| 43 | `scene_9B` | consequence | Every Dollar for Its Purpose | — |
-| 44 | `scene_9C` | consequence | Right Goal, Wrong Road | — |
-| 45 | `scene_9D` | consequence | The Cost of Looking Away | — |
-| 46 | `epilogue` | narrative | Your Mission Report | — |
-
-### Decision Scene Object Schema
-
-Each `decision` scene contains the following fields:
+Each interactive chapter contains the following fields:
 
 | Field | Type | Description |
 |---|---|---|
-| `id` | string | Unique scene identifier (e.g. `decision_1`) |
-| `type` | string | `"decision"` |
+| `id` | string | Unique chapter identifier (e.g. `chapter_1`) |
+| `type` | string | `"interactive"` for scored chapters; `"narrative_only"` for prologue |
 | `title` | string | Display title |
-| `chs_commitment` | object | CHS commitment number, full title, and all sub-requirements with descriptions |
-| `narrative_summary` | string | Short summary of the scene context (placeholder for full narrative in skeleton) |
-| `narrative` | string | Full scene narrative text (to be expanded from skeleton using development prompts) |
-| `situation_summary` | string | The specific dilemma Maya faces |
-| `context_flag_effects` | object | How previously set flags change the situation in this decision |
-| `options` | array | Four answer options (see below) |
-| `image_prompt` | string | Detailed illustration prompt for scene artwork |
+| `chs_commitment` | object or null | CHS commitment number, full title, and key sub-requirements addressed |
+| `duration_hint_seconds` | number | Suggested reading/play time in seconds |
+| `narrative` | string | Scene-setting text describing the situation |
+| `situation` | string | The specific dilemma Alex faces |
+| `character_emotion` | string | Alex's emotional state in the scene |
+| `image_prompt` | string | Illustration prompt for scene artwork (see pixel art prompts below) |
+| `question` | object | The multiple-choice question |
+| `learning_point` | string | Key takeaway revealed after the player answers |
+| `chs_quote` | string | Verbatim CHS requirement most relevant to the scenario |
 
-### Decision Option Schema
+### Question Object Schema
 
-Each option in the `options` array contains:
-
-| Field | Type | Description |
-|---|---|---|
-| `id` | string | Option letter (`A`, `B`, `C`, `D`) |
-| `text` | string | The option text shown to the player |
-| `score_changes` | object | Points awarded or deducted across each of the four dimensions |
-| `sets_flag` | string or null | Context flag this option activates (if any) |
-| `consequence_scene_id` | string | ID of the consequence scene triggered by this option |
-| `chs_requirements_met` | array | Sub-requirements this option upholds |
-| `chs_requirements_missed` | array | Sub-requirements this option fails to uphold |
-| `consequence_summary` | string | Brief summary of the outcome |
-| `cascading_note` | string | How this choice shapes future decisions |
-
-### Consequence Scene Object Schema
+Each `question` object contains:
 
 | Field | Type | Description |
 |---|---|---|
-| `id` | string | Unique scene identifier (e.g. `scene_1A`) |
-| `type` | string | `"consequence"` |
-| `title` | string | Display title |
-| `chs_commitment` | null | Not applicable to consequence scenes |
-| `narrative_summary` | string | Immediate outcome summary |
-| `narrative` | string | Full consequence narrative (to be expanded from skeleton) |
-| `delayed_impact` | string | Longer-term consequence for communities or the programme |
-| `image_prompt` | string | Illustration prompt for the consequence scene |
-| `next_scene_id` | string | ID of the next scene to navigate to |
+| `id` | string | Unique question identifier (e.g. `q1`) |
+| `text` | string | The question prompt |
+| `options` | array | Array of answer options (see below) |
+
+Each answer option contains:
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | string | Option letter (`a`, `b`, `c`) |
+| `text` | string | The answer text shown to the player |
+| `is_correct` | boolean | Whether this is the best answer |
+| `score` | number | Points awarded: 10 = correct, 5 = partial credit, 0 = incorrect |
+| `feedback` | string | Explanation of why this answer is correct, partial, or incorrect |
+| `character_response` | string | Narrative consequence of choosing this option |
 
 ---
 
 ## Scoring System
 
-### Four Scoring Dimensions
-
-The game tracks progress across four independent dimensions. Each dimension can accumulate positive or negative scores across all nine decisions. The maximum possible score per dimension is approximately +18; negative scores are possible for poor choices.
-
-| Dimension ID | Title | What It Measures | Shaped by CHS |
-|---|---|---|---|
-| `community_trust` | Community Trust | Degree to which communities trust, engage with, and feel heard by HopeForward | Commitments 1, 2, 5, 6, 7 |
-| `staff_wellbeing` | Staff Wellbeing | Safety, morale, psychological health, and professional development of staff and volunteers | Commitment 8 |
-| `program_quality` | Program Quality | Relevance, effectiveness, technical quality, and measurable impact of the response | Commitments 2, 3, 4, 6, 7 |
-| `accountability` | Accountability & Ethics | Adherence to ethical standards, transparency, protection from exploitation, and organisational integrity | Commitments 4, 5, 8, 9 |
-
-### Total Score and Ending Thresholds
-
-The ending is determined by the **sum of all four dimension scores**:
-
-| Score Range | Ending Title | Summary |
-|---|---|---|
-| 46–56 | 🏆 Transformative Leader | Principled, inclusive, locally-led action; all nine CHS commitments honoured in practice |
-| 32–45 | 🌟 Committed Practitioner | Strong in most areas; some trade-offs and gaps; intent was always there |
-| 18–31 | 📚 Struggling Responder | Well-intentioned but inconsistent; operational pressure frequently overrode principle |
-| 0–17 | 🌱 Rising Learner (Crisis Mode) | Serious setbacks across multiple commitments; an honest invitation to reflect and restart |
-
----
-
-## Context Flags System
-
-Context flags are boolean states set by specific option choices. They are tracked by the game engine and modify the situations Maya faces in later decisions — creating real interdependencies between choices.
-
-**Key principle:** Flags cannot be reversed once set. A flag set in Decision 1 may improve or constrain the options available in Decisions 5, 6, or 7.
-
-### Full Flag List
-
-| Flag ID | Set By | Effect Summary |
-|---|---|---|
-| `inclusive_assessment` | Decision 1, Option B | Communities expect continued meaningful participation; KCV is a trusted partner for all future activities |
-| `community_informed` | Decision 1, Options B or D | Communities understand their rights and HopeForward's responsibilities |
-| `local_knowledge_built_in` | Decision 2, Option B | Programme is grounded in context and local capacities, improving later adaptation |
-| `referral_pathways_active` | Decision 2, Option B | Other cluster members are aware of unmet needs HopeForward referred; strengthens coordination |
-| `local_ownership_by_design` | Decision 3, Options B or D | KCV and community leaders have formal role in programme governance; reduces dependency risk |
-| `drr_integrated` | Decision 3, Options C or D | Communities have disaster risk knowledge; strengthens long-term resilience |
-| `protection_framework_active` | Decision 4, Options B or C | PSEA and protection policies are established; staff and communities aware of mechanisms |
-| `data_protection_in_place` | Decision 4, Options B, C or D | Beneficiary data is handled ethically; reduces risk of future data-related harm |
-| `complaints_trusted` | Decision 5, Options B or D | Community members actively use feedback channels; complaints data is rich and timely |
-| `survivor_centred_process` | Decision 5, Options B or D | PSEA standards are actively modelled; staff understand expectations |
-| `cluster_coordination_active` | Decision 6, Option B | HopeForward is a trusted cluster member; geographic duplication resolved; local partners included |
-| `partner_quality_supported` | Decision 6, Options B or C | KCV has received CHS capacity support; their programme quality improves |
-| `gender_data_actioned` | Decision 7, Option B | Gender gap addressed; women and girls receive more targeted programming in later activities |
-| `learning_shared_externally` | Decision 7, Options B or C | Tevita modality shared with cluster; other agencies benefit; HopeForward seen as learning leader |
-| `duty_of_care_upheld` | Decision 8, Options B, C or D | Staff trust leadership; retention improves; team culture of accountability is strong |
-| `misconduct_addressed_formally` | Decision 8, Options B or D | Staff understand code of conduct is enforced; community sees fair process |
-| `donor_transparent_engagement` | Decision 9, Option B | Donor trusts HopeForward; future funding relationship is stable and honest |
-| `community_resources_transferred` | Decision 9, Options B or C | Remaining resources are in community hands at exit; strengthens local ownership legacy |
-
----
-
-## Four Possible Endings
-
-### 🏆 Transformative Leader (Score: 46–56)
-Maya's leadership will be studied as a model of principled, inclusive, locally-led humanitarian action. She listened to marginalised voices, protected her staff, maintained accountability when it was uncomfortable, coordinated generously, used evidence to improve the programme, and left stronger local systems behind. All nine CHS commitments were honoured in practice — not just in policy.
-
-**Key flags typically achieved:** `inclusive_assessment`, `local_ownership_by_design`, `protection_framework_active`, `complaints_trusted`, `cluster_coordination_active`, `gender_data_actioned`, `duty_of_care_upheld`, `donor_transparent_engagement`
-
-**Reflection prompts:**
-- What made it possible to prioritise community voice even under time and donor pressure?
-- Which CHS commitment felt most natural to uphold, and which required the most effort?
-- What would you do differently — even after a strong performance?
-- How did early decisions shape your options in later chapters?
-
----
-
-### 🌟 Committed Practitioner (Score: 32–45)
-Maya made principled choices in most situations but faced real trade-offs and sometimes chose pragmatism over principle. The programme left positive impact. There are specific CHS commitments where the full standard was not met — but the intent was always there. The learning journey continues.
-
-**Reflection prompts:**
-- Which decisions were hardest and what made them hard?
-- Where did operational pressure most consistently pull you away from CHS principles?
-- Which CHS commitment do you most want to strengthen in your next response?
-
-**CHS requirements to revisit:** 1.1, 3.4, 4.4, 5.5, 6.4, 7.3, 8.7
-
----
-
-### 📚 Struggling Responder (Score: 18–31)
-Maya's response was well-intentioned but inconsistent. Some communities and staff were let down. Operational pressures frequently overrode principled choices. The gap between what CHS requires and what the programme delivered is significant across multiple commitments.
-
-**Reflection prompts:**
-- Which CHS commitments did you find hardest to uphold, and why?
-- What systemic pressures most affected your decisions — and which could you have pushed back against?
-- What one change in your organisation's systems would help you act differently?
-
-**CHS requirements to revisit:** 1.4, 2.1, 3.1, 4.1, 4.4, 5.4, 5.5, 6.1, 7.3, 8.2, 9.5
-
----
-
-### 🌱 Rising Learner / Crisis Mode (Score: 0–17)
-The response in Kailani faced serious setbacks across multiple CHS commitments. Communities were not heard or protected. Staff were harmed. Accountability was compromised. Resources were mismanaged. This is not a verdict on character — it is a signal that operational pressure and institutional incentives systematically overrode principled practice.
-
-**Reflection prompts:**
-- Which pressures most consistently pushed you toward less principled choices?
-- What does accountability mean when you are under-resourced and making decisions alone?
-- Who in your network could support you to strengthen your practice before the next response?
-
-**CHS requirements to revisit:** All 50 requirements, particularly 1.1, 2.1, 3.4, 4.1, 4.4, 5.4, 5.5, 6.1, 7.3, 8.2, 9.5
-
----
-
-## CHS Commitments and Sub-Requirements
-
-This game addresses all **50 CHS sub-requirements** across nine decisions:
-
-| # | Short Title | Sub-Requirements |
-|---|---|---|
-| 1 | Participation & Rights | 1.1 DEI and marginalisation · 1.2 Information sharing · 1.3 Language and formats · 1.4 Meaningful participation · 1.5 Consent and dignity in communications · 1.6 Organisational approach to participation |
-| 2 | Timely & Effective Support | 2.1 Local knowledge and capacities · 2.2 Fair and transparent criteria · 2.3 Monitoring and adjustment · 2.4 Technical standards · 2.5 Referral of unmet needs · 2.6 Contextual understanding of diversity and risk |
-| 3 | Resilience & Local Ownership | 3.1 Community leadership and local resilience · 3.2 Risk reduction capacities · 3.3 Long-term positive effects · 3.4 Local ownership from the outset · 3.5 Organisational approach to local leadership |
-| 4 | Do No Harm & Protection | 4.1 Prevent harm to people and communities · 4.2 Prevent environmental harm · 4.3 Data protection and privacy · 4.4 PSEA and protection from abuse · 4.5 Environmental impact reduction approach |
-| 5 | Complaints & Accountability | 5.1 Accessible feedback and complaints mechanisms · 5.2 Community awareness of staff conduct standards · 5.3 Community awareness of how to complain · 5.4 Manage and investigate complaints · 5.5 Survivor-centred PSEA approaches · 5.6 Organisational approach to complaints |
-| 6 | Coordination & Complementarity | 6.1 Coordination with local and community-based actors · 6.2 Support partners to apply quality and accountability · 6.3 Assess and strengthen partner quality · 6.4 Equitable decision-making and resource sharing in partnerships |
-| 7 | Learning & Improvement | 7.1 Listen and respond to community feedback · 7.2 Disaggregated data collection · 7.3 Use data to improve programmes · 7.4 Share learning with communities and stakeholders · 7.5 Organisational approach to continuous improvement |
-| 8 | Staff Competence & Wellbeing | 8.1 Organisational culture of quality and accountability · 8.2 Safe and inclusive working environment · 8.3 Staff support, skills, and competencies · 8.4 Code of conduct adherence · 8.5 Staff reporting mechanisms · 8.6 Address misconduct · 8.7 Fair and transparent HR management |
-| 9 | Ethical Resource Management | 9.1 Adequate capacity and resources · 9.2 Responsible financial management · 9.3 Ethical fundraising and resource mobilisation · 9.4 Achieve intended purpose, minimise waste · 9.5 Corruption, fraud, and conflict of interest prevention · 9.6 Organisational approach to resource management |
-
----
-
-## Development Prompts
-
-The file includes eleven `development_prompts` entries to guide content expansion from skeleton to full text. Each prompt specifies:
-
-- The scene(s) to expand
-- The CHS focus requirements
-- Detailed instructions for narrative voice, character dialogue, flag effects, image prompts, and JSON structure
-
-### Expansion Prompts Summary
-
-| # | Title | CHS Focus |
-|---|---|---|
-| 1 | Expand the Prologue and Epilogue | All nine commitments (framing) |
-| 2 | Expand Decision 1 — Participation & Rights | Requirements 1.1–1.6 |
-| 3 | Expand Decision 2 — Timely & Effective Support | Requirements 2.1–2.6 |
-| 4 | Expand Decision 3 — Resilience & Local Ownership | Requirements 3.1–3.5 |
-| 5 | Expand Decision 4 — Do No Harm & Protection | Requirements 4.1–4.5 |
-| 6 | Expand Decision 5 — Complaints & Feedback | Requirements 5.1–5.6 |
-| 7 | Expand Decision 6 — Coordination & Complementarity | Requirements 6.1–6.4 |
-| 8 | Expand Decision 7 — Learning & Improvement | Requirements 7.1–7.5 |
-| 9 | Expand Decision 8 — Staff Competence & Wellbeing | Requirements 8.1–8.7 |
-| 10 | Expand Decision 9 — Ethical Resource Management | Requirements 9.1–9.6 |
-| 11 | Final Integration Pass | Cross-cutting: flag cascade effects, score calibration, endings |
-
----
-
-## Supplementary Assets
-
-The `supplementary_assets` key contains two categories of supporting material:
-
-### Expanded Character Backstories
-
-Full biographical backstories for all nine named characters (Maya, Sione, Filomena, Leila, Carlos, Amara, Toma, Dr. Ana Tuivaga, Sina Talagi), each with a detailed flat-vector illustration prompt consistent with the game's visual style.
-
-### UI Design Prompts
-
-Detailed illustration prompts for key interface elements:
-
-| Element | Description |
+| Outcome | Points |
 |---|---|
-| Main menu background | Aerial map-style view of Kailani post-cyclone; flat digital illustration, Pacific blues, tropical greens, storm greys |
-| Character selection screen | Grid of eight named characters in their illustration style |
-| Decision screen layout | Maya's portrait left, situation text centre, four option buttons right |
-| Consequence screen layout | Full-width consequence scene illustration with narrative text and score-dimension indicators |
-| Score dashboard | Four dimension bars in a horizontal layout with icons and running totals |
-| Ending screen | Badge image, ending title, narrative summary, and reflection question cards |
+| Correct answer | 10 |
+| Partial answer | 5 |
+| Incorrect answer | 0 |
+| **Maximum total score** | **100** |
 
-### Pixel Art Implementation Recommendation
+### Final Score Bands and Badges
 
-The `pixel_art_implementation` key in `supplementary_assets` contains a full pixel art visual style and engine implementation guide. Summary:
+| Score Range | Badge Title | Summary |
+|---|---|---|
+| 90–100 | 🏆 CHS Champion | Consistently upheld the highest standards across all nine commitments |
+| 70–89 | 🌟 Committed Practitioner | Strong decisions on most commitments; a few areas for continued growth |
+| 50–69 | 📚 Learning in Action | On the right track; some avoidable gaps remain — revisit lower-scoring commitments |
+| 0–49 | 🌱 Rising Learner | The game was challenging; review the full CHS 2024 document and replay |
 
-#### Recommended Engine: Ren'Py
+---
 
-[Ren'Py](https://www.renpy.org/) is the primary recommendation — open-source, cross-platform (Windows, macOS, Linux, Android, iOS, Web), and purpose-built for branching narrative games. Its flag/variable system maps directly to `context_flags_system`, and its scripting language is readable by non-programmers. The JSON file can be loaded at runtime with a Python `json.loads()` block.
+## CHS Commitments Covered
 
-**Alternatives:**
+| # | Short Title | Full Commitment Statement |
+|---|---|---|
+| 1 | Participation & Inclusion | People and communities can exercise their rights and participate in actions and decisions that affect them. |
+| 2 | Timely, Needs-Based Support | People and communities access timely and effective support in accordance with their specific needs and priorities. |
+| 3 | Resilience & Local Ownership | People and communities are better prepared and more resilient to potential crises. |
+| 4 | Do No Harm | People and communities access support that does not cause harm to people or the environment. |
+| 5 | Safe Complaints & Feedback | People and communities can safely report concerns and complaints and get them addressed. |
+| 6 | Coordination | People and communities access coordinated and complementary support. |
+| 7 | Learning & Adaptation | People and communities access support that is continually adapted and improved based on feedback and learning. |
+| 8 | Competent, Well-Managed Staff | People and communities interact with staff and volunteers that are respectful, competent, and well-managed. |
+| 9 | Ethical Resource Management | People and communities can expect that resources are managed ethically and responsibly. |
 
-| Engine | Best For |
-|---|---|
-| RPG Maker MZ | Overworld map, movement mechanics, richer pixel environments |
-| GB Studio 4 | Ultra-minimal Game Boy–style browser demo; conference/event use |
-| Godot 4 | Point-and-click or map-navigation expansion; full open-source control |
-| Twine + SugarCube | Zero-install web prototype; trainer-editable content |
+---
 
-#### Pixel Art Specs
+## All Image Prompts — Pixel Art Style
 
-| Setting | Value |
-|---|---|
-| Base canvas | 320×180 px (16:9, integer-scaled to 720p/1080p) |
-| Colour palette | 24-colour Kailani palette (Pacific Teal, Warm Ochre, Tropical Green, Storm Grey, Relief Blue, Warm Coral, three skin tones, and supporting shades) |
-| Character sprites | 48×48 px full-body; 32×48 px bust portrait for dialogue boxes |
-| Backgrounds | 320×180 px, 3 parallax layers |
-| UI tile grid | 8×8 px base grid |
-| Recommended fonts | Press Start 2P (headers), Munro (body/dialogue), Pixel Operator (accessibility variant) |
+All pixel art backgrounds are designed as **full-screen** scenes at **320×180 px base resolution**, scaled up to fill the viewport with `image-rendering: pixelated`. Animated GIFs should loop seamlessly to provide ambient movement. The palette for each scene is listed alongside the prompt.
 
-#### Audio
+### Scene Backgrounds
 
-Chiptune with Pacific island atmosphere. Tools: FamiTracker, LMMS, or BeepBox. Seven distinct music tracks (main menu, each environment type, high/low endings) plus six core sound effects (page turn, positive ding, negative thud, flag-set chime, dialogue blip, chapter transition).
+---
 
-#### Accessibility
+#### Prologue — Welcome to Verdania
 
-Integer scaling only · Font-size toggle (bitmap ↔ system sans-serif) · Text labels on all colour-coded deltas · Minimum 44×44 CSS px tap targets on mobile.
+**Asset filename:** `assets/backgrounds/prologue.gif`
+**Animation:** looping rain particles, windshield-wiper motion, rippling puddle reflections
+
+> Full-screen 16-bit pixel art scene: a yellow taxi pushes through flooded streets of an African city at dusk. Through a rain-streaked pixel car window, a field coordinator (Alex) gazes out with determined focus. Outside: blue tarp emergency shelters, pixel-art families carrying belongings, children wading in muddy puddles, a lone street vendor under an umbrella. Animated rain falls in diagonal streaks. Warm ambers and deep blues dominate — street lamps cast orange halos on wet pixel pavement. Cinematic wide composition filling the full screen. Retro pixel art style, 320×180 base, 24-colour palette.
+
+---
+
+#### Chapter 1 — Who Gets a Voice?
+
+**Asset filename:** `assets/backgrounds/chapter_1.gif`
+**Animation:** subtle dust particles drifting in midday heat, distant tent flaps moving in breeze
+
+> Full-screen 16-bit pixel art scene: an outdoor community meeting in a displacement camp under a blazing midday sun. A large circle of mostly adult men sit on pixel-art plastic chairs and upturned buckets. At the edges, women with babies and children watch from a distance near white UNHCR tents. An elderly woman with a walking stick stands in shadow near a tent flap. A young man in a manual wheelchair is positioned far from the circle. Dust motes drift in the hot air. Warm ochre and sky-blue palette, sense of tension and exclusion expressed through pixel body language. Full-screen wide composition.
+
+---
+
+#### Chapter 2 — Whose Needs Count?
+
+**Asset filename:** `assets/backgrounds/chapter_2.gif`
+**Animation:** flickering fluorescent warehouse lights, subtle dust motes
+
+> Full-screen 16-bit pixel art scene: inside a large humanitarian warehouse in a flood-hit area. Rows of stacked pixel crates labelled "High-Energy Biscuits" recede into the background. Alex stands between a logistics officer gesturing eagerly at a loaded truck and a community elder pointing through the warehouse window toward wells and buckets outside. Flickering fluorescent overhead lights. Cool blue warehouse interior contrasts with warm natural light from the window showing the community outside. Flat pixel art style, 320×180 base, 24-colour palette.
+
+---
+
+#### Chapter 3 — Building Back Better (or Not)
+
+**Asset filename:** `assets/backgrounds/chapter_3.gif`
+**Animation:** subtle paper-shuffling motion on the table, window light shifting slowly
+
+> Full-screen 16-bit pixel art scene: a field office planning room. A wide table displays a pixel-art map and shelter blueprints. HQ staff on one side point to a stopwatch and prefab shelter diagram; a local NGO officer and community mason on the other side hold up a traditional architecture sketch. Whiteboards with pixel decision-tree diagrams fill the background. Warm earthy tones with greens; deliberate pixel contrast between modern prefab imagery and traditional local architecture. Full-screen composition.
+
+---
+
+#### Chapter 4 — The Hidden Harm
+
+**Asset filename:** `assets/backgrounds/chapter_4.gif`
+**Animation:** red warning icon flashing on the laptop screen, cursor blinking
+
+> Full-screen 16-bit pixel art scene: split-screen composition. Left half: a data officer in a field office stares at an unencrypted spreadsheet on a pixel laptop; red warning icons flash above. Paper registration forms are stacked around the desk. Right half: a communications officer holds a camera toward a family with children, whose faces are intentionally pixelated for privacy. A bold red alert colour-washes both halves. Split-screen pixel art style, high contrast, 320×180 base, animated warning glyph on loop.
+
+---
+
+#### Chapter 5 — Listen Up
+
+**Asset filename:** `assets/backgrounds/chapter_5.gif`
+**Animation:** soft torch/candle flicker ambience inside the tent, gentle canvas ripple at tent entrance
+
+> Full-screen 16-bit pixel art scene: the interior of a field office tent at dusk. Feedback officer (Yusuf) sits close to a distressed teenage girl who looks down — her face shown in silhouette to preserve privacy. Alex stands in the foreground with a grave, attentive expression. Through the tent entrance, a public suggestion box is visible outside, highlighted by a shaft of fading sunlight. Soft muted tones: grey-blue canvas, warm orange lamp light. Pixel art style, emotional atmosphere, full-screen composition.
+
+---
+
+#### Chapter 6 — Better Together
+
+**Asset filename:** `assets/backgrounds/chapter_6.gif`
+**Animation:** subtle map-marker blinking, outside window figure slightly animated (waiting)
+
+> Full-screen 16-bit pixel art scene: a coordination meeting room viewed from a slight bird's-eye angle. A large table is covered with overlapping pixel maps. Post-it notes and colour markers cluster around two central zones on the map while two northern zones are bare. Representatives from many organisations look at the same overcrowded area. Through the window, a local CBO representative waits outside, uninvited. Bold pixel graphic elements highlight duplication vs. gaps on the map. Warm purposeful atmosphere, multi-colour organisation badges, full-screen composition.
+
+---
+
+#### Chapter 7 — What Did We Actually Learn?
+
+**Asset filename:** `assets/backgrounds/chapter_7.gif`
+**Animation:** downward trend arrow animating on the chart, notification blink on the unread feedback stack
+
+> Full-screen 16-bit pixel art scene: a field office interior with monitoring dashboards covering the wall. Alex points to a pixel chart showing 62% satisfaction with a downward-trend arrow. One team member scrolls their phone; another stares blankly. In the corner, a large stack of unread feedback forms sits untouched, glowing faintly amber. Through the window, a person with a mobility aid is visible trying to reach a distant distribution point. Data blues and greens contrast with urgent amber for the unread forms. Full-screen pixel art composition.
+
+---
+
+#### Chapter 8 — Team Trouble
+
+**Asset filename:** `assets/backgrounds/chapter_8.gif`
+**Animation:** slow heat-shimmer effect on the dusty ground, tense figure posture held static
+
+> Full-screen 16-bit pixel art scene: an outdoor team briefing in a dusty field setting. Senior international staff member (Marco) stands with crossed arms and a dismissive pixel expression. Two national staff members stand to one side looking downward. A third team member watches from a distance. A field office tent is visible behind. The scene radiates tension and power imbalance through pixel body language. Muted palette of greys and dusty beige with red accent tones indicating stress. Full-screen composition, 320×180 base.
+
+---
+
+#### Chapter 9 — Follow the Money
+
+**Asset filename:** `assets/backgrounds/chapter_9.gif`
+**Animation:** desk lamp flicker, red invoice discrepancy highlight pulsing
+
+> Full-screen 16-bit pixel art scene: a field office at night. Under the glow of a pixel desk lamp, Alex examines a paper invoice next to a laptop showing a procurement database; a red discrepancy is highlighted and pulsing. Through a glass partition, a nervous staff member (Sami) watches from the shadows. A wall clock shows late evening. The bright desk lamp contrasts with the dark background, creating a pixel detective-scene atmosphere. Muted dark blues and ambers with the red alert as the focal point. Full-screen night-scene composition.
+
+---
+
+#### Epilogue — Your Mission Report
+
+**Asset filename:** `assets/backgrounds/epilogue.gif`
+**Animation:** children playing in background, fire glow flickering, slow purple-orange sky gradient shift
+
+> Full-screen 16-bit pixel art scene: a field coordinator (Alex) sits on worn office steps at golden-hour sunset, writing in a notebook. The displacement camp glows in the background at dusk — pixel children playing, families cooking over small fires, tents lit from within. The flood plain is visible in the distance, water now lower. The sky transitions in animated pixel gradient from warm orange to deep purple. The scene carries quiet resolution and warmth. Painterly pixel art style, warm tones with deep pixel shadows, impressionistic crowd detail. Full-screen composition.
+
+---
+
+### Character Portrait Prompts
+
+Character portraits are used as small inset sprites in dialogue boxes (approximately 64×64 px at base resolution).
+
+---
+
+#### Alex — Player Character
+
+**Asset filename:** `assets/characters/alex.png`
+
+> 16-bit pixel art character portrait: gender-neutral field coordinator, mid-thirties. Light blue field vest with a small organisation logo. Thoughtful, determined pixel expression. Holding a notebook and satellite phone. Transparent background, 64×64 px base. Retro pixel art style, 16-colour character palette, clean outlines.
+
+---
+
+#### Mira — Alex's Colleague
+
+**Asset filename:** `assets/characters/mira.png`
+
+> 16-bit pixel art character portrait: female humanitarian worker, early thirties, south Asian appearance. Orange field vest, clipboard in hand. Warm and collaborative pixel expression, slightly uncertain. Transparent background, 64×64 px base. Retro pixel art style.
+
+---
+
+#### Yusuf — Community Feedback Officer
+
+**Asset filename:** `assets/characters/yusuf.png`
+
+> 16-bit pixel art character portrait: male community feedback officer, late twenties, east African appearance. Green T-shirt with a feedback box logo. Compassionate, professional pixel demeanour. Transparent background, 64×64 px base. Retro pixel art style.
+
+---
+
+#### Marco — Senior International Colleague
+
+**Asset filename:** `assets/characters/marco.png`
+
+> 16-bit pixel art character portrait: male senior international humanitarian worker, mid-forties, European appearance. Formal field shirt, crossed arms, dismissive pixel posture. Tense expression. Transparent background, 64×64 px base. Retro pixel art style.
+
+---
+
+### UI Design Prompts (Pixel Art)
+
+---
+
+#### Main Menu Background
+
+**Asset filename:** `assets/ui/main_menu_bg.gif`
+**Animation:** slow cloud drift, subtle water shimmer on flood plains
+
+> Full-screen 16-bit pixel art background: sweeping aerial landscape of a semi-arid African country after flooding. Patchwork of earthy greens and yellows, brown floodwaters in pixel channels, white-tented displacement camps on high ground, a bright sky with dramatic animated pixel clouds. Wide panoramic composition filling the full screen. Vibrant and hopeful pixel palette despite the crisis setting. Animated GIF with gentle cloud and water movement on loop.
+
+---
+
+#### Chapter Transition Screen
+
+**Asset filename:** `assets/ui/chapter_transition.gif`
+**Animation:** circles pulse outward in sequence (1 through 9), then hold
+
+> Full-screen 16-bit pixel art graphic: nine interconnected pixel circles, each in a distinct colour representing one CHS commitment. Circles pulse outward in sequence and then link into a web or network pattern. Central icon: a pixelated heart with hands. Bold, modern pixel art design. Animated GIF, 320×180 base, loop-once then hold on final frame.
+
+---
+
+#### Score Dashboard
+
+**Asset filename:** `assets/ui/score_dashboard.png`
+
+> 16-bit pixel art UI panel: a clean score dashboard. Nine commitment icons arranged in a 3×3 pixel grid, each with a colour-coded indicator (green pixel = correct, amber = partial, red = missed). A central large pixel circle displays the total score as a percentage. Below: a pixel progress bar and player badge icon. White/dark background with accent colour per commitment. Static PNG, 320×180 base.
+
+---
+
+#### Loading Screen
+
+**Asset filename:** `assets/ui/loading_screen.gif`
+**Animation:** Alex walking cycle along the dirt path (8-frame loop), dust kicking up from feet
+
+> Full-screen 16-bit pixel art scene: Alex walking along a dirt path toward the horizon in an animated walk cycle. Field vest on, backpack over shoulder. Verdanian landscape in the background — semi-arid terrain with distant pixel mountains. A CHS quote overlays the bottom: *"Quality and accountability are not destinations. They are daily choices."* Clean, hopeful, warm-toned pixel palette. Animated GIF with seamless walking loop, 320×180 base.
+
+---
+
+### Printable Learning Card Visual Prompts (Pixel Art)
+
+These prompts are for printed or on-screen job aids — one card per CHS commitment. Digital versions can also be rendered as static pixel art panels within the game's reference section.
+
+| # | Card Headline | Pixel Art Visual Prompt |
+|---|---|---|
+| 1 | PARTICIPATION — Every Voice Counts | 16-bit pixel art: a diverse circle of people — different ages, genders, and abilities — seated together in dialogue, each with a small pixel speech bubble. Bright, inclusive colour palette, flat pixel vector style. |
+| 2 | NEEDS-BASED SUPPORT — Build on What's Already There | 16-bit pixel art: a pixel tree with deep roots labelled "local knowledge" and "community capacities". A humanitarian worker with a small watering can labelled "external support" tends it. Warm earthy tones, flat pixel style. |
+| 3 | RESILIENCE — Programme for the Long Run | 16-bit pixel art: a community rebuilding together — people of all ages constructing a house with local materials, a local leader directing. Mountains and green landscape in background. Hopeful green pixel palette. |
+| 4 | DO NO HARM — Protection is Everyone's Job | 16-bit pixel art: a pixel shield at the centre surrounded by four icons: a locked padlock (data protection), a consent scroll, a green leaf (environment), and a PSEA symbol. Bold, clear pixel icon style. |
+| 5 | FEEDBACK & COMPLAINTS — Safe Channels, Real Action | 16-bit pixel art: multiple feedback pathways — pixel phone, suggestion box, trusted person figure, community meeting circle. All pathways converge on a central "action" icon. Calm blues and greens. |
+| 6 | COORDINATION — Together We Cover More Ground | 16-bit pixel art: a jigsaw puzzle map with organisation pieces fitting together. The local NGO piece is the centrepiece. No gaps, no overlaps. Multi-colour organisation pieces, flat pixel style. |
+| 7 | LEARNING — Listen, Adapt, Improve | 16-bit pixel art: a circular infographic — Data → Analysis → Decision → Action → Community Feedback → back to Data. Pixel arrows forming a virtuous cycle. Bold blues and greens. |
+| 8 | STAFF & VOLUNTEERS — Culture Starts at the Top | 16-bit pixel art: a team in a circle, equal-sized diverse pixel figures, a code of conduct scroll in the centre, a protective umbrella arching over all. Inclusive warm pixel palette. |
+| 9 | RESOURCES — Entrusted, Not Owned | 16-bit pixel art: a transparent pixel piggy bank with small community figures visible inside. A pixel magnifying glass and scales of justice on either side. Clean blues and gold pixel tones. |
+
+---
+
+### Score Badge Prompts (Pixel Art)
+
+Badge images are displayed on the epilogue screen. Render at 48×48 px base resolution.
+
+| Badge | Asset Filename | Pixel Art Prompt |
+|---|---|---|
+| 🏆 CHS Champion (90–100) | `assets/badges/champion.png` | 16-bit pixel art badge: a gold pixel trophy with a globe and heart symbol, surrounded by pixel laurel leaves. Inscribed "CHS Champion". Gold and white pixel palette. 48×48 px base. |
+| 🌟 Committed Practitioner (70–89) | `assets/badges/practitioner.png` | 16-bit pixel art badge: a silver pixel star with a handshake icon. Inscribed "Committed Practitioner". Silver and blue pixel palette. 48×48 px base. |
+| 📚 Learning in Action (50–69) | `assets/badges/learning.png` | 16-bit pixel art badge: a bronze circular pixel badge with an open book and a seedling growing from it. Inscribed "Learning in Action". Bronze and green pixel palette. 48×48 px base. |
+| 🌱 Rising Learner (0–49) | `assets/badges/learner.png` | 16-bit pixel art badge: a teal circular pixel badge with a seedling and upward arrow. Inscribed "Rising Learner". Teal and cream pixel palette. 48×48 px base. |
 
 ---
 
@@ -451,33 +780,34 @@ Integer scaling only · Font-size toggle (bitmap ↔ system sans-serif) · Text 
 
 ### For Game Developers
 
-1. **Load the JSON** into your game engine.
-2. **Render the prologue** (`scenes[0]`) as an opening narrative screen.
-3. **For each decision scene** (scenes at `type: "decision"`):
-   - Check active context flags against `context_flag_effects` to adjust the situation displayed.
-   - Display the `narrative` text and four `options`.
-   - On selection, apply `score_changes` to all four dimensions, set `sets_flag` if defined, and navigate to `consequence_scene_id`.
-4. **For each consequence scene** (`type: "consequence"`):
-   - Display `narrative` and `delayed_impact`.
-   - Navigate to `next_scene_id`.
-5. **At the epilogue**, sum all four dimension scores to determine the ending threshold and display the corresponding `endings` entry.
+1. **Load `CHS_2024_game.json`** into the page via `fetch()` at startup.
+2. **Render the prologue** (`chapters[0]`) as the opening narrative screen with full-screen pixel art background.
+3. **For each of the nine interactive chapters** (`chapters[1]` through `chapters[9]`):
+   - Set the full-screen pixel art GIF background for the chapter's `id`.
+   - Display `narrative` and `situation` text over the background.
+   - Render the `question.options` as selectable buttons.
+   - On selection: highlight correct/partial/incorrect options, add `score` to running total, display `feedback`, `learning_point`, and `chs_quote`.
+4. **Render the epilogue** using the player's total score to select the appropriate `score_feedback` band.
+5. Use the **pixel art image prompts** above to generate or commission background GIFs, character sprites, and UI elements.
 
 ### For Trainers and Facilitators
 
-1. Use individual decision scenes as standalone case studies for group discussion.
-2. Run participants through 2–3 decisions per session and use consequence scenes to prompt reflection.
-3. Use the `development_prompts` to commission or generate full narrative text for any sections that remain as skeletons.
-4. The `reflection_questions` in each ending object are ready-made debrief prompts for post-game discussion.
-5. Use the `chs_reference_summary` as a printed quick-reference during training sessions.
+1. Use individual chapters as standalone case studies for group discussion.
+2. Display the `situation` text and pause for discussion before revealing options.
+3. After answering, use `learning_point` and `chs_quote` as discussion anchors.
+4. Use the `chs_reference_summary` as a printed quick-reference card during sessions.
 
-### For Content Authors
+### For Artists and Pixel Art Creators
 
-Use the `development_prompts` array to expand skeleton scenes into full narrative text. Each prompt specifies exact scene IDs, required word counts, character voices to include, flag effects to reference, and JSON structure to preserve.
+1. Work at **320×180 px base resolution**; the game engine scales up with `image-rendering: pixelated`.
+2. Use a **24-colour palette** per scene, drawing from the scene mood descriptions in each prompt.
+3. Deliver scene backgrounds as **animated GIFs** (8–16 frames for ambient loops) and character portraits as static **PNG** files with transparent backgrounds.
+4. Follow each prompt's animation guidance for the specific ambient effect required.
 
 ---
 
 ## File Reference
 
 **Source:** Core Humanitarian Standard on Quality and Accountability, 2024
-**Filename:** `CHS_2024_game_v2.json`
-**Related files:** `CHS_2024.json` (raw CHS data), `CHS_2024.pdf` (official CHS document), `CHS_2024_game.json` (Version 1 — shorter linear game)
+**Filename:** `CHS_2024_game.json`
+**Related files:** `CHS_2024.json` (raw CHS data), `CHS_2024.pdf` (official CHS document), `README_CHS_2024_game.md` (summary README for this game)
