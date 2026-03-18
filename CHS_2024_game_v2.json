@@ -2082,7 +2082,7 @@
       "score_threshold_maximum": 56,
       "emoji": "🏆",
       "summary": "Maya's leadership in Kailani will be studied as a model of principled, inclusive, locally-led humanitarian action. She listened to marginalised voices, protected her staff, maintained accountability when it was uncomfortable, coordinated generously, used evidence to improve the programme, and left stronger local systems behind. All nine CHS commitments were honoured in practice — not just in policy.",
-      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Maya reflects on the most difficult moments and what made each one a choice for principles over convenience. The community she served is stronger. KCV is independent. The fishing cooperative is thriving. Leila has been promoted. Amara's monitoring methodology is used across the region. Toma's procurement reform is global policy. The Tevita modality is taught in two humanitarian training programmes. Maya's notebook is full.",
+      "narrative_summary": "Maya sits with her notebook at Port Hana departure gate and reads the last entry: 'The committee authorised it. I didn't need to.' From the start she slowed down to hear the community — Tevita speakers, women, people with disabilities, those the survey skipped. She redesigned distribution around real needs rather than pre-approved boxes, embedded local knowledge from day one, and handed governance to Filomena's committee before the first budget variance arrived. She established PSEA and data-protection frameworks before harm could occur, followed Sina's complaint to its full survivor-centred resolution, and opened the cluster data that got Dr. Ana Tuivaga into the room. When Amara's gender gap appeared in the mid-term data, Maya acted — not filed. When Leila called at 3 am, Maya answered. When Toma's conflict-of-interest note arrived, she opened the investigation. All nine CHS commitments honoured in practice, not just in policy. The fishing cooperative's first season report is in the back pocket of the notebook: 'They did this themselves.'",
       "cascading_flags_achieved": [
         "inclusive_assessment",
         "local_ownership_by_design",
@@ -2111,8 +2111,7 @@
         "8.7",
         "9.5"
       ],
-      "badge_image_prompt": "PLACEHOLDER — A digital badge: gold circle with a stylised Pacific island coastline recovering after a cyclone — green returning. Text: 'Transformative Leader'. Small icons around the edge representing all 9 CHS commitments. Flat design, gold, white, and ocean blue colour palette.",
-      "status": "placeholder"
+      "badge_image_prompt": "Digital badge, circular format. Gold outer ring with nine small icons evenly spaced around the circumference, each representing one CHS commitment: a speech bubble (participation), a water drop (timely support), a seedling (resilience), a shield (do no harm), a complaint box (accountability), two overlapping circles (coordination), a lightbulb (learning), a person with a heart (staff wellbeing), and a coin with a checkmark (ethical resources). Centre image: a Pacific island coastline in aerial view — green recovery vegetation visible among light cyclone damage, a small fishing cooperative on the shore, a community meeting shelter. Warm late-afternoon Pacific light. Text at base: 'Transformative Leader'. Colour palette: deep gold, ocean blue, fresh green, white. Flat digital illustration style, clean and professional."
     },
     {
       "id": "ending_committed",
@@ -2121,7 +2120,7 @@
       "score_threshold_maximum": 45,
       "emoji": "🌟",
       "summary": "Maya made principled choices in most situations but faced real trade-offs and sometimes chose pragmatism over principle. Her commitment to quality is visible, and the programme left positive impact. There are specific CHS commitments where the full standard was not met — but the intent was always there. The learning journey continues.",
-      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Maya reflects on where she got it right, where she took shortcuts that had consequences, and what she would change. Some of the community she served are stronger; others received less than they should have. Staff mostly felt supported; a few felt let down. The programme was good — but it could have been transformative.",
+      "narrative_summary": "Maya closes her notebook at the departure gate and lets herself sit with a mixed feeling: satisfaction and an honest accounting of what fell short. She heard communities better than most — but not everyone. The Tevita sessions happened; the disability section was partially reached. Distribution was mostly right, though a few households were served by others' registries without her knowing until week three. She set up a complaints mechanism, but Sina's process felt slower and more uncertain than it should have. She joined the cluster and shared some data, though the full Amara report was not published externally until the donor pressed. Leila was supported — eventually. The fishing cooperative grant was approved, but by Maya, not Filomena. The programme was good. It helped people. Some CHS commitments were met fully; others were met in intent more than practice. That gap is not a verdict. It is the starting point for the next response.",
       "cascading_flags_notes": "Some high-value flags set; some missed. Balance of positive and neutral consequences.",
       "reflection_questions": [
         "Which decisions were hardest and what made them hard?",
@@ -2138,8 +2137,7 @@
         "7.3",
         "8.7"
       ],
-      "badge_image_prompt": "PLACEHOLDER — A digital badge: silver circle, Kailani island outline with some recovery visible. Text: 'Committed Practitioner'. Growth icons around the edge. Flat design, silver, teal, warm yellow.",
-      "status": "placeholder"
+      "badge_image_prompt": "Digital badge, circular format. Silver outer ring. Centre image: a Pacific island outline with visible recovery — new green growth alongside remaining cyclone damage. A figure (representing Maya) stands on a path that leads forward, facing toward the horizon. Around the inner ring: small growth icons — an upward arrow, an open book, a sprouting plant, a handshake. Text at base: 'Committed Practitioner'. Colour palette: silver, teal, warm yellow, white. Flat digital illustration style."
     },
     {
       "id": "ending_struggling",
@@ -2148,7 +2146,7 @@
       "score_threshold_maximum": 31,
       "emoji": "📚",
       "summary": "Maya's response was well-intentioned but inconsistent. Some communities and staff were let down. Operational pressures frequently overrode principled choices. The gap between what CHS requires and what the programme delivered is significant across multiple commitments. Reflecting honestly on those gaps is the first step forward.",
-      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Honest, compassionate, non-judgmental reflection. Names specific communities and people who received less than they deserved. Notes the systemic pressures that made principled choices difficult. Frames the experience as learning, not failure. Points toward what a stronger next response could look like.",
+      "narrative_summary": "Maya's boarding pass is in her hand. She is not ready to board. The survey skipped the disability section and the Tevita speakers. Distribution happened fast — Carlos's numbers looked clean, but the Tevita household traded HEB packets for water. The programme plan ran without a community committee. When Tropical Storm Beni threatened, there was no protocol. Sina submitted five careful pages and received silence; the complaint box was marked 'no point' in black pen by the following week. The cluster meeting happened, but the data stayed on HopeForward's server. Amara's gender findings were softened in the donor report. Leila's 3 am message waited until morning. The conflict-of-interest note is in a folder marked 'Month 6 Internal Notes.' These were not failures of character. They were failures of system, habit, and pressure — each one manageable, each one a lesson. The next response begins with this one in full view.",
       "cascading_flags_notes": "Mostly negative or neutral flags set. Several missed opportunities compounded.",
       "reflection_questions": [
         "Which CHS commitments did you find hardest to uphold, and why?",
@@ -2169,8 +2167,7 @@
         "8.2",
         "9.5"
       ],
-      "badge_image_prompt": "PLACEHOLDER — A digital badge: bronze circle, open book with a sprouting seedling. Text: 'Learning in Progress'. Icons of reflection and growth. Flat design, bronze, warm orange, light blue.",
-      "status": "placeholder"
+      "badge_image_prompt": "Digital badge, circular format. Bronze outer ring. Centre image: an open notebook lying on a field table, with a single seedling growing up through the pages — symbolising learning emerging from experience. Faint Pacific island coastal landscape in the background, slightly hazy. Around the inner ring: small icons representing reflection and growth — a magnifying glass, an open hand, a seedling, a looping arrow. Text at base: 'Learning in Progress'. Colour palette: bronze, warm orange, light blue, white. Flat digital illustration style."
     },
     {
       "id": "ending_crisis",
@@ -2179,7 +2176,7 @@
       "score_threshold_maximum": 17,
       "emoji": "🌱",
       "summary": "The response in Kailani faced serious setbacks across multiple CHS commitments. Communities were not heard or protected. Staff were harmed. Accountability was compromised. Resources were mismanaged. This is not a verdict on character — it is a signal that operational pressure, institutional incentives, or gaps in knowledge systematically overrode principled practice. The most important step now is honest reflection.",
-      "narrative_summary": "PLACEHOLDER — Full reflective ending narrative (~150 words). Compassionate but unflinching. Names what went wrong and who was affected. Does not excuse but explains the pressures. The humanitarian imperative to do better is framed as ongoing, not conditional. Ends with a forward-looking commitment to learning.",
+      "narrative_summary": "The departure gate is quiet. Maya stares at the notebook without opening it. The disability section was never reached. Tevita speakers were never heard. Distribution targets were met on paper; actual needs were not. The community committee was never formed. When the data breach happened and the complaint arrived, both were managed for speed, not safety. Sina's five pages of careful writing went unanswered. The cluster stayed closed. Amara's gender data was buried. Leila's 3 am message was forwarded to Carlos. The conflict-of-interest note sits in an internal folder. The visibility campaign ran. Across all nine CHS commitments, the gap between what was required and what was delivered is significant. This is not a verdict on who Maya is. It is a record of what happened when pressure, habit, and institutional incentives were louder than principle. The humanitarian imperative does not expire. It begins again — now, with this accounting in hand.",
       "cascading_flags_notes": "Mostly negative flags; cascading harm across multiple chapters.",
       "reflection_questions": [
         "Which pressures most consistently pushed you toward less principled choices?",
@@ -2188,8 +2185,7 @@
         "What would a supportive organisational system have needed to provide for you to make different choices?"
       ],
       "chs_requirements_to_revisit": "All 45 requirements — particularly 1.1, 2.1, 3.4, 4.1, 4.4, 5.4, 5.5, 6.1, 7.3, 8.2, 9.5",
-      "badge_image_prompt": "PLACEHOLDER — A digital badge: circle with a seedling growing through cracked earth in a post-storm landscape. Text: 'Rising Learner'. Earthy greens and browns — growth from difficulty. Flat design.",
-      "status": "placeholder"
+      "badge_image_prompt": "Digital badge, circular format. Earth-toned outer ring in deep brown and muted green. Centre image: a single green seedling pushing up through cracked, storm-dried earth — resilient growth from difficult ground. A faint Pacific island horizon in the background after a storm: grey-clearing sky, scattered debris, early signs of renewal. Around the inner ring: simple icons of persistence — an upward arrow through a barrier, an open door, a rising sun. Text at base: 'Rising Learner'. Colour palette: earthy brown, muted green, warm amber, soft white. Flat digital illustration style."
     }
   ],
   "development_prompts": [
