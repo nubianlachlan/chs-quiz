@@ -32,7 +32,7 @@
     "role": "Country Director",
     "organisation": "HopeForward International",
     "backstory_summary": "Eight years of field experience across Asia and East Africa. This is Maya's first Country Director role. She is under pressure from headquarters, trusted by her team, and committed to the communities she serves. She trained in social work and has a master's in humanitarian action. Her closest advisor is Sione, a Kailani national with deep community networks. She believes in principled, accountable, locally-led response — but faces constant pressure to cut corners for speed and cost.",
-    "image_prompt": "PLACEHOLDER — Illustration of Maya Chen, Country Director, East Asian woman mid-thirties, short dark hair, HopeForward International light-blue field vest with logo, holding a clipboard, standing at a coastal Pacific island displacement camp. Cyclone damage in background: fallen palm trees, blue tarp shelters. Determined but compassionate expression. Flat digital illustration style, warm Pacific light."
+    "image_prompt": "Flat digital illustration of Maya Chen, Country Director. East Asian woman, mid-thirties, short dark hair tucked behind one ear, wearing a light-blue HopeForward International field vest with logo over a white shirt. She holds a clipboard in one hand and a radio in the other. Background: Manu Displacement Camp, blue tarp shelters, palm trees, soft Pacific overcast sky. Expression: determined, slightly worn but focused. Colour palette: warm ochre, Pacific teal, relief blue, storm grey. Flat vector style, no gradients."
   },
   "setting": {
     "country": "Kailani",
@@ -64,32 +64,32 @@
         "description_summary": "Safer inland town, 40km from Northern Coast, emergency HopeForward staff base during security incidents."
       }
     ],
-    "image_prompt": "PLACEHOLDER — Aerial map-style illustration of Kailani tropical island. Pacific ocean surrounds it. Northern coast shows cyclone damage: destroyed houses, debris, floodwater. Displacement camp visible on eastern shore. Capital Port Hana in south. Roads washed away in north. Tevita Village inland, Talio hub mid-island. Post-cyclone overcast sky. Flat design, rich tropical greens, blues, and storm greys."
+    "image_prompt": "Flat digital illustration: aerial map-style view of Kailani, a fictional Pacific island nation. Tropical ocean surrounds the island. Northern coast shows cyclone damage — destroyed houses, debris, brown floodwater in streets. Manu Displacement Camp visible on the eastern shore — blue tarp shelters in rows. Capital Port Hana in the south — port, UN relief hub flag. Roads washed away in the north. Tevita Village shown inland with a small cluster of buildings. Talio Sub-district Hub mid-island. Post-cyclone overcast sky with light breaking through in the south. Flat vector style, rich tropical greens, Pacific blues, storm greys, warm ochre. No gradients, clean map-illustration aesthetic."
   },
   "score_dimensions": [
     {
       "id": "community_trust",
       "title": "Community Trust",
       "description": "Reflects the degree to which affected communities trust, engage with, and feel heard by HopeForward. Shaped primarily by CHS commitments 1, 2, 5, 6, and 7.",
-      "icon_prompt": "PLACEHOLDER — Simple icon: two hands clasped, warm ochre and terracotta, flat vector style."
+      "icon_prompt": "Flat vector icon: two hands clasped in a handshake, rendered in warm ochre and terracotta on a white background. Clean, minimal line weight, no gradients. 48x48px target size. Style consistent with the Kailani Rising UI palette."
     },
     {
       "id": "staff_wellbeing",
       "title": "Staff Wellbeing",
       "description": "Reflects the safety, morale, psychological health, and professional development of HopeForward staff and volunteers. Shaped primarily by CHS commitment 8.",
-      "icon_prompt": "PLACEHOLDER — Simple icon: person silhouette inside protective circle, supportive blue and green, flat vector style."
+      "icon_prompt": "Flat vector icon: a simplified person silhouette standing inside a protective rounded circle, rendered in supportive blue and soft green on a white background. Clean, minimal line weight, no gradients. 48x48px target size. Style consistent with the Kailani Rising UI palette."
     },
     {
       "id": "program_quality",
       "title": "Program Quality",
       "description": "Reflects the relevance, effectiveness, technical quality, and measurable impact of the response. Shaped primarily by CHS commitments 2, 3, 4, 6, and 7.",
-      "icon_prompt": "PLACEHOLDER — Simple icon: upward bar chart with small heart at top, positive green, flat vector style."
+      "icon_prompt": "Flat vector icon: an upward-trending bar chart with a small heart shape above the tallest bar, rendered in positive tropical green on a white background. Clean, minimal line weight, no gradients. 48x48px target size. Style consistent with the Kailani Rising UI palette."
     },
     {
       "id": "accountability",
       "title": "Accountability & Ethics",
       "description": "Reflects adherence to ethical standards, transparency with donors and communities, protection from exploitation, and organisational integrity. Shaped primarily by CHS commitments 4, 5, 8, and 9.",
-      "icon_prompt": "PLACEHOLDER — Simple icon: balanced scales with magnifying glass, neutral blue, flat vector style."
+      "icon_prompt": "Flat vector icon: balanced scales with a small magnifying glass overlaid on the fulcrum, rendered in neutral blue and grey on a white background. Clean, minimal line weight, no gradients. 48x48px target size. Style consistent with the Kailani Rising UI palette."
     }
   ],
   "context_flags_system": {
@@ -193,56 +193,63 @@
       "name": "Maya Chen",
       "role": "Country Director, HopeForward International",
       "description_summary": "The player character. East Asian woman, mid-thirties, first CD role.",
-      "image_prompt": "PLACEHOLDER — See player_character section."
+      "image_prompt": "Flat digital illustration of Maya Chen, Country Director. East Asian woman, mid-thirties, short dark hair tucked behind one ear, wearing a light-blue HopeForward International field vest with logo over a white shirt. She holds a clipboard in one hand and a radio in the other. Background: Manu Displacement Camp, blue tarp shelters, palm trees, soft Pacific overcast sky. Expression: determined, slightly worn but focused. Colour palette: warm ochre, Pacific teal, relief blue, storm grey. Flat vector style, no gradients."
     },
     {
       "id": "char_sione",
       "name": "Sione Taufa",
       "role": "National Programme Officer, HopeForward",
       "description_summary": "Kailani national, 29, practical and perceptive. Deep community networks. Maya's most trusted ground-level advisor.",
-      "image_prompt": "PLACEHOLDER — Sione Taufa, young Polynesian man, late twenties, HopeForward vest, field notebook, Manu Camp background. Alert, competent. Flat digital illustration."
+      "image_prompt": "Flat digital illustration of Sione Taufa, National Programme Officer. Young Polynesian man, late twenties, compact and alert, wearing a HopeForward green field vest over a plain t-shirt. He holds a worn field notebook open in one hand, a pen behind his ear. Background: Manu Displacement Camp — blue tarp shelters, a crowd of community members in the distance, palm trees and post-cyclone sky. Expression: attentive, confident, grounded. Colour palette: warm ochre, Pacific teal, relief blue, tropical green. Flat vector style, no gradients."
     },
     {
       "id": "char_filomena",
       "name": "Filomena Vaka",
       "role": "Executive Director, Kailani Community Voices (KCV)",
       "description_summary": "Kailani civil society leader, 50s, experienced and direct. Proud of KCV's community roots. Cautiously trusts international NGOs. Becomes a key partner or critic depending on Maya's choices.",
-      "image_prompt": "PLACEHOLDER — Filomena Vaka, Pacific Island woman in her 50s, bright floral blouse and lanyard, tablet, outside KCV office. Confident, community-leader presence. Flat illustration."
+      "image_prompt": "Flat digital illustration of Filomena Vaka, Executive Director of KCV. Pacific Island woman in her mid-fifties, broad-shouldered and composed, wearing a bright floral blouse in tropical red and orange with a lanyard bearing the Kailani Community Voices logo. She holds a tablet and stands outside the KCV office — a modest painted concrete building with a hand-lettered sign, tropical plants. Expression: watchful, confident, a hint of scepticism. Colour palette: warm ochre, tropical red, Pacific teal, cream. Flat vector style."
     },
     {
       "id": "char_leila",
       "name": "Leila Hassan",
       "role": "Field Coordinator, Northern Coast",
       "description_summary": "East African national staff, 32, dedicated and fearless. Works in the hardest area. Her safety and support are central to decision 8.",
-      "image_prompt": "PLACEHOLDER — Leila Hassan, East African woman early thirties, field hat and vest, coastal road, cyclone damage background. Determination and visible concern. Flat illustration."
+      "image_prompt": "Flat digital illustration of Leila Hassan, Field Coordinator. East African woman, early thirties, lean and purposeful, wearing a tan field hat and HopeForward vest. She stands on a coastal road with cyclone damage visible behind her — a collapsed concrete wall, debris, a cracked road. She holds a radio handset, expression showing visible fatigue and controlled concern. Colour palette: warm ochre, storm grey, tan, Pacific teal, relief blue. Flat vector style, soft Pacific side-light, no gradients."
     },
     {
       "id": "char_carlos",
       "name": "Carlos Reyes",
       "role": "Logistics Coordinator, HopeForward",
       "description_summary": "Colombian, late 30s, experienced logistics specialist. Highly efficient. Sometimes prioritises speed and donor compliance over community needs.",
-      "image_prompt": "PLACEHOLDER — Carlos Reyes, Latin American man late thirties, clipboard and earpiece, warehouse of aid boxes. Professional, efficient, slightly pressured. Flat illustration."
+      "image_prompt": "Flat digital illustration of Carlos Reyes, Logistics Coordinator. Latin American man, late thirties, compact and energetic, wearing a HopeForward vest and a headset. He stands inside a warehouse stacked with aid boxes — hygiene kits, water containers, tarpaulin bales. He holds a clipboard with a delivery manifest. Expression: efficient, slightly pressured, solution-focused. Colour palette: warm ochre, warehouse beige, relief blue, tropical green. Flat vector style, interior lighting, no gradients."
     },
     {
       "id": "char_amara",
       "name": "Amara Diallo",
       "role": "M&E Officer, HopeForward",
       "description_summary": "West African woman, late twenties, data-driven and principled. Drives the learning and monitoring processes. Central to decision 7.",
-      "image_prompt": "PLACEHOLDER — Amara Diallo, West African woman late twenties, laptop with data dashboard open, programme monitoring documents around her. Sharp, analytical expression. Office setting. Flat illustration."
+      "image_prompt": "Flat digital illustration of Amara Diallo, M&E Officer. West African woman, late twenties, precise and energetic, sitting at a desk with a laptop open showing a data dashboard — bar charts, indicator rows, a map. Printed monitoring documents and a pen are spread beside her. She leans forward looking at the screen, expression sharp and analytical. Background: HopeForward Port Hana office, a whiteboard with data frameworks. Colour palette: warm ochre, data blue, cream, tropical green. Flat vector style."
     },
     {
       "id": "char_toma",
       "name": "Toma Faleolo",
       "role": "Finance & Compliance Manager, HopeForward",
       "description_summary": "Kailani national, 40s, meticulous and ethical. Central to decision 9. Sometimes in conflict with Carlos on spend vs compliance.",
-      "image_prompt": "PLACEHOLDER — Toma Faleolo, Pacific Island man in his 40s, formal office shirt, budget spreadsheets, calculator. Thoughtful, careful expression. Office interior. Flat illustration."
+      "image_prompt": "Flat digital illustration of Toma Faleolo, Finance Manager. Pacific Island man in his mid-forties, solidly built, wearing a formal office shirt with HopeForward logo. He sits at a desk with a printed budget spreadsheet and a calculator. He holds a pen, expression thoughtful and measured — a man reviewing figures he is not entirely comfortable with. Background: HopeForward Port Hana office, file shelves, a window with tropical light. Colour palette: warm ochre, office cream, Pacific teal, relief blue. Flat vector style."
     },
     {
       "id": "char_kan_director",
       "name": "Dr. Ana Tuivaga",
       "role": "Director, Kailani Aid Network (KAN)",
       "description_summary": "Kailani national, 50s, doctor and public health specialist. KAN is excluded from the UN cluster. Ana represents local actor exclusion in decision 6.",
-      "image_prompt": "PLACEHOLDER — Dr. Ana Tuivaga, Pacific Island woman in her 50s, doctor's lanyard, health clinic background. Frustrated but professional expression, holding a stack of unread reports. Flat illustration."
+      "image_prompt": "Flat digital illustration of Dr. Ana Tuivaga, Director of KAN. Pacific Island woman in her mid-fifties, authoritative and tired, wearing a doctor's lanyard over a plain shirt. She stands in a health clinic corridor — a painted breeze-block wall, a curtained examination bay visible behind her. She holds a thick stack of unread coordination reports, expression a controlled frustration. Colour palette: warm ochre, clinic white, storm grey, Pacific teal, relief blue. Flat vector style, soft interior light, no gradients."
+    },
+    {
+      "id": "char_sina",
+      "name": "Sina Talagi",
+      "role": "Community member, Manu Camp (complainant)",
+      "description_summary": "Kailani national, 34, mother of two, displaced from a coastal village destroyed by Cyclone Vera. Ran a small tailoring cooperative before the cyclone. Central to decision 5 as the complainant whose case tests HopeForward's PSEA and complaints processes.",
+      "image_prompt": "Flat digital illustration of Sina Talagi, community member. Pacific Island woman, mid-thirties, wearing a printed wrap skirt and a plain blouse, hair tied back. She sits on a plastic chair outside a blue tarp shelter at Manu Displacement Camp. She holds a handwritten letter — the complaint she has submitted. Expression: guarded hope, visible uncertainty. Background: camp setting — shelters, a water point, community members in the distance, tropical overcast sky. Colour palette: warm ochre, tarp blue, tropical green, storm grey. Flat vector style."
     }
   ],
   "chs_reference_summary": {
@@ -2263,16 +2270,311 @@
     }
   ],
   "supplementary_assets": {
-    "status": "placeholder — expand using development prompt 12 in README_v2.md",
-    "key_supporting_characters_expanded": "See key_characters in game root",
+    "key_supporting_characters_expanded": [
+      {
+        "id": "char_maya",
+        "name": "Maya Chen",
+        "role": "Country Director, HopeForward International",
+        "backstory": "Maya grew up in Vancouver, the daughter of Cantonese-speaking immigrants who ran a community health clinic. She trained as a social worker before pivoting to humanitarian action, completing a master's at NOHA and taking her first field posting in the Philippines. Eight years across Asia and East Africa have given her depth — and scar tissue. This is her first Country Director role. She knows the theory and has lived the chaos. What she is still learning is that being right is not the same as building trust.",
+        "key_decisions": [
+          "all"
+        ],
+        "image_prompt": "Flat digital illustration of Maya Chen, Country Director. East Asian woman, mid-thirties, short dark hair tucked behind one ear, wearing a light-blue HopeForward International field vest with logo over a white shirt. She holds a clipboard in one hand and a radio in the other. Background: Manu Displacement Camp, blue tarp shelters, palm trees, soft Pacific overcast sky. Expression: determined, slightly worn but focused. Colour palette: warm ochre, Pacific teal, relief blue, storm grey. Flat vector style, no gradients."
+      },
+      {
+        "id": "char_sione",
+        "name": "Sione Taufa",
+        "role": "National Programme Officer, HopeForward",
+        "backstory": "Sione is from a neighbouring island, the youngest of seven, and the first in his family to finish university. He studied development studies in Suva on a scholarship and joined HopeForward straight out of graduation. He has spent four years building the relationships and local knowledge that no international hire could replicate. He sees himself as a bridge between his communities and organisations like HopeForward — and he is quietly watching whether Maya is worth bridging to.",
+        "key_decisions": [
+          1,
+          2,
+          3,
+          8
+        ],
+        "image_prompt": "Flat digital illustration of Sione Taufa, National Programme Officer. Young Polynesian man, late twenties, compact and alert, wearing a HopeForward green field vest over a plain t-shirt. He holds a worn field notebook open in one hand, a pen behind his ear. Background: Manu Displacement Camp — blue tarp shelters, a crowd of community members in the distance, palm trees and post-cyclone sky. Expression: attentive, confident, grounded. Colour palette: warm ochre, Pacific teal, relief blue, tropical green. Flat vector style, no gradients."
+      },
+      {
+        "id": "char_filomena",
+        "name": "Filomena Vaka",
+        "role": "Executive Director, Kailani Community Voices (KCV)",
+        "backstory": "Filomena has led Kailani Community Voices for eleven years and built it from a small women's savings group into the most respected civil society organisation on the island. She has outlasted four Country Directors from three different INGOs and has seen every variation of 'partnership' that is really just outsourcing. She is warm, sharp, and carefully generous with her trust. What she offers Maya — community access, local legitimacy, institutional memory — is worth more than any consultant's report, and Filomena knows it.",
+        "key_decisions": [
+          1,
+          3,
+          5,
+          6,
+          9
+        ],
+        "image_prompt": "Flat digital illustration of Filomena Vaka, Executive Director of KCV. Pacific Island woman in her mid-fifties, broad-shouldered and composed, wearing a bright floral blouse in tropical red and orange with a lanyard bearing the Kailani Community Voices logo. She holds a tablet and stands outside the KCV office — a modest painted concrete building with a hand-lettered sign, tropical plants. Expression: watchful, confident, a hint of scepticism. Colour palette: warm ochre, tropical red, Pacific teal, cream. Flat vector style."
+      },
+      {
+        "id": "char_leila",
+        "name": "Leila Hassan",
+        "role": "Field Coordinator, Northern Coast",
+        "backstory": "Leila grew up in Djibouti and took her first humanitarian posting at twenty-two, immediately after her undergraduate degree. She has worked across four countries in six years and chosen the hardest assignments every time. The Northern Coast of Kailani is isolated, under-resourced, and increasingly tense — and Leila took it without complaint. She is meticulous and fearless, which makes her vulnerabilities invisible until a crisis forces them into the light. Her relationship with HopeForward's duty-of-care systems will define whether she stays in the sector.",
+        "key_decisions": [
+          8
+        ],
+        "image_prompt": "Flat digital illustration of Leila Hassan, Field Coordinator. East African woman, early thirties, lean and purposeful, wearing a tan field hat and HopeForward vest. She stands on a coastal road with cyclone damage visible behind her — a collapsed concrete wall, debris, a cracked road. She holds a radio handset, expression showing visible fatigue and controlled concern. Colour palette: warm ochre, storm grey, tan, Pacific teal, relief blue. Flat vector style, soft Pacific side-light, no gradients."
+      },
+      {
+        "id": "char_carlos",
+        "name": "Carlos Reyes",
+        "role": "Logistics Coordinator, HopeForward",
+        "backstory": "Carlos spent his twenties in supply-chain logistics for a Colombian shipping company before joining the humanitarian sector, drawn in by the 2010 Haiti response. He is one of the most technically competent logistics coordinators HopeForward employs — fast, systematic, and respected by suppliers and drivers. His blind spot is that he treats efficiency as a virtue and community need as a variable in a delivery equation. He means well, but his instinct is always to ask how quickly, not whether.",
+        "key_decisions": [
+          2,
+          3,
+          4,
+          7
+        ],
+        "image_prompt": "Flat digital illustration of Carlos Reyes, Logistics Coordinator. Latin American man, late thirties, compact and energetic, wearing a HopeForward vest and a headset. He stands inside a warehouse stacked with aid boxes — hygiene kits, water containers, tarpaulin bales. He holds a clipboard with a delivery manifest. Expression: efficient, slightly pressured, solution-focused. Colour palette: warm ochre, warehouse beige, relief blue, tropical green. Flat vector style, interior lighting, no gradients."
+      },
+      {
+        "id": "char_amara",
+        "name": "Amara Diallo",
+        "role": "M&E Officer, HopeForward",
+        "backstory": "Amara studied statistics in Dakar and took a postgraduate diploma in monitoring and evaluation in Nairobi before joining HopeForward three years ago. She is the person in the room who is always the first to ask what the numbers actually mean, and the last to be satisfied with an answer. She cares about learning as a moral act — the point of data is not the donor report; it is the decision it enables. Her partnership with Sione on community feedback data is one of the most productive relationships in the office.",
+        "key_decisions": [
+          5,
+          7
+        ],
+        "image_prompt": "Flat digital illustration of Amara Diallo, M&E Officer. West African woman, late twenties, precise and energetic, sitting at a desk with a laptop open showing a data dashboard — bar charts, indicator rows, a map. Printed monitoring documents and a pen are spread beside her. She leans forward looking at the screen, expression sharp and analytical. Background: HopeForward Port Hana office, a whiteboard with data frameworks. Colour palette: warm ochre, data blue, cream, tropical green. Flat vector style."
+      },
+      {
+        "id": "char_toma",
+        "name": "Toma Faleolo",
+        "role": "Finance & Compliance Manager, HopeForward",
+        "backstory": "Toma is a Kailani national who trained as an accountant with a regional development bank and joined HopeForward eight years ago, turning down a government finance role that would have paid significantly more. He believes in the work. He is also painfully aware that as a national staff member in a senior financial role, every decision he makes is watched more closely than the same decision made by an expatriate colleague. His caution is not timidity. It is professional survival — and it is principled.",
+        "key_decisions": [
+          9
+        ],
+        "image_prompt": "Flat digital illustration of Toma Faleolo, Finance Manager. Pacific Island man in his mid-forties, solidly built, wearing a formal office shirt with HopeForward logo. He sits at a desk with a printed budget spreadsheet and a calculator. He holds a pen, expression thoughtful and measured — a man reviewing figures he is not entirely comfortable with. Background: HopeForward Port Hana office, file shelves, a window with tropical light. Colour palette: warm ochre, office cream, Pacific teal, relief blue. Flat vector style."
+      },
+      {
+        "id": "char_kan_director",
+        "name": "Dr. Ana Tuivaga",
+        "role": "Director, Kailani Aid Network (KAN)",
+        "backstory": "Ana trained as a physician in New Zealand and returned to Kailani to run a district health clinic for a decade before founding the Kailani Aid Network to coordinate local civil society responses. When Cyclone Vera hit, KAN had mobile health teams in the field within six hours — faster than any INGO. Being excluded from the UN cluster is not merely an administrative frustration for Ana; it is a structural indictment of who the international system thinks counts as a legitimate responder. She says this plainly. She is correct.",
+        "key_decisions": [
+          6
+        ],
+        "image_prompt": "Flat digital illustration of Dr. Ana Tuivaga, Director of KAN. Pacific Island woman in her mid-fifties, authoritative and tired, wearing a doctor's lanyard over a plain shirt. She stands in a health clinic corridor — a painted breeze-block wall, a curtained examination bay visible behind her. She holds a thick stack of unread coordination reports, expression a controlled frustration. Colour palette: warm ochre, clinic white, storm grey, Pacific teal, relief blue. Flat vector style, soft interior light, no gradients."
+      },
+      {
+        "id": "char_sina",
+        "name": "Sina Talagi",
+        "role": "Community member, Manu Camp (complainant, Decision 5)",
+        "backstory": "Sina is thirty-four, a mother of two from a coastal village destroyed by Cyclone Vera. She is now living in Manu Displacement Camp. Before the cyclone, she ran a small tailoring cooperative with five other women from her neighbourhood. She speaks both Kailani Creole and basic English. She trusted HopeForward's complaint process enough to write a letter. What happens next — whether her complaint is handled with care, transparency, and survivor-centred practice — will determine whether that trust is the beginning of something, or the end of it.",
+        "key_decisions": [
+          5
+        ],
+        "image_prompt": "Flat digital illustration of Sina Talagi, community member. Pacific Island woman, mid-thirties, wearing a printed wrap skirt and a plain blouse, hair tied back. She sits on a plastic chair outside a blue tarp shelter at Manu Displacement Camp. She holds a handwritten letter — the complaint she has submitted. Expression: guarded hope, visible uncertainty. Background: camp setting — shelters, a water point, community members in the distance, tropical overcast sky. Colour palette: warm ochre, tarp blue, tropical green, storm grey. Flat vector style."
+      }
+    ],
     "ui_design_prompts": {
-      "main_menu": "PLACEHOLDER — Main menu: 'Kailani Rising' title over aerial Pacific island post-cyclone, recovery beginning. Start, How to Play, About CHS, Score History. HopeForward logo. Warm greens, blues, ochre.",
-      "score_dashboard": "PLACEHOLDER — Four circular gauges: Community Trust, Staff Wellbeing, Program Quality, Accountability. Value fills with icons. Current score total. Context flags panel showing active flags. Clean, readable, flat.",
-      "decision_screen": "PLACEHOLDER — Top half: scene illustration. Bottom: chapter title, CHS commitment badge, situation text. Four option buttons (A-D). Progress indicator (1-9). CHS requirement icons highlighted for relevant commitment.",
-      "consequence_screen": "PLACEHOLDER — Scene illustration fills top half. Below: immediate consequence, learning note, CHS quote highlighted. Score delta visible (+2 Community Trust etc). 'Cascading Note' panel showing flags set. Continue button.",
-      "chapter_transition": "PLACEHOLDER — Full-screen chapter card: Chapter number, CHS commitment number and full title, all sub-requirement numbers listed, decorative Pacific island border. Flat, rich colour per commitment.",
-      "ending_screen": "PLACEHOLDER — Full-screen ending: badge large in centre, narrative text scrollable, score breakdown by dimension, active flags listed, reflection questions, 'Share Results' and 'Play Again' buttons."
+      "main_menu": "Flat digital illustration for the 'Kailani Rising' main menu screen. Full-portrait composition. Upper two-thirds: aerial view of a Pacific island coastline beginning to recover from Cyclone Vera — blue tarps on damaged rooftops, aid trucks on a coastal road, palm trees bent but standing, tropical ocean beyond. Warm recovering light breaking through storm clouds. Lower third: dark teal panel with the title 'KAILANI RISING' in bold serif type, subtitle 'A Humanitarian Roleplay' in smaller weight. Four menu buttons stacked vertically: START GAME, HOW TO PLAY, ABOUT CHS 2024, SCORE HISTORY — white text on semi-transparent dark teal panels. HopeForward International logo small bottom-left, CHS badge bottom-right. Colour palette: Pacific teal, warm ochre, storm grey, relief blue, tropical green. Flat vector style, no gradients, clean type hierarchy.",
+      "score_dashboard": "Flat digital illustration layout for the score dashboard screen. Clean, information-first design. White background with teal header bar reading 'YOUR PROGRESS' in white bold type. Four large circular gauge components arranged in a 2x2 grid, each with a distinct icon and colour: (1) Community Trust — handshake icon, Pacific teal fill; (2) Staff Wellbeing — heart icon, warm coral fill; (3) Program Quality — star icon, tropical green fill; (4) Accountability and Ethics — scales icon, ochre fill. Each gauge shows a percentage arc with the numeric value large in the centre. Below the grid: a horizontal 'Total Score' bar with current points and band label (Transformative Leader / Committed Practitioner / Struggling Responder / Crisis Mode). Right panel: 'Active Context Flags' list — flags displayed as small labelled chips in soft teal, grey for inactive flags. Bottom: chapter progress indicator (1-9 steps). Flat vector style, clean spacing, readable at mobile scale.",
+      "decision_screen": "Flat digital illustration layout for the decision screen. Split composition. Upper 40%: scene illustration panel — a Pacific island humanitarian setting relevant to the current chapter (changes per scene). Below: white content panel. Header row: chapter number chip (e.g. 'Ch. 4') left-aligned, CHS commitment badge with commitment number and short title right-aligned (e.g. 'CHS 4 — Do No Harm'). Situation text block: 3-5 lines of narrative situation summary in medium body type. Context flag indicator: if active flags affect this decision, a small amber banner reads 'Your earlier choices are shaping this situation — see flags'. Four option buttons stacked below, labelled A, B, C, D — each a full-width rounded rectangle with option label text. Progress dots at bottom: nine dots, current chapter filled teal. Colour palette: Pacific teal, warm ochre, clean white, storm grey. Flat vector, clean typographic hierarchy, accessible contrast ratios.",
+      "consequence_screen": "Flat digital illustration layout for the consequence screen. Upper 45%: scene illustration showing the direct consequence of the player's choice — character present, setting relevant. Below: white card panel with coloured top border matching the score impact (teal = positive, coral = negative, grey = neutral). 'CONSEQUENCE' label small above the immediate consequence text (2-3 sentences). Score delta row: coloured pill badges showing each dimension change, e.g. '+2 Community Trust', '-1 Staff Wellbeing', each in its dimension colour. 'WHAT THE CHS SAYS' section: quoted CHS text in a light teal box, italic, with CHS requirement number. 'CASCADING NOTE' panel at bottom: amber background, text showing which context flag was set (if any) and what effect it will have on later decisions. 'CONTINUE' button bottom-right, teal. Flat vector style, clean card layout, mobile-readable type.",
+      "chapter_transition": "Flat digital illustration for the chapter transition card, displayed between chapters. Full-screen rich-colour card. Background: a Pacific island landscape relevant to the next chapter location — illustrated in flat style with bold colour. Overlaid: a centred white card panel with rounded corners. Card content from top: 'CHAPTER N' in small caps; large bold chapter title (e.g. 'Do No Harm and Protection'); 'CHS Commitment N' in medium weight; a horizontal rule; then a bulleted list of all sub-requirement numbers and short titles for that commitment (e.g. '4.1 Do not harm / 4.2 Prevent sexual exploitation...'). Bottom of card: a decorative horizontal border in a Pacific island motif — simple geometric woven pattern in ochre on teal. Background colours vary per chapter: Ch.1 teal, Ch.2 green, Ch.3 ochre, Ch.4 coral, Ch.5 plum, Ch.6 blue, Ch.7 amber, Ch.8 slate, Ch.9 deep teal. Flat vector style, bold type.",
+      "ending_screen": "Flat digital illustration layout for the ending screen. Full-portrait, scrollable. Top section: ending badge large and centred — a distinct illustrated badge for each of the four endings (Transformative Leader: a rising sun over a rebuilt village; Committed Practitioner: a steady compass; Struggling Responder: an open book; Crisis Mode: a cracked foundation). Badge title in bold below it. Scrollable narrative section below: Maya's ending narrative text in body size type over a warm cream background, 150-200 words. Score breakdown panel: four dimension scores shown as horizontal bars with numeric values, dimension colours matching the dashboard. 'CONTEXT FLAGS ACTIVE' section: each set flag shown as a chip with its short description — representing the cumulative journey. Three reflection questions in a teal-bordered card. Bottom: two full-width buttons — 'SHARE RESULTS' (teal fill, white text) and 'PLAY AGAIN' (outlined, teal text). Flat vector style, warm Pacific palette."
     },
-    "game_engine_notes": "PLACEHOLDER — Implement context_flags_system: each flag is a boolean set by specific option choices. In decision scene rendering, check active flags and adjust situation_summary text or unlock additional options. Flags persist across the full game session. Ending screen should display all active flags as part of the journey summary."
+    "game_engine_notes": {
+      "overview": "This section provides implementation guidance for developers building a game engine around CHS_2024_game_v2.json. The core mechanic is the context_flags_system: a set of 18 boolean flags, initialised false at game start, set to true by specific option choices, persisted for the full session, and used to conditionally modify situation_summary text and consequence text in later scenes.",
+      "context_flags_implementation": {
+        "storage": "Store all 18 flags in a single game-session state object, e.g. { inclusive_assessment: false, community_informed: false, ... }. Initialise all flags to false at game start. Never reset flags mid-session. Flags are set to true when the player selects an option whose sets_flag field matches the flag ID. Flags are never unset.",
+        "flag_setting": "After the player selects an option and before rendering the consequence scene, evaluate the selected option's sets_flag field (present in the decision option data). Set all listed flags to true in session state. Log flag changes so they can be displayed in the consequence screen's Cascading Note panel.",
+        "flag_effects_by_decision": [
+          {
+            "flag": "inclusive_assessment",
+            "set_by": "decision_1 option B",
+            "affects_scenes": [
+              "decision_2",
+              "decision_5",
+              "decision_7"
+            ],
+            "narrative_effect": "In decision_2: Sione's community-informed priorities are richer; situation_summary should note that assessed community needs are more detailed. In decision_5: community members are more likely to use the complaints channel; Filomena references the participatory assessment. In decision_7: Amara's M&E data reflects deeper baseline participation.",
+            "ui_note": "Display amber flag chip 'Inclusive Assessment Active' on decision_2, decision_5, and decision_7 screens."
+          },
+          {
+            "flag": "community_informed",
+            "set_by": "decision_1 options B or D",
+            "affects_scenes": [
+              "decision_5",
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_5: the situation_summary notes that Sina Talagi is aware of HopeForward's complaint mechanisms because community rights information was shared early. In decision_9: communities are aware of their right to participate in exit planning, increasing accountability expectations.",
+            "ui_note": "Display flag chip 'Community Informed' on decision_5 and decision_9 screens."
+          },
+          {
+            "flag": "local_knowledge_built_in",
+            "set_by": "decision_2 option B",
+            "affects_scenes": [
+              "decision_3",
+              "decision_7"
+            ],
+            "narrative_effect": "In decision_3: programme design reflects local capacities; situation_summary notes KCV is already embedded in programme structure. In decision_7: Amara's M&E data is richer because it was designed with local knowledge; the gender gap finding has more granular community context.",
+            "ui_note": "Display flag chip 'Local Knowledge Built In' on decision_3 and decision_7 screens."
+          },
+          {
+            "flag": "referral_pathways_active",
+            "set_by": "decision_2 options B or C",
+            "affects_scenes": [
+              "decision_6"
+            ],
+            "narrative_effect": "In decision_6: the situation_summary notes that cluster members already know HopeForward through referral coordination; the starting relationship with the cluster coordinator is warmer. The geographic gap negotiation in option B is easier because prior referral contact exists.",
+            "ui_note": "Display flag chip 'Referral Pathways Active' on decision_6 screen."
+          },
+          {
+            "flag": "local_ownership_by_design",
+            "set_by": "decision_3 options B or D",
+            "affects_scenes": [
+              "decision_6",
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_6: KCV's formal governance role means the partnership support option in B/C is more straightforward — KCV already has a seat at the table. In decision_9: the handover of resources to community structures is more credible and achievable; Filomena is a co-signatory on the transfer plan.",
+            "ui_note": "Display flag chip 'Local Ownership by Design' on decision_6 and decision_9 screens."
+          },
+          {
+            "flag": "drr_integrated",
+            "set_by": "decision_3 options C or D",
+            "affects_scenes": [
+              "decision_4",
+              "decision_8"
+            ],
+            "narrative_effect": "In decision_4: the situation_summary notes that communities in the Northern Coast were warned of a secondary storm risk and responded earlier; environmental risk is somewhat reduced. In decision_8: Leila's field team used the early warning system; situation_summary notes improved staff safety protocols are in place.",
+            "ui_note": "Display flag chip 'DRR Integrated' on decision_4 and decision_8 screens."
+          },
+          {
+            "flag": "protection_framework_active",
+            "set_by": "decision_4 option B",
+            "affects_scenes": [
+              "decision_5",
+              "decision_8"
+            ],
+            "narrative_effect": "In decision_5: the situation_summary notes that a PSEA policy and reporting pathway are already in place; Sina's complaint can be handled through an established mechanism. In decision_8: staff already know the misconduct reporting process; the investigation is procedurally straightforward.",
+            "ui_note": "Display flag chip 'Protection Framework Active' on decision_5 and decision_8 screens."
+          },
+          {
+            "flag": "data_protection_in_place",
+            "set_by": "decision_4 options B or C",
+            "affects_scenes": [
+              "decision_7",
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_7: beneficiary data published in the learning report is handled with consent protocols; Amara flags this as a best-practice note. In decision_9: the community exit data package is handled under existing consent and data minimisation protocols; less risk of harm.",
+            "ui_note": "Display flag chip 'Data Protection in Place' on decision_7 and decision_9 screens."
+          },
+          {
+            "flag": "complaints_trusted",
+            "set_by": "decision_5 options B or D",
+            "affects_scenes": [
+              "decision_7"
+            ],
+            "narrative_effect": "In decision_7: Amara's feedback analysis includes a rich dataset from the complaints channel; the gender gap finding is partly surfaced through complaints data, strengthening the evidence base.",
+            "ui_note": "Display flag chip 'Complaints Trusted' on decision_7 screen."
+          },
+          {
+            "flag": "survivor_centred_process",
+            "set_by": "decision_5 options B or D",
+            "affects_scenes": [
+              "decision_8"
+            ],
+            "narrative_effect": "In decision_8: the situation_summary notes that staff have seen a survivor-centred process modelled; they have clearer expectations about conduct standards. The volunteer misconduct situation in D8 is handled with a stronger baseline of staff understanding.",
+            "ui_note": "Display flag chip 'Survivor-Centred Process' on decision_8 screen."
+          },
+          {
+            "flag": "cluster_coordination_active",
+            "set_by": "decision_6 option B",
+            "affects_scenes": [
+              "decision_7"
+            ],
+            "narrative_effect": "In decision_7: the situation_summary notes that HopeForward's learning report can be shared at the cluster; the Tevita cash-transfer modality reaches other agencies more directly. The learning shared externally outcome is more impactful with an active cluster relationship.",
+            "ui_note": "Display flag chip 'Cluster Coordination Active' on decision_7 screen."
+          },
+          {
+            "flag": "partner_quality_supported",
+            "set_by": "decision_6 options B or C",
+            "affects_scenes": [
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_9: KCV's programme quality and financial management are stronger; the community resource transfer option is more credible because KCV has been supported to meet quality standards. Filomena's endorsement of the handover plan carries institutional weight.",
+            "ui_note": "Display flag chip 'Partner Quality Supported' on decision_9 screen."
+          },
+          {
+            "flag": "gender_data_actioned",
+            "set_by": "decision_7 option B",
+            "affects_scenes": [
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_9: programme impact data is stronger because the gender gap was corrected; the donor report and exit narrative can evidence improved outcomes for women and girls. This strengthens the case for flexible future funding.",
+            "ui_note": "Display flag chip 'Gender Data Actioned' on decision_9 screen."
+          },
+          {
+            "flag": "learning_shared_externally",
+            "set_by": "decision_7 options B or C",
+            "affects_scenes": [
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_9: HopeForward's sector reputation is visible in the donor conversation; the situation_summary notes that the donor has seen HopeForward's published learning and is more open to transparent resource discussion.",
+            "ui_note": "Display flag chip 'Learning Shared Externally' on decision_9 screen."
+          },
+          {
+            "flag": "duty_of_care_upheld",
+            "set_by": "decision_8 options B or D",
+            "affects_scenes": [
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_9: national staff morale is high; Sione and Toma are more actively engaged as advisors in the exit planning process. The situation_summary notes that the team is intact and functioning well as the programme approaches transition.",
+            "ui_note": "Display flag chip 'Duty of Care Upheld' on decision_9 screen."
+          },
+          {
+            "flag": "misconduct_addressed_formally",
+            "set_by": "decision_8 options B or D",
+            "affects_scenes": [
+              "decision_9"
+            ],
+            "narrative_effect": "In decision_9: the code of conduct culture is established; the conflict-of-interest investigation in D9 is handled more credibly because there is a demonstrated precedent for formal accountability. Staff and community trust in HopeForward's ethics is higher.",
+            "ui_note": "Display flag chip 'Misconduct Addressed Formally' on decision_9 screen."
+          },
+          {
+            "flag": "donor_transparent_engagement",
+            "set_by": "decision_9 option B",
+            "affects_scenes": [
+              "ending_transformative",
+              "ending_committed"
+            ],
+            "narrative_effect": "In endings: narrative should reference the donor relationship as a long-term asset. The Transformative Leader ending explicitly notes that HopeForward's transparent engagement in Kailani becomes a case study in principled donor partnership.",
+            "ui_note": "Display this flag in the ending screen's active flags list with its description."
+          },
+          {
+            "flag": "community_resources_transferred",
+            "set_by": "decision_9 options B or C",
+            "affects_scenes": [
+              "ending_transformative",
+              "ending_committed",
+              "ending_struggling"
+            ],
+            "narrative_effect": "In endings: narrative references the resource transfer to KCV and community structures at exit. In the Transformative Leader ending, Filomena confirms that KCV used the transferred resources to sustain two programme elements.",
+            "ui_note": "Display this flag in the ending screen's active flags list with its description."
+          }
+        ]
+      },
+      "ui_flag_surfacing": {
+        "decision_screen_behaviour": "At the start of each decision scene, query the session state for all active flags. Check the flag_effects_by_decision map above for which flags affect this decision. If one or more affecting flags are active, display a contextual banner above the situation text: amber background, text reading 'Your earlier choices are shaping this situation.' Below the banner, list each active affecting flag as a chip with its short label. On tap or hover, expand the chip to show the flag's narrative_effect description for this scene.",
+        "consequence_screen_behaviour": "After displaying the score delta, show the 'Cascading Note' panel (amber background) if the chosen option sets a new flag. Display: flag name, a one-sentence description of what it means for the future, and an icon (a small branching-path arrow). This is the moment the player learns a flag has been set — make it clear and memorable.",
+        "score_dashboard_behaviour": "The right panel of the score dashboard lists all 18 flags. Active flags are displayed as filled teal chips with white text. Inactive flags are displayed as empty grey chips with muted text. Chips link to a detail drawer showing the flag's set_by information and effect_summary.",
+        "ending_screen_behaviour": "The ending screen displays all active flags in a dedicated 'Your Journey' section. Each flag is shown with its name and effect_summary. The count of active flags (out of 18) is shown as a summary statistic: e.g. '14 of 18 flags active — you made principled choices in most situations.' This reinforces cumulative learning.",
+        "flag_persistence": "Flags are stored in session state only. If the player uses 'Play Again', all flags reset to false. If the game supports saved sessions (e.g. a web app with localStorage), serialise the full flags object alongside the current scene ID and score state. Always validate the flags object on load — if any flag key is missing, initialise it to false."
+      },
+      "rendering_notes": {
+        "situation_summary_injection": "Each decision scene has a situation_summary field. If active flags affect this scene (per the flag_effects_by_decision map), the engine should append or inject contextual text. The recommended approach is to store flag-conditional text as a separate flag_situation_addenda object keyed by flag ID within each scene — allowing clean separation of base text and flag-modified text. For the current skeleton, the narrative_effect descriptions in flag_effects_by_decision above describe what this addendum should convey.",
+        "image_prompt_use": "All image_prompt fields are ready for use with AI image generation APIs (DALL-E 3, Midjourney, Stable Diffusion XL, or Adobe Firefly). Pass the prompt string directly. For production, generate and cache images at build time. Store asset paths alongside the game data. The consistent style descriptor 'flat digital illustration, Pacific island setting, warm ochre, teal, storm grey palette' is present in all prompts to ensure visual coherence.",
+        "chs_badge_rendering": "Each decision scene references a CHS commitment number. Render the CHS commitment badge (commitment number and short title) as a persistent element on the decision screen so the learning connection is always visible. The badge should appear even when the player is reading the situation and choosing an option.",
+        "score_delta_animation": "When displaying score deltas on the consequence screen, animate each dimension change sequentially (200ms delay between dimensions) to draw attention to the multi-dimensional impact of each choice. Positive deltas: teal fill animation upward. Negative deltas: coral fill animation downward."
+      }
+    }
   }
 }
