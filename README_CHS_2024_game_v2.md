@@ -1,8 +1,7 @@
 # Kailani Rising: A Humanitarian Roleplay
 
 **File:** `CHS_2024_game_v2.json`
-**Version:** 3.0-skeleton
-**Status:** Skeleton — all 9 CHS commitments covered; use `development_prompts` to expand each section
+**Version:** 3.0
 **Reference:** Core Humanitarian Standard on Quality and Accountability, 2024
 
 ---
@@ -11,7 +10,7 @@
 
 *Kailani Rising: A Humanitarian Roleplay* is a comprehensive branching narrative game covering all nine commitments of the Core Humanitarian Standard (CHS) 2024. Players take the role of **Maya Chen**, a newly appointed Country Director for HopeForward International in **Kailani** — a fictional Pacific island nation devastated by Cyclone Vera.
 
-Over nine critical decision chapters — one per CHS commitment — Maya navigates community rights and participation, timely and effective assistance, building local resilience, avoiding harm, complaints and feedback, coordination, learning and improvement, staff management, and ethical resource stewardship. Every choice references specific CHS sub-requirements. Choices set **context flags** that cascade into later decisions, creating real interdependencies. At the end, four possible **scored endings** are determined by the player's cumulative performance across four dimensions.
+Over nine critical decision chapters — one per CHS commitment — Maya navigates community rights and participation, timely and effective assistance, building local resilience, avoiding harm, complaints and feedback, coordination, learning and improvement, staff management, and ethical resource stewardship. Every choice references specific CHS sub-requirements. Choices set **context flags** that cascade into later decisions, creating real interdependencies. At the end, four possible **scored endings** are determined by the player's cumulative performance across three dimensions.
 
 All 50 CHS sub-requirements are addressed across the nine decision chapters.
 
@@ -142,13 +141,12 @@ The game is stored in a single JSON object (`CHS_2024_game_v2.json`) with the fo
 | `game_meta` | Title, version, status, audience, duration, description, how-to-play, and multi-dimensional scoring rules |
 | `player_character` | Maya Chen's name, role, organisation, backstory, and pixel art portrait prompt |
 | `setting` | Country description, key locations, and pixel art map prompt |
-| `score_dimensions` | Four scoring dimensions with descriptions and pixel art icon prompts |
+| `score_dimensions` | Three scoring dimensions with descriptions and pixel art icon prompts |
 | `context_flags_system` | Description of the flag system and full list of 18 context flags |
 | `key_characters` | Array of nine named characters with roles, descriptions, and pixel art portrait prompts |
 | `chs_reference_summary` | Quick-reference of all nine commitments with all 50 sub-requirements |
 | `scenes` | Array of 47 scene objects (prologue + 9 decisions + 36 consequence scenes + epilogue) |
 | `endings` | Four possible endings with score thresholds, narratives, and reflection questions |
-| `development_prompts` | Twelve expansion prompts for developing each section from skeleton to full text |
 | `supplementary_assets` | Expanded character backstories, UI design prompts, game engine notes, and pixel art implementation guide |
 
 ---
@@ -240,7 +238,7 @@ Each `decision` scene contains the following fields:
 |---|---|---|
 | `id` | string | Option letter (`A`, `B`, `C`, `D`) |
 | `text` | string | The option text shown to the player |
-| `score_changes` | object | Points awarded or deducted across each of the four dimensions |
+| `score_changes` | object | Points awarded or deducted across each of the three dimensions |
 | `sets_flag` | string or null | Context flag this option activates (if any) |
 | `consequence_scene_id` | string | ID of the consequence scene triggered by this option |
 | `chs_requirements_met` | array | Sub-requirements this option upholds |
@@ -265,14 +263,24 @@ Each `decision` scene contains the following fields:
 
 ## Scoring System
 
-### Four Scoring Dimensions
+### Why Three Scoring Dimensions?
+
+The game originally considered four scoring dimensions — Community Trust, Staff Wellbeing, Program Quality, and Accountability & Ethics. On review, **Staff Wellbeing was consolidated into Accountability, Ethics & Staff Wellbeing** for the following reasons:
+
+1. **Single-commitment dependency**: Staff Wellbeing was the only dimension driven by a single CHS commitment (Commitment 8). Every other dimension draws from five or more commitments, making the Staff Wellbeing dimension disproportionately narrow.
+2. **Inherent overlap**: CHS Commitment 8 already appeared in both the Staff Wellbeing and Accountability & Ethics dimensions. This double-counting created ambiguity in the score signals, particularly in Decision 8 where the same option would simultaneously move both dimensions.
+3. **Conceptual alignment**: The well-being and professional development of staff is fundamentally an accountability issue — organisations are accountable to their staff just as they are to donors and communities. CHS 8 explicitly covers both staff support (wellbeing) and conduct standards/misconduct (accountability), making them naturally co-located in one dimension.
+4. **Score balance**: The practical maximum for Staff Wellbeing over nine decisions was approximately 5–6 points, compared to 16–18 for the other three dimensions. This imbalance meant Staff Wellbeing had much less influence on the final ending than its importance as a humanitarian principle warranted.
+
+Three dimensions is the minimum that separates the three fundamentally different audiences affected by Maya's decisions: **communities** (who receive assistance), **the programme** (what is actually delivered and its quality), and **the organisation** (how staff and resources are managed with integrity).
+
+### Three Scoring Dimensions
 
 | Dimension ID | Title | What It Measures | Shaped by CHS |
 |---|---|---|---|
 | `community_trust` | Community Trust | Degree to which communities trust, engage with, and feel heard by HopeForward | Commitments 1, 2, 5, 6, 7 |
-| `staff_wellbeing` | Staff Wellbeing | Safety, morale, psychological health, and professional development of staff and volunteers | Commitment 8 |
 | `program_quality` | Program Quality | Relevance, effectiveness, technical quality, and measurable impact of the response | Commitments 2, 3, 4, 6, 7 |
-| `accountability` | Accountability & Ethics | Adherence to ethical standards, transparency, protection from exploitation, and organisational integrity | Commitments 4, 5, 8, 9 |
+| `accountability` | Accountability, Ethics & Staff Wellbeing | Adherence to ethical standards, transparency, protection from exploitation, organisational integrity, and the safety, morale, and professional development of staff and volunteers | Commitments 4, 5, 8, 9 |
 
 ### Score Dimension Icon Prompts (Pixel Art)
 
@@ -282,28 +290,24 @@ All icons are **16-bit pixel art, 32×32 px**, drawn from the 24-colour Kailani 
 
 > 16-bit pixel art icon (32×32 px, 24-colour Kailani palette, crisp pixel edges): two hands clasped in a handshake, rendered in warm ochre and terracotta on a white background. Pixel art style, no anti-aliasing, crisp edges. 32×32 px target size, scaled 2× for display. Colours drawn from the 24-colour Kailani palette.
 
-**Staff Wellbeing** — Reflects the safety, morale, psychological health, and professional development of HopeForward staff and volunteers. Shaped primarily by CHS commitment 8.
-
-> 16-bit pixel art icon (32×32 px, 24-colour Kailani palette, crisp pixel edges): a simplified person silhouette standing inside a protective rounded circle, rendered in supportive blue and soft green on a white background. Pixel art style, no anti-aliasing, crisp edges. 32×32 px target size, scaled 2× for display. Colours drawn from the 24-colour Kailani palette.
-
 **Program Quality** — Reflects the relevance, effectiveness, technical quality, and measurable impact of the response. Shaped primarily by CHS commitments 2, 3, 4, 6, and 7.
 
 > 16-bit pixel art icon (32×32 px, 24-colour Kailani palette, crisp pixel edges): an upward-trending bar chart with a small heart shape above the tallest bar, rendered in positive tropical green on a white background. Pixel art style, no anti-aliasing, crisp edges. 32×32 px target size, scaled 2× for display. Colours drawn from the 24-colour Kailani palette.
 
-**Accountability & Ethics** — Reflects adherence to ethical standards, transparency with donors and communities, protection from exploitation, and organisational integrity. Shaped primarily by CHS commitments 4, 5, 8, and 9.
+**Accountability, Ethics & Staff Wellbeing** — Reflects adherence to ethical standards, transparency with donors and communities, protection from exploitation, organisational integrity, and the safety, morale, psychological health, and professional development of HopeForward staff and volunteers. Shaped primarily by CHS commitments 4, 5, 8, and 9.
 
-> 16-bit pixel art icon (32×32 px, 24-colour Kailani palette, crisp pixel edges): balanced scales with a small magnifying glass overlaid on the fulcrum, rendered in neutral blue and grey on a white background. Pixel art style, no anti-aliasing, crisp edges. 32×32 px target size, scaled 2× for display. Colours drawn from the 24-colour Kailani palette.
+> 16-bit pixel art icon (32×32 px, 24-colour Kailani palette, crisp pixel edges): balanced scales with a small heart overlaid on the fulcrum — representing both ethical standards and staff care — rendered in neutral blue and soft green on a white background. Pixel art style, no anti-aliasing, crisp edges. 32×32 px target size, scaled 2× for display. Colours drawn from the 24-colour Kailani palette.
 
 ### Total Score and Ending Thresholds
 
-The ending is determined by the **sum of all four dimension scores**:
+The ending is determined by the **sum of all three dimension scores**. Note that scores can go below zero if consistently poor choices are made across multiple decisions.
 
 | Score Range | Ending Title | Summary |
 |---|---|---|
-| 46–56 | 🏆 Transformative Leader | Principled, inclusive, locally-led action; all nine CHS commitments honoured in practice |
+| 46–55 | 🏆 Transformative Leader | Principled, inclusive, locally-led action; all nine CHS commitments honoured in practice |
 | 32–45 | 🌟 Committed Practitioner | Strong in most areas; some trade-offs and gaps; intent was always there |
 | 18–31 | 📚 Struggling Responder | Well-intentioned but inconsistent; operational pressure frequently overrode principle |
-| 0–17 | 🌱 Crisis Mode | Serious setbacks across multiple commitments; an honest invitation to reflect and restart |
+| 17 or below | 🌱 Crisis Mode | Serious setbacks across multiple commitments; an honest invitation to reflect and restart |
 
 ---
 
@@ -399,138 +403,247 @@ This game addresses all **50 CHS sub-requirements** across nine decisions:
 
 ---
 
-## Development Prompts
+---
 
-The JSON file includes **twelve** `development_prompts` entries to guide content expansion from skeleton to full text. Each prompt specifies the scene(s) to expand, the CHS focus requirements, and detailed instructions for narrative voice, character dialogue, flag effects, image prompts, and JSON structure.
+## Scene Image Prompts
 
-The full text of all twelve prompts is extracted below for convenience.
+All scene image prompts are extracted directly from the `image_prompt` field of each scene object in the JSON. Every background is a **full-screen 16-bit pixel art composition at 320×180 px base resolution**, using the **24-colour Kailani palette**, integer-scaled to fill the viewport. Character sprites use the same palette at 48×48 px (full-body) or 32×48 px (bust portrait). No anti-aliasing. Crisp pixel edges throughout.
 
-### Prompt Summary
+Style summary common to all prompts:
+- **Format:** 16-bit pixel art, 320×180 px base canvas
+- **Palette:** 24-colour Kailani palette (see Pixel Art section below)
+- **Rendering:** crisp pixel edges, no anti-aliasing, no gradients
+- **Scale:** integer-scaled via CSS `image-rendering: pixelated` to fill viewport
 
-| # | ID | Title | CHS Focus |
-|---|---|---|---|
-| 1 | `expand_prologue_epilogue` | Expand the Prologue and Epilogue | All nine commitments (framing) |
-| 2 | `expand_decision_1_participation` | Expand Decision 1 — Participation & Rights | Requirements 1.1–1.6 |
-| 3 | `expand_decision_2_timely_support` | Expand Decision 2 — Timely & Effective Support | Requirements 2.1–2.6 |
-| 4 | `expand_decision_3_resilience` | Expand Decision 3 — Resilience & Local Ownership | Requirements 3.1–3.5 |
-| 5 | `expand_decision_4_do_no_harm` | Expand Decision 4 — Do No Harm & Protection | Requirements 4.1–4.5 |
-| 6 | `expand_decision_5_complaints` | Expand Decision 5 — Complaints & Feedback | Requirements 5.1–5.6 |
-| 7 | `expand_decision_6_coordination` | Expand Decision 6 — Coordination & Complementarity | Requirements 6.1–6.4 |
-| 8 | `expand_decision_7_learning` | Expand Decision 7 — Learning & Improvement | Requirements 7.1–7.5 |
-| 9 | `expand_decision_8_staff_wellbeing` | Expand Decision 8 — Staff Competence & Wellbeing | Requirements 8.1–8.7 |
-| 10 | `expand_decision_9_resource_management` | Expand Decision 9 — Ethical Resource Management | Requirements 9.1–9.6 |
-| 11 | `write_four_endings` | Write the Four Endings | All 9 commitments (synthesis) |
-| 12 | `expand_supporting_characters_ui_engine` | Expand Supporting Characters, UI Design, and Game Engine Guidance | All commitments (implementation) |
+### Prologue & Epilogue
 
-### Full Prompt Text
+**prologue** (Narrative) — *Day One — Cyclone Vera's Aftermath*
 
-#### Prompt 1: Expand the Prologue and Epilogue
+> Aerial view descending into Port Hana, Kailani, a Pacific island nation. Through torn post-cyclone clouds: a coastline of cyclone-damaged coastal villages — palm trees snapped, fishing boats scattered on roads, clusters of blue tarp shelters gleaming against storm-grey debris. Brown floodwater threading through streets inland. Aid trucks queuing at a military checkpoint on the runway approach road. The capital Port Hana visible in the distance, a UN coordination flag flying at the relief hub. Maya Chen's silhouette faint in the aircraft window — East Asian woman, mid-thirties, dark hair, HopeForward light-blue field vest. 16-bit pixel art scene, storm-clearing Pacific light breaking through grey overcast, teal and charcoal palette with relief-blue accents.
 
-**CHS Focus:** All nine commitments (framing)  
-**ID:** `expand_prologue_epilogue`
+**epilogue** (Narrative) — *Your Mission Report*
 
-Using the skeleton in CHS_2024_game_v2.json, expand the 'prologue' and 'epilogue' scenes into full narrative text. The prologue (~200 words) should place Maya in Kailani with vivid sensory detail, introduce Sione, and create a sense of stakes and complexity. The epilogue (~200 words) should be reflective and personal — calling back to specific decisions and characters from the game. Also replace PLACEHOLDER image_prompt fields for both scenes with complete AI illustration prompts (flat digital illustration style, Pacific island humanitarian setting, consistent character descriptions). Remove 'status' fields when done.
+> Interior of Port Hana airport departure gate, Kailani. Maya Chen — East Asian woman, mid-thirties, short dark hair, wearing a HopeForward International light-blue field vest over a plain shirt — sits in an airport seat beside a large window. Through the window: Kailani's coastal landscape in late afternoon light, some cyclone damage still visible on the shoreline but green recovery growth visible too. She holds a worn, annotation-filled field notebook in one hand and a boarding pass in the other. Expression: reflective, tired, quietly proud. A departure board above the gate shows her flight. 16-bit pixel art scene style, warm sunset palette — deep ochre, coral, and Pacific blue — consistent Pacific humanitarian field setting.
+
+### Decision 1 — Participation & Rights (CHS 1)
+
+**decision_1** (Decision) — *Decision 1 — How Will You Hear the Community?*
+
+> Manu Displacement Camp, morning, Day 2 after Cyclone Vera. Maya Chen stands in the open camp yard at a folding table covered in printed maps and a government survey form. To her left: Sione Taufa, HopeForward field vest, field notebook open, jaw set with concern. To her right: a sharp-suited government official, pen tapping an English-language questionnaire. Across the table: Filomena Vaka, KCV executive director, floral blouse and lanyard, holding a 3-day facilitation schedule. Behind the four adults, three distinct groupings of displaced people are visible at the far edge of the frame — coastal families near makeshift fishing gear, farming households with bundles of tools, and a quiet corner where elderly and disabled residents sit apart from the main activity under a patched tarpaulin. Tension between the four standing figures. 16-bit pixel art scene, warm Pacific morning light, complex crowd composition, relief-blue and ochre palette.
+
+**scene_1A** (Consequence) — *Invisible and Unheard*
+
+> Manu Displacement Camp, late afternoon. Maya and Carlos stand over a laptop showing a clean table: 620 survey responses, 100% distribution coverage against the approved list. Carlos points at the screen, satisfied. Behind them, through the open tent flap, a long concrete ramp leads to the disability section — no enumerator visible, the area quiet and unreached. To the side, a cluster of Tevita-dialect speakers exchange confused looks at a printed English form. Sione stands apart, field notebook pressed to his chest, expression unreadable. A single elderly man in a wheelchair sits alone at the camp perimeter, facing away. 16-bit pixel art scene, fading afternoon light, ochre and grey palette.
+
+**scene_1B** (Consequence) — *Heard — and the Data Shows It*
+
+> Manu Displacement Camp, end of Day 4. A community dialogue circle is in progress under a large shade shelter: Filomena Vaka facilitates in the foreground, a mixed group of women, elders, youth, and wheelchair users seated in the circle, all visibly engaged. Sione translates quietly at the edge. Maya sits beside a table covered in handwritten flip-chart notes, a map of the camp with disaggregated data pencilled in. One note reads: 'Water — TOP PRIORITY (Tevita).' Another: 'Modified shelter kits — 9 families.' A third: 'Women-only distribution space needed.' Through the shelter's open side: the disability section is visible and active for the first time. 16-bit pixel art scene, warm late-afternoon Pacific light, blues and warm greens.
+
+**scene_1C** (Consequence) — *The Digital Divide*
+
+> HopeForward field office, 90 minutes after the digital survey launch. Amara sits at a laptop displaying a demographic breakdown dashboard: a stark bar chart showing 81% male respondents, 74% aged 18–45, a bold zero in the disability section column. Carlos stands behind her, arms folded, half-smiling — 412 responses, fast and tidy. Maya stands to the side, arms at her sides, looking at the zero. Through the window: the camp is visible. A group of elderly women sit outside the disability section with no phones in sight. Sione stands at the office door, field notebook open to a page with a single underlined question: 'Who was left out?' 16-bit pixel art scene, harsh midday light, blue-grey office palette contrasting with warm camp colours outside.
+
+**scene_1D** (Consequence) — *The View from the Top of the Hierarchy*
+
+> Manu Camp community hall, morning. Maya sits at a table with three male council chairs — all men over 50, each with a visible leadership symbol: a carved staff, a formal sash, a government lanyard. The meeting is cordial and productive; papers are being signed. But through the hall's open doorway, Filomena Vaka stands in the threshold, arms folded, watching. Her expression is quiet but pointed. Behind Filomena: a group of camp women gathered outside, not invited, watching from a distance. A young woman with a disability sits on a low wall nearby, also excluded. 16-bit pixel art scene, morning light through louvred windows, warm brown tones, institutional setting contrasting with the excluded figures in the doorway.
+
+### Decision 2 — Timely & Effective Support (CHS 2)
+
+**decision_2** (Decision) — *Decision 2 — What Do You Actually Distribute, and How?*
+
+> HopeForward logistics warehouse, Port Hana, Day 5 after Cyclone Vera. Carlos Reyes stands at a long metal shelving unit, one hand resting on a stack of HEB boxes, the other holding a tablet showing a colour-coded distribution timeline. His expression is tight with urgency. Maya Chen stands opposite, arms folded, looking at a whiteboard she has half-covered with community priority notes: 'WATER — top priority (Tevita),' 'Dignity kits,' 'Modified shelter kits — disability section,' 'Tevita Village — NOT on list.' A printed donor approval letter is pinned to the corkboard behind Carlos. Sione stands to Maya's left, field notebook open to a disaggregated needs table with rows for each community group. On a side table, a phone shows a missed-call notification labelled 'Donor Rep — M. Fischer.' 16-bit pixel art scene, cool warehouse fluorescent light, blue-grey and amber palette.
+
+**scene_2A** (Consequence) — *Boxes Ticked, Needs Missed*
+
+> Manu Camp distribution point, morning, Day 6 after Cyclone Vera. Two HopeForward staff carry HEB boxes off a truck and stack them on a trestle table. A short queue of registered household heads collects packages. In the foreground, a woman with a disability sits outside the distribution tent; a large plastic sheeting roll leans against the wall beside her — she cannot lift it alone. In the background, at the camp perimeter, a cluster of Tevita Village residents watch from a distance with empty hands — no table, no queue, no aid. Carlos stands to one side, marking names off a tablet checklist, expression satisfied. A makeshift market stall behind the main tent shows HEB packets trading for water containers. 16-bit pixel art scene, harsh morning light, muted ochre and grey.
+
+**scene_2B** (Consequence) — *The Right Things, To the Right People, At the Right Time*
+
+> Manu Camp distribution point, morning, Day 8 after Cyclone Vera. A well-organised, sector-divided distribution is underway. One lane shows water purification tablets and dignity kits; a second has modified shelter kits being handed to disability section families with a staff member assisting. A third lane at the far end shows Tevita Village residents — new arrivals — receiving packages for the first time. Amara stands to one side with a tablet, entering data into a weekly monitoring checklist. A handwritten sign reads: 'Targeting criteria — visible and public.' In the distance, a UNICEF vehicle pulls into the camp gate for the nutrition extension. Carlos leans against a truck, arms folded, expression tight but resigned. 16-bit pixel art scene, clear morning light, blues and warm greens.
+
+**scene_2C** (Consequence) — *Efficient, but Whose Context?*
+
+> HopeForward field office, Port Hana, Day 6 after Cyclone Vera. A projector displays a consultant's regional template on a white wall: neatly colour-coded rows, a standardised 'general displaced household' targeting category, Sphere-standard quantities for food and shelter. The consultant — a professional in a polo shirt — gestures confidently at the table. Sione stands apart, pointing at a line on a printed camp map: Tevita Village, flagged as 'already served — GAP agency, six months prior.' His expression is flat. Behind him, a handwritten note on the whiteboard reads: 'Communal land structure — no individual-household field in template.' Maya sits at the table, pen in hand, looking from the template to Sione's map. 16-bit pixel art scene, projector blue-white light, cool and clinical palette.
+
+**scene_2D** (Consequence) — *Equal Isn't Always Just*
+
+> Manu Camp main distribution square, Day 6 after Cyclone Vera. A single distribution lane stretches across the square: every person in the registration queue receives the same standard package — one HEB box, one plastic sheeting roll. A community leader stands beside a HopeForward banner, smiling. A printed sign reads: 'One package per registered person — fair for all.' In the foreground, an elderly man in a wheelchair holds the registration slip for his package; a 20-kilogram plastic sheeting roll sits beside him on the ground. He looks at it. He cannot lift it. Sione stands at a distance, field notebook open, writing. Tevita Village residents remain outside the camp boundary — still unregistered, still invisible. 16-bit pixel art scene, flat midday light, neutral palette with one detail of warm colour on the wheelchair, isolated.
+
+### Decision 3 — Resilience & Local Ownership (CHS 3)
+
+**decision_3** (Decision) — *Decision 3 — How Should the Programme Strengthen Local Resilience?*
+
+> HopeForward's field office, Week 2. Maya stands at a whiteboard with two columns: 'Direct Delivery' and 'Community-Led Governance'. A laptop screen shows a HQ video call — the regional director's face tight with impatience. Across the table, Filomena Tui holds a laminated co-governance proposal. Sione Taufa sits to one side, a notepad of hand-drawn storm-sign symbols in his lap. Through the window, a weather app on a phone displays a new tropical depression forming. Maps pinned to the wall show Manu Camp and the coastline. 16-bit pixel art scene, morning light, tension between urgency and possibility, relief-blue and ochre palette.
+
+**scene_3A** (Consequence) — *Delivered but Not Strengthened*
+
+> Manu Camp field office, evening, Week 7. Maya sits at a table with a blank evacuation-routes folder open in front of her. Carlos is loading HopeForward equipment boxes onto a vehicle visible through the open doorway. On the laptop screen: a satellite image of a tropical storm system approaching the Kailani coast. Through the window, twelve thousand displaced people are visible waiting outside their shelters — no visible community leader, no signs, no coordination. A HopeForward banner hangs undisturbed. The tone is eerie calm before a storm. 16-bit pixel art scene, dusk light, grey and ochre palette.
+
+**scene_3B** (Consequence) — *Ownership in Practice*
+
+> Community hall, Manu Camp, Week 3. The Community Programme Committee meeting is in progress: Filomena Tui at the head of the table, writing on a large notepad, visibly managing several conversations simultaneously. Six community members — fishing cooperative representatives, a women's group leader, a youth delegate — are talking at once. Carlos stands in the doorway, arms folded, watching. Maya sits to one side, notably not at the head of the table — an observer, not the chair. A whiteboard shows a budget breakdown with '8% — nets, fishing coop' circled. The energy is productive chaos, not crisis. 16-bit pixel art scene, daytime indoor light, blues and warm ochre palette.
+
+**scene_3C** (Consequence) — *The Storm That Didn't Kill Anyone*
+
+> Manu Camp community hall, predawn, Week 7. Eighteen families — adults carrying children, elderly supported by younger relatives — move up the path toward higher ground, guided by hand-held torches. A community member holds a phone showing the WhatsApp early warning message. Sione stands at the hall entrance directing people in. In the background, below the hill, water is beginning to rise in the low-lying camp area. The sky is dark and turbulent. The contrast between orderly movement uphill and the spreading floodwater below is the image's central tension. 16-bit pixel art scene, predawn blue-grey palette, torch-light warm accents.
+
+**scene_3D** (Consequence) — *Built to Last*
+
+> Split scene, two moments in time. Left panel: Week 2 setup — Maya, Filomena, and Sione around a table covered in governance framework documents and traditional storm-knowledge sketches; Carlos in the background on a phone, expression strained; a laptop showing two strongly worded HQ emails. Right panel: Month 6 programme review — the same three figures, now at a cluster meeting table; the Community Programme Committee chair position clearly Filomena's; a map showing the early warning system coverage; the cluster coordinator pointing at the Kailani model on a presentation screen. Progression from tension to recognition. 16-bit pixel art scene, warm Pacific light, blues and ochre palette.
+
+### Decision 4 — Do No Harm & Protection (CHS 4)
+
+**decision_4** (Decision) — *Decision 4 — How Do You Protect People, Data, and the Environment?*
+
+> Maya Chen at her field desk in the HopeForward operations tent, early morning, Week 3. Four printed notes are pinned to her laptop screen: 'Tevita — women intercepted, cash coercion'; 'Google Drive — 4,000 records, password=HopeForward2024'; 'Truck fumes — children at water point, 3 complaints'; 'PSEA — no orientation, no pathway'. Carlos Reyes stands to her right, pointing at a project Gantt chart on a printed A3 sheet, expression urgent, laptop open showing a countdown: 'SCALE-UP: T-6 DAYS'. Amara Diallo stands to her left holding a printed email, looking strained. Through the tent opening, a community water point is faintly visible with a truck parked nearby. 16-bit pixel art scene, Pacific island humanitarian setting, relief-blue and ochre palette, sense of converging simultaneous pressures.
+
+**scene_4A** (Consequence) — *Four Risks, Four Harms*
+
+> Four-panel split scene, each panel showing one materialised harm, arranged around a central HopeForward logo. Top left: a laptop screen showing a Google Drive access log — unknown IP, 2:14 a.m., file downloaded — Amara Diallo staring at the screen in the background, hand over mouth. Top right: Sione Taufa at a field table receiving a written complaint from two women at the Sector 7 distribution tent, a third woman watching from the entrance. Bottom left: two women in Tevita Village standing outside their shelter, arms folded, not walking toward the distribution point; a male figure is visible in shadow at the shelter entrance behind them. Bottom right: a community health worker kneeling next to a small child near the camp water point, tally sheet on clipboard showing eleven marks, a HopeForward truck idling in the background. 16-bit pixel art scene, Pacific island humanitarian setting, muted and heavy palette.
+
+**scene_4B** (Consequence) — *Prevention Pays*
+
+> Maya Chen and Sione Taufa stand outside the Tevita Village distribution shelter, seven days after Maya's decision. A new handwritten sign on the shelter wall indicates a private women's collection space with an arrow. Sione's laptop is open on a field table showing a secure database login screen with individual user credentials. In the background, two HopeForward trucks are parked 200 metres from the water point, children visible playing unobstructed nearby. A middle-aged woman in a printed dress gestures at the new sign with cautious approval, a small child at her side. On the far wall, a PSEA reporting poster is visible in both Kailani and Tevita dialect with an illustrated hotline number. A whiteboard in the background reads: 'PSEA ORIENTATION: 23/23 COMPLETE'. 16-bit pixel art scene, Pacific island humanitarian setting, warm morning light, careful and measured tone.
+
+**scene_4C** (Consequence) — *Half-Protected*
+
+> A community health worker in a green vest kneels beside a small child near the camp water point, one hand on the child's back, listening to breathing. The child coughs. The health worker's clipboard shows a tally sheet: eleven marks under 'respiratory complaints, under-5'. Clipped to the top of the clipboard is a child's crayon drawing of a truck emitting black smoke with small stick figures standing nearby. In the background, a HopeForward truck idles at the water point, diesel fumes rising. On the far side of the scene, a thought bubble or inset box shows a dated sticky note from Week 3: 'Truck idling — deprioritised, operational.' The sky is overcast. 16-bit pixel art scene, Pacific island humanitarian setting, grey-green environmental harm palette.
+
+**scene_4D** (Consequence) — *The Gap in the Informal Approach*
+
+> Sione Taufa sits at a field table reviewing a complaint form. Opposite him, two women sit — one pointing to a handwritten statement, the other looking at the table. To the right through the tent opening, three distribution volunteers are visible at the Sector 7 point — none wearing a code-of-conduct lanyard; no PSEA poster is visible on the wall behind them (only a logistics map). On Sione's table, an onboarding folder is open: three volunteer name slots, all with blank signature lines and no briefing dates. A sticky note on the folder reads: 'PSEA orientation — next monthly meeting (4 weeks)'. On the far side of the tent, the Monday morning briefing sheet is visible pinned to a board, annotated with seven names — the Sector 7 volunteers' names are absent. 16-bit pixel art scene, Pacific island humanitarian setting, formal and serious tone, muted palette.
+
+### Decision 5 — Complaints & Feedback (CHS 5)
+
+**decision_5** (Decision) — *Decision 5 — How Do You Handle a Serious Complaint?*
+
+> Maya Chen at her desk in the HopeForward operations office, holding Sina Talagi’s sealed handwritten complaint letter — two languages, full name at the bottom. Through the glass partition behind her, the accused volunteer is visible at his desk, working, unaware. Amara Diallo stands to Maya’s left, tablet open showing the monitoring dashboard: ‘12% — community members who can name a reporting channel’. On Maya’s laptop screen, an email from Filomena Tui: ‘Three community members said they didn’t know there was a box.’ Carlos Reyes stands in the doorway. The complaint box is visible outside the window, bolted to its post, unmarked. 16-bit pixel art scene, formal programme office interior, Pacific island humanitarian setting, muted blues and ochre, stillness and weight.
+
+**scene_5A** (Consequence) — *The Silence That Follows*
+
+> The HopeForward complaint box on its post in Manu Camp, morning light. ‘NO POINT’ is written in black marker across the slot. Sina Talagi stands at a distance, arms folded, facing partly away. Four women cluster behind her — one holds a folded piece of paper and slides it back into her pocket. The KCV community session tent is visible with empty plastic chairs. Sione Taufa photographs the defaced box with his phone, expression flat. No programme staff are visible. 16-bit pixel art scene, Pacific island humanitarian setting, muted ochre and grey palette, sense of institutional silence and community withdrawal.
+
+**scene_5B** (Consequence) — *The System That Worked*
+
+> Sina Talagi sits across from a female case officer at a small table in a private room — no programme branding on the walls, natural light, Filomena Tui present as interpreter. Sina’s hands are clasped on the table, composed and purposeful. The case officer’s notepad is open; a process timeline is pinned to the corkboard behind her, each step numbered, several already checked. Through the window the complaint box is visible with a new A4 notice in Kailani language beside it. The next distribution queue is orderly in the background. 16-bit pixel art scene, Pacific island humanitarian setting, warm natural light, tone of careful institutional respect and due process.
+
+**scene_5C** (Consequence) — *Referred Without Asking*
+
+> Sina Talagi stands alone in her section of Manu Camp, arms close to her body, looking away from the distribution area. In the middle distance, a uniformed Kailani police officer speaks to a HopeForward staff member at the gate — the volunteer visible in the background. A neighbour’s hand rests on Sina’s shoulder; Sina’s expression is closed, frightened. The complaint box stands untouched on its post. On the near wall, a handwritten note from another woman has been torn half-off. 16-bit pixel art scene, Pacific island humanitarian setting, flat grey-blue midday light, sense of institutional power misdirected and survivor displacement.
+
+**scene_5D** (Consequence) — *From Crisis to Capability*
+
+> A community noticeboard in Manu Camp showing the new multi-channel feedback system: trilingual written forms, a phone number in bold Kailani type, a large-print format mounted at lower height for the disability section. Filomena Tui addresses a small group of women in an outdoor awareness session; two KCV intermediaries hold translated leaflets. Sina Talagi stands at the edge of the group, small notepad in hand, listening with quiet authority. To the right, Maya Chen reviews the feedback dashboard on her tablet — 23 submissions, acknowledgement timestamps visible. The original complaint-box post remains, now with a new trilingual notice beside it. 16-bit pixel art scene, Pacific island humanitarian setting, warm mid-morning palette, sense of survivor-led institutional transformation.
+
+### Decision 6 — Coordination & Complementarity (CHS 6)
+
+**decision_6** (Decision) — *Decision 6 — How Will You Coordinate with Other Actors?*
+
+> UN cluster meeting room, Port Hana. Around a table: UN staff, INGO representatives including a GAP logo, HopeForward flag. An empty chair with a KAN name card. On the wall: a map showing HopeForward and GAP zone overlap in Lotu and Vosa villages. Carlos has a folder labelled 'Proprietary Data'. KCV's Filomena is not in the room. Dr. Ana Tuivaga sits outside the door, waiting. 16-bit pixel art scene, 320×180 px, 24-colour Kailani palette, formal meeting room, complex power dynamics, crisp pixel edges, no anti-aliasing.
+
+**scene_6A** (Consequence) — *Competing While Communities Suffer*
+
+> Split-panel scene in Lotu village. Left panel: two distribution queues running side by side — one with a HopeForward banner, one with a GAP banner — community members holding two different ration cards, confused expressions. Mere, a community health worker, sits apart writing in a handwritten ledger. Right panel: Dr. Ana Tuivaga at a small desk on the Northern Coast, reading a rejection email on a battered laptop, a folder of nutrition data open beside her, a malnourished child's growth chart pinned to the wall. Empty cluster seat visible in the background. 16-bit pixel art scene, Pacific island humanitarian setting, muted ochre and grey palette, tone of institutional failure and community exhaustion.
+
+**scene_6B** (Consequence) — *The Value of the Room*
+
+> Cluster meeting room, Port Hana. Dr. Ana Tuivaga stands at the head of the table presenting nutrition data on a projected map — red zones visible on the Northern Coast. HopeForward, GAP, and UN representatives lean forward, engaged. The empty KAN chair is now occupied; a name card reads 'Dr. A. Tuivaga, KAN'. Maya Chen has an open data folder in front of her. Carlos Reyes sits to one side, the 'Proprietary Data' folder now open and shared. On a second screen: a map of Lotu and Vosa showing clean GAP-HopeForward geographic boundaries. Filomena Tui stands at a whiteboard presenting the KCV partnership framework. 16-bit pixel art scene, Pacific island humanitarian setting, warm morning light, sense of collective progress.
+
+**scene_6C** (Consequence) — *Better, But Not Good Enough*
+
+> Two-part scene. Upper half: Lotu village, a single orderly registration queue — one banner, one system. Mere, the community health worker, hands her notebook to a HopeForward staff member. Relief visible in the community. Lower half: Dr. Ana Tuivaga on the Northern Coast, sitting with two volunteers in a bare nutrition clinic, a near-empty supply shelf behind her. A growth chart on the wall shows a downward curve. On her phone screen: an article she is writing, title visible — 'Who Gets Left Out of Coordination?' The cluster meeting room is visible in the far background through a window, its door closed. 16-bit pixel art scene, Pacific island humanitarian setting, split warm/cool palette — progress above, concern below.
+
+**scene_6D** (Consequence) — *The Forum That Fragmented*
+
+> A Port Hana restaurant converted into a makeshift coordination meeting: plastic tables pushed together, seven INGO staff with laptops, HopeForward flag propped against the wall. The restaurant menu is visible on a chalkboard behind the group. Two empty chairs at the table where GAP representatives should sit. Outside the window, the UN cluster meeting room is visible down the street, lights on, a larger group visible through the glass — the official coordination system running in parallel. Dr. Ana Tuivaga is not in either scene; she appears in a small inset panel, alone at her Northern Coast desk, emailing into a void. 16-bit pixel art scene, Pacific island humanitarian setting, evening light, tone of institutional hubris and fragmentation.
+
+### Decision 7 — Learning & Improvement (CHS 7)
+
+**decision_7** (Decision) — *Decision 7 — How Do You Use Evidence to Improve?*
+
+> HopeForward field office meeting room, Month 4. Amara Diallo stands at the head of a folding table, laptop screen facing the group, expression focused and direct. The screen shows three charts: a bar graph with red bars significantly lower for women than men (labelled 'Food Security / Protection / Livelihood — by gender'), a tall green bar for 'Tevita Modality vs Standard (+40%)', and two yellow warning flags beside 'Community Feedback: No Response (Sera Matagi — Week 3; Ratu Vailala — Week 6).' Carlos Reyes sits across the table, arms folded, clipboard face-down. Maya Chen reads a printed report, one hand raised mid-question. On Maya's phone screen, face-up: an email notification reading 'Donor report — Friday — clean narrative please.' 16-bit pixel art scene, indoor meeting room, afternoon Pacific light, muted blues and amber.
+
+**scene_7A** (Consequence) — *The Data That Was Buried*
+
+> Manu Displacement Camp, one week after the mid-term report. Sera Matagi, a Kailani woman in her thirties, stands at the HopeForward community feedback board — no responses posted, no new notices. Her young child holds her hand. Ratu Vailala, an elderly Kailani man in a wheelchair, waits at a water distribution point blocked by a narrow concrete step with no ramp visible. In the background on a field desk: Amara's gender gap monitoring report sits in a manila folder labelled 'Mid-Term — Internal Only,' filed and unreviewed. The camp continues around them, indifferent. Fading afternoon light. 16-bit pixel art scene, ochre and grey palette.
+
+**scene_7B** (Consequence) — *Learning That Changed the Programme*
+
+> HopeForward field office, three weeks after the full report submission. A whiteboard shows three green check marks: 'Women-only distribution windows — LIVE,' 'Livelihood grants — disbursed,' 'Tevita modality — cluster-adopted x4.' Amara Diallo sits at a desk completing a learning brief, printed monitoring charts around her. Inset panel left: Sera Matagi reads a HopeForward letter to a small group of neighbours outside her shelter, expression relieved. Inset panel right: Ratu Vailala at a newly installed concrete ramp beside a water distribution point, attended by a HopeForward volunteer. Warm, purposeful atmosphere. 16-bit pixel art scene, Pacific field setting, greens and blues.
+
+**scene_7C** (Consequence) — *Half the Learning*
+
+> Cluster coordination meeting room, one month after mid-term. A projected slide shows the Tevita modality adoption map with four agency logos and checkmarks. Amara Diallo sits in the second row, acknowledging the cluster coordinator's praise. On her desk: a printed mid-term report with a sticky note reading 'Gender gap — not actioned.' Bottom inset panels: left — Sera Matagi holds a HopeForward written response letter, relieved; right — Ratu Vailala reads a written acknowledgment letter at the water distribution point, but no ramp has been installed and no physical change is visible. Mixed mood of genuine progress and visible omission. 16-bit pixel art scene, meeting-room setting, warm and slightly muted palette.
+
+**scene_7D** (Consequence) — *Verified — And Three Weeks Late*
+
+> HopeForward field office, three weeks after the verification decision. Amara Diallo stands at a whiteboard that reads 'Verification: 94% confidence — SAME FINDINGS.' Her expression is flat — vindicated but not satisfied. A wall calendar shows three weeks crossed out in red. Carlos Reyes looks at his shoes. On the desk: a donor email printout reads 'Delay noted — formal explanation required.' Through the window: women at a distribution queue using the unchanged standard modality. Small side panel: a Northern Coast agency representative presents a flipchart reading 'New Community Modality' — almost identical to the Tevita model. 16-bit pixel art scene, indoor office, late afternoon, grey-blue palette.
+
+### Decision 8 — Staff Competence & Wellbeing (CHS 8)
+
+**decision_8** (Decision) — *Decision 8 — How Do You Care for Your Team and Uphold Conduct Standards?*
+
+> Maya Chen's phone screen shows a WhatsApp message thread from Leila Hassan: 'Day 3. No food in the house tonight. I’m scared. What should I do?' sent at 3:17 am. The phone rests on Maya’s desk beside a folded handwritten note from Tevi Moli — written in two languages, 'national staff' circled — and a printed budget reallocation form signed by Carlos Reyes with 'Skills Training → Logistics' in the subject line. Three separate pressures, one desk. 16-bit pixel art scene, HopeForward field office, Port Hana, Pacific island humanitarian setting, late morning light, muted ochre and grey.
+
+**scene_8A** (Consequence) — *Three Failures, One Month*
+
+> Northern Coast field site, day 15. Leila Hassan sits alone in the team’s remaining shelter, phone in hand, WhatsApp thread visible — her last message unanswered for 18 hours. An empty camp chair beside her marks where her evacuated colleague sat. In the distance, a militia checkpoint blocks the road. Inset left: Tevi Moli at his desk in Port Hana, expression closed, two colleagues visible in background, one watching. Inset right: three printed employment contracts on a desk, the 'skills development support' clause circled in pencil with a question mark. Fading light. 16-bit pixel art scene, Pacific island humanitarian setting, grey-ochre palette, exhaustion and institutional absence.
+
+**scene_8B** (Consequence) — *The Call That Mattered*
+
+> Talio coordination hub, 9 pm. Leila Hassan sits at a table in the common room, phone to her ear, relief visible — one team member sleeps in a chair behind her, the other accepts tea from a hub volunteer. Through the window: the safe Talio road. Inset left: a formal HR investigation folder open on a desk, support person’s name card beside it, Tevi Moli’s written statement clipped inside. Inset right: Carlos Reyes signs a memo acknowledging the training budget reallocation overrode a contract commitment, Maya Chen watching. Warm light. 16-bit pixel art scene, Pacific island humanitarian setting, greens and warm ochre, sense of systems working and dignity restored.
+
+**scene_8C** (Consequence) — *Safe But Not Protected*
+
+> Port Hana field office, two weeks after Leila’s evacuation. The senior international staff member works at his desk, composed, while two national staff — including Tevi Moli — work in silence in the background, exchanging a glance. On Maya’s desk in the foreground: Leila’s formal security-suspension file stamped ‘Resolved,’ but beside it Tevi’s handwritten note has no response attached. A printed training schedule shows the skills development sessions still blocked in red: ‘Budget: Reallocated.’ Split mood — one crisis resolved, two unaddressed. 16-bit pixel art scene, Pacific island humanitarian setting, muted ochre palette, institutional unease.
+
+**scene_8D** (Consequence) — *From Crisis to Culture*
+
+> HopeForward Port Hana office, three weeks after the crisis. The national staff advisory forum sits around a table — eight national staff members, Sione Taufa facilitating, a whiteboard showing two flagged programme improvements. Maya Chen sits at the back, listening. On the desk behind her: three employment contract folders with ‘Training Budget Restored — HR Approved’ sticky notes. A wall calendar shows Leila Hassan’s return date circled in green. Small inset: Tevi Moli accepts a written outcome letter, expression composed and dignified. Warm, functional atmosphere. 16-bit pixel art scene, Pacific island humanitarian setting, greens and ochre, sense of culture built from crisis.
+
+### Decision 9 — Ethical Resource Management (CHS 9)
+
+**decision_9** (Decision) — *Decision 9 — How Do You Manage the Remaining Resources Ethically?*
+
+> Toma Faleolo, Pacific Island man in his 40s, formal office shirt and lanyard, stands at the meeting table in the HopeForward Port Hana office. He has placed three documents in precise order in front of Maya Chen: left — a budget spreadsheet with ‘$47,000 underspend’ highlighted in yellow; centre — a procurement audit note with a supplier name circled in red and ‘undisclosed relationship’ handwritten in the margin; right — a printout of an HQ email with a community family photograph embedded in the body, subject line ‘Visibility Campaign — $12,000 remaining funds.’ Maya sits opposite, reading the third document, expression attentive and careful. Late afternoon light through slatted coastal blinds. 16-bit pixel art scene, HopeForward field office, Port Hana, Pacific island humanitarian setting, ochre-grey palette, professional integrity under pressure.
+
+**scene_9A** (Consequence) — *Technically Compliant, Ethically Failing*
+
+> HopeForward Port Hana office, end of month 6. Left panel: Toma Faleolo sits at his desk, a wire-transfer confirmation on screen, expression neutral — the $47,000 returned, a filing cabinet drawer half-open behind him, one folder labelled ‘Month 6 Internal Notes.’ Centre panel: a printed HopeForward donor report spread open on a table, cover photograph showing a Kailani family from Manu Camp — two adults, one child, unaware they are the cover image of an international fundraising document. Right panel: a community noticeboard in Manu Camp, a woman pointing at the printed page with the same photo — KCV’s Filomena Vaka stands beside her, phone out, taking notes. 16-bit pixel art scene, Pacific island humanitarian setting, muted ochre-grey palette, quiet institutional failure made visible.
+
+**scene_9B** (Consequence) — *Every Dollar for Its Purpose*
+
+> Three moments, one month later. Left panel: Toma Faleolo and Maya Chen at a desk, a donor reallocation approval email visible on screen — a spreadsheet beside it shows ‘$35,000 → KAN Nutrition, $12,000 → Early Warning System Upgrade.’ Centre panel: a KAN community nutrition site, Dr. Ana Tuivaga and two health workers distributing supplementary food packages to mothers with young children, a hand-painted sign reading ‘Month 7 Nutrition Support.’ Right panel: a community meeting in Manu Camp — a HopeForward staff member presents a printed consent form to seated community members, small photographs on the table showing what images would be used and how; Filomena Vaka of KCV sits alongside, observing. Warm, purposeful light. 16-bit pixel art scene, Pacific island humanitarian setting, warm green and ochre palette, ethical systems working.
+
+**scene_9C** (Consequence) — *Right Goal, Wrong Road*
+
+> Split scene. Left panel — month 6: Toma Faleolo signs a transfer authorisation form at his desk, expression determined, a KAN programme brief visible beside the keyboard — the $47,000 reallocation underway, no donor approval email in sight. Right panel — six months later: an external audit office. A compliance officer holds an open audit report, a section circled in red — ‘Unilateral reallocation of restricted donor funds: $47,000.’ Beside her, Toma sits in a chair, formal and still, a letter visible in his hand marked ‘Formal Censure.’ On the far wall, a small KAN nutrition poster — children under five, healthy — a reminder of what the money achieved and what it cost. 16-bit pixel art scene, Pacific island humanitarian setting, muted ochre and grey, right outcome, wrong process, visible cost.
+
+**scene_9D** (Consequence) — *The Cost of Looking Away*
+
+> Three moments across one year, arranged in a triptych. Left — month 6: a clean programme closure report on a desk, ‘All Financials Reconciled’ stamped, the conflict of interest folder still in the filing cabinet, drawer closed. Centre — month 12: an external audit table, a compliance officer pointing to a highlighted section — ‘Undisclosed procurement relationship identified; internal record found.’ A printout of the Manu Camp family photograph lies beside two formal complaint letters. Right — month 14: a laptop screen showing a published article titled ‘When NGO Fundraising Exploits the Communities It Claims to Serve,’ with a screenshot of the HopeForward donation page bearing the Manu Camp photo; a share count reads ‘2,147.’ 16-bit pixel art scene, Pacific island humanitarian setting, cool grey palette, clean surfaces concealing accumulated cost.
 
 ---
 
-#### Prompt 2: Expand Decision 1 — CHS 1: Participation & Rights
+## Ending Badge Image Prompts
 
-**CHS Focus:** Requirements 1.1, 1.2, 1.3, 1.4, 1.5, 1.6  
-**ID:** `expand_decision_1_participation`
+Each of the four endings features a distinct circular digital badge. All badges use **flat digital illustration style** with Pacific island humanitarian imagery. Prompts are taken directly from `endings[].badge_image_prompt` in the JSON.
 
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_1' and its four consequence scenes ('scene_1A', 'scene_1B', 'scene_1C', 'scene_1D'). For 'decision_1': write a full scene narrative (~150 words) with dialogue from Sione, Filomena (KCV), and the government official. Show Maya's internal conflict between speed and inclusion. For each consequence scene: write a full narrative (~120 words) with specific character reactions, delayed impact detail, and a complete image_prompt. Requirements 1.1-1.6 should each be visibly addressed or missed in the relevant options. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly.
+**ending_transformative** — *Transformative Leader*
 
----
+> Digital badge, circular format. Gold outer ring with nine small icons evenly spaced around the circumference, each representing one CHS commitment: a speech bubble (participation), a water drop (timely support), a seedling (resilience), a shield (do no harm), a complaint box (accountability), two overlapping circles (coordination), a lightbulb (learning), a person with a heart (staff wellbeing), and a coin with a checkmark (ethical resources). Centre image: a Pacific island coastline in aerial view — green recovery vegetation visible among light cyclone damage, a small fishing cooperative on the shore, a community meeting shelter. Warm late-afternoon Pacific light. Text at base: 'Transformative Leader'. Colour palette: deep gold, ocean blue, fresh green, white. Flat digital illustration style, clean and professional.
 
-#### Prompt 3: Expand Decision 2 — CHS 2: Timely & Effective Support
+**ending_committed** — *Committed Practitioner*
 
-**CHS Focus:** Requirements 2.1, 2.2, 2.3, 2.4, 2.5, 2.6  
-**ID:** `expand_decision_2_timely_support`
+> Digital badge, circular format. Silver outer ring. Centre image: a Pacific island outline with visible recovery — new green growth alongside remaining cyclone damage. A figure (representing Maya) stands on a path that leads forward, facing toward the horizon. Around the inner ring: small growth icons — an upward arrow, an open book, a sprouting plant, a handshake. Text at base: 'Committed Practitioner'. Colour palette: silver, teal, warm yellow, white. Flat digital illustration style.
 
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_2' and its four consequence scenes ('scene_2A', 'scene_2B', 'scene_2C', 'scene_2D'). Show the context_flag_effects in the scene narrative — if inclusive_assessment was set, Sione has richer data. Include dialogue from Carlos (logistics pressure) and the donor representative (compliance pressure). For each consequence: ~120 words with specific Sphere standard references, delayed impacts, and image_prompts. Requirements 2.1-2.6 should each be visibly addressed or missed. Remove PLACEHOLDER and 'status' fields. Keep JSON exactly.
+**ending_struggling** — *Struggling Responder*
 
----
+> Digital badge, circular format. Bronze outer ring. Centre image: an open notebook lying on a field table, with a single seedling growing up through the pages — symbolising learning emerging from experience. Faint Pacific island coastal landscape in the background, slightly hazy. Around the inner ring: small icons representing reflection and growth — a magnifying glass, an open hand, a seedling, a looping arrow. Text at base: 'Learning in Progress'. Colour palette: bronze, warm orange, light blue, white. Flat digital illustration style.
 
-#### Prompt 4: Expand Decision 3 — CHS 3: Resilience & Local Ownership
+**ending_crisis** — *Crisis Mode*
 
-**CHS Focus:** Requirements 3.1, 3.2, 3.3, 3.4, 3.5  
-**ID:** `expand_decision_3_resilience`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_3' and its four consequence scenes ('scene_3A', 'scene_3B', 'scene_3C', 'scene_3D'). Show the HQ direct delivery pressure, Filomena's co-governance proposal, and Sione's traditional knowledge offer. Reference the approaching tropical storm as a real risk that gives DRR integration urgency. For each consequence: ~120 words with context-flag effects (especially for options B and D which set 'local_ownership_by_design' and 'drr_integrated'), delayed impacts, and image_prompts. Requirements 3.1-3.5 addressed or missed per option. Remove PLACEHOLDER and 'status' fields.
-
----
-
-#### Prompt 5: Expand Decision 4 — CHS 4: Do No Harm & Protection
-
-**CHS Focus:** Requirements 4.1, 4.2, 4.3, 4.4, 4.5  
-**ID:** `expand_decision_4_do_no_harm`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_4' and its four consequence scenes ('scene_4A', 'scene_4B', 'scene_4C', 'scene_4D'). Show the four simultaneous risks as concrete, urgent details — not abstractions. Reference the Tevita Village coercion signal, the specific Google Drive data exposure, the truck idling near children, and the absent PSEA framework. Show Carlos's push for scale-up on schedule. For each consequence: ~120 words with specific harm descriptions, community member voices, and image_prompts. All five requirements (4.1-4.5) addressed or missed per option. Remove PLACEHOLDER and 'status' fields.
-
----
-
-#### Prompt 6: Expand Decision 5 — CHS 5: Complaints & Feedback
-
-**CHS Focus:** Requirements 5.1, 5.2, 5.3, 5.4, 5.5, 5.6  
-**ID:** `expand_decision_5_complaints`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_5' and its four consequence scenes ('scene_5A', 'scene_5B', 'scene_5C', 'scene_5D'). Give Sina Talagi a specific, dignified voice in the scene narrative. Show the 12% complaints awareness finding as a concrete management failure. Reference how the protection_framework_active flag (if set in Decision 4) changes what systems are available. For each consequence: ~120 words with Sina's experience at the centre (survivor-centred), staff reaction, community perception, and image_prompts. All six requirements (5.1-5.6) visible. Remove PLACEHOLDER and 'status'.
-
----
-
-#### Prompt 7: Expand Decision 6 — CHS 6: Coordination & Complementarity
-
-**CHS Focus:** Requirements 6.1, 6.2, 6.3, 6.4  
-**ID:** `expand_decision_6_coordination`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_6' and its four consequence scenes ('scene_6A', 'scene_6B', 'scene_6C', 'scene_6D'). Show the concrete impacts of the geographic duplication in the two villages. Give Dr. Ana Tuivaga (KAN) a specific, compelling voice — her exclusion is the human face of CHS 6 failure. Reference how local_ownership_by_design and referral_pathways_active flags (if set) change the dynamics. For each consequence: ~120 words with inter-agency tension, community confusion, and image_prompts. All four requirements (6.1-6.4) visible. Remove PLACEHOLDER and 'status'.
-
----
-
-#### Prompt 8: Expand Decision 7 — CHS 7: Learning & Continuous Improvement
-
-**CHS Focus:** Requirements 7.1, 7.2, 7.3, 7.4, 7.5  
-**ID:** `expand_decision_7_learning`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_7' and its four consequence scenes ('scene_7A', 'scene_7B', 'scene_7C', 'scene_7D'). Give Amara a specific, confident voice in presenting the monitoring findings. Show Carlos's 'preliminary and contestable' pushback in dialogue. Reference the two specific community members whose feedback was not acknowledged — give them names and brief context. Show how complaints_trusted and inclusive_assessment flags make the data richer. For each consequence: ~120 words with specific outcome data, community voice, and image_prompts. All five requirements (7.1-7.5) visible. Remove PLACEHOLDER and 'status'.
-
----
-
-#### Prompt 9: Expand Decision 8 — CHS 8: Staff Competence & Wellbeing
-
-**CHS Focus:** Requirements 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7  
-**ID:** `expand_decision_8_staff_wellbeing`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_8' and its four consequence scenes ('scene_8A', 'scene_8B', 'scene_8C', 'scene_8D'). Give Leila's distress a specific, human voice through her WhatsApp messages. Give Tevi's discrimination experience careful, dignified framing. Show the training budget reallocation as Carlos's pragmatic decision that ignored a contract commitment. Reference how duty_of_care_upheld and protection_framework_active flags (if set) change staff expectations. For each consequence: ~120 words with specific staff experiences, HR outcomes, and image_prompts. All seven requirements (8.1-8.7) visible. Remove PLACEHOLDER and 'status'.
-
----
-
-#### Prompt 10: Expand Decision 9 — CHS 9: Ethical Resource Management
-
-**CHS Focus:** Requirements 9.1, 9.2, 9.3, 9.4, 9.5, 9.6  
-**ID:** `expand_decision_9_resource_management`
-
-Using the skeleton in CHS_2024_game_v2.json, expand 'decision_9' and its four consequence scenes ('scene_9A', 'scene_9B', 'scene_9C', 'scene_9D'). Give Toma a specific, careful voice — he is a principled professional who is also professionally vulnerable. Show the HQ visibility campaign request as a real institutional pressure, not an obvious wrongdoing. Reference how donor_transparent_engagement and community_informed flags (if set) change what is possible. For each consequence: ~120 words with specific financial, ethical, and community outcomes, and image_prompts. All six requirements (9.1-9.6) visible. Remove PLACEHOLDER.
-
----
-
-#### Prompt 11: Write the Four Endings
-
-**CHS Focus:** All 9 commitments (synthesis)  
-**ID:** `write_four_endings`
-
-Using the skeleton in CHS_2024_game_v2.json, expand all four endings: 'ending_transformative', 'ending_committed', 'ending_struggling', and 'ending_crisis'. For each ending: write a full narrative_summary (~150 words) that references specific decisions, characters, and outcomes from the game — reflecting what Maya did well or where she fell short across all nine CHS commitments. Reference the context flags the player may have set. The tone should be reflective, human, and educational — not punitive. Write badge_image_prompts that visually represent the journey. Keep the reflection_questions and chs_requirements fields exactly as-is. Remove PLACEHOLDER.
-
----
-
-#### Prompt 12: Expand Supporting Characters, UI Design, and Game Engine Guidance
-
-**CHS Focus:** All commitments (implementation)  
-**ID:** `expand_supporting_characters_ui_engine`
-
-Using the skeleton in CHS_2024_game_v2.json, expand the 'supplementary_assets' section: Write backstory paragraphs (~80 words each) for all eight key characters (Maya, Sione, Filomena, Leila, Carlos, Amara, Toma, Dr. Ana Tuivaga). Replace all image_prompt PLACEHOLDERs with complete, consistent AI illustration prompts (flat digital illustration style, Pacific island setting, consistent palette). For ui_design_prompts: write production-ready prompts for main menu, score dashboard, decision screen, chapter transition card, consequence screen, and ending screen. Add a game_engine_notes section with guidance on how to implement the context_flags_system — which flags affect which later scene narrative, and how.
-
----
+> Digital badge, circular format. Earth-toned outer ring in deep brown and muted green. Centre image: a single green seedling pushing up through cracked, storm-dried earth — resilient growth from difficult ground. A faint Pacific island horizon in the background after a storm: grey-clearing sky, scattered debris, early signs of renewal. Around the inner ring: simple icons of persistence — an upward arrow through a barrier, an open door, a rising sun. Text at base: 'Rising Learner'. Colour palette: earthy brown, muted green, warm amber, soft white. Flat digital illustration style.
 
 ## Web-Based Game — Implementation Guide
 
@@ -546,7 +659,7 @@ Browser
               main.js      Game loop, scene routing, input handling
               loader.js    fetch() + JSON parse, scene index
               flags.js     Context flag state (18 boolean flags)
-              score.js     Four dimension score counters
+              score.js     Three dimension score counters
               renderer.js  Canvas draw: backgrounds, sprites, dialogue box
               ui.js        Decision / consequence / score / ending screens
               audio.js     Web Audio API chiptune player
@@ -604,10 +717,9 @@ async function loadGame() {
     data.context_flags_system.flags.map(f => [f.id, false])
   );
 
-  // Initialise four score dimension counters
+  // Initialise three score dimension counters
   state.scores = {
     community_trust: 0,
-    staff_wellbeing: 0,
     program_quality: 0,
     accountability: 0
   };
@@ -641,7 +753,7 @@ function renderScene(scene) {
 
 ```javascript
 function applyOption(option) {
-  // 1. Apply score changes across all four dimensions
+  // 1. Apply score changes across all three dimensions
   for (const [dim, val] of Object.entries(option.score_changes || {})) {
     state.scores[dim] = (state.scores[dim] || 0) + val;
   }
@@ -676,7 +788,7 @@ If any flags are active for the current scene, show an amber banner: *"Your earl
 
 ### Determining the Ending
 
-After the epilogue scene, sum all four dimension scores and compare against the thresholds from `game_meta.scoring.ending_thresholds`:
+After the epilogue scene, sum all three dimension scores and compare against the thresholds from `game_meta.scoring.ending_thresholds`:
 
 ```javascript
 function determineEnding() {
@@ -846,36 +958,6 @@ Chiptune with Pacific island atmosphere. Recommended tools: FamiTracker, LMMS wi
 
 ---
 
-## UI Design Prompts (Pixel Art)
-
-The following prompts are taken directly from `supplementary_assets.ui_design_prompts` in the JSON. They describe the layout and visual content of each key screen. All screens are **full-screen pixel art at 320×180 px base resolution**, integer-scaled to fill the viewport.
-
-### Main Menu Screen
-
-> 16-bit pixel art layout for the 'Kailani Rising' main menu screen. Full-screen composition (320×180 px base canvas, integer-scaled to 1280×720 or 1920×1080). Upper two-thirds: aerial view of a Pacific island coastline beginning to recover from Cyclone Vera — blue tarps on damaged rooftops, aid trucks on a coastal road, palm trees bent but standing, tropical ocean beyond. Warm recovering light breaking through storm clouds. Lower third: dark teal panel with the title 'KAILANI RISING' in bold serif type, subtitle 'A Humanitarian Roleplay' in smaller weight. Four menu buttons stacked vertically: START GAME, HOW TO PLAY, ABOUT CHS 2024, SCORE HISTORY — white text on semi-transparent dark teal panels. HopeForward International logo small bottom-left, CHS badge bottom-right. Colour palette: Pacific teal, warm ochre, storm grey, relief blue, tropical green. 16-bit pixel art style, no gradients, clean type hierarchy.
-
-### Score Dashboard
-
-> 16-bit pixel art layout for the score dashboard screen. Clean, information-first design. White background with teal header bar reading 'YOUR PROGRESS' in white bold type. Four large circular gauge components arranged in a 2x2 grid, each with a distinct icon and colour: (1) Community Trust — handshake icon, Pacific teal fill; (2) Staff Wellbeing — heart icon, warm coral fill; (3) Program Quality — star icon, tropical green fill; (4) Accountability and Ethics — scales icon, ochre fill. Each gauge shows a percentage arc with the numeric value large in the centre. Below the grid: a horizontal 'Total Score' bar with current points and band label (Transformative Leader / Committed Practitioner / Struggling Responder / Crisis Mode). Right panel: 'Active Context Flags' list — flags displayed as small labelled chips in soft teal, grey for inactive flags. Bottom: chapter progress indicator (1-9 steps). 16-bit pixel art style, clean spacing, readable at mobile scale.
-
-### Decision Screen
-
-> 16-bit pixel art layout for the decision screen. Split composition. Upper 40%: scene illustration panel — a Pacific island humanitarian setting relevant to the current chapter (changes per scene). Below: white content panel. Header row: chapter number chip (e.g. 'Ch. 4') left-aligned, CHS commitment badge with commitment number and short title right-aligned (e.g. 'CHS 4 — Do No Harm'). Situation text block: 3-5 lines of narrative situation summary in medium body type. Context flag indicator: if active flags affect this decision, a small amber banner reads 'Your earlier choices are shaping this situation — see flags'. Four option buttons stacked below, labelled A, B, C, D — each a full-width rounded rectangle with option label text. Progress dots at bottom: nine dots, current chapter filled teal. Colour palette: Pacific teal, warm ochre, clean white, storm grey. 16-bit pixel art, clean typographic hierarchy, accessible contrast ratios.
-
-### Consequence Screen
-
-> 16-bit pixel art layout for the consequence screen. Upper 45%: scene illustration showing the direct consequence of the player's choice — character present, setting relevant. Below: white card panel with coloured top border matching the score impact (teal = positive, coral = negative, grey = neutral). 'CONSEQUENCE' label small above the immediate consequence text (2-3 sentences). Score delta row: coloured pill badges showing each dimension change, e.g. '+2 Community Trust', '-1 Staff Wellbeing', each in its dimension colour. 'WHAT THE CHS SAYS' section: quoted CHS text in a light teal box, italic, with CHS requirement number. 'CASCADING NOTE' panel at bottom: amber background, text showing which context flag was set (if any) and what effect it will have on later decisions. 'CONTINUE' button bottom-right, teal. 16-bit pixel art style, clean card layout, mobile-readable type.
-
-### Chapter Transition Card
-
-> 16-bit pixel art layout for the chapter transition card, displayed between chapters. Full-screen pixel art card (320×180 px base, integer-scaled to 1280×720 or 1920×1080). Background: a Pacific island landscape relevant to the next chapter location — illustrated in flat style with bold colour. Overlaid: a centred white card panel with rounded corners. Card content from top: 'CHAPTER N' in small caps; large bold chapter title (e.g. 'Do No Harm and Protection'); 'CHS Commitment N' in medium weight; a horizontal rule; then a bulleted list of all sub-requirement numbers and short titles for that commitment (e.g. '4.1 Do not harm / 4.2 Prevent sexual exploitation...'). Bottom of card: a decorative horizontal border in a Pacific island motif — simple geometric woven pattern in ochre on teal. Background colours vary per chapter: Ch.1 teal, Ch.2 green, Ch.3 ochre, Ch.4 coral, Ch.5 plum, Ch.6 blue, Ch.7 amber, Ch.8 slate, Ch.9 deep teal. 16-bit pixel art style, bold type.
-
-### Ending Screen
-
-> 16-bit pixel art layout for the ending screen. Full-screen, scrollable (320×180 px base, integer-scaled). Top section: ending badge large and centred — a distinct illustrated badge for each of the four endings (Transformative Leader: a rising sun over a rebuilt village; Committed Practitioner: a steady compass; Struggling Responder: an open book; Crisis Mode: a cracked foundation). Badge title in bold below it. Scrollable narrative section below: Maya's ending narrative text in body size type over a warm cream background, 150-200 words. Score breakdown panel: four dimension scores shown as horizontal bars with numeric values, dimension colours matching the dashboard. 'CONTEXT FLAGS ACTIVE' section: each set flag shown as a chip with its short description — representing the cumulative journey. Three reflection questions in a teal-bordered card. Bottom: two full-width buttons — 'SHARE RESULTS' (teal fill, white text) and 'PLAY AGAIN' (outlined, teal text). 16-bit pixel art style, warm Pacific palette.
-
----
-
 ## Supplementary Assets
 
 The `supplementary_assets` key contains four categories of supporting material:
@@ -884,9 +966,9 @@ The `supplementary_assets` key contains four categories of supporting material:
 
 Full biographical backstories and pixel art portrait prompts for all nine named characters. Each entry includes: `id`, `name`, `role`, `backstory`, `key_decisions`, and `image_prompt`.
 
-### 2. UI Design Prompts (`ui_design_prompts`)
+### 2. UI Layout Specifications (`ui_design_prompts`)
 
-Six pixel art layout prompts (documented in full above): `main_menu`, `score_dashboard`, `decision_screen`, `consequence_screen`, `chapter_transition`, `ending_screen`.
+Screen layout specifications for six key screens: `main_menu`, `score_dashboard`, `decision_screen`, `consequence_screen`, `chapter_transition`, `ending_screen`. These are **HTML/CSS/JS implementation guides** describing the structure, components, and content of each screen (buttons, text panels, score gauges, flag chips, progress indicators, etc.). They are not image generation prompts — all interactive UI elements are built in code. The scene illustration slot on each screen is populated by the relevant `image_prompt` from the corresponding scene object in `scenes`.
 
 ### 3. Game Engine Notes (`game_engine_notes`)
 
@@ -915,7 +997,7 @@ Full visual style and engine implementation guide including:
 ### For Game Developers
 
 1. **Load the JSON** via `fetch("CHS_2024_game_v2.json")` and build a scene index.
-2. **Initialise session state:** all 18 flags set to `false`; all four score dimensions set to `0`.
+2. **Initialise session state:** all 18 flags set to `false`; all three score dimensions set to `0`.
 3. **Render the prologue** (`scenes[0]`) as an opening narrative screen over a full-screen background.
 4. **For each decision scene** (`type: "decision"`):
    - Query active flags against `context_flag_effects` to inject contextual text.
@@ -925,20 +1007,19 @@ Full visual style and engine implementation guide including:
    - Display the full-screen background, narrative text, delayed impact, and score delta animation.
    - Show the Cascading Note panel if a flag was just set.
    - Navigate to `next_scene_id`.
-6. **At the epilogue**, sum all four dimension scores, compare against `game_meta.scoring.ending_thresholds`, and display the corresponding `endings` entry.
+6. **At the epilogue**, sum all three dimension scores, compare against `game_meta.scoring.ending_thresholds`, and display the corresponding `endings` entry.
 7. **Use the pixel art image prompts** (all specified as 16-bit pixel art, 320×180 px, 24-colour Kailani palette) to generate scene backgrounds and character sprites via an AI image generation tool or by commissioning a pixel artist.
 
 ### For Trainers and Facilitators
 
 1. Use individual decision scenes as standalone case studies for group discussion.
 2. Run participants through 2–3 decisions per session and use consequence scenes to prompt reflection.
-3. Use the twelve `development_prompts` to commission or generate full narrative text for any sections that remain as skeletons.
-4. The `reflection_questions` in each `endings` entry are ready-made debrief prompts for post-game discussion.
-5. Use the `chs_reference_summary` in the JSON as a printed quick-reference during training sessions.
+3. The `reflection_questions` in each `endings` entry are ready-made debrief prompts for post-game discussion.
+4. Use the `chs_reference_summary` in the JSON as a printed quick-reference during training sessions.
 
 ### For Content Authors
 
-Use the twelve `development_prompts` entries (extracted in full above) to expand skeleton scenes into full narrative text. Each prompt specifies exact scene IDs, required word counts, character voices to include, flag effects to reference, and JSON structure to preserve. Use pixel art style image generation prompts (all now updated to 16-bit pixel art style in the JSON).
+Use the image generation prompts documented in the **Scene Image Prompts** and **Character Portrait Prompts** sections of this file to generate or commission scene backgrounds and character sprites. All prompts specify 16-bit pixel art style, 320×180 px backgrounds, and the 24-colour Kailani palette. Each prompt is taken directly from the corresponding `image_prompt` field in the JSON.
 
 ---
 
