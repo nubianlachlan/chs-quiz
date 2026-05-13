@@ -1,4 +1,4 @@
-# Field Ready: A Humanitarian Adventure
+# Field Ready: CHS in Practice
 
 **File:** `CHS_2024_game.json`
 **Version:** 1.0
@@ -8,7 +8,7 @@
 
 ## Overview
 
-*Field Ready: A Humanitarian Adventure* is a story-driven, interactive learning game designed to help humanitarian and development sector workers understand and apply the nine commitments of the Core Humanitarian Standard (CHS) 2024. Players step into the shoes of **Alex**, a field coordinator freshly deployed to **Verdania** — a fictional semi-arid sub-Saharan nation struck by catastrophic flooding — and must navigate real-world dilemmas that affect 200,000 displaced people.
+*Field Ready: CHS in Practice* is a story-driven, interactive learning game designed to help humanitarian and development sector workers understand and apply the nine commitments of the Core Humanitarian Standard (CHS) 2024. Players step into the shoes of **Alex**, a field coordinator freshly deployed to **Verdania** — a fictional semi-arid sub-Saharan nation struck by catastrophic flooding — and must navigate real-world dilemmas that affect 200,000 displaced people.
 
 The game is structured as a sequence of ten chapters (one prologue and nine interactive chapters) plus a scored epilogue. Each interactive chapter targets one CHS commitment, presenting a contextual narrative scenario followed by a multiple-choice question. Players receive instant feedback after every decision, and a final impact report grades their overall performance.
 
