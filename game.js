@@ -226,7 +226,6 @@ function renderChapter(idx) {
         <div class="character-info">
           <div class="avatar-img"><img src="assets/illustrations/alex-portrait.png" alt="Alex" class="avatar-portrait"></div>
           <div class="character-name">ALEX</div>
-          <div class="character-emotion">${ch.character_emotion}</div>
         </div>
         <div class="bubble bubble-left">
           <p class="narrative-text">${ch.narrative}</p>
