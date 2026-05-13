@@ -915,6 +915,21 @@ body {
 .commit-icon-partial  { color: var(--warning); }
 .commit-icon-incorrect{ color: var(--danger); }
 
+/* CHS commitment image icon (chapter header & epilogue list) */
+.commit-img-icon {
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* CHS flower on the main menu */
+.chs-flower {
+  display: block;
+  width: clamp(80px, 25vw, 140px);
+  height: auto;
+  margin: 0 auto 20px;
+}
+
 /* ---------- Loading / Error ---------- */
 #screen-loading {
   align-items: center;

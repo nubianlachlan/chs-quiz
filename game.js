@@ -4,8 +4,10 @@
 
 const GAME_DATA_URL = 'CHS_2024_game.json';
 
-// Emoji icons for commitment numbers
-const COMMITMENT_ICONS = ['👥', '📦', '🌱', '🛡️', '📢', '🤝', '📖', '👩‍💼', '💰'];
+// Image path helper for commitment icons
+function commitmentIconImg(num, size) {
+  return `<img src="assets/chs/${num}-commitment.png" class="commit-img-icon" width="${size}" height="${size}" alt="Commitment ${num} icon">`;
+}
 
 // Scene colour index (maps to CSS classes)
 const SCENE_COLORS = {
@@ -91,12 +93,9 @@ function renderMenu() {
   $('screen-menu').innerHTML = `
     <div class="game-container fade-in">
       <div class="menu-header">
+        <img src="assets/chs/chs-flower.svg" class="chs-flower" alt="Core Humanitarian Standard flower logo">
         <div class="menu-title">${meta.title}</div>
         <p class="menu-subtitle">${meta.subtitle}</p>
-      </div>
-
-      <div class="menu-scene">
-        ${makePlaceholderImg('scene-menu', 'MAIN MENU — FLOODED VERDANIA')}
       </div>
 
       <div class="menu-info-grid">
@@ -195,7 +194,6 @@ function renderChapter(idx) {
   const ch = gameData.chapters[idx]; // chapters[1..9]
   const sceneClass = SCENE_COLORS[ch.id] || 'scene-1';
   const commitNum = ch.chs_commitment.number;
-  const commitIcon = COMMITMENT_ICONS[commitNum - 1];
   const shuffledOptions = shuffleOptions(ch.question.options);
 
   const optionsHtml = shuffledOptions.map((opt, optIdx) => `
@@ -218,7 +216,7 @@ function renderChapter(idx) {
       </div>
 
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-        <span style="font-size:1.1rem">${commitIcon}</span>
+        ${commitmentIconImg(commitNum, 36)}
         <span style="font-family:var(--font-pixel);font-size:0.42rem;color:var(--dark-gray);line-height:1.8">
           CHS COMMITMENT ${commitNum}: ${ch.chs_commitment.title}
         </span>
@@ -388,6 +386,7 @@ function renderEpilogue() {
     return `
       <div class="commitment-item">
         <span class="commitment-icon">${icon}</span>
+        ${commitmentIconImg(c.number, 28)}
         <span><strong>${c.short_title || 'Commitment ' + c.number}</strong> — ${c.summary || ''}</span>
       </div>`;
   }).join('');
