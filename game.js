@@ -4,13 +4,6 @@
 
 const GAME_DATA_URL = 'CHS_2024_game.json';
 
-// Commitment dot colors (one per commitment 1-9)
-const COMMITMENT_COLORS = [
-  '#e11d48', '#ea580c', '#ca8a04',
-  '#16a34a', '#0891b2', '#2563eb',
-  '#7c3aed', '#db2777', '#64748b',
-];
-
 // Emoji icons for commitment numbers
 const COMMITMENT_ICONS = ['👥', '📦', '🌱', '🛡️', '📢', '🤝', '📖', '👩‍💼', '💰'];
 
@@ -192,7 +185,6 @@ function renderChapter(idx) {
   const ch = gameData.chapters[idx]; // chapters[1..9]
   const sceneClass = SCENE_COLORS[ch.id] || 'scene-1';
   const commitNum = ch.chs_commitment.number;
-  const commitColor = COMMITMENT_COLORS[commitNum - 1];
   const commitIcon = COMMITMENT_ICONS[commitNum - 1];
 
   const optionsHtml = ch.question.options.map((opt) => `
@@ -206,7 +198,7 @@ function renderChapter(idx) {
       ${makeHUD(idx, 9, state.score)}
 
       <div class="chapter-title-row">
-        <div class="chapter-badge" style="background:${commitColor}">CH ${idx}</div>
+        <div class="chapter-badge">CH ${idx}</div>
         <div class="chapter-title">${ch.title}</div>
       </div>
 
@@ -216,7 +208,7 @@ function renderChapter(idx) {
 
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
         <span style="font-size:1.1rem">${commitIcon}</span>
-        <span style="font-family:var(--font-pixel);font-size:0.42rem;color:${commitColor};line-height:1.8">
+        <span style="font-family:var(--font-pixel);font-size:0.42rem;color:var(--dark-gray);line-height:1.8">
           CHS COMMITMENT ${commitNum}: ${ch.chs_commitment.title}
         </span>
       </div>
@@ -291,17 +283,20 @@ function renderFeedback(chapter, chosen) {
   const isCorrect = chosen.is_correct;
   const isPartial = !isCorrect && chosen.score === 5;
   const resultClass = isCorrect ? 'correct' : isPartial ? 'partial' : 'incorrect';
-  const resultIcon = isCorrect ? '✅' : isPartial ? '⚡' : '❌';
+  const resultIcon = isCorrect
+    ? '<i class="fa-solid fa-circle-check" aria-label="Correct"></i>'
+    : isPartial
+    ? '<i class="fa-solid fa-circle-half-stroke" aria-label="Partial credit"></i>'
+    : '<i class="fa-solid fa-circle-xmark" aria-label="Incorrect"></i>';
   const resultLabel = isCorrect ? 'CORRECT' : isPartial ? 'PARTIAL CREDIT' : 'INCORRECT';
   const commitNum = chapter.chs_commitment.number;
-  const commitColor = COMMITMENT_COLORS[commitNum - 1];
 
   $('screen-feedback').innerHTML = `
     <div class="game-container fade-in">
       ${makeHUD(state.currentChapterIndex, 9, state.score)}
 
       <div class="chapter-title-row">
-        <div class="chapter-badge" style="background:${commitColor}">CH ${state.currentChapterIndex}</div>
+        <div class="chapter-badge">CH ${state.currentChapterIndex}</div>
         <div class="chapter-title">${chapter.title}</div>
       </div>
 
@@ -372,12 +367,16 @@ function renderEpilogue() {
   const commitListHtml = chs.map((c, i) => {
     const answer = state.answers.find((a) => a.chapterIndex === i + 1);
     const pts = answer ? answer.points : null;
-    const dotColor = COMMITMENT_COLORS[i];
-    const icon = pts === 10 ? '✅' : pts === 5 ? '⚡' : pts === 0 ? '❌' : '—';
+    const icon = pts === 10
+      ? '<i class="fa-solid fa-circle-check commit-icon-correct" aria-label="Correct"></i>'
+      : pts === 5
+      ? '<i class="fa-solid fa-circle-half-stroke commit-icon-partial" aria-label="Partial"></i>'
+      : pts === 0
+      ? '<i class="fa-solid fa-circle-xmark commit-icon-incorrect" aria-label="Incorrect"></i>'
+      : '<span>—</span>';
     return `
       <div class="commitment-item">
-        <span class="commitment-num">${icon}</span>
-        <span style="display:inline-block;width:10px;height:10px;background:${dotColor};border:2px solid #111;flex-shrink:0;margin-top:3px"></span>
+        <span class="commitment-icon">${icon}</span>
         <span><strong>${c.short_title || 'Commitment ' + c.number}</strong> — ${c.summary || ''}</span>
       </div>`;
   }).join('');
@@ -406,15 +405,18 @@ function renderEpilogue() {
 
       <div class="score-grid">
         <div class="score-item correct-answer">
-          <span class="si-label">✅ CORRECT</span>
+          <div class="si-icon"><i class="fa-solid fa-circle-check" aria-label="Correct"></i></div>
+          <span class="si-label">CORRECT</span>
           <span class="si-value">${correct}</span>
         </div>
         <div class="score-item partial-answer">
-          <span class="si-label">⚡ PARTIAL</span>
+          <div class="si-icon"><i class="fa-solid fa-circle-half-stroke" aria-label="Partial"></i></div>
+          <span class="si-label">PARTIAL</span>
           <span class="si-value">${partial}</span>
         </div>
         <div class="score-item incorrect-answer">
-          <span class="si-label">❌ MISSED</span>
+          <div class="si-icon"><i class="fa-solid fa-circle-xmark" aria-label="Missed"></i></div>
+          <span class="si-label">MISSED</span>
           <span class="si-value">${incorrect}</span>
         </div>
       </div>

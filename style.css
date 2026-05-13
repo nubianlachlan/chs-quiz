@@ -626,7 +626,13 @@ body {
 .result-icon {
   font-size: 2rem;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
+
+.feedback-result-banner.correct   .result-icon { color: var(--success); }
+.feedback-result-banner.partial   .result-icon { color: var(--warning); }
+.feedback-result-banner.incorrect .result-icon { color: var(--danger); }
 
 .result-meta { flex: 1; }
 
@@ -784,11 +790,23 @@ body {
   box-shadow: var(--pixel-shadow-sm);
   background: var(--off-white);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .score-item.correct-answer  { background: var(--success-light); border-color: var(--success); }
 .score-item.partial-answer  { background: var(--warning-light); border-color: var(--warning); }
 .score-item.incorrect-answer{ background: var(--danger-light);  border-color: var(--danger); }
+
+.score-item .si-icon {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.score-item.correct-answer   .si-icon { color: var(--success); }
+.score-item.partial-answer   .si-icon { color: var(--warning); }
+.score-item.incorrect-answer .si-icon { color: var(--danger); }
 
 .score-item .si-label {
   font-family: var(--font-pixel);
@@ -883,16 +901,19 @@ body {
   margin: 18px 0;
 }
 
-/* ---------- CHS Commitment Color Dot ---------- */
-.commitment-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--black);
-  margin-right: 6px;
-  vertical-align: middle;
+/* ---------- CHS Commitment Icon ---------- */
+.commitment-icon {
+  font-size: 1rem;
+  min-width: 22px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
 }
+
+.commit-icon-correct  { color: var(--success); }
+.commit-icon-partial  { color: var(--warning); }
+.commit-icon-incorrect{ color: var(--danger); }
 
 /* ---------- Loading / Error ---------- */
 #screen-loading {
