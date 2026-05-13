@@ -269,6 +269,13 @@ body {
   line-height: 2;
 }
 
+.placeholder-img .scene-illustration {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
 /* Colored scene placeholders */
 .placeholder-img.scene-0  { background: #e0f2fe; }
 .placeholder-img.scene-1  { background: #fef9c3; }
