@@ -301,6 +301,12 @@ body {
   line-height: 1;
 }
 
+.avatar-img .avatar-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ---------- Speech Bubbles ---------- */
 .bubble {
   position: relative;
