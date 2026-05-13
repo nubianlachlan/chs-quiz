@@ -58,6 +58,13 @@ function makePlaceholderImg(sceneClass, label) {
     </div>`;
 }
 
+function makeSceneImg(sceneClass, src, alt) {
+  return `
+    <div class="placeholder-img ${sceneClass}">
+      <img src="${src}" alt="${alt}" class="scene-illustration">
+    </div>`;
+}
+
 function makeHUD(chapterIndex, totalChapters, score) {
   // totalChapters = 9 interactive chapters
   const interactive = Math.max(0, chapterIndex - 1); // chapters 1-9 answered
@@ -152,7 +159,7 @@ function renderPrologue() {
         <div class="chapter-title">${ch.title}</div>
       </div>
 
-      ${makePlaceholderImg('scene-0', 'VERDANIA — ARRIVAL')}
+      ${makeSceneImg('scene-0', 'assets/illustrations/1-prologue.png', ch.title)}
 
       <div style="margin-top:16px"></div>
 
@@ -195,6 +202,9 @@ function renderChapter(idx) {
   const sceneClass = SCENE_COLORS[ch.id] || 'scene-1';
   const commitNum = ch.chs_commitment.number;
   const shuffledOptions = shuffleOptions(ch.question.options);
+  const chapterScene = idx === 1
+    ? makeSceneImg(sceneClass, 'assets/illustrations/2-chapter_1.png', ch.title)
+    : makePlaceholderImg(sceneClass, ch.title.toUpperCase());
 
   const optionsHtml = shuffledOptions.map((opt, optIdx) => `
     <button class="option-btn" data-option-id="${opt.id}" data-chapter-id="${ch.id}">
@@ -212,7 +222,7 @@ function renderChapter(idx) {
       </div>
 
       <div class="scene-area">
-        ${makePlaceholderImg(sceneClass, ch.title.toUpperCase())}
+        ${chapterScene}
       </div>
 
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
