@@ -39,6 +39,15 @@ const showScreen = (id) => {
   if (el) { el.classList.add('active'); window.scrollTo(0, 0); }
 };
 
+function shuffleOptions(options) {
+  const shuffled = [...options];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 function makePlaceholderImg(sceneClass, label) {
   return `
     <div class="placeholder-img ${sceneClass}">
@@ -119,6 +128,7 @@ function renderMenu() {
       </div>
     </div>`;
 
+  showScreen('screen-menu');
   $('btn-start').addEventListener('click', startGame);
 }
 
@@ -186,10 +196,11 @@ function renderChapter(idx) {
   const sceneClass = SCENE_COLORS[ch.id] || 'scene-1';
   const commitNum = ch.chs_commitment.number;
   const commitIcon = COMMITMENT_ICONS[commitNum - 1];
+  const shuffledOptions = shuffleOptions(ch.question.options);
 
-  const optionsHtml = ch.question.options.map((opt) => `
+  const optionsHtml = shuffledOptions.map((opt, optIdx) => `
     <button class="option-btn" data-option-id="${opt.id}" data-chapter-id="${ch.id}">
-      <span class="option-letter">${opt.id.toUpperCase()}</span>
+      <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
       <span>${opt.text}</span>
     </button>`).join('');
 
