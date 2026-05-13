@@ -107,6 +107,8 @@ function renderMenu() {
 
       ${makeSceneImg('scene-menu', 'assets/illustrations/0-intro.png', meta.title)}
 
+      <p class="menu-description">${meta.description}</p>
+
       <div class="menu-info-grid">
         <div class="info-card">
           <span class="info-label">🧭 YOUR ROLE</span>
