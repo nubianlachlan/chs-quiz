@@ -4,7 +4,7 @@
 
 const GAME_DATA_URL = 'CHS_2024_game.json';
 
-// Commitment dot colours (one per commitment 1-9)
+// Commitment dot colors (one per commitment 1-9)
 const COMMITMENT_COLORS = [
   '#e11d48', '#ea580c', '#ca8a04',
   '#16a34a', '#0891b2', '#2563eb',
@@ -462,12 +462,19 @@ async function init() {
 
   try {
     const res = await fetch(GAME_DATA_URL);
-    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    if (!res.ok) {
+      console.error(`Failed to load ${GAME_DATA_URL}: HTTP ${res.status} ${res.statusText}`);
+      throw new Error('network');
+    }
     gameData = await res.json();
     renderMenu();
     showScreen('screen-menu');
   } catch (err) {
-    renderLoading(`Could not load game data (${err.message}). Make sure CHS_2024_game.json is in the same directory as index.html.`);
+    const msg = err.message === 'network'
+      ? 'Unable to load game data. Please refresh the page or try again later.'
+      : 'An unexpected error occurred while loading. Please refresh the page.';
+    console.error('Game init error:', err);
+    renderLoading(msg);
   }
 }
 
