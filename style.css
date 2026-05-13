@@ -425,6 +425,10 @@ body {
   color: var(--dark-gray);
   line-height: 1.6;
   margin: 0 0 1.5rem;
+  padding: 14px 16px;
+  border: 2px solid var(--black);
+  box-shadow: var(--pixel-shadow-sm);
+  background: var(--off-white);
 }
 
 .menu-info-grid {
