@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Ready: A Humanitarian Adventure</title>
+  <meta name="description" content="An interactive story-driven learning game based on the Core Humanitarian Standard (CHS) 2024. Guide Alex through real-world humanitarian dilemmas in Verdania." />
+  <meta property="og:title" content="Field Ready: A Humanitarian Adventure" />
+  <meta property="og:description" content="A story-driven quiz game covering the 9 CHS commitments. ~12 min play." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="screen-loading" class="screen active">
+    <div id="loading-content" style="text-align:center">
+      <div class="loading-title">FIELD READY<br>LOADING</div>
+      <div class="loading-dots">. . .</div>
+    </div>
+  </div>
+
+  <!-- ===== MENU SCREEN ===== -->
+  <div id="screen-menu" class="screen">
+    <!-- Populated by game.js renderMenu() -->
+  </div>
+
+  <!-- ===== PROLOGUE SCREEN ===== -->
+  <div id="screen-prologue" class="screen">
+    <!-- Populated by game.js renderPrologue() -->
+  </div>
+
+  <!-- ===== CHAPTER SCREEN ===== -->
+  <div id="screen-chapter" class="screen">
+    <!-- Populated by game.js renderChapter() -->
+  </div>
+
+  <!-- ===== FEEDBACK SCREEN ===== -->
+  <div id="screen-feedback" class="screen">
+    <!-- Populated by game.js renderFeedback() -->
+  </div>
+
+  <!-- ===== EPILOGUE SCREEN ===== -->
+  <div id="screen-epilogue" class="screen">
+    <!-- Populated by game.js renderEpilogue() -->
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
