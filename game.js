@@ -105,6 +105,8 @@ function renderMenu() {
         <p class="menu-subtitle">${meta.subtitle}</p>
       </div>
 
+      ${makeSceneImg('scene-menu', 'assets/illustrations/0-intro.png', meta.title)}
+
       <div class="menu-info-grid">
         <div class="info-card">
           <span class="info-label">🧭 YOUR ROLE</span>
@@ -202,8 +204,14 @@ function renderChapter(idx) {
   const sceneClass = SCENE_COLORS[ch.id] || 'scene-1';
   const commitNum = ch.chs_commitment.number;
   const shuffledOptions = shuffleOptions(ch.question.options);
-  const chapterScene = idx === 1
-    ? makeSceneImg(sceneClass, 'assets/illustrations/2-chapter_1.png', ch.title)
+  const illustrationMap = {
+    1: 'assets/illustrations/2-chapter_1.png',
+    2: 'assets/illustrations/3-chapter_2.png',
+    3: 'assets/illustrations/4-chapter_3.png',
+    4: 'assets/illustrations/5-chapter_4.png',
+  };
+  const chapterScene = illustrationMap[idx]
+    ? makeSceneImg(sceneClass, illustrationMap[idx], ch.title)
     : makePlaceholderImg(sceneClass, ch.title.toUpperCase());
 
   const optionsHtml = shuffledOptions.map((opt, optIdx) => `
