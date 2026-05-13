@@ -158,7 +158,7 @@ function renderPrologue() {
 
       <div class="character-row">
         <div class="character-info">
-          <div class="avatar-img"><div class="avatar-pixel">🧑‍💼</div></div>
+          <div class="avatar-img"><img src="assets/illustrations/alex-portait.png" alt="Alex" class="avatar-portrait"></div>
           <div class="character-name">ALEX</div>
         </div>
         <div class="bubble bubble-left">
@@ -224,7 +224,7 @@ function renderChapter(idx) {
 
       <div class="character-row">
         <div class="character-info">
-          <div class="avatar-img"><div class="avatar-pixel">🧑‍💼</div></div>
+          <div class="avatar-img"><img src="assets/illustrations/alex-portait.png" alt="Alex" class="avatar-portrait"></div>
           <div class="character-name">ALEX</div>
           <div class="character-emotion">${ch.character_emotion}</div>
         </div>
