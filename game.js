@@ -158,7 +158,7 @@ function renderPrologue() {
 
       <div class="character-row">
         <div class="character-info">
-          <div class="avatar-img"><img src="assets/illustrations/alex-portait.png" alt="Alex" class="avatar-portrait"></div>
+          <div class="avatar-img"><img src="assets/illustrations/alex-portrait.png" alt="Alex" class="avatar-portrait"></div>
           <div class="character-name">ALEX</div>
         </div>
         <div class="bubble bubble-left">
