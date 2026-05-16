@@ -54,14 +54,6 @@ export default async function handler(req, res) {
     await sql`
       INSERT INTO quiz_events (session_id, game_name, event_type, chapter_id, score, location, event_data)
       VALUES (${sessionId}, ${gameName}, ${eventType.slice(0, MAX_EVENT_TYPE_LENGTH)}, ${chapterId}, ${score}, ${location ? JSON.stringify(location) : null}, ${JSON.stringify(eventData)})
-      ON CONFLICT (session_id, event_type) WHERE session_id IS NOT NULL
-      DO UPDATE SET
-        game_name   = EXCLUDED.game_name,
-        chapter_id  = EXCLUDED.chapter_id,
-        score       = EXCLUDED.score,
-        location    = EXCLUDED.location,
-        event_data  = EXCLUDED.event_data,
-        updated_at  = NOW()
     `;
 
     return res.status(201).json({ ok: true });
