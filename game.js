@@ -572,7 +572,7 @@ async function handleEmailSignupSubmit(event) {
   const form = $('email-signup-form');
   if (!emailInput || !statusEl || !form) return;
 
-  const email = emailInput.value.trim().toLowerCase();
+  const email = emailInput.value.trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     statusEl.textContent = 'Please enter a valid email address.';
     return;

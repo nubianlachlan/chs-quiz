@@ -19,6 +19,11 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function normalizeEmail(email) {
+  const [localPart, domain] = email.split('@');
+  return `${localPart}@${domain.toLowerCase()}`;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -27,19 +32,20 @@ export default async function handler(req, res) {
 
   try {
     const body = readBody(req);
-    const email = String(body.email || '').trim().toLowerCase();
+    const email = String(body.email || '').trim();
     const source = body.source ? String(body.source).slice(0, MAX_SOURCE_LENGTH) : 'unknown';
     const sessionId = body.sessionId ? String(body.sessionId).slice(0, MAX_SESSION_ID_LENGTH) : null;
 
     if (!isValidEmail(email)) {
       return res.status(400).json({ error: 'A valid email is required' });
     }
+    const normalizedEmail = normalizeEmail(email);
 
     const sql = getSql();
     await ensureSchema(sql);
     await sql`
       INSERT INTO email_subscribers (email, source, session_id, subscribed_at, updated_at)
-      VALUES (${email}, ${source}, ${sessionId}, NOW(), NOW())
+      VALUES (${normalizedEmail}, ${source}, ${sessionId}, NOW(), NOW())
       ON CONFLICT (email)
       DO UPDATE SET
         source = EXCLUDED.source,
