@@ -72,13 +72,13 @@ export default async function handler(req, res) {
       WHERE
         COALESCE(
           CASE
-            WHEN (EXCLUDED.event_data->>'chapterIndex') ~ '^-?[0-9]+$'
+            WHEN (EXCLUDED.event_data->>'chapterIndex') ~ '^[0-9]+$'
               THEN (EXCLUDED.event_data->>'chapterIndex')::INT
           END,
           -1
         ) >= COALESCE(
           CASE
-            WHEN (quiz_events.event_data->>'chapterIndex') ~ '^-?[0-9]+$'
+            WHEN (quiz_events.event_data->>'chapterIndex') ~ '^[0-9]+$'
               THEN (quiz_events.event_data->>'chapterIndex')::INT
           END,
           -1
