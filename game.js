@@ -265,6 +265,9 @@ function renderChapter(idx) {
     2: 'assets/illustrations/3-chapter_2.png',
     3: 'assets/illustrations/4-chapter_3.png',
     4: 'assets/illustrations/5-chapter_4.png',
+    6: 'assets/illustrations/7-chapter_6.png',
+    7: 'assets/illustrations/8-chapter_7.png',
+    8: 'assets/illustrations/9-chapter_8.png',
   };
   const chapterScene = illustrationMap[idx]
     ? makeSceneImg(sceneClass, illustrationMap[idx], ch.title)
@@ -586,7 +589,7 @@ async function handleEmailSignupSubmit(event) {
 
   const ok = await postJson(API_ENDPOINTS.subscribers, {
     email,
-    source: 'epilogue',
+    source: GAME_NAME,
     sessionId: state.sessionId,
   });
 
