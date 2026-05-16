@@ -65,7 +65,7 @@ export default async function handler(req, res) {
         event_type = EXCLUDED.event_type,
         chapter_id = EXCLUDED.chapter_id,
         score = EXCLUDED.score,
-        location = COALESCE(EXCLUDED.location, quiz_events.location),
+        location = EXCLUDED.location,
         event_data = EXCLUDED.event_data,
         updated_at = NOW()
     `;
