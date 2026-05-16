@@ -198,7 +198,7 @@ function startGame() {
   state.sessionId = createSessionId();
   state.completionTracked = false;
   void trackEvent('game_started', {
-    chapterIndex: 0,
+    chapterIndex: state.currentChapterIndex,
   });
   renderPrologue();
 }
@@ -525,7 +525,7 @@ function renderEpilogue() {
             type="email"
             id="email-signup-input"
             class="email-signup-input"
-            placeholder="you@example.org"
+            placeholder="you@example.com"
             autocomplete="email"
             required
           >

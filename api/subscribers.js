@@ -25,8 +25,9 @@ function normalizeEmail(email) {
   const domain = email.slice(atIndex + 1).toLowerCase();
   const validLocal = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+$/.test(localPart);
   const validDomain = /^([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/.test(domain);
+  const validLocalDots = !localPart.startsWith('.') && !localPart.endsWith('.') && !localPart.includes('..');
 
-  if (!validLocal || !validDomain) return null;
+  if (!validLocal || !validDomain || !validLocalDots) return null;
 
   return `${localPart}@${domain}`;
 }
