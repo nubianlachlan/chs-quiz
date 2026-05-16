@@ -573,7 +573,8 @@ async function handleEmailSignupSubmit(event) {
   if (!emailInput || !statusEl || !form) return;
 
   const email = emailInput.value.trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!emailInput.checkValidity()) {
+    emailInput.reportValidity();
     statusEl.textContent = 'Please enter a valid email address.';
     return;
   }
