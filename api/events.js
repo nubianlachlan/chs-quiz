@@ -68,6 +68,7 @@ export default async function handler(req, res) {
         location = EXCLUDED.location,
         event_data = EXCLUDED.event_data,
         updated_at = NOW()
+      -- Ignore stale out-of-order writes; keep only same/newer chapter progress.
       WHERE
         COALESCE(
           CASE
