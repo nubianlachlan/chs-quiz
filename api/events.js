@@ -32,6 +32,19 @@ export default async function handler(req, res) {
     const score = Number.isFinite(body.score) ? body.score : null;
     const eventData = body.eventData && typeof body.eventData === 'object' ? body.eventData : {};
 
+    // Geo-location from Vercel edge headers (populated automatically on Vercel deployments)
+    const country  = req.headers['x-vercel-ip-country']      || null;
+    const region   = req.headers['x-vercel-ip-country-region'] || null;
+    const city     = req.headers['x-vercel-ip-city']
+      ? decodeURIComponent(req.headers['x-vercel-ip-city'])
+      : null;
+    const latitude  = req.headers['x-vercel-ip-latitude']  || null;
+    const longitude = req.headers['x-vercel-ip-longitude'] || null;
+    const timezone  = req.headers['x-vercel-ip-timezone']  || null;
+    const location  = (country || city || region)
+      ? { country, region, city, latitude, longitude, timezone }
+      : null;
+
     if (!eventType) {
       return res.status(400).json({ error: 'eventType is required' });
     }
@@ -39,13 +52,14 @@ export default async function handler(req, res) {
     const sql = getSql();
     await ensureSchema(sql);
     await sql`
-      INSERT INTO quiz_events (session_id, game_name, event_type, chapter_id, score, event_data)
-      VALUES (${sessionId}, ${gameName}, ${eventType.slice(0, MAX_EVENT_TYPE_LENGTH)}, ${chapterId}, ${score}, ${JSON.stringify(eventData)})
-      ON CONFLICT ON CONSTRAINT quiz_events_session_event_uidx
+      INSERT INTO quiz_events (session_id, game_name, event_type, chapter_id, score, location, event_data)
+      VALUES (${sessionId}, ${gameName}, ${eventType.slice(0, MAX_EVENT_TYPE_LENGTH)}, ${chapterId}, ${score}, ${location ? JSON.stringify(location) : null}, ${JSON.stringify(eventData)})
+      ON CONFLICT (session_id, event_type) WHERE session_id IS NOT NULL
       DO UPDATE SET
         game_name   = EXCLUDED.game_name,
         chapter_id  = EXCLUDED.chapter_id,
         score       = EXCLUDED.score,
+        location    = EXCLUDED.location,
         event_data  = EXCLUDED.event_data,
         updated_at  = NOW()
     `;
