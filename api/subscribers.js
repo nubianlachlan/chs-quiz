@@ -2,6 +2,7 @@ import { ensureSchema, getSql } from './_lib/db.js';
 
 const MAX_SOURCE_LENGTH = 80;
 const MAX_SESSION_ID_LENGTH = 128;
+const DEFAULT_SOURCE = 'Verdania';
 
 function readBody(req) {
   if (!req.body) return {};
@@ -41,7 +42,8 @@ export default async function handler(req, res) {
   try {
     const body = readBody(req);
     const email = String(body.email || '').trim();
-    const source = body.source ? String(body.source).slice(0, MAX_SOURCE_LENGTH) : 'unknown';
+    const rawSource = body.source ?? body.gameName ?? DEFAULT_SOURCE;
+    const source = String(rawSource || DEFAULT_SOURCE).trim().slice(0, MAX_SOURCE_LENGTH) || DEFAULT_SOURCE;
     const sessionId = body.sessionId ? String(body.sessionId).slice(0, MAX_SESSION_ID_LENGTH) : null;
 
     const normalizedEmail = normalizeEmail(email);

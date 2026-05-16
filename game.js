@@ -64,6 +64,17 @@ function canCallApi() {
   return window.location.protocol !== 'file:';
 }
 
+function resolveChapterId(eventData = {}) {
+  if (eventData.chapterId) return String(eventData.chapterId);
+  const chapterIndex = Number.isInteger(eventData.chapterIndex)
+    ? eventData.chapterIndex
+    : state.currentChapterIndex;
+  if (chapterIndex === 0) return 'prologue';
+  if (chapterIndex >= 10) return 'epilogue';
+  if (chapterIndex > 0 && gameData?.chapters?.[chapterIndex]?.id) return gameData.chapters[chapterIndex].id;
+  return 'unknown_stage';
+}
+
 async function postJson(url, payload) {
   if (!canCallApi()) return false;
   try {
@@ -80,13 +91,22 @@ async function postJson(url, payload) {
 }
 
 function trackEvent(eventData = {}) {
+  const chapterIndex = Number.isInteger(eventData.chapterIndex)
+    ? eventData.chapterIndex
+    : state.currentChapterIndex;
+  const chapterId = resolveChapterId({ ...eventData, chapterIndex });
+  const normalizedEventData = {
+    ...eventData,
+    chapterIndex,
+    chapterId,
+  };
   return postJson(API_ENDPOINTS.events, {
     sessionId: state.sessionId,
     gameName: GAME_NAME,
     eventType: 'game_progress',
-    chapterId: eventData.chapterId || null,
-    score: Number.isFinite(eventData.score) ? eventData.score : state.score,
-    eventData,
+    chapterId,
+    score: Number.isFinite(normalizedEventData.score) ? normalizedEventData.score : state.score,
+    eventData: normalizedEventData,
   });
 }
 
@@ -200,7 +220,9 @@ function startGame() {
   state.sessionId = createSessionId();
   state.completionTracked = false;
   void trackEvent({
+    stage: 'prologue_start',
     chapterIndex: state.currentChapterIndex,
+    chapterId: 'prologue',
   });
   renderPrologue();
 }
@@ -492,11 +514,6 @@ function renderEpilogue() {
         </div>
       </div>
 
-      <div class="badge-display">
-        <span class="badge-emoji">${extractEmoji(band.title)}</span>
-        <div class="badge-title">${stripEmoji(band.title)}</div>
-      </div>
-
       <div class="score-grid">
         <div class="score-item correct-answer">
           <div class="si-icon"><i class="fa-solid fa-circle-check" aria-label="Correct"></i></div>
@@ -561,7 +578,9 @@ function renderEpilogue() {
   if (!state.completionTracked) {
     state.completionTracked = true;
     void trackEvent({
+      stage: 'epilogue_complete',
       chapterIndex: state.currentChapterIndex,
+      chapterId: 'epilogue',
       score: totalScore,
       correct,
       partial,
@@ -598,8 +617,10 @@ async function handleEmailSignupSubmit(event) {
     statusEl.textContent = 'Thanks — you are subscribed.';
     emailInput.value = '';
     void trackEvent({
+      stage: 'email_subscribed',
       score: state.score,
       chapterIndex: state.currentChapterIndex,
+      chapterId: 'epilogue',
     });
   } else if (!canCallApi()) {
     statusEl.textContent = 'Email signup is available on the deployed site.';
@@ -608,16 +629,6 @@ async function handleEmailSignupSubmit(event) {
   }
 
   if (submitButton) submitButton.disabled = false;
-}
-
-// ---- Emoji helpers ----
-function extractEmoji(str) {
-  const m = str.match(/(\p{Emoji_Presentation}|\p{Extended_Pictographic})/gu);
-  return m ? m[0] : '';
-}
-
-function stripEmoji(str) {
-  return str.replace(/(\p{Emoji_Presentation}|\p{Extended_Pictographic})/gu, '').trim();
 }
 
 // ---- Init ----
