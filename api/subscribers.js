@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     const body = readBody(req);
     const email = String(body.email || '').trim();
     const rawSource = body.source ?? body.gameName ?? DEFAULT_SOURCE;
-    const source = String(rawSource || DEFAULT_SOURCE).trim().slice(0, MAX_SOURCE_LENGTH) || DEFAULT_SOURCE;
+    const source = String(rawSource).trim().slice(0, MAX_SOURCE_LENGTH) || DEFAULT_SOURCE;
     const sessionId = body.sessionId ? String(body.sessionId).slice(0, MAX_SESSION_ID_LENGTH) : null;
 
     const normalizedEmail = normalizeEmail(email);

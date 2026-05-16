@@ -71,7 +71,7 @@ function resolveChapterId(eventData = {}) {
     : state.currentChapterIndex;
   if (chapterIndex === 0) return 'prologue';
   if (chapterIndex >= 10) return 'epilogue';
-  if (chapterIndex > 0 && gameData?.chapters?.[chapterIndex]?.id) return gameData.chapters[chapterIndex].id;
+  if (chapterIndex > 0 && chapterIndex < 10 && gameData?.chapters?.[chapterIndex]?.id) return gameData.chapters[chapterIndex].id;
   return 'unknown_stage';
 }
 
