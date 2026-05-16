@@ -15,12 +15,19 @@ function readBody(req) {
   return req.body;
 }
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
 function normalizeEmail(email) {
-  const [localPart, domain] = email.split('@');
+  const atIndex = email.indexOf('@');
+  if (atIndex <= 0 || atIndex !== email.lastIndexOf('@') || atIndex === email.length - 1) {
+    return null;
+  }
+
+  const localPart = email.slice(0, atIndex);
+  const domain = email.slice(atIndex + 1).toLowerCase();
+  const validLocal = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+$/.test(localPart);
+  const validDomain = /^([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/.test(domain);
+
+  if (!validLocal || !validDomain) return null;
+
   return `${localPart}@${domain.toLowerCase()}`;
 }
 
@@ -36,10 +43,10 @@ export default async function handler(req, res) {
     const source = body.source ? String(body.source).slice(0, MAX_SOURCE_LENGTH) : 'unknown';
     const sessionId = body.sessionId ? String(body.sessionId).slice(0, MAX_SESSION_ID_LENGTH) : null;
 
-    if (!isValidEmail(email)) {
+    const normalizedEmail = normalizeEmail(email);
+    if (!normalizedEmail) {
       return res.status(400).json({ error: 'A valid email is required' });
     }
-    const normalizedEmail = normalizeEmail(email);
 
     const sql = getSql();
     await ensureSchema(sql);
