@@ -3,6 +3,10 @@
 // ============================================================
 
 const GAME_DATA_URL = 'CHS_2024_game.json';
+const API_ENDPOINTS = {
+  events: '/api/events',
+  subscribers: '/api/subscribers',
+};
 
 // Image path helper for commitment icons
 function commitmentIconImg(num, size) {
@@ -31,6 +35,8 @@ let state = {
   score: 0,
   answers: [],               // { chapterIndex, optionId, points }
   answered: false,
+  sessionId: null,
+  completionTracked: false,
 };
 
 // ---- DOM helpers ----
@@ -40,6 +46,42 @@ const showScreen = (id) => {
   const el = $(id);
   if (el) { el.classList.add('active'); window.scrollTo(0, 0); }
 };
+
+function createSessionId() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return window.crypto.randomUUID();
+  }
+  return `sess_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function canCallApi() {
+  return window.location.protocol !== 'file:';
+}
+
+async function postJson(url, payload) {
+  if (!canCallApi()) return false;
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return res.ok;
+  } catch (err) {
+    console.error('API request failed:', err);
+    return false;
+  }
+}
+
+function trackEvent(eventType, eventData = {}) {
+  return postJson(API_ENDPOINTS.events, {
+    sessionId: state.sessionId,
+    eventType,
+    chapterId: eventData.chapterId || null,
+    score: Number.isFinite(eventData.score) ? eventData.score : state.score,
+    eventData,
+  });
+}
 
 function shuffleOptions(options) {
   const shuffled = [...options];
@@ -148,6 +190,12 @@ function startGame() {
   state.score = 0;
   state.answers = [];
   state.answered = false;
+  state.sessionId = createSessionId();
+  state.completionTracked = false;
+  void trackEvent('game_started', {
+    chapterIndex: 0,
+    score: state.score,
+  });
   renderPrologue();
 }
 
@@ -287,6 +335,13 @@ function handleAnswer(chapter, selectedId) {
     chapterId: chapter.id,
     optionId: selectedId,
     points,
+  });
+  void trackEvent('answer_submitted', {
+    chapterIndex: state.currentChapterIndex,
+    chapterId: chapter.id,
+    optionId: selectedId,
+    points,
+    score: state.score,
   });
 
   // Highlight buttons
@@ -458,6 +513,23 @@ function renderEpilogue() {
         <p>${band.message}</p>
       </div>
 
+      <div class="email-capture-box">
+        <label class="email-capture-label" for="email-signup-input">GET CHS QUIZ UPDATES</label>
+        <p class="email-capture-text">Receive updates when new scenarios are published.</p>
+        <form id="email-signup-form" class="email-signup-form">
+          <input
+            type="email"
+            id="email-signup-input"
+            class="email-signup-input"
+            placeholder="you@example.org"
+            autocomplete="email"
+            required
+          >
+          <button class="btn" type="submit">JOIN</button>
+        </form>
+        <p id="email-signup-status" class="email-signup-status" aria-live="polite"></p>
+      </div>
+
       <div class="chs-summary">
         <div class="chs-summary-title">YOUR COMMITMENT SCORECARD</div>
         <div class="commitment-list">
@@ -474,6 +546,57 @@ function renderEpilogue() {
   showScreen('screen-epilogue');
   $('btn-replay').addEventListener('click', startGame);
   $('btn-back-menu').addEventListener('click', renderMenu);
+  $('email-signup-form')?.addEventListener('submit', handleEmailSignupSubmit);
+
+  if (!state.completionTracked) {
+    state.completionTracked = true;
+    void trackEvent('game_completed', {
+      chapterIndex: state.currentChapterIndex,
+      score: totalScore,
+      correct,
+      partial,
+      incorrect,
+    });
+  }
+}
+
+async function handleEmailSignupSubmit(event) {
+  event.preventDefault();
+  const emailInput = $('email-signup-input');
+  const statusEl = $('email-signup-status');
+  const form = $('email-signup-form');
+  if (!emailInput || !statusEl || !form) return;
+
+  const email = emailInput.value.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    statusEl.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (submitButton) submitButton.disabled = true;
+  statusEl.textContent = 'Submitting...';
+
+  const ok = await postJson(API_ENDPOINTS.subscribers, {
+    email,
+    source: 'epilogue',
+    sessionId: state.sessionId,
+  });
+
+  if (ok) {
+    statusEl.textContent = 'Thanks — you are subscribed.';
+    emailInput.value = '';
+    void trackEvent('email_subscribed', {
+      score: state.score,
+      chapterIndex: state.currentChapterIndex,
+    });
+  } else if (!canCallApi()) {
+    statusEl.textContent = 'Email signup is available on the deployed site.';
+  } else {
+    statusEl.textContent = 'Could not subscribe right now. Please try again.';
+  }
+
+  if (submitButton) submitButton.disabled = false;
 }
 
 // ---- Emoji helpers ----
