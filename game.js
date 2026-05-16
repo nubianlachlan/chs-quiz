@@ -2,7 +2,7 @@
 // CHS Field Ready — Game Logic
 // ============================================================
 
-const GAME_DATA_URL = 'CHS_2024_game.json';
+const GAME_DATA_URL = 'data/CHS_2024_game.json';
 const API_ENDPOINTS = {
   events: '/api/events',
   subscribers: '/api/subscribers',
