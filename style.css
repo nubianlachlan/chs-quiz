@@ -867,6 +867,52 @@ body {
   color: var(--dark-gray);
 }
 
+.email-capture-box {
+  padding: 16px;
+  border: 2px solid var(--black);
+  box-shadow: var(--pixel-shadow-sm);
+  background: var(--primary-light);
+  margin-bottom: 24px;
+}
+
+.email-capture-label {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  margin-bottom: 8px;
+  color: var(--primary-dark);
+}
+
+.email-capture-text {
+  font-size: 0.88rem;
+  color: var(--dark-gray);
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+.email-signup-form {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.email-signup-input {
+  flex: 1;
+  min-width: 0;
+  border: 2px solid var(--black);
+  box-shadow: var(--pixel-shadow-sm);
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+}
+
+.email-signup-status {
+  margin-top: 10px;
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+}
+
 .chs-summary {
   margin-bottom: 28px;
 }
@@ -1044,6 +1090,10 @@ body {
   .epilogue-cta {
     flex-direction: column;
     align-items: center;
+  }
+
+  .email-signup-form {
+    flex-direction: column;
   }
 }
 
