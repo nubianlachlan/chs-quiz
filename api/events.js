@@ -48,12 +48,41 @@ export default async function handler(req, res) {
     if (!eventType) {
       return res.status(400).json({ error: 'eventType is required' });
     }
+    if (!sessionId) {
+      return res.status(400).json({ error: 'sessionId is required' });
+    }
+    if (!gameName) {
+      return res.status(400).json({ error: 'gameName is required' });
+    }
 
     const sql = getSql();
     await ensureSchema(sql);
     await sql`
       INSERT INTO quiz_events (session_id, game_name, event_type, chapter_id, score, location, event_data)
       VALUES (${sessionId}, ${gameName}, ${eventType.slice(0, MAX_EVENT_TYPE_LENGTH)}, ${chapterId}, ${score}, ${location ? JSON.stringify(location) : null}, ${JSON.stringify(eventData)})
+      ON CONFLICT (session_id, game_name)
+      DO UPDATE SET
+        event_type = EXCLUDED.event_type,
+        chapter_id = EXCLUDED.chapter_id,
+        score = EXCLUDED.score,
+        location = EXCLUDED.location,
+        event_data = EXCLUDED.event_data,
+        updated_at = NOW()
+      -- Ignore stale out-of-order writes; keep only same/newer chapter progress.
+      WHERE
+        COALESCE(
+          CASE
+            WHEN (EXCLUDED.event_data->>'chapterIndex') ~ '^[0-9]+$'
+              THEN (EXCLUDED.event_data->>'chapterIndex')::INT
+          END,
+          -1
+        ) >= COALESCE(
+          CASE
+            WHEN (quiz_events.event_data->>'chapterIndex') ~ '^[0-9]+$'
+              THEN (quiz_events.event_data->>'chapterIndex')::INT
+          END,
+          -1
+        )
     `;
 
     return res.status(201).json({ ok: true });

@@ -32,6 +32,10 @@ export async function ensureSchema(sql) {
       await sql`ALTER TABLE quiz_events ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()`;
       await sql`ALTER TABLE quiz_events ADD COLUMN IF NOT EXISTS location JSONB`;
       await sql`DROP INDEX IF EXISTS quiz_events_session_event_uidx`;
+      await sql`
+        CREATE UNIQUE INDEX IF NOT EXISTS quiz_events_session_game_uidx
+        ON quiz_events (session_id, game_name)
+      `;
 
       await sql`
         CREATE TABLE IF NOT EXISTS email_subscribers (
