@@ -1,5 +1,8 @@
 import { ensureSchema, getSql } from './_lib/db.js';
 
+const MAX_SOURCE_LENGTH = 80;
+const MAX_SESSION_ID_LENGTH = 128;
+
 function readBody(req) {
   if (!req.body) return {};
   if (typeof req.body === 'string') {
@@ -25,8 +28,8 @@ export default async function handler(req, res) {
   try {
     const body = readBody(req);
     const email = String(body.email || '').trim().toLowerCase();
-    const source = body.source ? String(body.source).slice(0, 80) : 'unknown';
-    const sessionId = body.sessionId ? String(body.sessionId).slice(0, 128) : null;
+    const source = body.source ? String(body.source).slice(0, MAX_SOURCE_LENGTH) : 'unknown';
+    const sessionId = body.sessionId ? String(body.sessionId).slice(0, MAX_SESSION_ID_LENGTH) : null;
 
     if (!isValidEmail(email)) {
       return res.status(400).json({ error: 'A valid email is required' });

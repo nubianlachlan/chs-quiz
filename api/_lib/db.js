@@ -1,7 +1,5 @@
 import { neon } from '@neondatabase/serverless';
 
-let schemaReady = false;
-
 export function getSql() {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
@@ -11,8 +9,6 @@ export function getSql() {
 }
 
 export async function ensureSchema(sql) {
-  if (schemaReady) return;
-
   await sql`
     CREATE TABLE IF NOT EXISTS quiz_events (
       id BIGSERIAL PRIMARY KEY,
@@ -35,6 +31,4 @@ export async function ensureSchema(sql) {
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `;
-
-  schemaReady = true;
 }

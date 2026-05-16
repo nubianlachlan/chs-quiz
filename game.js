@@ -51,7 +51,12 @@ function createSessionId() {
   if (window.crypto && typeof window.crypto.randomUUID === 'function') {
     return window.crypto.randomUUID();
   }
-  return `sess_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+  if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+    const buf = new Uint32Array(2);
+    window.crypto.getRandomValues(buf);
+    return `sess_${Date.now()}_${buf[0].toString(16)}${buf[1].toString(16)}`;
+  }
+  return `sess_${Date.now()}`;
 }
 
 function canCallApi() {

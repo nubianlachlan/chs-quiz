@@ -1,5 +1,9 @@
 import { ensureSchema, getSql } from './_lib/db.js';
 
+const MAX_SESSION_ID_LENGTH = 128;
+const MAX_CHAPTER_ID_LENGTH = 64;
+const MAX_EVENT_TYPE_LENGTH = 64;
+
 function readBody(req) {
   if (!req.body) return {};
   if (typeof req.body === 'string') {
@@ -21,8 +25,8 @@ export default async function handler(req, res) {
   try {
     const body = readBody(req);
     const eventType = String(body.eventType || '').trim();
-    const sessionId = body.sessionId ? String(body.sessionId).slice(0, 128) : null;
-    const chapterId = body.chapterId ? String(body.chapterId).slice(0, 64) : null;
+    const sessionId = body.sessionId ? String(body.sessionId).slice(0, MAX_SESSION_ID_LENGTH) : null;
+    const chapterId = body.chapterId ? String(body.chapterId).slice(0, MAX_CHAPTER_ID_LENGTH) : null;
     const score = Number.isFinite(body.score) ? body.score : null;
     const eventData = body.eventData && typeof body.eventData === 'object' ? body.eventData : {};
 
@@ -34,7 +38,7 @@ export default async function handler(req, res) {
     await ensureSchema(sql);
     await sql`
       INSERT INTO quiz_events (session_id, event_type, chapter_id, score, event_data)
-      VALUES (${sessionId}, ${eventType.slice(0, 64)}, ${chapterId}, ${score}, ${JSON.stringify(eventData)})
+      VALUES (${sessionId}, ${eventType.slice(0, MAX_EVENT_TYPE_LENGTH)}, ${chapterId}, ${score}, ${JSON.stringify(eventData)})
     `;
 
     return res.status(201).json({ ok: true });
