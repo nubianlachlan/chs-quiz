@@ -199,7 +199,6 @@ function startGame() {
   state.completionTracked = false;
   void trackEvent('game_started', {
     chapterIndex: 0,
-    score: state.score,
   });
   renderPrologue();
 }

@@ -28,7 +28,7 @@ function normalizeEmail(email) {
 
   if (!validLocal || !validDomain) return null;
 
-  return `${localPart}@${domain.toLowerCase()}`;
+  return `${localPart}@${domain}`;
 }
 
 export default async function handler(req, res) {
