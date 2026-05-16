@@ -154,7 +154,7 @@ function renderMenu() {
         <p class="menu-subtitle">${meta.subtitle}</p>
       </div>
 
-      ${makeSceneImg('scene-menu', 'assets/illustrations/0-intro.webp', meta.title)}
+      ${makeSceneImg('scene-menu', 'assets/illustrations/0-intro.png', meta.title)}
 
       <p class="menu-description">${meta.description}</p>
 
@@ -217,7 +217,7 @@ function renderPrologue() {
         <div class="chapter-title">${ch.title}</div>
       </div>
 
-      ${makeSceneImg('scene-0', 'assets/illustrations/1-prologue.webp', ch.title)}
+      ${makeSceneImg('scene-0', 'assets/illustrations/1-prologue.png', ch.title)}
 
       <div style="margin-top:16px"></div>
 
@@ -261,10 +261,10 @@ function renderChapter(idx) {
   const commitNum = ch.chs_commitment.number;
   const shuffledOptions = shuffleOptions(ch.question.options);
   const illustrationMap = {
-    1: 'assets/illustrations/2-chapter_1.webp',
-    2: 'assets/illustrations/3-chapter_2.webp',
-    3: 'assets/illustrations/4-chapter_3.webp',
-    4: 'assets/illustrations/5-chapter_4.webp',
+    1: 'assets/illustrations/2-chapter_1.png',
+    2: 'assets/illustrations/3-chapter_2.png',
+    3: 'assets/illustrations/4-chapter_3.png',
+    4: 'assets/illustrations/5-chapter_4.png',
   };
   const chapterScene = illustrationMap[idx]
     ? makeSceneImg(sceneClass, illustrationMap[idx], ch.title)
