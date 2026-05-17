@@ -290,8 +290,8 @@ function renderChapter(idx) {
     5: 'assets/illustrations/6-chapter_5-800.png',
     6: 'assets/illustrations/7-chapter_6-800.png',
     7: 'assets/illustrations/8-chapter_7-800.png',
-    8: 'assets/illustrations/9_chapter_8-800.png',
-    9: 'assets/illustrations/10_chapter_9-800.png',
+    8: 'assets/illustrations/9-chapter_8-800.png',
+    9: 'assets/illustrations/10-chapter_9-800.png',
   };
   const chapterScene = illustrationMap[idx]
     ? makeSceneImg(sceneClass, illustrationMap[idx], ch.title)
@@ -505,7 +505,7 @@ function renderEpilogue() {
       </div>
 
       <div class="scene-area">
-        ${makeSceneImg('scene-epilogue', 'assets/illustrations/11_epilogue-800.png', ep.title)}
+        ${makeSceneImg('scene-epilogue', 'assets/illustrations/11-epilogue-800.png', ep.title)}
       </div>
 
       <div class="score-display">
