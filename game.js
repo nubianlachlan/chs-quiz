@@ -174,7 +174,7 @@ function renderMenu() {
         <p class="menu-subtitle">${meta.subtitle}</p>
       </div>
 
-      ${makeSceneImg('scene-menu', 'assets/illustrations/0-intro.png', meta.title)}
+      ${makeSceneImg('scene-menu', 'assets/illustrations/0-intro-800.png', meta.title)}
 
       <p class="menu-description">${meta.description}</p>
 
@@ -239,7 +239,7 @@ function renderPrologue() {
         <div class="chapter-title">${ch.title}</div>
       </div>
 
-      ${makeSceneImg('scene-0', 'assets/illustrations/1-prologue.png', ch.title)}
+      ${makeSceneImg('scene-0', 'assets/illustrations/1-prologue-800.png', ch.title)}
 
       <div style="margin-top:16px"></div>
 
@@ -283,14 +283,16 @@ function renderChapter(idx) {
   const commitNum = ch.chs_commitment.number;
   const shuffledOptions = shuffleOptions(ch.question.options);
   const illustrationMap = {
-    1: 'assets/illustrations/2-chapter_1.png',
-    2: 'assets/illustrations/3-chapter_2.png',
-    3: 'assets/illustrations/4-chapter_3.png',
-    4: 'assets/illustrations/5-chapter_4.png',
-    // Exported files for chapters 6-8 are named with 7/8/9 prefixes in assets.
-    6: 'assets/illustrations/7-chapter_6.png',
-    7: 'assets/illustrations/8-chapter_7.png',
-    8: 'assets/illustrations/9-chapter_8.png',
+    1: 'assets/illustrations/2-chapter_1-800.png',
+    2: 'assets/illustrations/3-chapter_2-800.png',
+    3: 'assets/illustrations/4-chapter_3-800.png',
+    4: 'assets/illustrations/5-chapter_4-800.png',
+    5: 'assets/illustrations/6-chapter_5-800.png',
+    // Exported files for chapters 7-9 use underscore variants in source filenames.
+    6: 'assets/illustrations/7-chapter_6-800.png',
+    7: 'assets/illustrations/8_chapter_7-800.png',
+    8: 'assets/illustrations/9_chapter_8-800.png',
+    9: 'assets/illustrations/10_chapter_9-800.png',
   };
   const chapterScene = illustrationMap[idx]
     ? makeSceneImg(sceneClass, illustrationMap[idx], ch.title)
@@ -504,7 +506,7 @@ function renderEpilogue() {
       </div>
 
       <div class="scene-area">
-        ${makePlaceholderImg('scene-epilogue', 'VERDANIA — SUNSET DEBRIEF')}
+        ${makeSceneImg('scene-epilogue', 'assets/illustrations/11_epilogue-800.png', ep.title)}
       </div>
 
       <div class="score-display">
