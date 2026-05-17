@@ -139,7 +139,7 @@ function getMaxScore() {
 }
 
 function makeHUD(chapterIndex, totalChapters, score) {
-  // totalChapters = 9 interactive chapters
+  // totalChapters represents the number of scored interactive chapters.
   const interactive = Math.max(0, chapterIndex - 1); // chapters 1-9 answered
   const pct = Math.round((interactive / totalChapters) * 100);
   return `
