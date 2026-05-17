@@ -1,4 +1,5 @@
 const DEFAULT_BODY_LIMIT_BYTES = 16 * 1024;
+const RATE_LIMIT_PURGE_INTERVAL_MS = 10_000;
 
 function headerValue(value) {
   if (Array.isArray(value)) return value[0] || '';
@@ -61,9 +62,22 @@ export function isJsonContentType(req) {
 
 export function hasAcceptableBodySize(req, defaultLimitBytes = DEFAULT_BODY_LIMIT_BYTES) {
   const configured = parsePositiveInt(process.env.API_BODY_LIMIT_BYTES, defaultLimitBytes);
-  const contentLength = parsePositiveInt(headerValue(req.headers['content-length']), 0);
-  if (!contentLength) return true;
-  return contentLength <= configured;
+  const contentLengthHeader = headerValue(req.headers['content-length']);
+  const contentLength = parsePositiveInt(contentLengthHeader, 0);
+
+  if (contentLength > 0) {
+    return contentLength <= configured;
+  }
+
+  if (typeof req.body === 'string') {
+    return Buffer.byteLength(req.body, 'utf8') <= configured;
+  }
+
+  if (req.body && typeof req.body === 'object') {
+    return Buffer.byteLength(JSON.stringify(req.body), 'utf8') <= configured;
+  }
+
+  return true;
 }
 
 export function getClientIp(req) {
@@ -96,7 +110,7 @@ export function checkRateLimit({ key, limit, windowMs }) {
   const now = Date.now();
   const store = getRateLimitStore();
 
-  if (!globalThis.__apiRateLimitLastPurgeAt || (now - globalThis.__apiRateLimitLastPurgeAt) > 10_000) {
+  if (!globalThis.__apiRateLimitLastPurgeAt || (now - globalThis.__apiRateLimitLastPurgeAt) > RATE_LIMIT_PURGE_INTERVAL_MS) {
     purgeExpiredEntries(store, now);
     globalThis.__apiRateLimitLastPurgeAt = now;
   }
