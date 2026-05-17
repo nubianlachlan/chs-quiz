@@ -134,13 +134,17 @@ function makeSceneImg(sceneClass, src, alt) {
     </div>`;
 }
 
+function getMaxScore() {
+  return gameData?.game_meta?.scoring?.max_score ?? 90;
+}
+
 function makeHUD(chapterIndex, totalChapters, score) {
   // totalChapters = 9 interactive chapters
   const interactive = Math.max(0, chapterIndex - 1); // chapters 1-9 answered
   const pct = Math.round((interactive / totalChapters) * 100);
   return `
     <div class="hud">
-      <div class="hud-score">SCORE <span>${score}</span>/90</div>
+      <div class="hud-score">SCORE <span>${score}</span>/${getMaxScore()}</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill" style="width:${pct}%"></div>
       </div>
@@ -462,13 +466,12 @@ function renderFeedback(chapter, chosen) {
 // ---- Screen: Epilogue ----
 function renderEpilogue() {
   const ep = gameData.epilogue;
-  const meta = gameData.game_meta;
   const totalScore = state.score;
-  const maxScore = meta.scoring.max_score;
+  const maxScore = getMaxScore();
 
   // Determine badge band
   let band;
-  if (totalScore >= 90) band = ep.score_feedback['90_to_100'];
+  if (totalScore >= 90) band = ep.score_feedback['90_to_max'];
   else if (totalScore >= 70) band = ep.score_feedback['70_to_89'];
   else if (totalScore >= 50) band = ep.score_feedback['50_to_69'];
   else band = ep.score_feedback['0_to_49'];
