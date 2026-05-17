@@ -643,7 +643,7 @@ async function init() {
   showScreen('screen-loading');
 
   try {
-    const res = await fetch(GAME_DATA_URL);
+    const res = await fetch(GAME_DATA_URL, { cache: 'no-store' });
     if (!res.ok) {
       console.error(`Failed to load ${GAME_DATA_URL}: HTTP ${res.status} ${res.statusText}`);
       throw new Error('network');
