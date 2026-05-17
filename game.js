@@ -468,13 +468,15 @@ function renderEpilogue() {
   const ep = gameData.epilogue;
   const totalScore = state.score;
   const maxScore = getMaxScore();
+  const scoreFeedback = ep.score_feedback;
+  const topBandKey = Object.keys(scoreFeedback).find((key) => key.startsWith(`${maxScore}_to_`));
 
   // Determine badge band
   let band;
-  if (totalScore >= maxScore) band = ep.score_feedback['90_to_100'];
-  else if (totalScore >= 70) band = ep.score_feedback['70_to_89'];
-  else if (totalScore >= 50) band = ep.score_feedback['50_to_69'];
-  else band = ep.score_feedback['0_to_49'];
+  if (totalScore >= maxScore) band = scoreFeedback[topBandKey] || scoreFeedback['90_to_100'];
+  else if (totalScore >= 70) band = scoreFeedback['70_to_89'];
+  else if (totalScore >= 50) band = scoreFeedback['50_to_69'];
+  else band = scoreFeedback['0_to_49'];
 
   // Score stats
   const correct  = state.answers.filter((a) => a.points === 10).length;
