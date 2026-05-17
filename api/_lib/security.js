@@ -76,10 +76,10 @@ export function getClientIp(req) {
 }
 
 function getRateLimitStore() {
-  if (!globalThis.__chsRateLimitStore) {
-    globalThis.__chsRateLimitStore = new Map();
+  if (!globalThis.__apiRateLimitStore) {
+    globalThis.__apiRateLimitStore = new Map();
   }
-  return globalThis.__chsRateLimitStore;
+  return globalThis.__apiRateLimitStore;
 }
 
 function purgeExpiredEntries(store, now) {
@@ -96,7 +96,10 @@ export function checkRateLimit({ key, limit, windowMs }) {
   const now = Date.now();
   const store = getRateLimitStore();
 
-  purgeExpiredEntries(store, now);
+  if (!globalThis.__apiRateLimitLastPurgeAt || (now - globalThis.__apiRateLimitLastPurgeAt) > 10_000) {
+    purgeExpiredEntries(store, now);
+    globalThis.__apiRateLimitLastPurgeAt = now;
+  }
 
   const current = store.get(key);
   if (!current || current.resetAt <= now) {
