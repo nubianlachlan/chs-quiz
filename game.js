@@ -471,7 +471,7 @@ function renderEpilogue() {
 
   // Determine badge band
   let band;
-  if (totalScore >= maxScore) band = ep.score_feedback.max_score;
+  if (totalScore >= maxScore) band = ep.score_feedback['90_to_100'];
   else if (totalScore >= 70) band = ep.score_feedback['70_to_89'];
   else if (totalScore >= 50) band = ep.score_feedback['50_to_69'];
   else band = ep.score_feedback['0_to_49'];
