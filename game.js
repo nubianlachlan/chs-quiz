@@ -288,9 +288,8 @@ function renderChapter(idx) {
     3: 'assets/illustrations/4-chapter_3-800.png',
     4: 'assets/illustrations/5-chapter_4-800.png',
     5: 'assets/illustrations/6-chapter_5-800.png',
-    // Exported files for chapters 7-9 use underscore variants in source filenames.
     6: 'assets/illustrations/7-chapter_6-800.png',
-    7: 'assets/illustrations/8_chapter_7-800.png',
+    7: 'assets/illustrations/8-chapter_7-800.png',
     8: 'assets/illustrations/9_chapter_8-800.png',
     9: 'assets/illustrations/10_chapter_9-800.png',
   };
