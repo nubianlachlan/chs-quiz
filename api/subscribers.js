@@ -1,4 +1,12 @@
 import { ensureSchema, getSql } from './_lib/db.js';
+import {
+  checkRateLimit,
+  getClientIp,
+  hasAcceptableBodySize,
+  isAllowedOrigin,
+  isJsonContentType,
+  setSecurityHeaders,
+} from './_lib/security.js';
 
 const MAX_SOURCE_LENGTH = 80;
 const MAX_SESSION_ID_LENGTH = 128;
@@ -34,9 +42,23 @@ function normalizeEmail(email) {
 }
 
 export default async function handler(req, res) {
+  setSecurityHeaders(res);
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (!isAllowedOrigin(req)) {
+    return res.status(403).json({ error: 'Forbidden origin' });
+  }
+
+  if (!isJsonContentType(req)) {
+    return res.status(415).json({ error: 'Content-Type must be application/json' });
+  }
+
+  if (!hasAcceptableBodySize(req)) {
+    return res.status(413).json({ error: 'Payload too large' });
   }
 
   try {
@@ -49,6 +71,25 @@ export default async function handler(req, res) {
     const normalizedEmail = normalizeEmail(email);
     if (!normalizedEmail) {
       return res.status(400).json({ error: 'A valid email is required' });
+    }
+
+    const ip = getClientIp(req);
+    const ipRate = checkRateLimit({
+      key: `subscribers:ip:${ip}`,
+      limit: 15,
+      windowMs: 10 * 60_000,
+    });
+    if (!ipRate.allowed) {
+      return res.status(429).json({ error: 'Too many requests' });
+    }
+
+    const emailRate = checkRateLimit({
+      key: `subscribers:email:${normalizedEmail}`,
+      limit: 4,
+      windowMs: 24 * 60 * 60_000,
+    });
+    if (!emailRate.allowed) {
+      return res.status(429).json({ error: 'Too many requests' });
     }
 
     const sql = getSql();

@@ -23,6 +23,8 @@ Both routes write to PostgreSQL on Neon.
 2. Framework preset: **Other** (no build step required).
 3. Add environment variable:
    - `DATABASE_URL` = your Neon connection string
+   - Optional: `ALLOWED_ORIGINS` = comma-separated allowed origins (for example `https://yourdomain.com,https://www.yourdomain.com`)
+   - Optional: `API_BODY_LIMIT_BYTES` = max JSON request size in bytes (defaults to `16384`)
 4. Deploy.
 
 ## 3) Connect your custom domain
